@@ -1,0 +1,154 @@
+.container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem;
+  font-weight: 600;
+}
+
+.formContainer{
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  // border: 1px solid gray;
+  border-radius: 1rem;
+}
+
+
+.title{
+  padding: 1%;
+  // border-bottom: 1px solid gray;
+  color: green;
+  font-size: 1.2rem;
+}
+
+select{
+  width: 150px;
+  // height: 4rem;
+  border-radius: 1rem;
+  // text-align: center;
+  // margin: 1rem;
+}
+
+select > option{
+  // height: 4rem;
+  border-radius: 1rem;
+  // text-align: center;
+}
+
+.titleOut{
+  padding: 1%;
+  // border-bottom: 1px solid gray;
+  color: green;
+  font-size: 1.7rem;
+}
+
+.formRow1{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: left;
+  // border-bottom: 1px solid gray;
+  padding: 1%;
+}
+
+.formRow2{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: left;
+  // border-bottom: 1px solid gray;
+  padding: 1%;
+  gap: 1rem;
+  // color: #000;
+}
+
+.formRow{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: left;
+  // border-bottom: 1px solid gray;
+  padding: 1%;
+  gap: 1rem;
+  // color: #000;
+}
+
+.formRowFull{
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: left;
+  // border-bottom: 1px solid gray;
+  padding: 1%;
+  gap: 1rem;
+  // color: #000;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.formRow3{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: left;
+  // border-bottom: 1px solid gray;
+  padding: 1%;
+  gap: 1rem;
+  // color: #000;
+}
+
+.formRow4{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-content: left;
+  // border-bottom: 1px solid gray;
+  padding: 1%;
+  gap: 1rem;
+  // color: #000;
+}
+
+.formRow6{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 2fr;
+  justify-content: left;
+  border-top: 1px solid gray;
+  padding: 1%;
+  gap: 1rem;
+  background-color: rgb(195, 226, 195);
+  // color: #000;
+}
+
+.formRow7{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  justify-content: left;
+  // border-bottom: 1px solid gray;
+  padding: 1%;
+  gap: 1rem;
+  // color: #000;
+}
+
+label{
+  margin-right: 0.5rem;
+}
+
+input[type="checkbox"] {
+  width: 10px;
+  height: 10px;
+  margin-right: 1rem;
+}
+
+textarea{
+  width: 120px;
+}
+
+.btnstyle{
+  height: 50px;
+  width: 150px;
+  background-color: #fff;
+  border: 1px solid green;
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+}
+

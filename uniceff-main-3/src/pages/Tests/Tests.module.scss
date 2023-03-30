@@ -1,0 +1,16 @@
+.btns{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.btns > button{
+  width: 150px;
+  height: max-content;
+  background-color: #fff;
+}
+
+.btns > button:hover{
+  background-color: green;
+  color: #fff;
+}

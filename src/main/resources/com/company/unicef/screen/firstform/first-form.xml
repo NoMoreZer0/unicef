@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://firstForm.caption">
+    <layout>
+        <hbox spacing="true">
+            <form id="firstForm">
+                <column width="250px">
+                    <label value="msg://infoaboutchild.caption"> </label>
+
+                    <textField caption="msg://fio.caption"/>
+                    <dateField caption="msg://birthdate.caption" dateFormat="dd/MM/yyyy"/>
+                    <textField caption="msg://class.caption"/>
+                    <comboBox caption="msg://gender.caption" optionsEnum="com.company.unicef.entity.GenderField"/>
+                    <comboBox caption="msg://specialneeds.caption" optionsEnum="com.company.unicef.entity.SpecialNeedsField"/>
+                    <textField caption="msg://contacts.caption"/>
+
+                    <label value="msg://address.caption"/>
+                    <textField caption="msg://address.caption.city"/>
+                    <textField caption="msg://address.caption.district"/>
+                    <textField caption="msg://address.caption.street"/>
+                    <textField caption="msg://address.caption.home"/>
+                    <textField caption="msg://address.caption.apartment"/>
+
+                    <label value="msg://parentsinfo.caption"/>
+
+                    <label value="msg://parentsinfo.caption.father"/>
+                    <textField caption="msg://parentsinfo.caption.fio"/>
+                    <dateField caption="msg://birthdate.caption" dateFormat="dd/MM/yyyy"/>
+                    <textField caption="msg://parentsinfo.caption.fullage"/>
+                    <checkBox caption="msg://parentsinfo.caption.step"/>
+                    <comboBox caption="msg://parentsinfo.caption.familystatus" optionsEnum="com.company.unicef.entity.FamilyStatusFielld"/>
+                    <textField caption="msg://contacts.caption"/>
+                    <label value="msg://parentsinfo.caption.address"/>
+                    <textField caption="msg://address.caption.city"/>
+                    <textField caption="msg://address.caption.district"/>
+                    <textField caption="msg://address.caption.street"/>
+                    <textField caption="msg://address.caption.home"/>
+                    <textField caption="msg://address.caption.apartment"/>
+
+                    <label value="msg://parentsinfo.caption.mother"/>
+                    <textField caption="msg://parentsinfo.caption.fio"/>
+                    <dateField caption="msg://birthdate.caption" dateFormat="dd/MM/yyyy"/>
+                    <textField caption="msg://parentsinfo.caption.fullage"/>
+                    <checkBox caption="msg://parentsinfo.caption.step"/>
+                    <comboBox caption="msg://parentsinfo.caption.familystatus" optionsEnum="com.company.unicef.entity.FamilyStatusFielld"/>
+                    <textField caption="msg://contacts.caption"/>
+                    <label value="msg://parentsinfo.caption.address"/>
+                    <textField caption="msg://address.caption.city"/>
+                    <textField caption="msg://address.caption.district"/>
+                    <textField caption="msg://address.caption.street"/>
+                    <textField caption="msg://address.caption.home"/>
+                    <textField caption="msg://address.caption.apartment"/>
+
+                    <label value="msg://parenstinfo.caption.others"/>
+                    <textField caption="msg://parenstinfo.caption.others.fio"/>
+                    <textField caption="msg://parenstinfo.caption.others.age"/>
+                    <textField caption="msg://parenstinfo.caption.others.relative"/>
+                    <textField caption="msg://parenstinfo.caption.others.workplace"/>
+
+                    <label value="msg://interview.caption.label"/>
+                    <dateField caption="msg://interview.caption.date" dateFormat="dd/MM/yyyy"/>
+                    <textField caption="msg://interview.caption.fio"/>
+                    <textField caption="msg://interview.caption.position"/>
+                    <textField caption="msg://interview.caption.relative"/>
+                    <textField caption="msg://interview.caption.contact"/>
+
+                    <label value="msg://riskfactors.caption.headerlabel"/>
+
+                    <label value="msg://riskfactors.caption.sociallabel"/>
+                    <checkBoxGroup id="socialMedicalRiskFactorBox"/>
+
+                    <label value="msg://riskfactors.caption.individuallabel"/>
+                    <checkBoxGroup id="individualRiskFactor"/>
+
+                    <label value="msg://riskfactors.caption.academiclaabel"/>
+                    <checkBoxGroup id="academicRiskFactor"/>
+
+                    <label value="msg://riskfactors.caption.familylabel"/>
+                    <checkBoxGroup id="familyRiskFactor"/>
+
+                    <label value="msg://protectionfactors.caption.label"/>
+
+                    <label value="msg://protectionfactors.caption.individual"/>
+                    <checkBoxGroup id="individualProtectionFactor"/>
+
+                    <label value="msg://protectionfactors.caption.family"/>
+                    <checkBoxGroup id="familyProtectionFactor"/>
+
+                    <label value="msg://protectionfactors.caption.environment"/>
+                    <checkBoxGroup id="environmentProtectionFactor"/>
+
+                    <label value="msg://protectionfactors.caption.school"/>
+                    <checkBoxGroup id="schoolProtectionFactor"/>
+
+                    <textField caption="msg://form.caption.reason"/>
+
+                    <button caption="msg://button.caption" id="submitButton"/>
+                </column>
+            </form>
+        </hbox>
+    </layout>
+</window>

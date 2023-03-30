@@ -1,0 +1,126 @@
+.login_page {
+  background: url(../public/images/auth.jpg) no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  background-position: center;
+  position: relative
+}
+
+.login_page:before {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(33, 33, 33, 0.55)
+}
+
+.login_block {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  width: 860px;
+  max-width: 100%;
+  background: rgba(31, 31, 31, 0.8);
+  backdrop-filter: blur(4px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100px 0
+}
+
+.log_title {
+  text-transform: uppercase;
+  font-size: 28px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.white.log_text {
+  text-align: center;
+  color: #F8F8F8
+}
+
+.log_text a {
+  color: #F8F8F8
+}
+
+.log_text {
+  margin-bottom: 35px
+}
+
+.auth_form {
+  display: flex;
+  flex-wrap: wrap;
+  width: 407px;
+  // max-width: 100%;
+  gap: 10px
+}
+
+.auth_form .green_btn {
+  margin-top: 15px
+}
+
+.pass_field input {
+  width: calc(100% - 22px)
+}
+
+.vis_pass {
+  display: block
+}
+
+.forgot_pass {
+  margin-top: 15px;
+  text-decoration-line: underline;
+  font-family: 'Roboto', sans-serif;
+}
+
+.gray_field {
+  background: rgba(255, 255, 255, 0.2);
+  width: 100%;
+  font-weight: normal;
+  font-size: 12px;
+  font-family: 'Roboto', sans-serif;
+  display: inline-flex;
+  padding: 14px;
+  margin-bottom: 0
+}
+
+.gray_field {
+  background: rgba(255, 255, 255, 0.2);
+  font-weight: normal;
+  width: 100%;
+  font-size: 12px;
+  font-family: 'Roboto', sans-serif;
+  padding: 14px;
+  margin-bottom: 0;
+  border: 1px solid #000
+}
+
+.gray_field input {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  color: #fff;
+  width: 100%;
+
+}
+
+.gray_field input::placeholder {
+  color: #fff
+}
+
+.gray_field.w60 {
+  width: calc(60% - 5px)
+}
+
+.gray_field.w40 {
+  width: calc(60% - 5px)
+}
+
+.form-col{
+  flex-direction: column;
+}

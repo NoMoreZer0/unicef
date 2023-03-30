@@ -1,0 +1,1 @@
+export {NewForm1 as default} from './NewForm1';
