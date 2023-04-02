@@ -2,6 +2,16 @@
 
 <window xmlns="http://jmix.io/schema/ui/window"
         caption="msg://firstForm.caption">
+    <data>
+        <collection id="riskTabelsDc" class="com.company.unicef.entity.RiskTabel">
+            <fetchPlan extends="_base"/>
+            <loader id="riskTabelsDl">
+                <query>
+                    <![CDATA[select e from RiskTabel e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
     <layout>
         <hbox spacing="true">
             <form id="firstForm">
@@ -69,33 +79,49 @@
 
                     <label value="msg://riskfactors.caption.sociallabel"/>
                     <checkBoxGroup id="socialMedicalRiskFactorBox"/>
+                    <textField caption="msg://other"/>
 
                     <label value="msg://riskfactors.caption.individuallabel"/>
                     <checkBoxGroup id="individualRiskFactor"/>
+                    <textField caption="msg://other"/>
 
                     <label value="msg://riskfactors.caption.academiclaabel"/>
                     <checkBoxGroup id="academicRiskFactor"/>
+                    <textField caption="msg://other"/>
 
                     <label value="msg://riskfactors.caption.familylabel"/>
                     <checkBoxGroup id="familyRiskFactor"/>
+                    <textField caption="msg://other"/>
 
                     <label value="msg://protectionfactors.caption.label"/>
 
                     <label value="msg://protectionfactors.caption.individual"/>
                     <checkBoxGroup id="individualProtectionFactor"/>
+                    <textField caption="msg://other"/>
 
                     <label value="msg://protectionfactors.caption.family"/>
                     <checkBoxGroup id="familyProtectionFactor"/>
+                    <textField caption="msg://other"/>
 
                     <label value="msg://protectionfactors.caption.environment"/>
                     <checkBoxGroup id="environmentProtectionFactor"/>
+                    <textField caption="msg://other"/>
 
                     <label value="msg://protectionfactors.caption.school"/>
                     <checkBoxGroup id="schoolProtectionFactor"/>
+                    <textField caption="msg://other"/>
 
                     <textField caption="msg://form.caption.reason"/>
 
                     <button caption="msg://button.caption" id="submitButton"/>
+
+                    <table id="finalRiskTabel" dataContainer="riskTabelsDc">
+                        <columns>
+                            <column id="riskLevel" />
+                            <column id="description" />
+                            <!--                    <column id="finalTableSteps" caption="msg://finaltable.steps"/>-->
+                        </columns>
+                    </table>
                 </column>
             </form>
         </hbox>

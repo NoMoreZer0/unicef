@@ -16,16 +16,28 @@
 
 package com.company.unicef.screen.firstform;
 
+import com.company.unicef.entity.RiskTabel;
+import com.lowagie.text.Document;
+import com.lowagie.text.pdf.PdfDocument;
+import com.lowagie.text.pdf.PdfWriter;
+import com.lowagie.text.xml.XmlParser;
+import com.vaadin.server.FileDownloader;
+import io.jmix.core.DataManager;
 import io.jmix.ui.Notifications;
 import io.jmix.ui.component.Button;
 import io.jmix.ui.component.CheckBoxGroup;
-import io.jmix.ui.screen.Screen;
-import io.jmix.ui.screen.Subscribe;
-import io.jmix.ui.screen.UiController;
-import io.jmix.ui.screen.UiDescriptor;
+import io.jmix.ui.component.Table;
+import io.jmix.ui.model.CollectionContainer;
+import io.jmix.ui.model.CollectionLoader;
+import io.jmix.ui.screen.*;
+import liquibase.pro.packaged.B;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -35,7 +47,9 @@ import java.util.Map;
 @UiDescriptor("first-form.xml")
 public class FirstForm extends Screen {
 
-    private static final Logger log = org.slf4j.LoggerFactory.getLogger(FirstForm.class);
+    private static final Logger log = LoggerFactory.getLogger(FirstForm.class);
+    @Autowired
+    protected DataManager dataManager;
     @Autowired
     private CheckBoxGroup<Integer> socialMedicalRiskFactorBox;
 
@@ -47,19 +61,34 @@ public class FirstForm extends Screen {
     private Map<Integer, Double> individualRiskMap;
     @Autowired
     private CheckBoxGroup<Integer> academicRiskFactor;
+
+    private Map<Integer, Double> academicRiskMap;
+
     @Autowired
     private CheckBoxGroup<Integer> familyRiskFactor;
+
+    private Map<Integer, Double> familyRiskMap;
+
     @Autowired
     private CheckBoxGroup<Integer> individualProtectionFactor;
+
+    private Map<Integer, Double> individualProtectionMap;
+
     @Autowired
     private CheckBoxGroup<Integer> familyProtectionFactor;
     @Autowired
     private CheckBoxGroup<Integer> environmentProtectionFactor;
     @Autowired
     private CheckBoxGroup<Integer> schoolProtectionFactor;
-
     @Autowired
     private Notifications notifications;
+    @Autowired
+    private Table<RiskTabel> finalRiskTabel;
+    private double sumCoef, sumNum, sumA;
+    @Autowired
+    private CollectionContainer<RiskTabel> riskTabelsDc;
+    @Autowired
+    private CollectionLoader<RiskTabel> riskTabelsDl;
 
     @Subscribe
     public void onInit(InitEvent event) {
@@ -119,71 +148,125 @@ public class FirstForm extends Screen {
         Map<String, Integer> map = new LinkedHashMap<>();
         individualRiskMap = new HashMap<>();
         map.put("Рискованное поведение (ранние половые отношения,употребление психоактивных веществ, алкоголя, табака, вандализм, вождение автомобиля без прав, участник буллинга/кибербуллинг)", 1);
+        individualRiskMap.put(1, 0.96);
         map.put("Несуицидальное самоповреждающее поведение (самопорезы, самоудары, самоожоги и др.)", 2);
+        individualRiskMap.put(2, 0.84);
         map.put("Риск самоубийства/история попыток совершения суицида", 3);
+        individualRiskMap.put(3, 0.94);
         map.put("Переживание горя утраты", 4);
+        individualRiskMap.put(4, 0.76);
         map.put("Дети, испытавшие стресс/ травму", 5);
+        individualRiskMap.put(5, 0.76);
         map.put("Нарушения физического и умственного развития", 6);
+        individualRiskMap.put(6, 0.78);
         map.put("Слабые навыки самообслуживания", 7);
+        individualRiskMap.put(7, 0.64);
         map.put("Психоэмоциональные проблемы у ребенка (тревожность, агрессивность, страхи и др)", 8);
+        individualRiskMap.put(8, 0.74);
         map.put("Ребенок подвергается буллингу в школе", 9);
+        individualRiskMap.put(9, 0.88);
         individualRiskFactor.setOptionsMap(map);
     }
 
     private void initAcademicRiskFactor() {
         Map<String, Integer> map = new LinkedHashMap<>();
+        academicRiskMap = new HashMap<>();
         map.put("Частые попуски уроков без уважительной причины (10 и более дней в четверть)", 1);
-        map.put("Неудовлетворительные оценки по нескольким предметам (есть риск быть неаттестованным по ряду предметов и остаться на второй год обучения)", 2);
-        map.put("Частые попуски уроков по состоянию здоровья (стационарные/амбулаторные лечения из-за хронического заболевания, инвалидности)", 3);
-        map.put("Ребенок не обеспечен всем необходимым для школьного образования (школьной формой, обувью, школьными канцелярским товарами)", 4);
-        map.put("Низкая учебная мотивация ребенка по разным причинам", 5);
-        map.put("Конфликтные отношения между учениками", 6);
-        map.put("Отсутствие родительского контроля. Ребенок отдан на воспитание бабушке/дедушке и др.", 7);
-        map.put("Школой не предоставляются дополнительные занятиям/консультации", 8);
-        map.put("Ученик не посещает (не желает/отказывается) от предлагаемых дополнительных занятий/консультаций в школе", 9);
-        map.put("Дополнительные занятия/консультации в школе предоставляются не качественно (отсутствует график/ученик и его родитель не ознакомлены с графиком доп. занятий; частые замены учителя/отсутствие учителя и др.)", 10);
-        map.put("Конфликтные отношения между учителем-родителем", 11);
-        map.put("Конфликтные отношения между учеником-учителем", 12);
+        academicRiskMap.put(1, 0.82);
+        map.put("Частые попуски уроков по состоянию здоровья (стационарные/амбулаторные лечения из-за хронического заболевания, инвалидности)", 2);
+        academicRiskMap.put(2, 0.70);
+        map.put("Неудовлетворительные оценки по нескольким предметам (есть риск быть неаттестованным по ряду предметов и остаться на второй год обучения)", 3);
+        academicRiskMap.put(3, 0.76);
+        map.put("Низкая учебная мотивация ребенка по разным причинам", 4);
+        academicRiskMap.put(4, 0.72);
+        map.put("Ребенок не обеспечен всем необходимым для школьного образования (школьной формой, обувью, школьными канцелярским товарами)", 5);
+        academicRiskMap.put(5, 0.68);
+        map.put("Отсутствие родительского контроля. Ребенок отдан на воспитание бабушке/дедушке и др.", 6);
+        academicRiskMap.put(6, 0.76);
+        map.put("Школой не предоставляются дополнительные занятиям/консультации", 7);
+        academicRiskMap.put(7, 0.64);
+        map.put("Ученик не посещает (не желает/отказывается) от предлагаемых дополнительных занятий/консультаций в школе", 8);
+        academicRiskMap.put(8, 0.64);
+        map.put("Дополнительные занятия/консультации в школе предоставляются не качественно (отсутствует график/ученик и его родитель не ознакомлены с графиком доп. занятий; частые замены учителя/отсутствие учителя и др.)", 9);
+        academicRiskMap.put(9, 0.64);
+        map.put("Конфликтные отношения между учениками", 10);
+        academicRiskMap.put(10, 0.78);
+        map.put("Конфликтные отношения между учеником-учителем", 11);
+        academicRiskMap.put(11, 0.78);
+        map.put("Конфликтные отношения между учителем-родителем", 12);
+        academicRiskMap.put(12, 0.74);
         academicRiskFactor.setOptionsMap(map);
     }
 
     private void initFamilyRiskFactor() {
         Map<String, Integer> map = new LinkedHashMap<>();
+        familyRiskMap = new HashMap<>();
         map.put("Многодетная семья (4 детей/молодежь и более совместно проживающие)", 1);
-        map.put("Родители в трудовой миграции", 2);
+        familyRiskMap.put(1, 0.54);
+        map.put("Семья с детьми с одним родителем", 2);
+        familyRiskMap.put(2, 0.56);
         map.put("Семьи, где член(ы) семьи имеют алкогольную или наркотическую зависимость", 3);
-        map.put("Родители или члены семьи вышедшие из мест заключения", 4);
+        familyRiskMap.put(3, 0.86);
+        map.put("Родители в трудовой миграции", 4);
+        familyRiskMap.put(4, 0.66);
         map.put("Родители относятся к людям без определенного места жительства", 5);
-        map.put("Низкий образовательный уровень родителей", 6);
-        map.put("Слабые родительские компетенции", 7);
-        map.put("Нарушенная привязанность в детско-родительских отношениях", 8);
-        map.put("Развод/хронический развод (многожёнство, сожительство, живут раздельно без развода и др.)", 9);
-        map.put("Отсутствие жилья или плохие условия проживания", 10);
-        map.put("Отсутствие медикаментов и медицинского лечения у родителей", 11);
-        map.put("Отсутствие транспорт (напр., для посещения медицинских услуг человеком с инвалидностью)", 12);
-        map.put("Временные финансовые трудности в семье", 13);
-        map.put("Культурные нормы в семье, которые поддерживают насилие или неравенство", 14);
-        map.put("Психическое заболевание родителя/члена семьи", 15);
-        map.put("Семейные конфликты (конфликты между супругами, детьми и родителями, между невесткой и свекровью)", 16);
-        map.put("Малоимущая семья (среднедушевой доход ниже прожиточного минимума (37389 тысяч тенге) за последние 12 месяцев)", 17);
-        map.put("Престарелые и пожилые родители", 18);
-        map.put("Беременные мамы с маленькими детьми", 19);
-        map.put("Семья с детьми с одним родителем", 20);
-        map.put("Опыт родителя пребывания в институциональном учреждении (детский дом, интернаты, приюты и др)", 21);
-        map.put("Отсутствие социальной поддержки семьи (несмотря на то что он имеет право на АСП)", 22);
-        map.put("Социальная изоляция (семья не общается ни с кем)", 23);
-        map.put("Недостаточный доступ к услугам в местном сообществе (например, в сельской местности)", 24);
-        map.put("Дискриминация семьи или членов семьи в обществе", 25);
-        map.put("Безработный член семьи/самозанятый сезонный рабочий с низким доходом (стоит на бирже труда/сокращение/банкротство и др)", 26);
-        map.put("Живущие с ВИЧ родитель/член семьи", 27);
-        map.put("Инвалидность родителя/члена семьи", 28);
-        map.put("Семьи, вернувшиеся из зон вооруженных конфликтов", 29);
-        map.put("Религиозная радикализация (экстремизм) родителя/члена семьи*", 30);
+        familyRiskMap.put(5, 0.76);
+        map.put("Семьи, вернувшиеся из зон вооруженных конфликтов", 6);
+        familyRiskMap.put(6, 0.80);
+        map.put("Родители или члены семьи вышедшие из мест заключения", 7);
+        familyRiskMap.put(7, 0.78);
+        map.put("Беременные мамы с маленькими детьми", 8);
+        familyRiskMap.put(8, 0.52);
+        map.put("Малоимущая семья (среднедушевой доход ниже прожиточного минимума (37389 тысяч тенге) за последние 12 месяцев)", 9);
+        familyRiskMap.put(9, 0.72);
+        map.put("Инвалидность родителя/члена семьи", 10);
+        familyRiskMap.put(10, 0.68);
+        map.put("Престарелые и пожилые родители", 11);
+        familyRiskMap.put(11, 0.54);
+        map.put("Религиозная радикализация (экстремизм) родителя/члена семьи*", 12);
+        familyRiskMap.put(12, 0.76);
+        map.put("Низкий образовательный уровень родителей", 13);
+        familyRiskMap.put(13, 0.56);
+        map.put("Слабые родительские компетенции", 14);
+        familyRiskMap.put(14, 0.66);
+        map.put("Нарушенная привязанность в детско-родительских отношениях", 15);
+        familyRiskMap.put(15, 0.78);
+        map.put("Развод/хронический развод (многожёнство, сожительство, живут раздельно без развода и др.)", 16);
+        familyRiskMap.put(16, 0.80);
+        map.put("Семейные конфликты (конфликты между супругами, детьми и родителями, между невесткой и свекровью)", 17);
+        familyRiskMap.put(17, 0.78);
+        map.put("Опыт родителя пребывания в институциональном учреждении (детский дом, интернаты, приюты и др)", 18);
+        familyRiskMap.put(18, 0.64);
+        map.put("Отсутствие жилья или плохие условия проживания", 19);
+        familyRiskMap.put(19, 0.80);
+        map.put("Отсутствие медикаментов и медицинского лечения у родителей", 20);
+        familyRiskMap.put(20, 0.72);
+        map.put("Отсутствие транспорт (напр., для посещения медицинских услуг человеком с инвалидностью)", 21);
+        familyRiskMap.put(21, 0.64);
+        map.put("Временные финансовые трудности в семье", 22);
+        familyRiskMap.put(22, 0.60);
+        map.put("Отсутствие социальной поддержки семьи (несмотря на то что он имеет право на АСП)", 23);
+        familyRiskMap.put(23, 0.64);
+        map.put("Социальная изоляция (семья не общается ни с кем)", 24);
+        familyRiskMap.put(24, 0.72);
+        map.put("Недостаточный доступ к услугам в местном сообществе (например, в сельской местности)", 25);
+        familyRiskMap.put(25, 0.58);
+        map.put("Дискриминация семьи или членов семьи в обществе", 26);
+        familyRiskMap.put(26, 0.78);
+        map.put("Безработный член семьи/самозанятый сезонный рабочий с низким доходом (стоит на бирже труда/сокращение/банкротство и др)", 27);
+        familyRiskMap.put(27, 0.60);
+        map.put("Культурные нормы в семье, которые поддерживают насилие или неравенство", 28);
+        familyRiskMap.put(28, 0.82);
+        map.put("Психическое заболевание родителя/члена семьи", 29);
+        familyRiskMap.put(29, 0.86);
+        map.put("Живущие с ВИЧ родитель/член семьи", 30);
+        familyRiskMap.put(30, 0.74);
         familyRiskFactor.setOptionsMap(map);
     }
 
     private void initIndividualProtectionFactor() {
         Map<String, Integer> map = new LinkedHashMap<>();
+        individualProtectionMap = new HashMap<>();
         map.put("Академические достижения/хорошая успеваемость в школе", 1);
         map.put("Хорошие жизненные и социальные навыки, навыки решения проблем", 2);
         map.put("Активность в решении собственных проблем", 3);
@@ -231,16 +314,48 @@ public class FirstForm extends Screen {
         schoolProtectionFactor.setOptionsMap(map);
     }
 
-    @Subscribe("submitButton")
-    public void onSubmitButtonClick(Button.ClickEvent event) {
-        Collection<Integer> socialMedicalRiskFactorValues = socialMedicalRiskFactorBox.getValue();
-        if (socialMedicalRiskFactorValues != null && !socialMedicalRiskFactorValues.isEmpty()) {
-            for (Integer value : socialMedicalRiskFactorValues) {
-                log.info(String.valueOf(value));
+    private void calc(CheckBoxGroup<Integer> checkBoxGroup, Map<Integer, Double> map) {
+        sumCoef = sumNum = 0;
+        Collection<Integer> collection = checkBoxGroup.getValue();
+        if (collection != null && !checkBoxGroup.isEmpty()) {
+            for (Integer value : collection) {
+                sumCoef += (value * 1.0 + map.get(value));
+                sumNum += value;
             }
         }
-        notifications.create()
-                .withCaption("kek")
-                .show();
+        if (sumNum != 0) {
+            sumA += (sumCoef / sumNum);
+        }
+    }
+
+    private int takeSize(CheckBoxGroup<Integer> checkBoxGroup) {
+        if (checkBoxGroup == null) return 0;
+        Collection<Integer> collection = checkBoxGroup.getValue();
+        if (collection == null) return 0;
+        return collection.size();
+    }
+
+    @Subscribe("submitButton")
+    public void onSubmitButtonClick(Button.ClickEvent event) {
+        sumA = 0;
+        calc(socialMedicalRiskFactorBox, socialMedicalRiskMap);
+        calc(individualRiskFactor, individualRiskMap);
+        calc(academicRiskFactor, academicRiskMap);
+        calc(familyRiskFactor, familyRiskMap);
+        double B = sumA / 4;
+        int sumProtection = takeSize(individualProtectionFactor) + takeSize(familyProtectionFactor) + takeSize(environmentProtectionFactor) + takeSize(schoolProtectionFactor);
+        String msg = "";
+        if (0.9 <= B && B <= 1.1 || sumProtection > 0) {
+            msg = "Высокий уровень";
+        }
+        else if (0.71 <= B && B <= 0.89) {
+            msg = "Средний уровень";
+        }
+        else {
+            msg = "Низкий уровень";
+        }
+
+        String xmlData = UiControllerUtils.getScreenData(this).toString();
+//        byte[] pdfData = generatePdf(xmlData);
     }
 }
