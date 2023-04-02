@@ -7,7 +7,6 @@
         <item screen="Student.browse" caption="msg://com.company.unicef.screen.student/studentBrowse.menu"/>
         <item screen="Address.browse" caption="msg://com.company.unicef.screen.address/addressBrowse.menu"/>
         <item screen="Parents.browse" caption="msg://com.company.unicef.screen.parents/parentsBrowse.menu"/>
-        <item screen="FirstForm" caption="msg://com.company.unicef.screen.firstform/firstForm.caption"> </item>
         <item screen="RiskTabel.browse" caption="msg://com.company.unicef.screen.risktabel/riskTabelBrowse.menu"/>
         <item screen="Test.browse" caption="msg://com.company.unicef.screen.test/testBrowse.menu"/>
     </menu>
