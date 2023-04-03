@@ -9,6 +9,7 @@
         <item screen="Parents.browse" caption="msg://com.company.unicef.screen.parents/parentsBrowse.menu"/>
         <item screen="RiskTabel.browse" caption="msg://com.company.unicef.screen.risktabel/riskTabelBrowse.menu"/>
         <item screen="Test.browse" caption="msg://com.company.unicef.screen.test/testBrowse.menu"/>
+        <item screen="FirstForm.browse" caption="msg://com.company.unicef.screen.firstform/firstFormBrowse.menu"/>
     </menu>
 
 </menu-config>

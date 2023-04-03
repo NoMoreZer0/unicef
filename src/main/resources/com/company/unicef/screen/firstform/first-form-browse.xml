@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://firstFormBrowse.caption"
+        focusComponent="firstFormsTable">
+    <data readOnly="true">
+        <collection id="firstFormsDc"
+                    class="com.company.unicef.entity.FirstForm">
+            <fetchPlan extends="_base"/>
+            <loader id="firstFormsDl">
+                <query>
+                    <![CDATA[select e from FirstForm e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="firstFormsTable" spacing="true">
+        <filter id="filter"
+                dataLoader="firstFormsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="firstFormsTable"
+                    width="100%"
+                    dataContainer="firstFormsDc">
+            <actions>
+                <action id="add" type="add"/>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="childFio"/>
+                <column id="childBirthDate"/>
+                <column id="studyingClassField"/>
+                <column id="specialNeeds"/>
+                <column id="childGender"/>
+                <column id="childContact"/>
+                <column id="childCity"/>
+                <column id="childDistrict"/>
+                <column id="childStreet"/>
+                <column id="childHome"/>
+                <column id="childApartment"/>
+                <column id="fatherFio"/>
+                <column id="fatherBirthDate"/>
+                <column id="fatherFullAge"/>
+                <column id="fatherStep"/>
+                <column id="fatherContacts"/>
+                <column id="fatherFamilyStatus"/>
+                <column id="fatherCity"/>
+                <column id="fatherDistrict"/>
+                <column id="fatherStreet"/>
+                <column id="fatherHome"/>
+                <column id="fatherApartment"/>
+                <column id="motherFio"/>
+                <column id="motherBirthDate"/>
+                <column id="motherFullAge"/>
+                <column id="motherFamilyStatus"/>
+                <column id="motherCity"/>
+                <column id="motherDistrict"/>
+                <column id="motherHome"/>
+                <column id="motherStreet"/>
+                <column id="motherApartment"/>
+                <column id="motherStep"/>
+                <column id="motherContacts"/>
+                <column id="otherFio"/>
+                <column id="otherAge"/>
+                <column id="otherRelationDegree"/>
+                <column id="otherWorkplace"/>
+                <column id="interviewDate"/>
+                <column id="interviewFio"/>
+                <column id="interviewOrgName"/>
+                <column id="interviewRelative"/>
+                <column id="interviewContact"/>
+                <column id="checkboxLegalProblems"/>
+                <column id="checkboxNoAttendance"/>
+                <column id="checkboxChildAtRisk"/>
+                <column id="checkboxEarlyPregnancy"/>
+                <column id="checkboxDisabled"/>
+                <column id="checkboxHIVChild"/>
+                <column id="checkboxNoFood"/>
+                <column id="checkboxNoSeasonClothes"/>
+                <column id="checkboxNoCareOfParents"/>
+                <column id="checkboxChildLabour"/>
+                <column id="checkboxDomesticViolence"/>
+                <column id="checkboxChildAbuse"/>
+                <column id="checkboxOrphange"/>
+                <column id="checkboxPsix"/>
+                <column id="checkboxExplotation"/>
+                <column id="checkboxReligiousRadicalism"/>
+                <column id="checkboxConflictZones"/>
+                <column id="checkboxOutsideFamily"/>
+                <column id="checkboxOthers1"/>
+                <column id="checkboxSuicidal"/>
+                <column id="checkboxRiskAction"/>
+                <column id="checkboxRiskSuicidal"/>
+                <column id="checkboxGriefOfLoss"/>
+                <column id="checkboxBulling"/>
+                <column id="checkboxStressTraum"/>
+                <column id="checkboxDaun"/>
+                <column id="checkboxWeakSkills"/>
+                <column id="checkboxPsycho"/>
+                <column id="checkboxOthers2"/>
+                <column id="checkboxFrequestAbsence"/>
+                <column id="checkboxBadGrades"/>
+                <column id="checkboxAbsenceByHealth"/>
+                <column id="checkboxNoClothesForSchool"/>
+                <column id="checkboxNoEducationMotivation"/>
+                <column id="checkboxNoFamilyControl"/>
+                <column id="checkboxNoAdditionalConsultation"/>
+                <column id="checkboxConsultationAbsence"/>
+                <column id="checkboxBadConsultation"/>
+                <column id="checkboxChildParentsConflict"/>
+                <column id="checkboxChildTeacherConflict"/>
+                <column id="checkboxOthers3"/>
+                <column id="checkboxLargeFamily"/>
+                <column id="checkboxParentsWorkMigration"/>
+                <column id="checkboxParentsAlco"/>
+                <column id="checkboxParentsZona"/>
+                <column id="checkboxParentsBomzh"/>
+                <column id="checkboxParentsLowEducation"/>
+                <column id="checkboxParentsWeakSkills"/>
+                <column id="checkboxParentsBadRelationship"/>
+                <column id="checkboxParentsDivorce"/>
+                <column id="checkboxParentsNoHome"/>
+                <column id="checkboxParentsNoDrugs"/>
+                <column id="checkboxParentsNoTransport"/>
+                <column id="checkboxParentsNoMoney"/>
+                <column id="checkboxParentsViolence"/>
+                <column id="checkboxParentsPsycho"/>
+                <column id="checkboxParentsFamilyConflict"/>
+                <column id="checkboxParentsPoorFamily"/>
+                <column id="checkboxParentsElders"/>
+                <column id="checkboxParentsMotherPregnant"/>
+                <column id="checkboxParentsSingleFamily"/>
+                <column id="checkboxParentsOrphange"/>
+                <column id="checkboxParentsNoSocialHelp"/>
+                <column id="checkboxParentsNoServiceAccess"/>
+                <column id="checkboxParentsDiscrimination"/>
+                <column id="checkboxParentsNoWork"/>
+                <column id="checkboxParentsHIV"/>
+                <column id="checkboxParentsDisabled"/>
+                <column id="checkboxParentsFromWar"/>
+                <column id="checkboxParentsReligiousRadicalization"/>
+                <column id="checkboxOthers4"/>
+                <column id="checkboxIndFactorAcademic"/>
+                <column id="checkboxIndFactorGoodProblemSolving"/>
+                <column id="checkboxIndFactorOwnProblem"/>
+                <column id="checkboxIndFactorSelfConfidence"/>
+                <column id="checkboxOthers5"/>
+                <column id="checkboxFamilyFactorSafe"/>
+                <column id="checkboxFamilyFactorCaring"/>
+                <column id="checkboxFamilyFactorStable"/>
+                <column id="checkboxFamilyFactorGoodSkills"/>
+                <column id="checkboxFamilyFactorPositive"/>
+                <column id="checkboxFamilyFactorBaseHelp"/>
+                <column id="checkboxFamilyFactorStableRelationship"/>
+                <column id="checkboxFamilyFactorRules"/>
+                <column id="checkboxFamilyFactorCaringAdults"/>
+                <column id="checkboxFamilyFactorSocialMedia"/>
+                <column id="checkboxOthers6"/>
+                <column id="checkboxEnvEconomStable"/>
+                <column id="checkboxEnvParentsEmp"/>
+                <column id="checkboxEnvParentsEdu"/>
+                <column id="checkboxEnvLivingCond"/>
+                <column id="checkboxEnvSocialHelp"/>
+                <column id="checkboxEnvMedicalAdultsAndKinds"/>
+                <column id="checkboxEnvCoordinationServices"/>
+                <column id="checkboxOthers7"/>
+                <column id="checkboxSchoolSafeEnv"/>
+                <column id="checkboxSchoolAdd"/>
+                <column id="checkboxSchoolNPA"/>
+                <column id="checkboxSchoolMentor"/>
+                <column id="checkboxSchoolParentsComm"/>
+                <column id="checkboxSchoolInclusive"/>
+                <column id="checkboxSchoolAddCreative"/>
+                <column id="checkboxSchoolProfilactation"/>
+                <column id="checkboxOthers8"/>
+                <column id="caseReason"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="addBtn" action="firstFormsTable.add"/>
+                <button id="createBtn" action="firstFormsTable.create"/>
+                <button id="editBtn" action="firstFormsTable.edit"/>
+                <button id="removeBtn" action="firstFormsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>
