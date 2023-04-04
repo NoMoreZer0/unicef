@@ -27,6 +27,7 @@
         <action id="lookupCancelAction"
                 caption="msg:///actions.Cancel"
                 icon="LOOKUP_CANCEL"/>
+        <action id="run" type="runReport"/>
     </actions>
     <dialogMode height="600"
                 width="800"/>
@@ -43,6 +44,7 @@
                 <action id="create" type="create"/>
                 <action id="edit" type="edit"/>
                 <action id="remove" type="remove"/>
+                <action id="run" type="runReport"/>
             </actions>
             <columns>
                 <column id="childFio"/>
@@ -200,6 +202,7 @@
                 <button id="createBtn" action="firstFormsTable.create"/>
                 <button id="editBtn" action="firstFormsTable.edit"/>
                 <button id="removeBtn" action="firstFormsTable.remove"/>
+                <button id="runBtn" action="firstFormsTable.run"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">
