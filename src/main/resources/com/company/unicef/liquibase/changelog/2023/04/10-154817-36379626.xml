@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.11.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="unicef">
+        <addColumn tableName="FIRST_FORM">
+            <column name="CHECKBOX_FINAL_RISK_LEVEL_HIGH_OTHERS" type="VARCHAR(255)"/>
+            <column name="CHECKBOX_FINAL_RISK_LEVEL_HIGH_STEP1" type="BOOLEAN"/>
+            <column name="CHECKBOX_FINAL_RISK_LEVEL_HIGH_STEP2" type="BOOLEAN"/>
+            <column name="CHECKBOX_FINAL_RISK_LEVEL_HIGH_STEP3" type="BOOLEAN"/>
+            <column name="CHECKBOX_FINAL_RISK_LEVEL_HIGH_STEP4" type="BOOLEAN"/>
+            <column name="CHECKBOX_FINAL_RISK_LEVEL_HIGH_STEP5" type="BOOLEAN"/>
+            <column name="CHECKBOX_FINAL_RISK_LEVEL_HIGH_STEP6" type="BOOLEAN"/>
+            <column name="CHECKBOX_FINAL_RISK_LEVEL_LOW_OTHERS" type="VARCHAR(255)"/>
+            <column name="CHECKBOX_FINAL_RISK_LEVEL_LOW_STEP1" type="BOOLEAN"/>
+            <column name="CHECKBOX_FINAL_RISK_LEVEL_LOW_STEP2" type="BOOLEAN"/>
+            <column name="CHECKBOX_FINAL_RISK_LEVEL_MEDIUM_OTHERS" type="VARCHAR(255)"/>
+            <column name="CHECKBOX_FINAL_RISK_LEVEL_MEDIUM_STEP1" type="BOOLEAN"/>
+            <column name="CHECKBOX_FINAL_RISK_LEVEL_MEDIUM_STEP2" type="BOOLEAN"/>
+            <column name="CHECKBOX_FINAL_RISK_LEVEL_NO_OTHERS" type="VARCHAR(255)"/>
+            <column name="CHECKBOX_FINAL_RISK_LEVEL_NO_STEP1" type="BOOLEAN"/>
+            <column name="CHECKBOX_FINAL_RISK_LEVEL_NO_STEP2" type="BOOLEAN"/>
+            <column name="CHECKBOX_FINAL_RISK_LEVEL_NO_STEP3" type="BOOLEAN"/>
+            <column name="CHECKBOX_RISK_LEVEL_NO" type="BOOLEAN"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="2" author="unicef">
+        <dropColumn columnName="checkbox_final_next_step1" tableName="first_form"/>
+
+        <dropColumn columnName="checkbox_final_next_step2" tableName="first_form"/>
+
+        <dropColumn columnName="checkbox_final_next_step3" tableName="first_form"/>
+
+        <dropColumn columnName="checkbox_final_next_step4" tableName="first_form"/>
+
+        <dropColumn columnName="checkbox_final_next_step5" tableName="first_form"/>
+
+        <dropColumn columnName="checkbox_final_next_step6" tableName="first_form"/>
+
+        <dropColumn columnName="checkbox_risk_level" tableName="first_form"/>
+
+        <dropColumn columnName="next_field_others" tableName="first_form"/>
+    </changeSet>
+</databaseChangeLog>

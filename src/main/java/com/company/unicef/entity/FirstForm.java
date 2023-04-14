@@ -16,6 +16,9 @@ public class FirstForm {
     @Id
     private UUID id;
 
+    @Column(name = "RISK_LEVEL")
+    private String riskLevel;
+
     @Column(name = "CHILD_FIO")
     private String childFio;
 
@@ -335,6 +338,9 @@ public class FirstForm {
     @Column(name = "CHECKBOX_PARENTS_NO_SOCIAL_HELP")
     private Boolean checkboxParentsNoSocialHelp;
 
+    @Column(name = "CHECKBOX_PARENTS_ISOLATION")
+    private Boolean checkboxParentsIsolation;
+
     @Column(name = "CHECKBOX_PARENTS_NO_SERVICE_ACCESS")
     private Boolean checkboxParentsNoServiceAccess;
 
@@ -460,6 +466,253 @@ public class FirstForm {
 
     @Column(name = "CASE_REASON")
     private String caseReason;
+
+    @Column(name = "CHECKBOX_RISK_LEVEL_NO")
+    private Boolean checkboxFinalRiskLevelNo;
+
+    @Column(name = "CHECKBOX_FINAL_RISK_LEVEL_NO_STEP1")
+    private Boolean checkboxFinalRiskLevelNoStep1;
+
+    @Column(name = "CHECKBOX_FINAL_RISK_LEVEL_NO_STEP2")
+    private Boolean checkboxFinalRiskLevelNoStep2;
+
+    @Column(name = "CHECKBOX_FINAL_RISK_LEVEL_NO_STEP3")
+    private Boolean checkboxFinalRiskLevelNoStep3;
+
+    @Column(name = "CHECKBOX_FINAL_RISK_LEVEL_NO_OTHERS")
+    private String checkboxFinalRiskLevelNoOthers;
+
+    @Column(name = "CHECKBOX_FINAL_RISK_LEVEL_LOW")
+    private Boolean checkboxFinalRiskLevelLow;
+
+    @Column(name = "CHECKBOX_FINAL_RISK_LEVEL_LOW_STEP1")
+    private Boolean checkboxFinalRiskLevelLowStep1;
+
+    @Column(name = "CHECKBOX_FINAL_RISK_LEVEL_LOW_STEP2")
+    private Boolean checkboxFinalRiskLevelLowStep2;
+
+    @Column(name = "CHECKBOX_FINAL_RISK_LEVEL_LOW_OTHERS")
+    private String checkboxFinalRiskLevelLowOthers;
+
+    @Column(name = "CHECKBOX_FINAL_RISK_LEVEL_MEDIUM")
+    private Boolean checkboxFinalRiskLevelMedium;
+
+    @Column(name = "CHECKBOX_FINAL_RISK_LEVEL_MEDIUM_STEP1")
+    private Boolean checkboxFinalRiskLevelMediumStep1;
+
+    @Column(name = "CHECKBOX_FINAL_RISK_LEVEL_MEDIUM_STEP2")
+    private Boolean checkboxFinalRiskLevelMediumStep2;
+
+    @Column(name = "CHECKBOX_FINAL_RISK_LEVEL_MEDIUM_OTHERS")
+    private String checkboxFinalRiskLevelMediumOthers;
+
+    @Column(name = "CHECKBOX_FINAL_RISK_LEVEL_HIGH")
+    private Boolean checkboxFinalRiskLevelHigh;
+
+    @Column(name = "CHECKBOX_FINAL_RISK_LEVEL_HIGH_STEP1")
+    private Boolean checkboxFinalRiskLevelHighStep1;
+
+    @Column(name = "CHECKBOX_FINAL_RISK_LEVEL_HIGH_STEP2")
+    private Boolean checkboxFinalRiskLevelHighStep2;
+
+    @Column(name = "CHECKBOX_FINAL_RISK_LEVEL_HIGH_STEP3")
+    private Boolean checkboxFinalRiskLevelHighStep3;
+
+    @Column(name = "CHECKBOX_FINAL_RISK_LEVEL_HIGH_STEP4")
+    private Boolean checkboxFinalRiskLevelHighStep4;
+
+    @Column(name = "CHECKBOX_FINAL_RISK_LEVEL_HIGH_STEP5")
+    private Boolean checkboxFinalRiskLevelHighStep5;
+
+    @Column(name = "CHECKBOX_FINAL_RISK_LEVEL_HIGH_STEP6")
+    private Boolean checkboxFinalRiskLevelHighStep6;
+
+    @Column(name = "CHECKBOX_FINAL_RISK_LEVEL_HIGH_OTHERS")
+    private String checkboxFinalRiskLevelHighOthers;
+
+    public String getCheckboxFinalRiskLevelHighOthers() {
+        return checkboxFinalRiskLevelHighOthers;
+    }
+
+    public void setCheckboxFinalRiskLevelHighOthers(String checkboxFinalRiskLevelOthers) {
+        this.checkboxFinalRiskLevelHighOthers = checkboxFinalRiskLevelOthers;
+    }
+
+    public Boolean getCheckboxFinalRiskLevelHighStep6() {
+        return checkboxFinalRiskLevelHighStep6;
+    }
+
+    public void setCheckboxFinalRiskLevelHighStep6(Boolean checkboxFinalRiskLevelHighStep6) {
+        this.checkboxFinalRiskLevelHighStep6 = checkboxFinalRiskLevelHighStep6;
+    }
+
+    public Boolean getCheckboxFinalRiskLevelHighStep5() {
+        return checkboxFinalRiskLevelHighStep5;
+    }
+
+    public void setCheckboxFinalRiskLevelHighStep5(Boolean checkboxFinalRiskLevelHighStep5) {
+        this.checkboxFinalRiskLevelHighStep5 = checkboxFinalRiskLevelHighStep5;
+    }
+
+    public Boolean getCheckboxFinalRiskLevelHighStep4() {
+        return checkboxFinalRiskLevelHighStep4;
+    }
+
+    public void setCheckboxFinalRiskLevelHighStep4(Boolean checkboxFinalRiskLevelHighStep4) {
+        this.checkboxFinalRiskLevelHighStep4 = checkboxFinalRiskLevelHighStep4;
+    }
+
+    public Boolean getCheckboxFinalRiskLevelHighStep3() {
+        return checkboxFinalRiskLevelHighStep3;
+    }
+
+    public void setCheckboxFinalRiskLevelHighStep3(Boolean checkboxFinalRiskLevelHighStep3) {
+        this.checkboxFinalRiskLevelHighStep3 = checkboxFinalRiskLevelHighStep3;
+    }
+
+    public Boolean getCheckboxFinalRiskLevelHighStep2() {
+        return checkboxFinalRiskLevelHighStep2;
+    }
+
+    public void setCheckboxFinalRiskLevelHighStep2(Boolean checkboxFinalRiskLevelHighStep2) {
+        this.checkboxFinalRiskLevelHighStep2 = checkboxFinalRiskLevelHighStep2;
+    }
+
+    public Boolean getCheckboxFinalRiskLevelHighStep1() {
+        return checkboxFinalRiskLevelHighStep1;
+    }
+
+    public void setCheckboxFinalRiskLevelHighStep1(Boolean checkboxFinalRiskLevelHighStep1) {
+        this.checkboxFinalRiskLevelHighStep1 = checkboxFinalRiskLevelHighStep1;
+    }
+
+    public String getCheckboxFinalRiskLevelMediumOthers() {
+        return checkboxFinalRiskLevelMediumOthers;
+    }
+
+    public void setCheckboxFinalRiskLevelMediumOthers(String checkboxFinalRiskLevelMediumOthers) {
+        this.checkboxFinalRiskLevelMediumOthers = checkboxFinalRiskLevelMediumOthers;
+    }
+
+    public Boolean getCheckboxFinalRiskLevelMediumStep2() {
+        return checkboxFinalRiskLevelMediumStep2;
+    }
+
+    public void setCheckboxFinalRiskLevelMediumStep2(Boolean checkboxFinalRiskLevelMediumStep2) {
+        this.checkboxFinalRiskLevelMediumStep2 = checkboxFinalRiskLevelMediumStep2;
+    }
+
+    public Boolean getCheckboxFinalRiskLevelMediumStep1() {
+        return checkboxFinalRiskLevelMediumStep1;
+    }
+
+    public void setCheckboxFinalRiskLevelMediumStep1(Boolean checkboxFinalRiskLevelMediumStep1) {
+        this.checkboxFinalRiskLevelMediumStep1 = checkboxFinalRiskLevelMediumStep1;
+    }
+
+    public String getCheckboxFinalRiskLevelLowOthers() {
+        return checkboxFinalRiskLevelLowOthers;
+    }
+
+    public void setCheckboxFinalRiskLevelLowOthers(String checkboxFinalRiskLevelOthers) {
+        this.checkboxFinalRiskLevelLowOthers = checkboxFinalRiskLevelOthers;
+    }
+
+    public Boolean getCheckboxFinalRiskLevelLowStep2() {
+        return checkboxFinalRiskLevelLowStep2;
+    }
+
+    public void setCheckboxFinalRiskLevelLowStep2(Boolean checkboxFinalRiskLevelLowStep2) {
+        this.checkboxFinalRiskLevelLowStep2 = checkboxFinalRiskLevelLowStep2;
+    }
+
+    public Boolean getCheckboxFinalRiskLevelLowStep1() {
+        return checkboxFinalRiskLevelLowStep1;
+    }
+
+    public void setCheckboxFinalRiskLevelLowStep1(Boolean checkboxFinalRiskLevelLowStep1) {
+        this.checkboxFinalRiskLevelLowStep1 = checkboxFinalRiskLevelLowStep1;
+    }
+
+    public String getCheckboxFinalRiskLevelNoOthers() {
+        return checkboxFinalRiskLevelNoOthers;
+    }
+
+    public void setCheckboxFinalRiskLevelNoOthers(String checkboxFinalRiskLevelNoOthers) {
+        this.checkboxFinalRiskLevelNoOthers = checkboxFinalRiskLevelNoOthers;
+    }
+
+    public Boolean getCheckboxFinalRiskLevelNoStep3() {
+        return checkboxFinalRiskLevelNoStep3;
+    }
+
+    public void setCheckboxFinalRiskLevelNoStep3(Boolean checkboxFinalRiskLevelNoStep3) {
+        this.checkboxFinalRiskLevelNoStep3 = checkboxFinalRiskLevelNoStep3;
+    }
+
+    public Boolean getCheckboxFinalRiskLevelNoStep2() {
+        return checkboxFinalRiskLevelNoStep2;
+    }
+
+    public void setCheckboxFinalRiskLevelNoStep2(Boolean checkboxFinalRiskLevelNoStep2) {
+        this.checkboxFinalRiskLevelNoStep2 = checkboxFinalRiskLevelNoStep2;
+    }
+
+    public Boolean getCheckboxFinalRiskLevelNoStep1() {
+        return checkboxFinalRiskLevelNoStep1;
+    }
+
+    public void setCheckboxFinalRiskLevelNoStep1(Boolean checkboxFinalRiskLevelNoStep1) {
+        this.checkboxFinalRiskLevelNoStep1 = checkboxFinalRiskLevelNoStep1;
+    }
+
+    public Boolean getCheckboxFinalRiskLevelHigh() {
+        return checkboxFinalRiskLevelHigh;
+    }
+
+    public void setCheckboxFinalRiskLevelHigh(Boolean checkboxFinalRiskLevelHigh) {
+        this.checkboxFinalRiskLevelHigh = checkboxFinalRiskLevelHigh;
+    }
+
+    public Boolean getCheckboxFinalRiskLevelMedium() {
+        return checkboxFinalRiskLevelMedium;
+    }
+
+    public void setCheckboxFinalRiskLevelMedium(Boolean checkboxFinalRiskLevelMedium) {
+        this.checkboxFinalRiskLevelMedium = checkboxFinalRiskLevelMedium;
+    }
+
+    public Boolean getCheckboxFinalRiskLevelLow() {
+        return checkboxFinalRiskLevelLow;
+    }
+
+    public void setCheckboxFinalRiskLevelLow(Boolean checkboxFinalRiskLevelLow) {
+        this.checkboxFinalRiskLevelLow = checkboxFinalRiskLevelLow;
+    }
+
+    public Boolean getCheckboxFinalRiskLevelNo() {
+        return checkboxFinalRiskLevelNo;
+    }
+
+    public void setCheckboxFinalRiskLevelNo(Boolean checkboxRiskLevel) {
+        this.checkboxFinalRiskLevelNo = checkboxRiskLevel;
+    }
+
+    public Boolean getCheckboxParentsIsolation() {
+        return checkboxParentsIsolation;
+    }
+
+    public void setCheckboxParentsIsolation(Boolean checkboxParentsIsolation) {
+        this.checkboxParentsIsolation = checkboxParentsIsolation;
+    }
+
+    public RiskLevel getRiskLevel() {
+        return riskLevel == null ? null : RiskLevel.fromId(riskLevel);
+    }
+
+    public void setRiskLevel(RiskLevel riskLevel) {
+        this.riskLevel = riskLevel == null ? null : riskLevel.getId();
+    }
 
     public Boolean getCheckboxEnvSocialHelp() {
         return checkboxEnvSocialHelp;

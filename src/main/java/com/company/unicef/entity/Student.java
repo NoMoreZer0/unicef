@@ -1,12 +1,12 @@
 package com.company.unicef.entity;
 
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
-import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.UUID;
 
 @JmixEntity
@@ -18,37 +18,43 @@ public class Student {
     @Id
     private UUID id;
 
-    @InstanceName
-    @Column(name = "NAME", nullable = false)
-    @NotNull
-    private String name;
+    @Column(name = "FIO")
+    private String fio;
 
-    @Column(name = "BIRTH_DATE", nullable = false)
-    @Temporal(TemporalType.DATE)
-    @NotNull
-    private Date birthDate;
-
-    @Column(name = "STUDYING_CLASS", nullable = false)
-    @NotNull
-    private Integer studyingClass;
-
-    @Column(name = "GENDER", nullable = false)
-    @NotNull
+    @Column(name = "GENDER")
     private Integer gender;
 
-    @Column(name = "SPECIAL_NEEDS", nullable = false)
-    @NotNull
-    private Integer specialNeeds;
+    @Column(name = "STUDYING_YEAR")
+    private String studyingYear;
 
-    @Column(name = "CONTACTS")
-    private String contacts;
+    @Column(name = "PHONE_NUMBER")
+    private String phoneNumber;
 
-    public SpecialNeedsField getSpecialNeeds() {
-        return specialNeeds == null ? null : SpecialNeedsField.fromId(specialNeeds);
+    @Column(name = "STATUS")
+    private String status;
+
+    public StudentStatusField getStatus() {
+        return status == null ? null : StudentStatusField.fromId(status);
     }
 
-    public void setSpecialNeeds(SpecialNeedsField specialNeeds) {
-        this.specialNeeds = specialNeeds == null ? null : specialNeeds.getId();
+    public void setStatus(StudentStatusField status) {
+        this.status = status == null ? null : status.getId();
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getStudyingYear() {
+        return studyingYear;
+    }
+
+    public void setStudyingYear(String studyingYear) {
+        this.studyingYear = studyingYear;
     }
 
     public GenderField getGender() {
@@ -59,36 +65,12 @@ public class Student {
         this.gender = gender == null ? null : gender.getId();
     }
 
-    public StudyingClassField getStudyingClass() {
-        return studyingClass == null ? null : StudyingClassField.fromId(studyingClass);
+    public String getFio() {
+        return fio;
     }
 
-    public void setStudyingClass(StudyingClassField studyingClass) {
-        this.studyingClass = studyingClass == null ? null : studyingClass.getId();
-    }
-
-    public String getContacts() {
-        return contacts;
-    }
-
-    public void setContacts(String contacts) {
-        this.contacts = contacts;
-    }
-
-    public Date getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setFio(String fio) {
+        this.fio = fio;
     }
 
     public UUID getId() {

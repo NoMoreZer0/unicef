@@ -70,6 +70,7 @@
                     <textField id="interviewOrgNameField" property="interviewOrgName"/>
                     <textField id="interviewRelativeField" property="interviewRelative"/>
                     <textField id="interviewContactField" property="interviewContact"/>
+
                     <checkBox id="checkboxLegalProblemsField" property="checkboxLegalProblems"/>
                     <checkBox id="checkboxNoAttendanceField" property="checkboxNoAttendance"/>
                     <checkBox id="checkboxChildAtRiskField" property="checkboxChildAtRisk"/>
@@ -112,6 +113,7 @@
                     <checkBox id="checkboxChildTeacherConflictField" property="checkboxChildTeacherConflict"/>
                     <textField id="checkboxOthers3Field" property="checkboxOthers3"/>
                     <checkBox id="checkboxLargeFamilyField" property="checkboxLargeFamily"/>
+
                     <checkBox id="checkboxParentsWorkMigrationField" property="checkboxParentsWorkMigration"/>
                     <checkBox id="checkboxParentsAlcoField" property="checkboxParentsAlco"/>
                     <checkBox id="checkboxParentsZonaField" property="checkboxParentsZona"/>
@@ -133,6 +135,7 @@
                     <checkBox id="checkboxParentsSingleFamilyField" property="checkboxParentsSingleFamily"/>
                     <checkBox id="checkboxParentsOrphangeField" property="checkboxParentsOrphange"/>
                     <checkBox id="checkboxParentsNoSocialHelpField" property="checkboxParentsNoSocialHelp"/>
+                    <checkBox id="checkboxParentsIsolation" property="checkboxParentsIsolation"/>
                     <checkBox id="checkboxParentsNoServiceAccessField" property="checkboxParentsNoServiceAccess"/>
                     <checkBox id="checkboxParentsDiscriminationField" property="checkboxParentsDiscrimination"/>
                     <checkBox id="checkboxParentsNoWorkField" property="checkboxParentsNoWork"/>
@@ -180,10 +183,33 @@
                     <textField id="caseReasonField" property="caseReason"/>
                 </column>
             </form>
+            <form id="finalCalculationTable" visible="false">
+                <column>
+                    <label value="msg://com.company.unicef.entity/FirstForm.riskLevelLabel"/>
+                    <textField id="riskLevelField" property="riskLevel"/>
+                </column>
+                <column>
+                    <label  value="msg://com.company.unicef.entity/FirstForm.descriptionLabel"/>
+                    <textArea id="descriptionField" />
+                </column>
+            </form>
+            <form id="finalCalculationSteps" visible="false">
+                <column>
+                    <label value="msg://com.company.unicef.entity/FirstForm.nextStepLabel"/>
+                    <checkBox visible="false" id="checkBoxNextStep1"/>
+                    <checkBox visible="false" id="checkBoxNextStep2"/>
+                    <checkBox visible="false" id="checkBoxNextStep3"/>
+                    <checkBox visible="false" id="checkBoxNextStep4"/>
+                    <checkBox visible="false" id="checkBoxNextStep5"/>
+                    <checkBox visible="false" id="checkBoxNextStep6"/>
+                    <textField visible="false" id="textFieldNextStep" property="finalNextFieldOthers"/>
+                </column>
+            </form>
         </scrollBox>
         <hbox id="editActions" spacing="true">
             <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
             <button id="closeBtn" action="windowClose"/>
+            <button id="calculateRiskBtn" caption="msg://com.company.unicef.entity/FirstForm.calculateBtnLabel"/>
         </hbox>
     </layout>
 </window>

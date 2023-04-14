@@ -152,6 +152,7 @@
                 <column id="checkboxParentsSingleFamily"/>
                 <column id="checkboxParentsOrphange"/>
                 <column id="checkboxParentsNoSocialHelp"/>
+                <column id="checkboxParentsIsolation"/>
                 <column id="checkboxParentsNoServiceAccess"/>
                 <column id="checkboxParentsDiscrimination"/>
                 <column id="checkboxParentsNoWork"/>

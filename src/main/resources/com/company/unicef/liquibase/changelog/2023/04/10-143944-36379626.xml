@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.11.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="unicef">
+        <addColumn tableName="FIRST_FORM">
+            <column name="CHECKBOX_FINAL_NEXT_STEP1" type="BOOLEAN"/>
+            <column name="CHECKBOX_FINAL_NEXT_STEP2" type="BOOLEAN"/>
+            <column name="CHECKBOX_FINAL_NEXT_STEP3" type="BOOLEAN"/>
+            <column name="CHECKBOX_FINAL_NEXT_STEP4" type="BOOLEAN"/>
+            <column name="CHECKBOX_FINAL_NEXT_STEP5" type="BOOLEAN"/>
+            <column name="CHECKBOX_FINAL_NEXT_STEP6" type="BOOLEAN"/>
+            <column name="CHECKBOX_FINAL_RISK_LEVEL_HIGH" type="BOOLEAN"/>
+            <column name="CHECKBOX_FINAL_RISK_LEVEL_LOW" type="BOOLEAN"/>
+            <column name="CHECKBOX_FINAL_RISK_LEVEL_MEDIUM" type="BOOLEAN"/>
+            <column name="CHECKBOX_RISK_LEVEL" type="BOOLEAN"/>
+            <column name="NEXT_FIELD_OTHERS" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>
