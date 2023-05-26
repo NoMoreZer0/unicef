@@ -1,12 +1,10 @@
 package com.company.unicef.entity;
 
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
+import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.UUID;
 
 @JmixEntity
@@ -18,6 +16,7 @@ public class Student {
     @Id
     private UUID id;
 
+    @InstanceName
     @Column(name = "FIO")
     private String fio;
 
@@ -30,8 +29,41 @@ public class Student {
     @Column(name = "PHONE_NUMBER")
     private String phoneNumber;
 
+    @Column(name = "SCHOOL")
+    private String school;
+
+    @Column(name = "STUDY_LANG")
+    private String studyLang;
+
     @Column(name = "STATUS")
     private String status;
+
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "student")
+    private OpenCase openCase;
+
+    public OpenCase getOpenCase() {
+        return openCase;
+    }
+
+    public void setOpenCase(OpenCase openCase) {
+        this.openCase = openCase;
+    }
+
+    public StudyingLangField getStudyLang() {
+        return studyLang == null ? null : StudyingLangField.fromId(studyLang);
+    }
+
+    public void setStudyLang(StudyingLangField studyLang) {
+        this.studyLang = studyLang == null ? null : studyLang.getId();
+    }
+
+    public String getSchool() {
+        return school;
+    }
+
+    public void setSchool(String school) {
+        this.school = school;
+    }
 
     public StudentStatusField getStatus() {
         return status == null ? null : StudentStatusField.fromId(status);

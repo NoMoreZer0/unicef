@@ -39,6 +39,8 @@
                 <textField id="firstNameField" property="firstName"/>
                 <textField id="lastNameField" property="lastName"/>
                 <textField id="emailField" property="email"/>
+                <textField id="phoneNumberField" property="phoneNumber"/>
+                <comboBox id="roleField" property="role"/>
                 <comboBox id="timeZoneField" property="timeZoneId"/>
                 <checkBox id="activeField" property="active"/>
             </column>

@@ -2,9 +2,13 @@
 <menu-config xmlns="http://jmix.io/schema/ui/menu">
 
     <menu id="application" caption="msg://com.company.unicef/menu.application" insertBefore="administration">
-        <item screen="User.browse" caption="msg://com.company.unicef.screen.user/UserBrowse.caption"/>
-        <item screen="themeSettingsScreen" caption="msg://io.jmix.ui.app.themesettings/themeSettings.caption"/>
         <item screen="FirstForm.browse" caption="msg://com.company.unicef.screen.firstform/firstFormBrowse.menu"/>
+        <item screen="SecondForm.browse" caption="msg://com.company.unicef.screen.secondform/secondFormBrowse.menu"/>
+        <item screen="OpenCase.browse" caption="msg://com.company.unicef.screen.opencase/openCaseBrowse.menu"/>
+        <item screen="OpenCase.browseAll" caption="msg://com.company.unicef.screen.opencase/openCaseBrowseAll.menu"/>
+        <item screen="Student.browse" caption="msg://com.company.unicef.screen.student/studentBrowse.menu"/>
+        <item screen="User.browse" caption="msg://com.company.unicef.screen.user/UserBrowse.caption"/>
+        <item screen="AllFiles.browse" caption="msg://com.company.unicef.screen.allfiles/allFilesBrowse.menu"/>
+        <item screen="themeSettingsScreen" caption="msg://io.jmix.ui.app.themesettings/themeSettings.caption"/>
     </menu>
-
 </menu-config>

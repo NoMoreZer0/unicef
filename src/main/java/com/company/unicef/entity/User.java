@@ -14,12 +14,14 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Set;
 import java.util.UUID;
 
 @JmixEntity
 @Entity
 @Table(name = "USER_", indexes = {
-        @Index(name = "IDX_USER__ON_USERNAME", columnList = "USERNAME", unique = true)
+        @Index(name = "IDX_USER__ON_USERNAME", columnList = "USERNAME", unique = true),
+        @Index(name = "IDX_USER__OPEN_CASE", columnList = "OPEN_CASE_ID")
 })
 public class User implements JmixUserDetails, HasTimeZone {
 
@@ -50,14 +52,49 @@ public class User implements JmixUserDetails, HasTimeZone {
     @Column(name = "EMAIL")
     protected String email;
 
+    @Column(name = "PHONE_NUMBER")
+    private String phoneNumber;
+
+    @Column(name = "ROLE")
+    private String role;
+
     @Column(name = "ACTIVE")
     protected Boolean active = true;
 
     @Column(name = "TIME_ZONE_ID")
     protected String timeZoneId;
 
+    @JoinTable(name = "OPEN_CASE_USER_LINK",
+            joinColumns = @JoinColumn(name = "USER_ID"),
+            inverseJoinColumns = @JoinColumn(name = "OPEN_CASE_ID"))
+    @ManyToMany
+    private Set<OpenCase> openCases;
     @Transient
     protected Collection<? extends GrantedAuthority> authorities;
+
+    public Set<OpenCase> getOpenCases() {
+        return openCases;
+    }
+
+    public void setOpenCases(Set<OpenCase> openCases) {
+        this.openCases = openCases;
+    }
+
+    public EmployeeRole getRole() {
+        return role == null ? null : EmployeeRole.fromId(role);
+    }
+
+    public void setRole(EmployeeRole role) {
+        this.role = role == null ? null : role.getId();
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
     public UUID getId() {
         return id;

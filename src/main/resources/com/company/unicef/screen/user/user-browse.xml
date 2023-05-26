@@ -53,6 +53,8 @@
                 <column id="firstName"/>
                 <column id="lastName"/>
                 <column id="email"/>
+                <column id="phoneNumber"/>
+                <column id="role"/>
                 <column id="timeZoneId"/>
                 <column id="active"/>
             </columns>
