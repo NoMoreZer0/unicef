@@ -5,24 +5,24 @@ import io.jmix.core.metamodel.datatype.impl.EnumClass;
 import javax.annotation.Nullable;
 
 
-public enum FamilyStatusFielld implements EnumClass<Integer> {
+public enum FamilyStatusFielld implements EnumClass<String> {
 
-    OFFICIALLY_MARRIED(10),
-    WIDOWED(20),
-    UNNOFICIALLY_TOGETHER(30);
+    OFFICIALLY_MARRIED("Oфиц зарегистрированы в браке"),
+    WIDOWED("Развод/Смерть одного из родителей/родитель-одиночка"),
+    UNNOFICIALLY_TOGETHER("Совместное проживание без регистраций брака");
 
-    private Integer id;
+    private String id;
 
-    FamilyStatusFielld(Integer id) {
+    FamilyStatusFielld(String id) {
         this.id = id;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
     @Nullable
-    public static FamilyStatusFielld fromId(Integer id) {
+    public static FamilyStatusFielld fromId(String id) {
         for (FamilyStatusFielld at : FamilyStatusFielld.values()) {
             if (at.getId().equals(id)) {
                 return at;

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.11.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="unicef">
+        <createTable tableName="PIVOT_TABLE_CHECK_BOXES">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_PIVOT_TABLE_CHECK_BOXES"/>
+            </column>
+            <column name="CATEGORY" type="VARCHAR(255)"/>
+            <column name="LEVEL_" type="VARCHAR(255)"/>
+            <column name="SECOND_FORM_ID" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="2" author="unicef">
+        <createIndex indexName="IDX_PIVOT_TABLE_CHECK_BOXES_SECOND_FORM" tableName="PIVOT_TABLE_CHECK_BOXES">
+            <column name="SECOND_FORM_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="SECOND_FORM_ID" baseTableName="PIVOT_TABLE_CHECK_BOXES"
+                                 constraintName="FK_PIVOT_TABLE_CHECK_BOXES_ON_SECOND_FORM" referencedColumnNames="ID"
+                                 referencedTableName="SECOND_FORM"/>
+    </changeSet>
+</databaseChangeLog>

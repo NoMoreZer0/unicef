@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://eventEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="eventDc"
+                  class="com.company.unicef.entity.Event">
+            <fetchPlan extends="_base">
+                <property name="eventResults" fetchPlan="_base"/>
+                <property name="eventUsers" fetchPlan="_base"/>
+                <property name="parents" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+            <collection id="eventUsers" property="eventUsers"/>
+            <collection id="eventResults" property="eventResults"/>
+            <collection id="parentsDc" property="parents"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="editActions">
+        <form id="form" dataContainer="eventDc">
+            <column width="350px">
+                <textField id="nameField" property="name"/>
+                <dateField id="startingPeriodField" property="startingPeriod"/>
+                <dateField id="endingPeriodField" property="endingPeriod"/>
+                <textArea rows="3" id="periodicityField" property="periodicity"/>
+            </column>
+        </form>
+        <groupBox id="eventUsersBox" caption="msg://com.company.unicef.entity/Event.eventUsersBox">
+            <table id="eventUsersTable" dataContainer="eventUsers" width="100%" height="100%">
+                <actions>
+                    <action id="add" type="add"/>
+                    <action id="exclude" type="exclude"/>
+                </actions>
+                <columns>
+                    <column id="firstName"/>
+                    <column id="lastName"/>
+                    <column id="username"/>
+                    <column id="email"/>
+                    <column id="phoneNumber"/>
+                    <column id="role"/>
+                    <column id="active"/>
+                    <column id="timeZoneId"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="eventUsersTable.add" caption="msg://com.company.unicef.addButton"/>
+                    <button action="eventUsersTable.exclude" caption="msg://com.company.unicef.excludeButton"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <groupBox id="parentsBox" caption="msg://com.company.unicef.entity/Event.parents">
+            <table id="parentsTable" dataContainer="parentsDc" width="100%" height="100%">
+                <actions>
+                    <action id="remove" type="remove"/>
+                    <action id="add" type="add"/>
+                </actions>
+                <columns>
+                    <column id="fio"/>
+                    <column id="fullAge"/>
+                    <column id="familyStatus"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="parentsTable.add" caption="msg://com.company.unicef.createButton"/>
+                    <button action="parentsTable.remove"  caption="msg://com.company.unicef.excludeButton"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <groupBox id="eventResultsBox" caption="msg://com.company.unicef.entity/Event.eventResultsBox">
+            <table id="eventResultsTable" dataContainer="eventResults" height="100%" width="100%">
+                <actions>
+                    <action id="add" type="add"/>
+                    <action id="exclude" type="exclude"/>
+                </actions>
+                <columns>
+                    <column id="successIndicator"/>
+                    <column id="gradeFirstTerm"/>
+                    <column id="gradeSecondTerm"/>
+                    <column id="gradeThirdTerm"/>
+                    <column id="gradeFourthTerm"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="eventResultsTable.add" caption="msg://com.company.unicef.createButton"/>
+                    <button action="eventResultsTable.exclude" caption="msg://com.company.unicef.excludeButton"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

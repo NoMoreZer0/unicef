@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.11.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="unicef">
+        <createTable tableName="FIRST_FORM">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_FIRST_FORM"/>
+            </column>
+            <column name="RISK_LEVEL" type="VARCHAR(255)"/>
+            <column name="CHILD_FIO" type="VARCHAR(255)"/>
+            <column name="CHILD_BIRTH_DATE" type="DATE"/>
+            <column name="STUDYING_CLASS_FIELD" type="INT"/>
+            <column name="SPECIAL_NEEDS" type="INT"/>
+            <column name="CHILD_GENDER" type="INT"/>
+            <column name="CHILD_CONTACT" type="VARCHAR(255)"/>
+            <column name="CHILD_CITY" type="VARCHAR(255)"/>
+            <column name="CHILD_DISTRICT" type="VARCHAR(255)"/>
+            <column name="CHILD_STREET" type="VARCHAR(255)"/>
+            <column name="CHILD_HOME" type="VARCHAR(255)"/>
+            <column name="CHILD_APPARTMENT" type="VARCHAR(255)"/>
+            <column name="FATHER_FIO" type="VARCHAR(255)"/>
+            <column name="FATHER_DATE" type="DATE"/>
+            <column name="FATHER_FULL_AGE" type="VARCHAR(255)"/>
+            <column name="FATHER_STEP" type="BOOLEAN"/>
+            <column name="FATHER_CONTACTS" type="VARCHAR(255)"/>
+            <column name="FATHER_FAMILY_STATUS" type="INT"/>
+            <column name="FATHER_CITY" type="VARCHAR(255)"/>
+            <column name="FATHER_DISTRICT" type="VARCHAR(255)"/>
+            <column name="FATHER_STREET" type="VARCHAR(255)"/>
+            <column name="FATHER_HOME" type="VARCHAR(255)"/>
+            <column name="FATHER_APPARTMENT" type="VARCHAR(255)"/>
+            <column name="MOTHER_FIO" type="VARCHAR(255)"/>
+            <column name="MOTHER_BIRTH_DATE" type="DATE"/>
+            <column name="MOTHER_FULL_AGE" type="VARCHAR(255)"/>
+            <column name="MOTHER_FAMILY_STATUS" type="VARCHAR(255)"/>
+            <column name="MOTHER_CITY" type="VARCHAR(255)"/>
+            <column name="MOTHER_DISTRICT" type="VARCHAR(255)"/>
+            <column name="MOTHER_HOME" type="VARCHAR(255)"/>
+            <column name="MOTHER_STREET" type="VARCHAR(255)"/>
+            <column name="MOTHER_APARTMENT" type="VARCHAR(255)"/>
+            <column name="MOTHER_STEP" type="BOOLEAN"/>
+            <column name="MOTHER_CONTACTS" type="VARCHAR(255)"/>
+            <column name="OTHER_FIO" type="VARCHAR(255)"/>
+            <column name="OTHER_AGE" type="VARCHAR(255)"/>
+            <column name="OTHER_RELATION_DEGREE" type="VARCHAR(255)"/>
+            <column name="OTHER_WORKPLACE" type="VARCHAR(255)"/>
+            <column name="INTERVIEW_DATE" type="DATE"/>
+            <column name="INTERVIEW_FIO" type="VARCHAR(255)"/>
+            <column name="INTERVIEW_ORG_NAME" type="VARCHAR(255)"/>
+            <column name="INTERVIEW_RELATIVE" type="VARCHAR(255)"/>
+            <column name="INTERVIEW_CONTACT" type="VARCHAR(255)"/>
+            <column name="CHECKBOX_LEGAL_PROBLEMS" type="BOOLEAN"/>
+            <column name="CHECKBOX_NO_ATTENDANCE" type="BOOLEAN"/>
+            <column name="CHECKBOX_CHILD_AT_RISK" type="BOOLEAN"/>
+            <column name="CHECKBOX_EARLY_PREGNANCY" type="BOOLEAN"/>
+            <column name="CHECKBOX_DISABLED" type="BOOLEAN"/>
+            <column name="CHECKBOX_HIV_CHILD" type="BOOLEAN"/>
+            <column name="CHECKBOX_NO_FOOD" type="BOOLEAN"/>
+            <column name="CHECKBOX_NO_SEASON_CLOTHES" type="BOOLEAN"/>
+            <column name="CHECKBOX_NO_CARE_OF_PARENTS" type="BOOLEAN"/>
+            <column name="CHECKBOX_CHILD_LABOUR" type="BOOLEAN"/>
+            <column name="CHECKBOX_DOMESTIC_VIOLENCE" type="BOOLEAN"/>
+            <column name="CHECKBOX_CHILD_ABUSE" type="BOOLEAN"/>
+            <column name="CHECKBOX_ORPHANGE" type="BOOLEAN"/>
+            <column name="CHECKBOX_PSIX" type="BOOLEAN"/>
+            <column name="CHECKBOX_EXPLOTATION" type="BOOLEAN"/>
+            <column name="CHECKBOX_RELIGIOUS_RADICALISM" type="BOOLEAN"/>
+            <column name="CHECKBOX_CONFLICT_ZONES" type="BOOLEAN"/>
+            <column name="CHECKBOX_OUTSIDE_FAMILY" type="BOOLEAN"/>
+            <column name="CHECKBOX_OTHERS1" type="VARCHAR(255)"/>
+            <column name="CHECKBOX_SUICIDAL" type="BOOLEAN"/>
+            <column name="CHECKBOX_RISK_ACTION" type="BOOLEAN"/>
+            <column name="CHECKBOX_RISK_SUICIDAL" type="BOOLEAN"/>
+            <column name="CHECKBOX_GRIEF_OF_LOSS" type="BOOLEAN"/>
+            <column name="CHECKBOX_BULLING" type="BOOLEAN"/>
+            <column name="CHECKBOX_STRESS_TRAUM" type="BOOLEAN"/>
+            <column name="CHECKBOX_DAUN" type="BOOLEAN"/>
+            <column name="CHECKBOX_WEAK_SKILLS" type="BOOLEAN"/>
+            <column name="CHECKBOX_PSYCHO" type="BOOLEAN"/>
+            <column name="CHECKBOX_OTHERS2" type="VARCHAR(255)"/>
+            <column name="CHECKBOX_FREQUEST_ABSENCE" type="BOOLEAN"/>
+            <column name="CHECKBOX_BAD_GRADES" type="BOOLEAN"/>
+            <column name="CHECKBOX_ABSENCE_BY_HEALTH" type="BOOLEAN"/>
+            <column name="CHECKBOX_NO_CLOTHES_FOR_SCHOOL" type="BOOLEAN"/>
+            <column name="CHECKBOX_NO_EDUCATION_MOTIVATION" type="BOOLEAN"/>
+            <column name="CHECKBOX_NO_FAMILY_CONTROL" type="BOOLEAN"/>
+            <column name="CHECKBOX_NO_ADDITIONAL_CONSULTATION" type="BOOLEAN"/>
+            <column name="CHECKBOX_CONSULTATION_ABSENCE" type="BOOLEAN"/>
+            <column name="CHECKBOX_BAD_CONSULTATION" type="BOOLEAN"/>
+            <column name="CHECKBOX_CHILD_PARENTS_CONFLICT" type="BOOLEAN"/>
+            <column name="CHECKBOX_CHILD_TEACHER_CONFLICT" type="BOOLEAN"/>
+            <column name="CHECKBOX_OTHERS3" type="VARCHAR(255)"/>
+            <column name="CHECKBOX_LARGE_FAMILY" type="BOOLEAN"/>
+            <column name="CHECKBOX_PARENTS_WORK_MIGRATION" type="BOOLEAN"/>
+            <column name="CHECKBOX_PARENTS_ALCO" type="BOOLEAN"/>
+            <column name="CHECKBOX_PARENTS_ZONA" type="BOOLEAN"/>
+            <column name="CHECKBOX_PARENTS_BOMZH" type="BOOLEAN"/>
+            <column name="CHECKBOX_PARENTS_LOW_EDUCATION" type="BOOLEAN"/>
+            <column name="CHECKBOX_PARENTS_WEAK_SKILLS" type="BOOLEAN"/>
+            <column name="CHECKBOX_PARENTS_BAD_RELATIONSHIP" type="BOOLEAN"/>
+            <column name="CHECKBOX_PARENTS_DIVORCE" type="BOOLEAN"/>
+            <column name="CHEKBOX_PARENTS_NO_HOME" type="BOOLEAN"/>
+            <column name="CHECKBOX_PARENTS_NO_DRUGS" type="BOOLEAN"/>
+            <column name="CHECKBOX_PARENTS_NO_TRANSPORT" type="BOOLEAN"/>
+            <column name="CHECKBOX_PARENTS_NO_MONEY" type="BOOLEAN"/>
+            <column name="CHECKBOX_PARENTS_VIOLENCE" type="BOOLEAN"/>
+            <column name="CHECKBOX_PARENTS_PSYCHO" type="BOOLEAN"/>
+            <column name="CHECKBOX_PARENTS_FAMILY_CONFLICT" type="BOOLEAN"/>
+            <column name="CHECKBOX_PARENTS_POOR_FAMILY" type="BOOLEAN"/>
+            <column name="CHECKBOX_PARENTS_ELDERS" type="BOOLEAN"/>
+            <column name="CHECKBOX_PARENTS_MOTHER_PREGNANT" type="BOOLEAN"/>
+            <column name="CHECKBOX_PARENTS_SINGLE_FAMILY" type="BOOLEAN"/>
+            <column name="CHECKBOX_PARENTS_ORPHANGE" type="BOOLEAN"/>
+            <column name="CHECKBOX_PARENTS_NO_SOCIAL_HELP" type="BOOLEAN"/>
+            <column name="CHECKBOX_PARENTS_ISOLATION" type="BOOLEAN"/>
+            <column name="CHECKBOX_PARENTS_NO_SERVICE_ACCESS" type="BOOLEAN"/>
+            <column name="CHECKBOX_PARENTS_DISCRIMINATION" type="BOOLEAN"/>
+            <column name="CHECKBOX_PARENTS_NO_WORK" type="BOOLEAN"/>
+            <column name="CHECKBOX_PARENTS_HIV" type="BOOLEAN"/>
+            <column name="CHECKBOX_PARENTS_DISABLED" type="BOOLEAN"/>
+            <column name="CHECKBOX_PARENTS_FROM_WAR" type="BOOLEAN"/>
+            <column name="CHECKBOX_PARENTS_RELIGIOUS_RADICALIZATION" type="BOOLEAN"/>
+            <column name="CHECKBOX_OTHERS4" type="VARCHAR(255)"/>
+            <column name="CHECKBOX_IND_FACTOR_ACADEMIC" type="BOOLEAN"/>
+            <column name="CHECKBOX_IND_FACTOR_GOOD_PROBLEM_SOLVING" type="BOOLEAN"/>
+            <column name="CHECKBOX_IND_FACTOR_OWN_PROBLEM" type="BOOLEAN"/>
+            <column name="CHECKBOX_IND_FACTOR_SELF_CONFIDENCE" type="BOOLEAN"/>
+            <column name="CHECKBOX_OTHERS5" type="VARCHAR(255)"/>
+            <column name="CHECKBOX_FAMILY_FACTOR_SAFE" type="BOOLEAN"/>
+            <column name="CHECKBOX_FAMILY_FACTOR_CARING" type="BOOLEAN"/>
+            <column name="CHECKBOX_FAMILY_FACTOR_STABLE" type="BOOLEAN"/>
+            <column name="CHECKBOX_FAMILY_FACTOR_GOOD_SKILLS" type="BOOLEAN"/>
+            <column name="CHECKBOX_FAMILY_FACTOR_POSITIVE" type="BOOLEAN"/>
+            <column name="CHECKBOX_FAMILY_FACTOR_BASE_HELP" type="BOOLEAN"/>
+            <column name="CHECKBOX_FAMILY_FACTOR_STABLE_RELATIONSHIP" type="BOOLEAN"/>
+            <column name="CHECKBOX_FAMILY_FACTOR_RULES" type="BOOLEAN"/>
+            <column name="CHECKBOX_FAMILY_FACTOR_CARING_ADULTS" type="BOOLEAN"/>
+            <column name="CHECKBOX_FAMILY_FACTOR_SOCIAL_MEDIA" type="BOOLEAN"/>
+            <column name="CHECKBOX_OTHERS6" type="VARCHAR(255)"/>
+            <column name="CHECKBOX_ENV_ECONOM_STABLE" type="BOOLEAN"/>
+            <column name="CHECKBOX_ENV_PARENTS_EMP" type="BOOLEAN"/>
+            <column name="CHECKBOX_ENV_PARENTS_EDU" type="BOOLEAN"/>
+            <column name="CHECKBOX_ENV_LIVING_COND" type="BOOLEAN"/>
+            <column name="CHECKBOX_ENV_SOCIAL_HELP" type="BOOLEAN"/>
+            <column name="CHECKBOX_ENV_MEDICAL_ADULTS_AND_KINDS" type="BOOLEAN"/>
+            <column name="CHECKBOX_ENV_COORDINATION_SERVICES" type="BOOLEAN"/>
+            <column name="CHECKBOX_OTHERS7" type="VARCHAR(255)"/>
+            <column name="CHECKBOX_SCHOOL_SAFE_ENV" type="BOOLEAN"/>
+            <column name="CHECKBOX_SCHOOL_ADD" type="BOOLEAN"/>
+            <column name="CHECKBOX_SCHOOL_NPA" type="BOOLEAN"/>
+            <column name="CHECKBOX_SCHOOL_MENTOR" type="BOOLEAN"/>
+            <column name="CHECKBOX_SCHOOL_PARENTS_COMM" type="BOOLEAN"/>
+            <column name="CHECKBOX_SCHOOL_INCLUSIVE" type="BOOLEAN"/>
+            <column name="CHECKBOX_SCHOOL_ADD_CREATIVE" type="BOOLEAN"/>
+            <column name="CHECKBOX_SCHOOL_PROFILACTATION" type="BOOLEAN"/>
+            <column name="CHECKBOX_OTHERS8" type="VARCHAR(255)"/>
+            <column name="CASE_REASON" type="VARCHAR(255)"/>
+            <column name="CHECKBOX_RISK_LEVEL_NO" type="BOOLEAN"/>
+            <column name="CHECKBOX_FINAL_RISK_LEVEL_NO_STEP1" type="BOOLEAN"/>
+            <column name="CHECKBOX_FINAL_RISK_LEVEL_NO_STEP2" type="BOOLEAN"/>
+            <column name="CHECKBOX_FINAL_RISK_LEVEL_NO_STEP3" type="BOOLEAN"/>
+            <column name="CHECKBOX_FINAL_RISK_LEVEL_NO_OTHERS" type="VARCHAR(255)"/>
+            <column name="CHECKBOX_FINAL_RISK_LEVEL_LOW" type="BOOLEAN"/>
+            <column name="CHECKBOX_FINAL_RISK_LEVEL_LOW_STEP1" type="BOOLEAN"/>
+            <column name="CHECKBOX_FINAL_RISK_LEVEL_LOW_STEP2" type="BOOLEAN"/>
+            <column name="CHECKBOX_FINAL_RISK_LEVEL_LOW_OTHERS" type="VARCHAR(255)"/>
+            <column name="CHECKBOX_FINAL_RISK_LEVEL_MEDIUM" type="BOOLEAN"/>
+            <column name="CHECKBOX_FINAL_RISK_LEVEL_MEDIUM_STEP1" type="BOOLEAN"/>
+            <column name="CHECKBOX_FINAL_RISK_LEVEL_MEDIUM_STEP2" type="BOOLEAN"/>
+            <column name="CHECKBOX_FINAL_RISK_LEVEL_MEDIUM_OTHERS" type="VARCHAR(255)"/>
+            <column name="CHECKBOX_FINAL_RISK_LEVEL_HIGH" type="BOOLEAN"/>
+            <column name="CHECKBOX_FINAL_RISK_LEVEL_HIGH_STEP1" type="BOOLEAN"/>
+            <column name="CHECKBOX_FINAL_RISK_LEVEL_HIGH_STEP2" type="BOOLEAN"/>
+            <column name="CHECKBOX_FINAL_RISK_LEVEL_HIGH_STEP3" type="BOOLEAN"/>
+            <column name="CHECKBOX_FINAL_RISK_LEVEL_HIGH_STEP4" type="BOOLEAN"/>
+            <column name="CHECKBOX_FINAL_RISK_LEVEL_HIGH_STEP5" type="BOOLEAN"/>
+            <column name="CHECKBOX_FINAL_RISK_LEVEL_HIGH_STEP6" type="BOOLEAN"/>
+            <column name="CHECKBOX_FINAL_RISK_LEVEL_HIGH_OTHERS" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="2" author="unicef">
+        <createTable tableName="STUDENT">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_STUDENT"/>
+            </column>
+            <column name="FIO" type="VARCHAR(255)"/>
+            <column name="GENDER" type="INT"/>
+            <column name="STUDYING_YEAR" type="VARCHAR(255)"/>
+            <column name="PHONE_NUMBER" type="VARCHAR(255)"/>
+            <column name="SCHOOL" type="VARCHAR(255)"/>
+            <column name="STUDY_LANG" type="VARCHAR(255)"/>
+            <column name="STATUS" type="VARCHAR(255)"/>
+            <column name="BIRTH_DATE" type="DATE"/>
+            <column name="FULL_AGE" type="INT"/>
+            <column name="SPECIAL_NEEDS" type="INT"/>
+            <column name="CONTACT_PHONE" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="3" author="unicef">
+        <createIndex indexName="IDX_OPEN_CASE_STUDENT" tableName="OPEN_CASE">
+            <column name="STUDENT_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="STUDENT_ID" baseTableName="OPEN_CASE"
+                                 constraintName="FK_OPEN_CASE_ON_STUDENT" onDelete="CASCADE" referencedColumnNames="ID"
+                                 referencedTableName="STUDENT"/>
+    </changeSet>
+    <changeSet id="4" author="unicef">
+        <createIndex indexName="IDX_PARENT_STUDENT" tableName="PARENT">
+            <column name="STUDENT_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="STUDENT_ID" baseTableName="PARENT"
+                                 constraintName="FK_PARENT_ON_STUDENT" onDelete="CASCADE" referencedColumnNames="ID"
+                                 referencedTableName="STUDENT"/>
+    </changeSet>
+</databaseChangeLog>

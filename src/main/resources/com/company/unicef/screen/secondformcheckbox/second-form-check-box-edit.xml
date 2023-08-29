@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://secondFormCheckBoxEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="secondFormCheckBoxDc"
+                  class="com.company.unicef.entity.SecondFormCheckBox">
+            <fetchPlan extends="_base">
+                <property name="secondFormEvents" fetchPlan="_base">
+                    <property name="eventUsers" fetchPlan="_base"/>
+                </property>
+                <property name="needNames" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+            <collection id="secondFormEventsDc" property="secondFormEvents"/>
+            <collection id="needNamesDc" property="needNames"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="editActions">
+        <form id="form" dataContainer="secondFormCheckBoxDc">
+            <column width="350px">
+                <textField id="nameField" property="name"/>
+                <textField id="categoryField" property="category" editable="false"/>
+                <textField id="goalTextField" property="goalText"/>
+            </column>
+        </form>
+        <button id="addNeedNamesButton" caption="msg://com.company.unicef.entity/SecondFormCheckBox.addNeedNamesButton"/>
+        <groupBox id="needNamesBox" caption="msg://com.company.unicef.entity/SecondFormCheckBox.needNames">
+            <table id="needNamesTable" dataContainer="needNamesDc" width="100%" height="100%">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="name"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="needNamesTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <groupBox id="secondFormEventsBox"
+                  caption="msg://com.company.unicef.entity/SecondFormCheckBox.secondFormEventsBox">
+            <table id="secondFormEventsTable" dataContainer="secondFormEventsDc" width="100%" height="100%">
+                <actions>
+                    <action id="add" type="add"/>
+                    <action id="exclude" type="exclude"/>
+                </actions>
+                <columns>
+                    <column id="name"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="secondFormEventsTable.add"
+                            caption="msg://com.company.unicef.screen.event/com.company.unicef.createButton"/>
+                    <button action="secondFormEventsTable.exclude"
+                            caption="msg://com.company.unicef.screen.event/com.company.unicef.excludeButton"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

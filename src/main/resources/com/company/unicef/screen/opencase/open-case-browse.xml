@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://openCaseBrowse.caption"
+        focusComponent="openCasesTable">
+    <data readOnly="true">
+        <collection id="openCasesDc"
+                    class="com.company.unicef.entity.OpenCase">
+            <fetchPlan extends="_base"/>
+            <loader id="openCasesDl">
+                <query>
+                    <![CDATA[select e from OpenCase e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="openCasesTable" spacing="true">
+        <filter id="filter"
+                dataLoader="openCasesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="openCasesTable"
+                    width="100%"
+                    dataContainer="openCasesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="reason"/>
+                <column id="openingDate"/>
+                <column id="status"/>
+                <column id="whoStarted"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="openCasesTable.create"/>
+                <button id="editBtn" action="openCasesTable.edit"/>
+                <button id="removeBtn" action="openCasesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

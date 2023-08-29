@@ -70,7 +70,7 @@ public class FirstForm {
     private String fatherContacts;
 
     @Column(name = "FATHER_FAMILY_STATUS")
-    private Integer fatherFamilyStatus;
+    private String fatherFamilyStatus;
 
     @Column(name = "FATHER_CITY")
     private String fatherCity;

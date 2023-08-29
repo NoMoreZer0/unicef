@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://studentEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="studentDc"
+                  class="com.company.unicef.entity.Student">
+            <fetchPlan extends="_base">
+                <property name="parents" fetchPlan="_base"/>
+                <property name="address" fetchPlan="_base"/>
+                <property name="relative" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+            <collection id="parentsDc" property="parents"/>
+            <collection id="relativeDc" property="relative"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="studentDc">
+                <column width="350px">
+                    <textField id="fioField" property="fio"/>
+                    <comboBox id="genderField" property="gender"/>
+                    <textField id="studyingYearField" property="studyingYear"/>
+                    <textField id="phoneNumberField" property="phoneNumber"/>
+                    <textField id="schoolField" property="school"/>
+                    <comboBox id="studyLangField" property="studyLang"/>
+                    <comboBox id="statusField" property="status"/>
+                    <dateField id="birthDateField" property="birthDate"/>
+                    <textField id="fullAgeField" property="fullAge"/>
+                    <comboBox id="specialNeedsField" property="specialNeeds"/>
+                    <textField id="contactPhoneField" property="contactPhone"/>
+                    <entityPicker id="addressField" property="address"/>
+                </column>
+            </form>
+            <groupBox id="parentsBox" caption="msg://com.company.unicef.entity/Student.parents">
+                <table id="parentsTable" dataContainer="parentsDc" width="100%" height="100%">
+                    <actions>
+                        <action id="create" type="create"/>
+                        <action id="edit" type="edit"/>
+                        <action id="remove" type="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="fio"/>
+                        <column id="fullAge"/>
+                        <column id="familyStatus"/>
+                    </columns>
+                    <buttonsPanel>
+                        <button action="parentsTable.create"/>
+                        <button action="parentsTable.edit"/>
+                        <button action="parentsTable.remove"/>
+                    </buttonsPanel>
+                </table>
+            </groupBox>
+            <groupBox id="relativeBox" caption="msg://com.company.unicef.entity/Student.relative">
+                <table id="relativeTable" dataContainer="relativeDc" width="100%" height="100%">
+                    <actions>
+                        <action id="create" type="create"/>
+                        <action id="edit" type="edit"/>
+                        <action id="remove" type="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="uuid"/>
+                        <column id="fio"/>
+                        <column id="age"/>
+                        <column id="relationDegree"/>
+                        <column id="workPlace"/>
+                    </columns>
+                    <buttonsPanel>
+                        <button action="relativeTable.create"/>
+                        <button action="relativeTable.edit"/>
+                        <button action="relativeTable.remove"/>
+                    </buttonsPanel>
+                </table>
+            </groupBox>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

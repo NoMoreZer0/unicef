@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://openCaseEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="openCaseDc"
+                  class="com.company.unicef.entity.OpenCase">
+            <fetchPlan extends="_base">
+                <property name="student" fetchPlan="_base"/>
+                <property name="secondForm" fetchPlan="_base"/>
+                <property name="secondFormCheckBoxes" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+            <collection id="secondFormCheckBoxes" property="secondFormCheckBoxes"/>
+            <collection id="responsibleEmployeesDc" property="responsibleEmployees"/>
+            <collection id="representativesDc" property="representatives"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="editActions">
+        <form id="form" dataContainer="openCaseDc">
+            <column width="350px">
+                <entityPicker id="studentField" property="student">
+                    <actions>
+                        <action id="entityLookup" type="entity_lookup"/>
+                        <action id="entityClear" type="entity_clear"/>
+                    </actions>
+                </entityPicker>
+                <textField id="reasonField" property="reason"/>
+                <dateField id="openingDateField" property="openingDate"/>
+                <comboBox id="statusField" property="status"/>
+                <textField id="whoStartedField" property="whoStarted"/>
+            </column>
+        </form>
+        <form dataContainer="openCaseDc">
+            <column>
+                <entityPicker id="secondFormField" property="secondForm" caption="msg://com.company.unicef.screen.secondform/secondFormBrowse.caption">
+                    <actions>
+                        <action id="entityLookup" type="entity_lookup"/>
+                        <action id="entityClear" type="entity_clear"/>
+                    </actions>
+                </entityPicker>
+                <fileStorageUpload id="documentField" showFileName="true" property="document"/>
+            </column>
+        </form>
+
+        <groupBox caption="msg://com.company.unicef.entity/OpenCase.responsibleEmployeesBox">
+            <table id="responsibleEmployeeTable" dataContainer="responsibleEmployeesDc" width="100%">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="involvement"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="responsibleEmployeeTable.create"/>
+                    <button action="responsibleEmployeeTable.remove"/>
+                    <button action="responsibleEmployeeTable.edit"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+
+        <groupBox id="representativesGroupBox" caption="msg://com.company.unicef.entity/OpenCase.representativesGroupBox">
+            <table id="representativesTable" dataContainer="representativesDc" width="100%">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="fio"/>
+                    <column id="organization"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="representativesTable.create"/>
+                    <button action="representativesTable.remove"/>
+                    <button action="representativesTable.edit"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+
+        <groupBox id="secondFormCheckBoxesGroup" caption="msg://com.company.unicef.entity/OpenCase.secondFormCheckBoxesGroup">
+            <groupTable dataContainer="secondFormCheckBoxes" id="secondFormCheckBoxTable" width="100%">
+                <columns>
+                    <group>
+                        <column id="category"/>
+                    </group>
+                    <column id="name" captionProperty="name"/>
+                </columns>
+                <actions>
+                    <action id="edit" type="edit"/>
+                    <action id="exclude" type="exclude"/>
+                </actions>
+                <buttonsPanel>
+<!--                    <button id="fillFormBtn" caption="test"/>-->
+                    <button action="secondFormCheckBoxTable.edit" caption="msg://com.company.unicef.screen.event/com.company.unicef.editButton"/>
+                    <button action="secondFormCheckBoxTable.exclude" caption="msg://com.company.unicef.screen.event/com.company.unicef.excludeButton"/>
+                </buttonsPanel>
+            </groupTable>
+        </groupBox>
+
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

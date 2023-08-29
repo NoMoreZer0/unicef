@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://secondFormEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="secondFormDc"
+                  class="com.company.unicef.entity.SecondForm">
+            <fetchPlan extends="_base"/>
+            <loader/>
+            <collection id="pivotTableCheckBoxesDc" property="pivotTableCheckBoxes"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="secondFormDc">
+                <column width="350px">
+                    <textField id="childIdNumField" property="childIdNum"/>
+                    <textField id="childMobilePhoneField" property="childMobilePhone"/>
+                    <comboBox id="educationInstitutionField" property="educationInstitution"/>
+                    <textField id="caseManagerField" property="caseManager"/>
+                    <textField id="contactNumberField" property="contactNumber"/>
+                    <checkBox id="healthChronicalField" property="healthChronical"/>
+                    <checkBox id="healthNoRegisteredField" property="healthNoRegistered"/>
+                    <checkBox id="healthNoVaccinationField" property="healthNoVaccination"/>
+                    <checkBox id="healthDisabledNoHelpField" property="healthDisabledNoHelp"/>
+                    <checkBox id="healthNoHospitalField" property="healthNoHospital"/>
+                    <checkBox id="healthNoTestingField" property="healthNoTesting"/>
+                    <checkBox id="healthNoFoodField" property="healthNoFood"/>
+                    <checkBox id="healthNoSportField" property="healthNoSport"/>
+                    <checkBox id="healthNoEquipmentField" property="healthNoEquipment"/>
+                    <checkBox id="healthNoCoordinationField" property="healthNoCoordination"/>
+                    <checkBox id="healthBadWeightOrHeightField" property="healthBadWeightOrHeight"/>
+                    <checkBox id="healthFobiaField" property="healthFobia"/>
+                    <checkBox id="healthBadHabitsField" property="healthBadHabits"/>
+                    <checkBox id="healthWetsBedField" property="healthWetsBed"/>
+                    <checkBox id="healthBadSleepField" property="healthBadSleep"/>
+                    <checkBox id="healthHasTraumaField" property="healthHasTrauma"/>
+                    <checkBox id="healthBadCommunicationField" property="healthBadCommunication"/>
+                    <textField id="healthOthersField" property="healthOthers"/>
+                    <checkBox id="eduNotLikeField" property="eduNotLike"/>
+                    <checkBox id="eduNoSubjectField" property="eduNoSubject"/>
+                    <checkBox id="eduWorkingField" property="eduWorking"/>
+                    <checkBox id="eduNoDisciplineField" property="eduNoDiscipline"/>
+                    <checkBox id="eduSchoolFriendField" property="eduSchoolFriend"/>
+                    <checkBox id="eduSpecialNeedsField" property="eduSpecialNeeds"/>
+                    <checkBox id="eduDifficultProgramField" property="eduDifficultProgram"/>
+                    <checkBox id="eduFreqAbsentField" property="eduFreqAbsent"/>
+                    <checkBox id="eduNoAttentionField" property="eduNoAttention"/>
+                    <checkBox id="eduNoClubField" property="eduNoClub"/>
+                    <checkBox id="eduNoStationeryField" property="eduNoStationery"/>
+                    <checkBox id="eduNoLaptopField" property="eduNoLaptop"/>
+                    <checkBox id="eduNoUniformField" property="eduNoUniform"/>
+                    <checkBox id="eduConflictField" property="eduConflict"/>
+                    <checkBox id="eduNoDeskField" property="eduNoDesk"/>
+                    <checkBox id="eduAmoralAbsentField" property="eduAmoralAbsent"/>
+                    <checkBox id="eduLowMotivationField" property="eduLowMotivation"/>
+                    <textField id="eduOthersField" property="eduOthers"/>
+                    <checkBox id="emoNoStabilityField" property="emoNoStability"/>
+                    <checkBox id="emoAnxietyField" property="emoAnxiety"/>
+                    <checkBox id="emoNoFriendsField" property="emoNoFriends"/>
+                    <checkBox id="emoDepressionField" property="emoDepression"/>
+                    <checkBox id="emoBullyingField" property="emoBullying"/>
+                    <checkBox id="emoOutsideOfHomeField" property="emoOutsideOfHome"/>
+                    <checkBox id="emoAloneField" property="emoAlone"/>
+                    <checkBox id="emoSelfHarassmentField" property="emoSelfHarassment"/>
+                    <checkBox id="emoRanAwayField" property="emoRanAway"/>
+                    <checkBox id="emoIsBullyField" property="emoIsBully"/>
+                    <checkBox id="emoRiskingActionField" property="emoRiskingAction"/>
+                    <checkBox id="emoConflictWitnessField" property="emoConflictWitness"/>
+                    <checkBox id="emoNoEmotionControlField" property="emoNoEmotionControl"/>
+                    <checkBox id="emoSuicidialField" property="emoSuicidial"/>
+                    <checkBox id="emoSuicidialAttemptField" property="emoSuicidialAttempt"/>
+                    <checkBox id="emoStealsField" property="emoSteals"/>
+                    <checkBox id="emoOnRegisterField" property="emoOnRegister"/>
+                    <checkBox id="emoAggressorField" property="emoAggressor"/>
+                    <checkBox id="emoNoBadNoGoodField" property="emoNoBadNoGood"/>
+                    <checkBox id="emoNotNormalField" property="emoNotNormal"/>
+                    <textField id="emoOthersField" property="emoOthers"/>
+                    <checkBox id="identDiscriminationField" property="identDiscrimination"/>
+                    <checkBox id="identNoFamilyField" property="identNoFamily"/>
+                    <checkBox id="identGenderConfField" property="identGenderConf"/>
+                    <checkBox id="identGenderDontKnowField" property="identGenderDontKnow"/>
+                    <checkBox id="identPositiveIndividualField" property="identPositiveIndividual"/>
+                    <checkBox id="identAgeSolField" property="identAgeSol"/>
+                    <checkBox id="identNotSureMyselfField" property="identNotSureMyself"/>
+                    <checkBox id="identNotSatisfiedField" property="identNotSatisfied"/>
+                    <checkBox id="identNoCulturalField" property="identNoCultural"/>
+                    <checkBox id="identNotIndependentField" property="identNotIndependent"/>
+                    <checkBox id="identNoHygieneField" property="identNoHygiene"/>
+                    <textField id="identOthersField" property="identOthers"/>
+                    <checkBox id="familyNoRelationshipField" property="familyNoRelationship"/>
+                    <checkBox id="familyNoAdultField" property="familyNoAdult"/>
+                    <checkBox id="familyDomesticViolenceField" property="familyDomesticViolence"/>
+                    <checkBox id="familyNoConnectionField" property="familyNoConnection"/>
+                    <checkBox id="familyBadReviewField" property="familyBadReview"/>
+                    <checkBox id="familyBadFriendsField" property="familyBadFriends"/>
+                    <checkBox id="familyNoSkillsField" property="familyNoSkills"/>
+                    <checkBox id="familyChildIsAdultField" property="familyChildIsAdult"/>
+                    <checkBox id="familyDifferentParentsField" property="familyDifferentParents"/>
+                    <checkBox id="familyChildConflictField" property="familyChildConflict"/>
+                    <checkBox id="familyNoTimeCommunicationField" property="familyNoTimeCommunication"/>
+                    <checkBox id="familyAwayFromParentsField" property="familyAwayFromParents"/>
+                    <checkBox id="familySexualProblemsField" property="familySexualProblems"/>
+                    <checkBox id="familyChildParentConflictField" property="familyChildParentConflict"/>
+                    <checkBox id="familyChronicalDiseaseField" property="familyChronicalDisease"/>
+                    <checkBox id="familyHasJailField" property="familyHasJail"/>
+                    <checkBox id="familyHasTraumaField" property="familyHasTrauma"/>
+                    <textField id="familyOthersField" property="familyOthers"/>
+                    <checkBox id="selfNoPhysicialActivityField" property="selfNoPhysicialActivity"/>
+                    <checkBox id="selfNoPracticalSkillsField" property="selfNoPracticalSkills"/>
+                    <checkBox id="selfNoMoneyField" property="selfNoMoney"/>
+                    <checkBox id="selfNoHelpField" property="selfNoHelp"/>
+                    <textField id="selfOthersField" property="selfOthers"/>
+                    <checkBox id="parentsNoBasicField" property="parentsNoBasic"/>
+                    <checkBox id="parentsNoDailyRoutineField" property="parentsNoDailyRoutine"/>
+                    <checkBox id="parentsNoSpaceField" property="parentsNoSpace"/>
+                    <checkBox id="parentsNoChildHealthField" property="parentsNoChildHealth"/>
+                    <checkBox id="parentsNoPraisedField" property="parentsNoPraised"/>
+                    <checkBox id="parentsNoSchoolField" property="parentsNoSchool"/>
+                    <checkBox id="parentsDontKnowField" property="parentsDontKnow"/>
+                    <checkBox id="parentsDontCareField" property="parentsDontCare"/>
+                    <checkBox id="parentNoDisciplineField" property="parentNoDiscipline"/>
+                    <textField id="parentsOthersField" property="parentsOthers"/>
+                    <checkBox id="homeNoHomeField" property="homeNoHome"/>
+                    <checkBox id="homeEvictionField" property="homeEviction"/>
+                    <checkBox id="homeDangerField" property="homeDanger"/>
+                    <checkBox id="homeNoJobField" property="homeNoJob"/>
+                    <checkBox id="homeNoBenefitsField" property="homeNoBenefits"/>
+                    <checkBox id="homeNoMoneyField" property="homeNoMoney"/>
+                    <textField id="homeOthersField" property="homeOthers"/>
+                </column>
+            </form>
+            <groupBox id="pivotTableGroupBox" caption="msg://com.company.unicef.entity/SecondForm.pivotTableGroupBox" visible="false">
+                    <groupTable id="pivotGroupTable2" dataContainer="pivotTableCheckBoxesDc" width="100%">
+                        <columns>
+                            <group>
+                                <column id="category" caption="msg://com.company.unicef.entity/PivotTableCheckBoxes.category"/>
+                            </group>
+                            <column id="level" caption="msg://com.company.unicef.entity/PivotTableCheckBoxes.level"/>
+                        </columns>
+                    </groupTable>
+            </groupBox>
+        </scrollBox>
+
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+            <button id="calculatePivotTable" caption="msg://com.company.unicef.entity/SecondForm.calculatePivotTable"/>
+        </hbox>
+    </layout>
+</window>

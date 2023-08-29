@@ -1,0 +1,61 @@
+@import "../helium/helium";
+
+@mixin main {
+  @include helium;
+  @include responsive-table;
+}
+
+@mixin responsive-table($primary-stylename: v-table) {
+  .level-low {
+    background-color: green;
+    color: white;
+  }
+
+  .level-medium {
+    background-color: yellow;
+    color: white;
+  }
+
+  .level-high {
+    background-color: red;
+    color: white;
+  }
+
+  .#{$primary-stylename} {
+    .#{$primary-stylename}-row,
+    .#{$primary-stylename}-row-odd {
+      &.level-high{
+        background-color: red;
+        color: white;
+
+        .jmix-grouptable-group-cell-expander:before {
+          color: white;
+        }
+      }
+    }
+
+    .#{$primary-stylename}-row,
+    .#{$primary-stylename}-row-odd {
+      &.level-low {
+        background-color: green;
+        color: white;
+
+        .jmix-grouptable-group-cell-expander:before {
+          color: white;
+        }
+      }
+    }
+
+    .#{$primary-stylename}-row,
+    .#{$primary-stylename}-row-odd {
+      &.level-medium {
+        background-color: yellow;
+        color: white;
+
+        .jmix-grouptable-group-cell-expander:before {
+          color: white;
+        }
+      }
+    }
+  }
+}

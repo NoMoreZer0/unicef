@@ -1,14 +1,21 @@
 package com.company.unicef.entity;
 
+import io.jmix.core.DeletePolicy;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
+import io.jmix.core.entity.annotation.OnDeleteInverse;
+import io.jmix.core.metamodel.annotation.Composition;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 
 import javax.persistence.*;
+import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @JmixEntity
-@Table(name = "STUDENT")
+@Table(name = "STUDENT", indexes = {
+        @Index(name = "IDX_STUDENT_ADDRESS", columnList = "ADDRESS_ID")
+})
 @Entity
 public class Student {
     @JmixGeneratedValue
@@ -40,6 +47,89 @@ public class Student {
 
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "student")
     private OpenCase openCase;
+
+    @Column(name = "BIRTH_DATE")
+    @Temporal(TemporalType.DATE)
+    private Date birthDate;
+
+    @Column(name = "FULL_AGE")
+    private Integer fullAge;
+
+    @Column(name = "SPECIAL_NEEDS")
+    private Integer specialNeeds;
+
+    @Column(name = "CONTACT_PHONE")
+    private String contactPhone;
+
+    @Composition
+    @OneToMany(mappedBy = "student")
+    private List<Parent> parents;
+
+    @OnDeleteInverse(DeletePolicy.CASCADE)
+    @JoinColumn(name = "ADDRESS_ID")
+    @Composition
+    @OneToOne(fetch = FetchType.LAZY)
+    private Address address;
+
+    @Composition
+    @OneToMany(mappedBy = "student")
+    private List<Relative> relative;
+
+    public List<Relative> getRelative() {
+        return relative;
+    }
+
+    public void setRelative(List<Relative> relative) {
+        this.relative = relative;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public List<Parent> getParents() {
+        return parents;
+    }
+
+    public void setParents(List<Parent> parents) {
+        this.parents = parents;
+    }
+
+    public String getContactPhone() {
+        return contactPhone;
+    }
+
+    public void setContactPhone(String contactPhone) {
+        this.contactPhone = contactPhone;
+    }
+
+    public SpecialNeedsField getSpecialNeeds() {
+        return specialNeeds == null ? null : SpecialNeedsField.fromId(specialNeeds);
+    }
+
+    public void setSpecialNeeds(SpecialNeedsField specialNeeds) {
+        this.specialNeeds = specialNeeds == null ? null : specialNeeds.getId();
+    }
+
+    public Integer getFullAge() {
+        return fullAge;
+    }
+
+    public void setFullAge(Integer fullAge) {
+        this.fullAge = fullAge;
+    }
+
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
+    }
 
     public OpenCase getOpenCase() {
         return openCase;

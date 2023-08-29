@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://relativeBrowse.caption"
+        focusComponent="relativesTable">
+    <data readOnly="true">
+        <collection id="relativesDc"
+                    class="com.company.unicef.entity.Relative">
+            <fetchPlan extends="_base"/>
+            <loader id="relativesDl">
+                <query>
+                    <![CDATA[select e from Relative_ e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="relativesTable" spacing="true">
+        <filter id="filter"
+                dataLoader="relativesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="relativesTable"
+                    width="100%"
+                    dataContainer="relativesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="fio"/>
+                <column id="age"/>
+                <column id="relationDegree"/>
+                <column id="workPlace"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="relativesTable.create"/>
+                <button id="editBtn" action="relativesTable.edit"/>
+                <button id="removeBtn" action="relativesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

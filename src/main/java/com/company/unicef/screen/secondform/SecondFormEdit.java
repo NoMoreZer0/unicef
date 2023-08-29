@@ -1,0 +1,568 @@
+package com.company.unicef.screen.secondform;
+
+import com.company.unicef.entity.PivotTableCheckBoxes;
+import com.company.unicef.entity.SecondForm;
+import io.jmix.core.DataManager;
+import io.jmix.ui.component.*;
+import io.jmix.ui.component.data.GroupInfo;
+import io.jmix.ui.model.CollectionPropertyContainer;
+import io.jmix.ui.screen.*;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
+
+@UiController("SecondForm.edit")
+@UiDescriptor("second-form-edit.xml")
+@EditedEntityContainer("secondFormDc")
+public class SecondFormEdit extends StandardEditor<SecondForm> {
+    @Autowired
+    private CheckBox healthChronicalField;
+    @Autowired
+    private CheckBox healthNoRegisteredField;
+    @Autowired
+    private CheckBox healthNoVaccinationField;
+    @Autowired
+    private CheckBox healthDisabledNoHelpField;
+    @Autowired
+    private CheckBox healthNoHospitalField;
+    private List<CheckBox> healthCheckBoxesLow = new ArrayList<>();
+    private List<CheckBox> healthCheckBoxesMedium = new ArrayList<>();
+    private List<CheckBox> healthCheckBoxesHigh = new ArrayList<>();
+    @Autowired
+    private CheckBox healthNoTestingField;
+    @Autowired
+    private CheckBox healthNoFoodField;
+    @Autowired
+    private CheckBox healthNoSportField;
+    @Autowired
+    private CheckBox healthNoEquipmentField;
+    @Autowired
+    private CheckBox healthNoCoordinationField;
+    @Autowired
+    private CheckBox healthBadWeightOrHeightField;
+    @Autowired
+    private CheckBox healthFobiaField;
+    @Autowired
+    private CheckBox healthBadHabitsField;
+    @Autowired
+    private CheckBox healthWetsBedField;
+    @Autowired
+    private CheckBox healthBadSleepField;
+    @Autowired
+    private CheckBox healthHasTraumaField;
+    @Autowired
+    private CheckBox healthBadCommunicationField;
+    private List<CheckBox> eduCheckBoxesLow = new ArrayList<>();
+    private List<CheckBox> eduCheckBoxesMedium = new ArrayList<>();
+    private List<CheckBox> eduCheckBoxesHigh = new ArrayList<>();
+    @Autowired
+    private CheckBox eduNotLikeField;
+    @Autowired
+    private CheckBox eduNoSubjectField;
+    @Autowired
+    private CheckBox eduWorkingField;
+    @Autowired
+    private CheckBox eduNoDisciplineField;
+    @Autowired
+    private CheckBox eduSchoolFriendField;
+    @Autowired
+    private CheckBox eduSpecialNeedsField;
+    @Autowired
+    private CheckBox eduDifficultProgramField;
+    @Autowired
+    private CheckBox eduFreqAbsentField;
+    @Autowired
+    private CheckBox eduNoAttentionField;
+    @Autowired
+    private CheckBox eduNoClubField;
+    @Autowired
+    private CheckBox eduNoStationeryField;
+    @Autowired
+    private CheckBox eduNoLaptopField;
+    @Autowired
+    private CheckBox eduNoUniformField;
+    @Autowired
+    private CheckBox eduConflictField;
+    @Autowired
+    private CheckBox eduNoDeskField;
+    @Autowired
+    private CheckBox eduAmoralAbsentField;
+    @Autowired
+    private CheckBox eduLowMotivationField;
+
+    private List<CheckBox> emoCheckBoxesLow = new ArrayList<>();
+    private List<CheckBox> emoCheckBoxesMedium = new ArrayList<>();
+    private List<CheckBox> emoCheckBoxesHigh = new ArrayList<>();
+    @Autowired
+    private CheckBox emoNoStabilityField;
+    @Autowired
+    private CheckBox emoAnxietyField;
+    @Autowired
+    private CheckBox emoNoFriendsField;
+    @Autowired
+    private CheckBox emoDepressionField;
+    @Autowired
+    private CheckBox emoBullyingField;
+    @Autowired
+    private CheckBox emoOutsideOfHomeField;
+    @Autowired
+    private CheckBox emoAloneField;
+    @Autowired
+    private CheckBox emoSelfHarassmentField;
+    @Autowired
+    private CheckBox emoRanAwayField;
+    @Autowired
+    private CheckBox emoIsBullyField;
+    @Autowired
+    private CheckBox emoRiskingActionField;
+    @Autowired
+    private CheckBox emoConflictWitnessField;
+    @Autowired
+    private CheckBox emoNoEmotionControlField;
+    @Autowired
+    private CheckBox emoSuicidialField;
+    @Autowired
+    private CheckBox emoSuicidialAttemptField;
+    @Autowired
+    private CheckBox emoStealsField;
+    @Autowired
+    private CheckBox emoOnRegisterField;
+    @Autowired
+    private CheckBox emoAggressorField;
+    private List<CheckBox> identCheckBoxesLow = new ArrayList<>();
+    private List<CheckBox> identCheckBoxesMedium = new ArrayList<>();
+    private List<CheckBox> identCheckBoxesHigh = new ArrayList<>();
+    @Autowired
+    private CheckBox identDiscriminationField;
+    @Autowired
+    private CheckBox identNoFamilyField;
+    @Autowired
+    private CheckBox identGenderConfField;
+    @Autowired
+    private CheckBox identGenderDontKnowField;
+    @Autowired
+    private CheckBox identPositiveIndividualField;
+    @Autowired
+    private CheckBox identAgeSolField;
+    @Autowired
+    private CheckBox identNotSureMyselfField;
+    @Autowired
+    private CheckBox identNotSatisfiedField;
+    @Autowired
+    private CheckBox identNoCulturalField;
+    @Autowired
+    private CheckBox identNotIndependentField;
+    @Autowired
+    private CheckBox identNoHygieneField;
+    private List<CheckBox> familyCheckBoxesLow = new ArrayList<>();
+    private List<CheckBox> familyCheckBoxesMedium = new ArrayList<>();
+    private List<CheckBox> familyCheckBoxesHigh = new ArrayList<>();
+    @Autowired
+    private CheckBox familyNoRelationshipField;
+    @Autowired
+    private CheckBox familyNoAdultField;
+    @Autowired
+    private CheckBox familyDomesticViolenceField;
+    @Autowired
+    private CheckBox familyNoConnectionField;
+    @Autowired
+    private CheckBox familyBadReviewField;
+    @Autowired
+    private CheckBox familyBadFriendsField;
+    @Autowired
+    private CheckBox familyNoSkillsField;
+    @Autowired
+    private CheckBox familyChildIsAdultField;
+    @Autowired
+    private CheckBox familyDifferentParentsField;
+    @Autowired
+    private CheckBox familyChildConflictField;
+    @Autowired
+    private CheckBox familyNoTimeCommunicationField;
+    @Autowired
+    private CheckBox familyAwayFromParentsField;
+    @Autowired
+    private CheckBox familySexualProblemsField;
+    @Autowired
+    private CheckBox familyChildParentConflictField;
+    @Autowired
+    private CheckBox familyChronicalDiseaseField;
+    @Autowired
+    private CheckBox familyHasJailField;
+    @Autowired
+    private CheckBox familyHasTraumaField;
+    private List<CheckBox> selfCheckBoxesLow = new ArrayList<>();
+    private List<CheckBox> selfCheckBoxesMedium = new ArrayList<>();
+    private List<CheckBox> selfCheckBoxesHigh = new ArrayList<>();
+    @Autowired
+    private CheckBox selfNoPhysicialActivityField;
+    @Autowired
+    private CheckBox selfNoPracticalSkillsField;
+    @Autowired
+    private CheckBox selfNoMoneyField;
+    @Autowired
+    private CheckBox selfNoHelpField;
+    private List<CheckBox> parentsCheckBoxesLow = new ArrayList<>();
+    private List<CheckBox> parentsCheckBoxesMedium = new ArrayList<>();
+    private List<CheckBox> parentsCheckBoxesHigh = new ArrayList<>();
+    @Autowired
+    private CheckBox parentsNoBasicField;
+    @Autowired
+    private CheckBox parentsNoDailyRoutineField;
+    @Autowired
+    private CheckBox parentsNoSpaceField;
+    @Autowired
+    private CheckBox parentsNoChildHealthField;
+    @Autowired
+    private CheckBox parentsNoPraisedField;
+    @Autowired
+    private CheckBox parentsNoSchoolField;
+    @Autowired
+    private CheckBox parentsDontKnowField;
+    @Autowired
+    private CheckBox parentsDontCareField;
+    @Autowired
+    private CheckBox parentNoDisciplineField;
+    private List<CheckBox> homeCheckBoxesLow = new ArrayList<>();
+    private List<CheckBox> homeCheckBoxesMedium = new ArrayList<>();
+    private List<CheckBox> homeCheckBoxesHigh = new ArrayList<>();
+    @Autowired
+    private CheckBox homeNoHomeField;
+    @Autowired
+    private CheckBox homeEvictionField;
+    @Autowired
+    private CheckBox homeDangerField;
+    @Autowired
+    private CheckBox homeNoJobField;
+    @Autowired
+    private CheckBox homeNoBenefitsField;
+    @Autowired
+    private CheckBox homeNoMoneyField;
+    @Autowired
+    private GroupBoxLayout pivotTableGroupBox;
+    @Autowired
+    private CollectionPropertyContainer<PivotTableCheckBoxes> pivotTableCheckBoxesDc;
+    @Autowired
+    private DataManager dataManager;
+    private String low = "Низкий";
+    private String medium = "Средний";
+    private String high = "Высокий";
+    private String homeCategory = "Жилье, работа, доход семьи";
+    private String parentsCategory = "БАЗОВЫЙ УХОД ОБЕСПЕЧЕНИЕ БЕЗОПАСНОСТИ";
+    private String selfCategory = "НАВЫКИ СМООБСЛУЖИВАНИЯ";
+    private String familyCategory = "СЕМЬЯ И СОЦИАЛЬНЫЕ ОТНОШЕНИЯ";
+    private String identCategory = "ИДЕНТИЧНОСТЬ И СОЦИАЛЬНАЯ ПРЕЗЕНТАЦИЯ";
+    private String emoCategory = "ЭМОЦИОНАЛЬНОЕ И ПОВЕДЕНЧЕСКОЕ РАЗВИТИЕ";
+    private String eduCategory = "ОБРАЗОВАНИЕ";
+    private String healthCategory = "ЗДОРОВЬЕ";
+    @Autowired
+    private HtmlAttributes htmlAttributes;
+    @Autowired
+    private GroupTable<PivotTableCheckBoxes> pivotGroupTable2;
+
+
+    @Subscribe
+    public void onInit(InitEvent event) {
+        fillHealthCheckBoxes();
+        fillEduCheckBoxes();
+        fillEmoCheckBoxes();
+        fillIdentCheckBoxes();
+        fillFamilyCheckBoxes();
+        fillSelfCheckBoxes();
+        fillParentsCheckBoxes();
+        fillHomeCheckBoxes();
+    }
+
+    private void fillHomeCheckBoxes() {
+        homeCheckBoxesLow.add(homeNoHomeField);
+
+        homeCheckBoxesMedium.add(homeEvictionField);
+        homeCheckBoxesMedium.add(homeDangerField);
+        homeCheckBoxesMedium.add(homeNoJobField);
+        homeCheckBoxesMedium.add(homeNoBenefitsField);
+        homeCheckBoxesMedium.add(homeNoMoneyField);
+    }
+
+    private void fillParentsCheckBoxes() {
+        parentsCheckBoxesLow.add(parentsNoDailyRoutineField);
+        parentsCheckBoxesLow.add(parentsNoPraisedField);
+        parentsCheckBoxesLow.add(parentsDontKnowField);
+
+        parentsCheckBoxesMedium.add(parentsNoSpaceField);
+        parentsCheckBoxesMedium.add(parentsNoSchoolField);
+        parentsCheckBoxesMedium.add(parentsDontCareField);
+        parentsCheckBoxesMedium.add(parentNoDisciplineField);
+
+        parentsCheckBoxesHigh.add(parentsNoBasicField);
+        parentsCheckBoxesHigh.add(parentsNoChildHealthField);
+    }
+
+    private void fillSelfCheckBoxes() {
+        selfCheckBoxesLow.add(selfNoPhysicialActivityField);
+        selfCheckBoxesLow.add(selfNoPracticalSkillsField);
+        selfCheckBoxesLow.add(selfNoMoneyField);
+        selfCheckBoxesMedium.add(selfNoHelpField);
+    }
+    private void fillFamilyCheckBoxes() {
+        familyCheckBoxesLow.add(familyDifferentParentsField);
+        familyCheckBoxesLow.add(familyNoTimeCommunicationField);
+
+        familyCheckBoxesMedium.add(familyNoRelationshipField);
+        familyCheckBoxesMedium.add(familyNoAdultField);
+        familyCheckBoxesMedium.add(familyNoConnectionField);
+        familyCheckBoxesMedium.add(familyBadReviewField);
+        familyCheckBoxesMedium.add(familyBadFriendsField);
+        familyCheckBoxesMedium.add(familyNoSkillsField);
+        familyCheckBoxesMedium.add(familyChildIsAdultField);
+        familyCheckBoxesMedium.add(familyAwayFromParentsField);
+        familyCheckBoxesMedium.add(familyChildParentConflictField);
+        familyCheckBoxesMedium.add(familyChronicalDiseaseField);
+        familyCheckBoxesMedium.add(familyHasJailField);
+        familyCheckBoxesMedium.add(familyHasTraumaField);
+
+        familyCheckBoxesHigh.add(familyDomesticViolenceField);
+        familyCheckBoxesHigh.add(familyChildConflictField);
+        familyCheckBoxesHigh.add(familySexualProblemsField);
+    }
+
+    private void fillIdentCheckBoxes() {
+        identCheckBoxesLow.add(identNotSureMyselfField);
+        identCheckBoxesLow.add(identNotSatisfiedField);
+        identCheckBoxesLow.add(identNoCulturalField);
+        identCheckBoxesLow.add(identNotIndependentField);
+
+        identCheckBoxesMedium.add(identNoFamilyField);
+        identCheckBoxesMedium.add(identNoFamilyField);
+        identCheckBoxesMedium.add(identGenderConfField);
+        identCheckBoxesMedium.add(identPositiveIndividualField);
+        identCheckBoxesMedium.add(identAgeSolField);
+        identCheckBoxesMedium.add(identNoHygieneField);
+
+
+        identCheckBoxesHigh.add(identDiscriminationField);
+        identCheckBoxesHigh.add(identGenderDontKnowField);
+    }
+    private void fillEduCheckBoxes() {
+        eduCheckBoxesHigh.add(eduNotLikeField);
+        eduCheckBoxesHigh.add(eduSpecialNeedsField);
+        eduCheckBoxesHigh.add(eduDifficultProgramField);
+        eduCheckBoxesHigh.add(eduFreqAbsentField);
+        eduCheckBoxesHigh.add(eduAmoralAbsentField);
+
+        eduCheckBoxesMedium.add(eduWorkingField);
+        eduCheckBoxesMedium.add(eduNoDisciplineField);
+        eduCheckBoxesMedium.add(eduNoAttentionField);
+        eduCheckBoxesMedium.add(eduNoStationeryField);
+        eduCheckBoxesMedium.add(eduNoLaptopField);
+        eduCheckBoxesMedium.add(eduNoUniformField);
+        eduCheckBoxesMedium.add(eduConflictField);
+        eduCheckBoxesMedium.add(eduNoDeskField);
+        eduCheckBoxesMedium.add(eduLowMotivationField);
+
+        eduCheckBoxesLow.add(eduNoSubjectField);
+        eduCheckBoxesLow.add(eduSchoolFriendField);
+        eduCheckBoxesLow.add(eduNoClubField);
+    }
+    private void fillHealthCheckBoxes() {
+        healthCheckBoxesHigh.add(healthNoFoodField);
+        healthCheckBoxesHigh.add(healthNoEquipmentField);
+        healthCheckBoxesHigh.add(healthNoCoordinationField);
+        healthCheckBoxesHigh.add(healthBadHabitsField);
+        healthCheckBoxesHigh.add(healthWetsBedField);
+        healthCheckBoxesHigh.add(healthBadCommunicationField);
+
+        healthCheckBoxesMedium.add(healthChronicalField);
+        healthCheckBoxesMedium.add(healthNoRegisteredField);
+        healthCheckBoxesMedium.add(healthDisabledNoHelpField);
+        healthCheckBoxesMedium.add(healthNoHospitalField);
+        healthCheckBoxesMedium.add(healthNoTestingField);
+        healthCheckBoxesMedium.add(healthBadWeightOrHeightField);
+        healthCheckBoxesMedium.add(healthFobiaField);
+        healthCheckBoxesMedium.add(healthBadSleepField);
+        healthCheckBoxesMedium.add(healthHasTraumaField);
+
+        healthCheckBoxesLow.add(healthNoVaccinationField);
+        healthCheckBoxesLow.add(healthNoSportField);
+    }
+    private void fillEmoCheckBoxes() {
+        emoCheckBoxesMedium.add(emoNoStabilityField);
+        emoCheckBoxesMedium.add(emoNoFriendsField);
+        emoCheckBoxesMedium.add(emoOutsideOfHomeField);
+        emoCheckBoxesMedium.add(emoAloneField);
+        emoCheckBoxesMedium.add(emoSelfHarassmentField);
+        emoCheckBoxesMedium.add(emoRanAwayField);
+        emoCheckBoxesMedium.add(emoIsBullyField);
+        emoCheckBoxesMedium.add(emoRiskingActionField);
+        emoCheckBoxesMedium.add(emoConflictWitnessField);
+        emoCheckBoxesMedium.add(emoNoEmotionControlField);
+        emoCheckBoxesMedium.add(emoStealsField);
+        emoCheckBoxesMedium.add(emoOnRegisterField);
+
+        emoCheckBoxesHigh.add(emoAnxietyField);
+        emoCheckBoxesHigh.add(emoDepressionField);
+        emoCheckBoxesHigh.add(emoBullyingField);
+        emoCheckBoxesHigh.add(emoSuicidialField);
+        emoCheckBoxesHigh.add(emoSuicidialAttemptField);
+        emoCheckBoxesHigh.add(emoAggressorField);
+    }
+
+    @Subscribe("calculatePivotTable")
+    public void onCalculatePivotTableClick(Button.ClickEvent event) {
+        pivotTableCheckBoxesDc.getMutableItems().clear();
+        calcPivotTableHealth();
+        calcPivotTableEdu();
+        calcPivotTableEmo();
+        calcPivotTableIdent();
+        calcPivotTableFamily();
+        calcPivotTableSelf();
+        calcPivotTableParents();
+        calcPivotTableHome();
+        pivotTableGroupBox.setVisible(true);
+        pivotGroupTable2.setStyleProvider(new GroupTable.GroupStyleProvider<PivotTableCheckBoxes>() {
+            @Nullable
+            @Override
+            public String getStyleName(GroupInfo info) {
+                return null;
+            }
+
+            @Override
+            public String getStyleName(PivotTableCheckBoxes e, @Nullable String s) {
+                if (s == null) {
+                    return "level-default";
+                } else if (s.equals("level")) {
+                    if (e.getLevel().equals(low)) {
+                        return "level-low";
+                    }
+                    else if (e.getLevel().equals(medium)) {
+                        return "level-medium";
+                    }
+                    else {
+                        return "level-high";
+                    }
+                }
+                return null;
+            }
+        });
+    }
+
+//    @Install(to = "pivotGroupTable", subject = "styleProvider")
+//    private String pivotGroupTableStyleProvider(PivotTableCheckBoxes e, String s) {
+//        if (s == null) {
+//            return "level-default";
+//        } else if (s.equals("level")) {
+//            if (e.getLevel().equals(low)) {
+//                return "level-low";
+//            }
+//            else if (e.getLevel().equals(medium)) {
+//                return "level-medium";
+//            }
+//            else {
+//                return "level-high";
+//            }
+//        }
+//        return null;
+//    }
+
+    private PivotTableCheckBoxes createPivotTableCheckBox(String category, String level) {
+        PivotTableCheckBoxes pivotTableCheckBoxes = dataManager.create(PivotTableCheckBoxes.class);
+        pivotTableCheckBoxes.setCategory(category);
+        pivotTableCheckBoxes.setLevel(level);
+        return pivotTableCheckBoxes;
+    }
+
+    private void calcPivotTableHome() {
+        boolean homeLowFlag = homeCheckBoxesLow.stream().anyMatch(CheckBox::isChecked);
+        boolean homeMediumFlag = homeCheckBoxesMedium.stream().anyMatch(CheckBox::isChecked);
+        boolean homeHighFlag = homeCheckBoxesHigh.stream().anyMatch(CheckBox::isChecked);
+        getEditedEntity().setHomeLow(homeLowFlag);
+        getEditedEntity().setHomeMedium(homeMediumFlag);
+        getEditedEntity().setHomeHigh(homeHighFlag);
+        if (homeLowFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(homeCategory, low));
+        if (homeMediumFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(homeCategory, medium));
+        if (homeHighFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(homeCategory, high));
+    }
+
+    private void calcPivotTableParents() {
+        boolean parentsLowFlag = parentsCheckBoxesLow.stream().anyMatch(CheckBox::isChecked);
+        boolean parentsMediumFlag = parentsCheckBoxesMedium.stream().anyMatch(CheckBox::isChecked);
+        boolean parentsHighFlag = parentsCheckBoxesHigh.stream().anyMatch(CheckBox::isChecked);
+        getEditedEntity().setParentsLow(parentsLowFlag);
+        getEditedEntity().setParentsMedium(parentsMediumFlag);
+        getEditedEntity().setParentsHigh(parentsHighFlag);
+        if (parentsLowFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(parentsCategory, low));
+        if (parentsMediumFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(parentsCategory, medium));
+        if (parentsHighFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(parentsCategory, high));
+    }
+
+    private void calcPivotTableSelf() {
+        boolean selfLowFlag = selfCheckBoxesLow.stream().anyMatch(CheckBox::isChecked);
+        boolean selfMediumFlag = selfCheckBoxesMedium.stream().anyMatch(CheckBox::isChecked);
+        boolean selfHighFlag = selfCheckBoxesHigh.stream().anyMatch(CheckBox::isChecked);
+        getEditedEntity().setSelfLow(selfLowFlag);
+        getEditedEntity().setSelfMedium(selfMediumFlag);
+        getEditedEntity().setSelfHigh(selfHighFlag);
+        if (selfLowFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(selfCategory, low));
+        if (selfMediumFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(selfCategory, medium));
+        if (selfHighFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(selfCategory, high));
+    }
+
+    private void calcPivotTableFamily() {
+        boolean familyLowFlag = familyCheckBoxesLow.stream().anyMatch(CheckBox::isChecked);
+        boolean familyMediumFlag = familyCheckBoxesMedium.stream().anyMatch(CheckBox::isChecked);
+        boolean familyHighFlag = familyCheckBoxesHigh.stream().anyMatch(CheckBox::isChecked);
+        getEditedEntity().setFamilyLow(familyLowFlag);
+        getEditedEntity().setFamilyMedium(familyMediumFlag);
+        getEditedEntity().setFamilyHigh(familyHighFlag);
+        if (familyLowFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(familyCategory, low));
+        if (familyMediumFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(familyCategory, medium));
+        if (familyHighFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(familyCategory, high));
+    }
+
+    private void calcPivotTableIdent() {
+        boolean identLowFlag = identCheckBoxesLow.stream().anyMatch(CheckBox::isChecked);
+        boolean identMediumFlag = identCheckBoxesMedium.stream().anyMatch(CheckBox::isChecked);
+        boolean identHighFlag = identCheckBoxesHigh.stream().anyMatch(CheckBox::isChecked);
+        getEditedEntity().setIdentLow(identLowFlag);
+        getEditedEntity().setIdentMedium(identMediumFlag);
+        getEditedEntity().setIdentHigh(identHighFlag);
+        if (identLowFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(identCategory, low));
+        if (identMediumFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(identCategory, medium));
+        if (identHighFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(identCategory, high));
+    }
+
+    private void calcPivotTableEmo() {
+        boolean emoLowFlag = emoCheckBoxesLow.stream().anyMatch(CheckBox::isChecked);
+        boolean emoMediumFlag = emoCheckBoxesMedium.stream().anyMatch(CheckBox::isChecked);
+        boolean emoHighFlag = emoCheckBoxesHigh.stream().anyMatch(CheckBox::isChecked);
+        getEditedEntity().setEmoLow(emoLowFlag);
+        getEditedEntity().setEmoMedium(emoMediumFlag);
+        getEditedEntity().setEmoHigh(emoHighFlag);
+        if (emoLowFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(emoCategory, low));
+        if (emoMediumFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(emoCategory, medium));
+        if (emoHighFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(emoCategory, high));
+    }
+    private void calcPivotTableEdu() {
+        boolean eduLowFlag = eduCheckBoxesLow.stream().anyMatch(CheckBox::isChecked);
+        boolean eduMediumFlag = eduCheckBoxesMedium.stream().anyMatch(CheckBox::isChecked);
+        boolean eduHighFlag = eduCheckBoxesHigh.stream().anyMatch(CheckBox::isChecked);
+        getEditedEntity().setEduLow(eduLowFlag);
+        getEditedEntity().setEduMedium(eduMediumFlag);
+        getEditedEntity().setEduHigh(eduHighFlag);
+        if (eduLowFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(eduCategory, low));
+        if (eduMediumFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(eduCategory, medium));
+        if (eduHighFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(eduCategory, high));
+    }
+    private void calcPivotTableHealth() {
+        boolean healthLowFlag = healthCheckBoxesLow.stream().anyMatch(CheckBox::isChecked);
+        boolean healthMediumFlag = healthCheckBoxesMedium.stream().anyMatch(CheckBox::isChecked);
+        boolean healthHighFlag = healthCheckBoxesHigh.stream().anyMatch(CheckBox::isChecked);
+        getEditedEntity().setHealthLow(healthLowFlag);
+        getEditedEntity().setHealthMedium(healthMediumFlag);
+        getEditedEntity().setHealthHigh(healthHighFlag);
+        if (healthLowFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(healthCategory, low));
+        if (healthMediumFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(healthCategory, medium));
+        if (healthHighFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(healthCategory, high));
+    }
+}
