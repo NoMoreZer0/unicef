@@ -1,1 +1,0 @@
-export {SecondaryButton as default} from './SecondaryButton';

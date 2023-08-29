@@ -1,1 +1,0 @@
-export {CaseList as default} from './CaseList';

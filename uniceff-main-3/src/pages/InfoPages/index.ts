@@ -1,1 +1,0 @@
-export {InfoPages as default} from './InfoPages';

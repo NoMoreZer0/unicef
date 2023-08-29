@@ -1,1 +1,0 @@
-export {Form1 as default} from './form1';

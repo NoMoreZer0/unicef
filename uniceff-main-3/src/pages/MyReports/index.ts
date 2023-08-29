@@ -1,1 +1,0 @@
-export {MyReports as default} from './MyReports';
