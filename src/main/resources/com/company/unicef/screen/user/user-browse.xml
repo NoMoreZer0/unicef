@@ -61,9 +61,9 @@
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
-                <button id="createBtn" action="usersTable.create"/>
-                <button id="editBtn" action="usersTable.edit"/>
-                <button id="removeBtn" action="usersTable.remove"/>
+                <button id="createBtn" action="usersTable.create" caption="msg://com.company.unicef.screen.event/com.company.unicef.createButton"/>
+                <button id="editBtn" action="usersTable.edit" caption="msg://com.company.unicef.screen.event/com.company.unicef.editButton"/>
+                <button id="removeBtn" action="usersTable.remove" caption="msg://com.company.unicef.screen.event/com.company.unicef.excludeButton"/>
                 <button id="showRoleAssignmentsBtn" action="usersTable.showRoleAssignments"/>
                 <popupButton id="additionalActionsBtn" caption="msg://additional" icon="GEARS">
                     <actions>

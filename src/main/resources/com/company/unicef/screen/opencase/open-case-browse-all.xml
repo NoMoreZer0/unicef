@@ -53,7 +53,7 @@
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
-                <button id="viewBtn" action="openCasesTable.view"/>
+                <button id="viewBtn" action="openCasesTable.view" caption="msg://com.company.unicef.screen.event/com.company.unicef.viewButton"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">

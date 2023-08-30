@@ -51,9 +51,9 @@
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
-                <button id="createBtn" action="parentsTable.create"/>
-                <button id="editBtn" action="parentsTable.edit"/>
-                <button id="removeBtn" action="parentsTable.remove"/>
+                <button id="createBtn" action="parentsTable.create" caption="msg://com.company.unicef.screen.event/com.company.unicef.createButton"/>
+                <button id="editBtn" action="parentsTable.edit" caption="msg://com.company.unicef.screen.event/com.company.unicef.editButton"/>
+                <button id="removeBtn" action="parentsTable.remove" caption="msg://com.company.unicef.screen.event/com.company.unicef.excludeButton"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">

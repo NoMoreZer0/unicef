@@ -163,9 +163,9 @@
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
-                <button id="createBtn" action="secondFormsTable.create"/>
-                <button id="editBtn" action="secondFormsTable.edit"/>
-                <button id="removeBtn" action="secondFormsTable.remove"/>
+                <button id="createBtn" action="secondFormsTable.create" caption="msg://com.company.unicef.screen.event/com.company.unicef.createButton"/>
+                <button id="editBtn" action="secondFormsTable.edit" caption="msg://com.company.unicef.screen.event/com.company.unicef.editButton"/>
+                <button id="removeBtn" action="secondFormsTable.remove" caption="msg://com.company.unicef.screen.event/com.company.unicef.excludeButton"/>
                 <button id="runBtn" action="secondFormsTable.run"/>
             </buttonsPanel>
         </groupTable>

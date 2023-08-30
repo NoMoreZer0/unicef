@@ -5,6 +5,10 @@
   @include responsive-table;
 }
 
+@mixin test {
+
+}
+
 @mixin responsive-table($primary-stylename: v-table) {
   .level-low {
     background-color: green;

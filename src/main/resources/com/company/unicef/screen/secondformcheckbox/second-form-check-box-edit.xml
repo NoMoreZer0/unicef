@@ -51,7 +51,7 @@
                     <column id="name"/>
                 </columns>
                 <buttonsPanel>
-                    <button action="needNamesTable.remove"/>
+                    <button action="needNamesTable.remove" caption="msg://com.company.unicef.screen.event/com.company.unicef.excludeButton"/>
                 </buttonsPanel>
             </table>
         </groupBox>
@@ -67,7 +67,7 @@
                 </columns>
                 <buttonsPanel>
                     <button action="secondFormEventsTable.add"
-                            caption="msg://com.company.unicef.screen.event/com.company.unicef.createButton"/>
+                            caption="msg://com.company.unicef.screen.event/com.company.unicef.addButton"/>
                     <button action="secondFormEventsTable.exclude"
                             caption="msg://com.company.unicef.screen.event/com.company.unicef.excludeButton"/>
                 </buttonsPanel>
@@ -75,7 +75,7 @@
         </groupBox>
         <hbox id="editActions" spacing="true">
             <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
-            <button id="closeBtn" action="windowClose"/>
+            <button id="closeBtn" action="windowClose" caption="msg://com.company.unicef.screen.event/com.company.unicef.closeButton"/>
         </hbox>
     </layout>
 </window>

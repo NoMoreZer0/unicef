@@ -199,10 +199,10 @@
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
-                <button id="addBtn" action="firstFormsTable.add"/>
-                <button id="createBtn" action="firstFormsTable.create"/>
-                <button id="editBtn" action="firstFormsTable.edit"/>
-                <button id="removeBtn" action="firstFormsTable.remove"/>
+                <button id="addBtn" action="firstFormsTable.add" caption="msg://com.company.unicef.screen.event/com.company.unicef.addButton"/>
+                <button id="createBtn" action="firstFormsTable.create" caption="msg://com.company.unicef.screen.event/com.company.unicef.createButton"/>
+                <button id="editBtn" action="firstFormsTable.edit" caption="msg://com.company.unicef.screen.event/com.company.unicef.editButton"/>
+                <button id="removeBtn" action="firstFormsTable.remove" caption="msg://com.company.unicef.screen.event/com.company.unicef.excludeButton"/>
                 <button id="runBtn" action="firstFormsTable.run"/>
             </buttonsPanel>
         </groupTable>

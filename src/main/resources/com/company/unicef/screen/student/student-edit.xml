@@ -61,9 +61,9 @@
                         <column id="familyStatus"/>
                     </columns>
                     <buttonsPanel>
-                        <button action="parentsTable.create"/>
-                        <button action="parentsTable.edit"/>
-                        <button action="parentsTable.remove"/>
+                        <button action="parentsTable.create" caption="msg://com.company.unicef.screen.event/com.company.unicef.createButton"/>
+                        <button action="parentsTable.edit" caption="msg://com.company.unicef.screen.event/com.company.unicef.editButton"/>
+                        <button action="parentsTable.remove" caption="msg://com.company.unicef.screen.event/com.company.unicef.excludeButton"/>
                     </buttonsPanel>
                 </table>
             </groupBox>
@@ -82,16 +82,16 @@
                         <column id="workPlace"/>
                     </columns>
                     <buttonsPanel>
-                        <button action="relativeTable.create"/>
-                        <button action="relativeTable.edit"/>
-                        <button action="relativeTable.remove"/>
+                        <button action="relativeTable.create" caption="msg://com.company.unicef.screen.event/com.company.unicef.createButton"/>
+                        <button action="relativeTable.edit" caption="msg://com.company.unicef.screen.event/com.company.unicef.editButton"/>
+                        <button action="relativeTable.remove" caption="msg://com.company.unicef.screen.event/com.company.unicef.excludeButton"/>
                     </buttonsPanel>
                 </table>
             </groupBox>
         </scrollBox>
         <hbox id="editActions" spacing="true">
             <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
-            <button id="closeBtn" action="windowClose"/>
+            <button id="closeBtn" action="windowClose" caption="msg://com.company.unicef.screen.event/com.company.unicef.closeButton"/>
         </hbox>
     </layout>
 </window>

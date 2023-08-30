@@ -36,7 +36,7 @@
         </form>
         <hbox id="editActions" spacing="true">
             <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
-            <button id="closeBtn" action="windowClose"/>
+            <button id="closeBtn" action="windowClose" caption="msg://com.company.unicef.screen.event/com.company.unicef.closeButton"/>
         </hbox>
     </layout>
 </window>

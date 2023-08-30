@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <menu-config xmlns="http://jmix.io/schema/ui/menu">
-
     <menu id="application" caption="msg://com.company.unicef/menu.application" insertBefore="administration">
         <item screen="FirstForm.browse" caption="msg://com.company.unicef.screen.firstform/firstFormBrowse.menu"/>
         <item screen="SecondForm.browse" caption="msg://com.company.unicef.screen.secondform/secondFormBrowse.menu"/>
@@ -9,17 +8,19 @@
         <item screen="Student.browse" caption="msg://com.company.unicef.screen.student/studentBrowse.menu"/>
         <item screen="User.browse" caption="msg://com.company.unicef.screen.user/UserBrowse.caption"/>
         <item screen="AllFiles.browse" caption="msg://com.company.unicef.screen.allfiles/allFilesBrowse.menu"/>
-        <item screen="themeSettingsScreen" caption="msg://io.jmix.ui.app.themesettings/themeSettings.caption"/>
-        <item screen="SecondFormCheckBox.browse"
-              caption="msg://com.company.unicef.screen.secondformcheckbox/secondFormCheckBoxBrowse.menu"/>
-        <item screen="Event.browse" caption="msg://com.company.unicef.screen.event/eventBrowse.menu"/>
-        <item screen="Result_.browse" caption="msg://com.company.unicef.screen.result/resultBrowse.menu"/>
-        <item screen="Address.browse" caption="msg://com.company.unicef.screen.address/addressBrowse.menu"/>
-        <item screen="Relative_.browse" caption="msg://com.company.unicef.screen.relative/relativeBrowse.menu"/>
-        <item screen="ResponsibleEmployee.browse"
-              caption="msg://com.company.unicef.screen.responsibleemployee/responsibleEmployeeBrowse.menu"/>
-        <item screen="Representatives.browse"
-              caption="msg://com.company.unicef.screen.representatives/representativesBrowse.menu"/>
+        <item screen="Parent.browse" caption="msg://com.company.unicef.screen.parent/parentBrowse.menu"/>
+<!--        <item screen="SecondFormCheckBox.browse"-->
+<!--              caption="msg://com.company.unicef.screen.secondformcheckbox/secondFormCheckBoxBrowse.menu"/>-->
+<!--        <item screen="Event.browse" caption="msg://com.company.unicef.screen.event/eventBrowse.menu"/>-->
+<!--        <item screen="Result_.browse" caption="msg://com.company.unicef.screen.result/resultBrowse.menu"/>-->
+<!--        <item screen="Address.browse" caption="msg://com.company.unicef.screen.address/addressBrowse.menu"/>-->
+<!--        <item screen="Relative_.browse" caption="msg://com.company.unicef.screen.relative/relativeBrowse.menu"/>-->
+<!--        <item screen="ResponsibleEmployee.browse"-->
+<!--              caption="msg://com.company.unicef.screen.responsibleemployee/responsibleEmployeeBrowse.menu"/>-->
+<!--        <item screen="Representatives.browse"-->
+<!--              caption="msg://com.company.unicef.screen.representatives/representativesBrowse.menu"/>-->
+    </menu>
+    <menu id="needs" caption="msg://com.company.unicef/menu.needs" insertAfter="application">
         <item screen="NeedsHealth.browse" caption="msg://com.company.unicef.screen.needshealth/needsHealthBrowse.menu"/>
         <item screen="NeedsEducation.browse"
               caption="msg://com.company.unicef.screen.needseducation/needsEducationBrowse.menu"/>
@@ -31,6 +32,8 @@
         <item screen="NeedsSelf.browse" caption="msg://com.company.unicef.screen.needsself/needsSelfBrowse.menu"/>
         <item screen="NeedsCare.browse" caption="msg://com.company.unicef.screen.needscare/needsCareBrowse.menu"/>
         <item screen="NeedsHome.browse" caption="msg://com.company.unicef.screen.needshome/needsHomeBrowse.menu"/>
-        <item screen="Parent.browse" caption="msg://com.company.unicef.screen.parent/parentBrowse.menu"/>
+    </menu>
+    <menu id="appearance" caption="msg://com.company.unicef/menu.appearance" insertAfter="needs">
+        <item screen="themeSettingsScreen" caption="msg://com.company.unicef/menu.theme"/>
     </menu>
 </menu-config>

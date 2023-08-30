@@ -74,7 +74,7 @@
                     <column id="familyStatus"/>
                 </columns>
                 <buttonsPanel>
-                    <button action="parentsTable.add" caption="msg://com.company.unicef.createButton"/>
+                    <button action="parentsTable.add" caption="msg://com.company.unicef.screen.event/com.company.unicef.addButton"/>
                     <button action="parentsTable.remove"  caption="msg://com.company.unicef.excludeButton"/>
                 </buttonsPanel>
             </table>
@@ -93,14 +93,14 @@
                     <column id="gradeFourthTerm"/>
                 </columns>
                 <buttonsPanel>
-                    <button action="eventResultsTable.add" caption="msg://com.company.unicef.createButton"/>
-                    <button action="eventResultsTable.exclude" caption="msg://com.company.unicef.excludeButton"/>
+                    <button action="eventResultsTable.add" caption="msg://com.company.unicef.screen.event/com.company.unicef.addButton"/>
+                    <button action="eventResultsTable.exclude" caption="msg://com.company.unicef.screen.event/com.company.unicef.excludeButton"/>
                 </buttonsPanel>
             </table>
         </groupBox>
         <hbox id="editActions" spacing="true">
             <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
-            <button id="closeBtn" action="windowClose"/>
+            <button id="closeBtn" action="windowClose" caption="msg://com.company.unicef.screen.event/com.company.unicef.closeButton"/>
         </hbox>
     </layout>
 </window>
