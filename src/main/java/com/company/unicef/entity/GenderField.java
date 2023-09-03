@@ -5,23 +5,23 @@ import io.jmix.core.metamodel.datatype.impl.EnumClass;
 import javax.annotation.Nullable;
 
 
-public enum GenderField implements EnumClass<Integer> {
+public enum GenderField implements EnumClass<String> {
 
-    MALE(10),
-    FEMALE(20);
+    MALE("Мужской"),
+    FEMALE("Женский");
 
-    private Integer id;
+    private String id;
 
-    GenderField(Integer id) {
+    GenderField(String id) {
         this.id = id;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
     @Nullable
-    public static GenderField fromId(Integer id) {
+    public static GenderField fromId(String id) {
         for (GenderField at : GenderField.values()) {
             if (at.getId().equals(id)) {
                 return at;

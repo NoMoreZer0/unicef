@@ -75,7 +75,6 @@
                         <action id="remove" type="remove"/>
                     </actions>
                     <columns>
-                        <column id="uuid"/>
                         <column id="fio"/>
                         <column id="age"/>
                         <column id="relationDegree"/>

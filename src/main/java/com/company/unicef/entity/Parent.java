@@ -7,6 +7,7 @@ import io.jmix.core.metamodel.annotation.Composition;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.UUID;
 
 @JmixEntity
@@ -28,8 +29,15 @@ public class Parent {
     @Column(name = "FULL_AGE")
     private Integer fullAge;
 
+    @Column(name = "BIRTH_DATE")
+    @Temporal(TemporalType.DATE)
+    private Date birthDate;
+
     @Column(name = "FAMILY_STATUS")
     private String familyStatus;
+
+    @Column(name = "IS_STEP_PARENT")
+    private Boolean isStepParent;
 
     @OnDeleteInverse(DeletePolicy.CASCADE)
     @JoinColumn(name = "ADDRESS_ID")
@@ -46,6 +54,22 @@ public class Parent {
     @JoinColumn(name = "EVENT_ID")
     @ManyToOne(fetch = FetchType.LAZY)
     private Event event;
+
+    public Boolean getIsStepParent() {
+        return isStepParent;
+    }
+
+    public void setIsStepParent(Boolean isStepParent) {
+        this.isStepParent = isStepParent;
+    }
+
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
+    }
 
     public Event getEvent() {
         return event;

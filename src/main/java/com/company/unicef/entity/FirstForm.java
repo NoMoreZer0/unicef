@@ -1,14 +1,19 @@
 package com.company.unicef.entity;
 
+import io.jmix.core.DeletePolicy;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
+import io.jmix.core.entity.annotation.OnDeleteInverse;
+import io.jmix.core.metamodel.annotation.Composition;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @JmixEntity
-@Table(name = "FIRST_FORM")
+@Table(name = "FIRST_FORM", indexes = {
+        @Index(name = "IDX_FIRST_FORM_STUDENT", columnList = "STUDENT_ID")
+})
 @Entity
 public class FirstForm {
     @JmixGeneratedValue
@@ -16,138 +21,18 @@ public class FirstForm {
     @Id
     private UUID id;
 
+    @OnDeleteInverse(DeletePolicy.DENY)
+    @JoinColumn(name = "STUDENT_ID")
+    @Composition
+    @OneToOne(fetch = FetchType.LAZY)
+    private Student student;
+
     @Column(name = "RISK_LEVEL")
     private String riskLevel;
 
-    @Column(name = "CHILD_FIO")
-    private String childFio;
-
-    @Column(name = "CHILD_BIRTH_DATE")
-    @Temporal(TemporalType.DATE)
-    private Date childBirthDate;
-
-    @Column(name = "STUDYING_CLASS_FIELD")
-    private Integer studyingClassField;
-
-    @Column(name = "SPECIAL_NEEDS")
-    private Integer specialNeeds;
-
-    @Column(name = "CHILD_GENDER")
-    private Integer childGender;
-
-    @Column(name = "CHILD_CONTACT")
-    private String childContact;
-
-    @Column(name = "CHILD_CITY")
-    private String childCity;
-
-    @Column(name = "CHILD_DISTRICT")
-    private String childDistrict;
-
-    @Column(name = "CHILD_STREET")
-    private String childStreet;
-
-    @Column(name = "CHILD_HOME")
-    private String childHome;
-
-    @Column(name = "CHILD_APPARTMENT")
-    private String childApartment;
-
-    @Column(name = "FATHER_FIO")
-    private String fatherFio;
-
-    @Column(name = "FATHER_DATE")
-    @Temporal(TemporalType.DATE)
-    private Date fatherBirthDate;
-
-    @Column(name = "FATHER_FULL_AGE")
-    private String fatherFullAge;
-
-    @Column(name = "FATHER_STEP")
-    private Boolean fatherStep;
-
-    @Column(name = "FATHER_CONTACTS")
-    private String fatherContacts;
-
-    @Column(name = "FATHER_FAMILY_STATUS")
-    private String fatherFamilyStatus;
-
-    @Column(name = "FATHER_CITY")
-    private String fatherCity;
-
-    @Column(name = "FATHER_DISTRICT")
-    private String fatherDistrict;
-
-    @Column(name = "FATHER_STREET")
-    private String fatherStreet;
-
-    @Column(name = "FATHER_HOME")
-    private String fatherHome;
-
-    @Column(name = "FATHER_APPARTMENT")
-    private String fatherApartment;
-
-    @Column(name = "MOTHER_FIO")
-    private String motherFio;
-
-    @Column(name = "MOTHER_BIRTH_DATE")
-    @Temporal(TemporalType.DATE)
-    private Date motherBirthDate;
-
-    @Column(name = "MOTHER_FULL_AGE")
-    private String motherFullAge;
-
-    @Column(name = "MOTHER_FAMILY_STATUS")
-    private String motherFamilyStatus;
-
-    @Column(name = "MOTHER_CITY")
-    private String motherCity;
-
-    @Column(name = "MOTHER_DISTRICT")
-    private String motherDistrict;
-
-    @Column(name = "MOTHER_HOME")
-    private String motherHome;
-
-    @Column(name = "MOTHER_STREET")
-    private String motherStreet;
-
-    @Column(name = "MOTHER_APARTMENT")
-    private String motherApartment;
-
-    @Column(name = "MOTHER_STEP")
-    private Boolean motherStep;
-
-    @Column(name = "MOTHER_CONTACTS")
-    private String motherContacts;
-
-    @Column(name = "OTHER_FIO")
-    private String otherFio;
-
-    @Column(name = "OTHER_AGE")
-    private String otherAge;
-
-    @Column(name = "OTHER_RELATION_DEGREE")
-    private String otherRelationDegree;
-
-    @Column(name = "OTHER_WORKPLACE")
-    private String otherWorkplace;
-
-    @Temporal(TemporalType.DATE)
-    @Column(name = "INTERVIEW_DATE")
-    private Date interviewDate;
-
-    @Column(name = "INTERVIEW_FIO")
-    private String interviewFio;
-
-    @Column(name = "INTERVIEW_ORG_NAME")
-    private String interviewOrgName;
-
-    @Column(name = "INTERVIEW_RELATIVE")
-    private String interviewRelative;
-
-    @Column(name = "INTERVIEW_CONTACT")
-    private String interviewContact;
+    @Composition
+    @OneToMany(mappedBy = "firstForm")
+    private List<Meeting> meetings;
 
     @Column(name = "CHECKBOX_LEGAL_PROBLEMS")
     private Boolean checkboxLegalProblems;
@@ -265,6 +150,9 @@ public class FirstForm {
 
     @Column(name = "CHECKBOX_CHILD_PARENTS_CONFLICT")
     private Boolean checkboxChildParentsConflict;
+
+    @Column(name = "CHECKBOX_CHILD_BETWEEN_CONFLICT")
+    private Boolean checkboxChildBetweenConflict;
 
     @Column(name = "CHECKBOX_CHILD_TEACHER_CONFLICT")
     private Boolean checkboxChildTeacherConflict;
@@ -530,6 +418,30 @@ public class FirstForm {
     @Column(name = "CHECKBOX_FINAL_RISK_LEVEL_HIGH_OTHERS")
     private String checkboxFinalRiskLevelHighOthers;
 
+    public List<Meeting> getMeetings() {
+        return meetings;
+    }
+
+    public void setMeetings(List<Meeting> meetings) {
+        this.meetings = meetings;
+    }
+
+    public Boolean getCheckboxChildBetweenConflict() {
+        return checkboxChildBetweenConflict;
+    }
+
+    public void setCheckboxChildBetweenConflict(Boolean checkboxChildBetweenConflict) {
+        this.checkboxChildBetweenConflict = checkboxChildBetweenConflict;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
     public String getCheckboxFinalRiskLevelHighOthers() {
         return checkboxFinalRiskLevelHighOthers;
     }
@@ -720,30 +632,6 @@ public class FirstForm {
 
     public void setCheckboxEnvSocialHelp(Boolean checkboxEnvSocialHelp) {
         this.checkboxEnvSocialHelp = checkboxEnvSocialHelp;
-    }
-
-    public SpecialNeedsField getSpecialNeeds() {
-        return specialNeeds == null ? null : SpecialNeedsField.fromId(specialNeeds);
-    }
-
-    public void setSpecialNeeds(SpecialNeedsField specialNeeds) {
-        this.specialNeeds = specialNeeds == null ? null : specialNeeds.getId();
-    }
-
-    public String getMotherFullAge() {
-        return motherFullAge;
-    }
-
-    public void setMotherFullAge(String motherFullAge) {
-        this.motherFullAge = motherFullAge;
-    }
-
-    public void setStudyingClassField(StudyingClassField studyingClassField) {
-        this.studyingClassField = studyingClassField == null ? null : studyingClassField.getId();
-    }
-
-    public StudyingClassField getStudyingClassField() {
-        return studyingClassField == null ? null : StudyingClassField.fromId(studyingClassField);
     }
 
     public String getCaseReason() {
@@ -1178,14 +1066,6 @@ public class FirstForm {
         this.checkboxParentsNoHome = chekboxParentsNoHome;
     }
 
-    public void setInterviewDate(Date interviewDate) {
-        this.interviewDate = interviewDate;
-    }
-
-    public Date getInterviewDate() {
-        return interviewDate;
-    }
-
     public void setCheckboxNoAttendance(Boolean checkboxNoAttendance) {
         this.checkboxNoAttendance = checkboxNoAttendance;
     }
@@ -1584,310 +1464,6 @@ public class FirstForm {
 
     public void setCheckboxLegalProblems(Boolean checkboxLegalProblems) {
         this.checkboxLegalProblems = checkboxLegalProblems;
-    }
-
-    public String getInterviewContact() {
-        return interviewContact;
-    }
-
-    public void setInterviewContact(String interviewContact) {
-        this.interviewContact = interviewContact;
-    }
-
-    public String getInterviewRelative() {
-        return interviewRelative;
-    }
-
-    public void setInterviewRelative(String interviewRelative) {
-        this.interviewRelative = interviewRelative;
-    }
-
-    public String getInterviewOrgName() {
-        return interviewOrgName;
-    }
-
-    public void setInterviewOrgName(String interviewOrgName) {
-        this.interviewOrgName = interviewOrgName;
-    }
-
-    public String getInterviewFio() {
-        return interviewFio;
-    }
-
-    public void setInterviewFio(String interviewFio) {
-        this.interviewFio = interviewFio;
-    }
-
-    public String getOtherWorkplace() {
-        return otherWorkplace;
-    }
-
-    public void setOtherWorkplace(String otherWorkplace) {
-        this.otherWorkplace = otherWorkplace;
-    }
-
-    public String getOtherRelationDegree() {
-        return otherRelationDegree;
-    }
-
-    public void setOtherRelationDegree(String otherRelationDegree) {
-        this.otherRelationDegree = otherRelationDegree;
-    }
-
-    public String getOtherAge() {
-        return otherAge;
-    }
-
-    public void setOtherAge(String otherAge) {
-        this.otherAge = otherAge;
-    }
-
-    public String getOtherFio() {
-        return otherFio;
-    }
-
-    public void setOtherFio(String otherFio) {
-        this.otherFio = otherFio;
-    }
-
-    public String getMotherContacts() {
-        return motherContacts;
-    }
-
-    public void setMotherContacts(String motherContacts) {
-        this.motherContacts = motherContacts;
-    }
-
-    public Boolean getMotherStep() {
-        return motherStep;
-    }
-
-    public void setMotherStep(Boolean motherStep) {
-        this.motherStep = motherStep;
-    }
-
-    public String getMotherApartment() {
-        return motherApartment;
-    }
-
-    public void setMotherApartment(String motherApartment) {
-        this.motherApartment = motherApartment;
-    }
-
-    public String getMotherStreet() {
-        return motherStreet;
-    }
-
-    public void setMotherStreet(String motherStreet) {
-        this.motherStreet = motherStreet;
-    }
-
-    public String getMotherHome() {
-        return motherHome;
-    }
-
-    public void setMotherHome(String motherHome) {
-        this.motherHome = motherHome;
-    }
-
-    public String getMotherDistrict() {
-        return motherDistrict;
-    }
-
-    public void setMotherDistrict(String motherDistrict) {
-        this.motherDistrict = motherDistrict;
-    }
-
-    public String getMotherCity() {
-        return motherCity;
-    }
-
-    public void setMotherCity(String motherCity) {
-        this.motherCity = motherCity;
-    }
-
-    public String getMotherFamilyStatus() {
-        return motherFamilyStatus;
-    }
-
-    public void setMotherFamilyStatus(String motherFamilyStatus) {
-        this.motherFamilyStatus = motherFamilyStatus;
-    }
-
-    public Date getMotherBirthDate() {
-        return motherBirthDate;
-    }
-
-    public void setMotherBirthDate(Date motherBirthDate) {
-        this.motherBirthDate = motherBirthDate;
-    }
-
-    public String getMotherFio() {
-        return motherFio;
-    }
-
-    public void setMotherFio(String motherFio) {
-        this.motherFio = motherFio;
-    }
-
-    public String getFatherApartment() {
-        return fatherApartment;
-    }
-
-    public void setFatherApartment(String fatherAppartment) {
-        this.fatherApartment = fatherAppartment;
-    }
-
-    public String getFatherHome() {
-        return fatherHome;
-    }
-
-    public void setFatherHome(String fatherHome) {
-        this.fatherHome = fatherHome;
-    }
-
-    public String getFatherStreet() {
-        return fatherStreet;
-    }
-
-    public void setFatherStreet(String fatherStreet) {
-        this.fatherStreet = fatherStreet;
-    }
-
-    public String getFatherDistrict() {
-        return fatherDistrict;
-    }
-
-    public void setFatherDistrict(String fatherDistrict) {
-        this.fatherDistrict = fatherDistrict;
-    }
-
-    public String getFatherCity() {
-        return fatherCity;
-    }
-
-    public void setFatherCity(String fatherCity) {
-        this.fatherCity = fatherCity;
-    }
-
-    public FamilyStatusFielld getFatherFamilyStatus() {
-        return fatherFamilyStatus == null ? null : FamilyStatusFielld.fromId(fatherFamilyStatus);
-    }
-
-    public void setFatherFamilyStatus(FamilyStatusFielld fatherFamilyStatus) {
-        this.fatherFamilyStatus = fatherFamilyStatus == null ? null : fatherFamilyStatus.getId();
-    }
-
-    public String getFatherContacts() {
-        return fatherContacts;
-    }
-
-    public void setFatherContacts(String fatherContacts) {
-        this.fatherContacts = fatherContacts;
-    }
-
-    public Boolean getFatherStep() {
-        return fatherStep;
-    }
-
-    public void setFatherStep(Boolean fatherStep) {
-        this.fatherStep = fatherStep;
-    }
-
-    public String getFatherFullAge() {
-        return fatherFullAge;
-    }
-
-    public void setFatherFullAge(String fatherFullAge) {
-        this.fatherFullAge = fatherFullAge;
-    }
-
-    public Date getFatherBirthDate() {
-        return fatherBirthDate;
-    }
-
-    public void setFatherBirthDate(Date fatherDate) {
-        this.fatherBirthDate = fatherDate;
-    }
-
-    public String getFatherFio() {
-        return fatherFio;
-    }
-
-    public void setFatherFio(String fatherFio) {
-        this.fatherFio = fatherFio;
-    }
-
-    public String getChildApartment() {
-        return childApartment;
-    }
-
-    public void setChildApartment(String childAppartment) {
-        this.childApartment = childAppartment;
-    }
-
-    public String getChildHome() {
-        return childHome;
-    }
-
-    public void setChildHome(String childHome) {
-        this.childHome = childHome;
-    }
-
-    public String getChildStreet() {
-        return childStreet;
-    }
-
-    public void setChildStreet(String childStreet) {
-        this.childStreet = childStreet;
-    }
-
-    public String getChildDistrict() {
-        return childDistrict;
-    }
-
-    public void setChildDistrict(String childDistrict) {
-        this.childDistrict = childDistrict;
-    }
-
-    public String getChildCity() {
-        return childCity;
-    }
-
-    public void setChildCity(String childCity) {
-        this.childCity = childCity;
-    }
-
-    public String getChildContact() {
-        return childContact;
-    }
-
-    public void setChildContact(String childContact) {
-        this.childContact = childContact;
-    }
-
-    public GenderField getChildGender() {
-        return childGender == null ? null : GenderField.fromId(childGender);
-    }
-
-    public void setChildGender(GenderField childGender) {
-        this.childGender = childGender == null ? null : childGender.getId();
-    }
-
-    public Date getChildBirthDate() {
-        return childBirthDate;
-    }
-
-    public void setChildBirthDate(Date childBirthDate) {
-        this.childBirthDate = childBirthDate;
-    }
-
-    public String getChildFio() {
-        return childFio;
-    }
-
-    public void setChildFio(String childFio) {
-        this.childFio = childFio;
     }
 
     public UUID getId() {

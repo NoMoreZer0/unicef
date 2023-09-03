@@ -39,11 +39,14 @@
                         <action id="entityClear" type="entity_clear"/>
                     </actions>
                 </entityPicker>
+                <dateField id="birthDateField" property="birthDate"/>
+                <checkBox id="isStepParentField" property="isStepParent"/>
             </column>
         </form>
         <hbox id="editActions" spacing="true">
             <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
-            <button id="closeBtn" action="windowClose" caption="msg://com.company.unicef.screen.event/com.company.unicef.closeButton"/>
+            <button id="closeBtn" action="windowClose"
+                    caption="msg://com.company.unicef.screen.event/com.company.unicef.closeButton"/>
         </hbox>
     </layout>
 </window>

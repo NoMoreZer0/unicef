@@ -28,7 +28,7 @@ public class Student {
     private String fio;
 
     @Column(name = "GENDER")
-    private Integer gender;
+    private String gender;
 
     @Column(name = "STUDYING_YEAR")
     private String studyingYear;
