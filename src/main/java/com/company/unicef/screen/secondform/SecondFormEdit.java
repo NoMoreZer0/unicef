@@ -249,9 +249,9 @@ public class SecondFormEdit extends StandardEditor<SecondForm> {
     private String low = "Низкий";
     private String medium = "Средний";
     private String high = "Высокий";
-    private String homeCategory = "Жилье, работа, доход семьи";
+    private String homeCategory = "ЖИЛЬЕ, РАБОТА, ДОХОД СЕМЬИ";
     private String parentsCategory = "БАЗОВЫЙ УХОД ОБЕСПЕЧЕНИЕ БЕЗОПАСНОСТИ";
-    private String selfCategory = "НАВЫКИ СМООБСЛУЖИВАНИЯ";
+    private String selfCategory = "НАВЫКИ СМООБСЛУЖИВАНИЯ/УХОД ЗА СОБОЙ";
     private String familyCategory = "СЕМЬЯ И СОЦИАЛЬНЫЕ ОТНОШЕНИЯ";
     private String identCategory = "ИДЕНТИЧНОСТЬ И СОЦИАЛЬНАЯ ПРЕЗЕНТАЦИЯ";
     private String emoCategory = "ЭМОЦИОНАЛЬНОЕ И ПОВЕДЕНЧЕСКОЕ РАЗВИТИЕ";

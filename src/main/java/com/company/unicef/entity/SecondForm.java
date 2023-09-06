@@ -41,6 +41,9 @@ public class SecondForm {
     @Column(name = "HEALTH_CHRONICAL")
     private Boolean healthChronical;
 
+    @Column(name = "HEALTH_CHRONICAL_TEXT")
+    private String healthChronicalText;
+
     @Column(name = "HEALTH_NO_REGISTERED")
     private Boolean healthNoRegistered;
 
@@ -443,6 +446,14 @@ public class SecondForm {
     @Composition
     @OneToMany(mappedBy = "secondForm", cascade = CascadeType.ALL)
     private List<PivotTableCheckBoxes> pivotTableCheckBoxes;
+
+    public String getHealthChronicalText() {
+        return healthChronicalText;
+    }
+
+    public void setHealthChronicalText(String healthChronicalText) {
+        this.healthChronicalText = healthChronicalText;
+    }
 
     public List<PivotTableCheckBoxes> getPivotTableCheckBoxes() {
         return pivotTableCheckBoxes;

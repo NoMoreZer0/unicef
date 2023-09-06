@@ -47,6 +47,7 @@
                 <action id="run" type="runReport"/>
             </actions>
             <columns>
+                <column id="reasonText"/>
                 <column id="checkboxLegalProblems"/>
                 <column id="checkboxNoAttendance"/>
                 <column id="checkboxChildAtRisk"/>
@@ -161,7 +162,7 @@
                 <button id="createBtn" action="firstFormsTable.create" caption="msg://com.company.unicef.screen.event/com.company.unicef.createButton"/>
                 <button id="editBtn" action="firstFormsTable.edit" caption="msg://com.company.unicef.screen.event/com.company.unicef.editButton"/>
                 <button id="removeBtn" action="firstFormsTable.remove" caption="msg://com.company.unicef.screen.event/com.company.unicef.excludeButton"/>
-                <button id="runBtn" action="firstFormsTable.run"/>
+                <button id="runBtn" action="firstFormsTable.run" caption="msg://com.company.unicef.screen.event/com.company.unicef.reportButton"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">

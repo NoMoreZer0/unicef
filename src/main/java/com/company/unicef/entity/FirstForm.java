@@ -34,6 +34,9 @@ public class FirstForm {
     @OneToMany(mappedBy = "firstForm")
     private List<Meeting> meetings;
 
+    @Column(name = "REASON_TEXT")
+    private String reasonText;
+
     @Column(name = "CHECKBOX_LEGAL_PROBLEMS")
     private Boolean checkboxLegalProblems;
 
@@ -417,6 +420,14 @@ public class FirstForm {
 
     @Column(name = "CHECKBOX_FINAL_RISK_LEVEL_HIGH_OTHERS")
     private String checkboxFinalRiskLevelHighOthers;
+
+    public String getReasonText() {
+        return reasonText;
+    }
+
+    public void setReasonText(String reasonText) {
+        this.reasonText = reasonText;
+    }
 
     public List<Meeting> getMeetings() {
         return meetings;
