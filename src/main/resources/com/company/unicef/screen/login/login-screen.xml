@@ -8,13 +8,13 @@
                 shortcut="ENTER"/>
     </actions>
 
-    <layout stylename="jmix-login-main-layout">
+    <layout stylename="jmix-login-main-layout border-green">
         <vbox id="loginWrapper" height="100%" width="100%">
             <vbox id="loginMainBox"
                   align="MIDDLE_CENTER"
                   margin="true"
                   spacing="true"
-                  stylename="jmix-login-panel"
+                  stylename="jmix-login-panel border-green"
                   width="AUTO">
                 <label id="welcomeLabel"
                        align="MIDDLE_CENTER"
@@ -29,12 +29,12 @@
                         <textField id="usernameField"
                                    htmlName="usernameField"
                                    inputPrompt="msg://usernamePlaceholder"
-                                   stylename="jmix-login-username"/>
+                                   stylename="jmix-login-username border-green"/>
                         <passwordField id="passwordField"
                                        autocomplete="true"
                                        htmlName="passwordField"
                                        inputPrompt="msg://passwordPlaceholder"
-                                       stylename="jmix-login-password"/>
+                                       stylename="jmix-login-password border-green"/>
                     </cssLayout>
                     <hbox id="rememberLocalesBox"
                           stylename="jmix-login-remember-locales">
@@ -50,7 +50,7 @@
                     <button id="loginButton"
                             align="MIDDLE_CENTER"
                             action="submit"
-                            stylename="jmix-login-submit-button"/>
+                            stylename="jmix-login-submit-button background-green border-green btn-green"/>
                 </vbox>
             </vbox>
         </vbox>

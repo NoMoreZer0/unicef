@@ -5,14 +5,33 @@
   @include responsive-table;
 }
 
-@mixin test {
 
-}
 
 @mixin responsive-table($primary-stylename: v-table) {
   .level-low {
     background-color: green;
     color: white;
+  }
+
+  .background-green {
+    background-color:olivedrab;
+
+  }
+.btn-green {
+  transition: 0.2s ease-in;
+}
+  .btn-green:hover {
+    background-color: #567d04;
+  }
+
+  input:focus {
+    outline: none;
+    border-color: #567d04;
+  }
+
+  .border-green {
+    border: 1px solid olivedrab;
+    outline: none;
   }
 
   .level-medium {
