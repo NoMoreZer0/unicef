@@ -1,5 +1,6 @@
 package com.company.unicef.screen.secondform;
 
+import com.company.unicef.entity.HealthChronicalOption;
 import com.company.unicef.entity.PivotTableCheckBoxes;
 import com.company.unicef.entity.SecondForm;
 import io.jmix.core.DataManager;
@@ -7,6 +8,8 @@ import io.jmix.ui.component.*;
 import io.jmix.ui.component.data.GroupInfo;
 import io.jmix.ui.model.CollectionPropertyContainer;
 import io.jmix.ui.screen.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.Nullable;
@@ -17,6 +20,7 @@ import java.util.List;
 @UiDescriptor("second-form-edit.xml")
 @EditedEntityContainer("secondFormDc")
 public class SecondFormEdit extends StandardEditor<SecondForm> {
+    private static final Logger log = LoggerFactory.getLogger(SecondFormEdit.class);
     @Autowired
     private CheckBox healthChronicalField;
     @Autowired
@@ -261,6 +265,70 @@ public class SecondFormEdit extends StandardEditor<SecondForm> {
     private HtmlAttributes htmlAttributes;
     @Autowired
     private GroupTable<PivotTableCheckBoxes> pivotGroupTable2;
+    @Autowired
+    private TextField<String> healthChronicalTextField;
+    @Autowired
+    private ComboBox<HealthChronicalOption> healthChronicalOptionComboBox;
+    @Autowired
+    private TextField<String> healthDisabledNoHelpTextField;
+    @Autowired
+    private TextField<String> healthNoFoodTextField;
+    @Autowired
+    private TextField<String> healthNoEquipmentTextField;
+    @Autowired
+    private TextField<String> eduNotLikeTextField;
+    @Autowired
+    private TextField<String> eduSpecialNeedsTextField;
+    @Autowired
+    private TextField<String> eduDifficultProgramTextField;
+    @Autowired
+    private TextField<String> eduFreqAbsentTextField;
+    @Autowired
+    private TextField<String> eduNoAttentionTextField;
+    @Autowired
+    private TextField<String> emoAnxietyTextField;
+    @Autowired
+    private TextField<String> emoNoFriendsTextField;
+    @Autowired
+    private TextField<String> emoDepressionTextField;
+    @Autowired
+    private TextField<String> emoAloneTextField;
+    @Autowired
+    private TextField<String> emoRiskingActionTextField;
+    @Autowired
+    private TextField<String> emoConflictWitnessTextField;
+    @Autowired
+    private TextField<String> emoOnRegisterTextField;
+    @Autowired
+    private TextField<String> identDiscriminationTextField;
+    @Autowired
+    private TextField<String> identGenderDontKnowTextField;
+    @Autowired
+    private TextField<String> identAgeSolTextField;
+    @Autowired
+    private TextField<String> familyNoRelationshipTextField;
+    @Autowired
+    private TextField<String> familyBadReviewTextField;
+    @Autowired
+    private TextField<String> familyBadFriendsTextField;
+    @Autowired
+    private TextField<String> familyChildConflictTextField;
+    @Autowired
+    private TextField<String> familySexualProblemsTextField;
+    @Autowired
+    private TextField<String> familyChronicalDiseaseTextField;
+    @Autowired
+    private TextField<String> familyHasTraumaTextField;
+    @Autowired
+    private TextField<String> parentsNoBasicTextField;
+    @Autowired
+    private TextField<String> homeDangerTextField;
+    @Autowired
+    private TextField<String> homeNoJobTextField;
+    @Autowired
+    private TextField<String> homeNoBenefitsTextField;
+    @Autowired
+    private TextField<String> homeNoMoneyTextField;
 
 
     @Subscribe
@@ -447,24 +515,6 @@ public class SecondFormEdit extends StandardEditor<SecondForm> {
         });
     }
 
-//    @Install(to = "pivotGroupTable", subject = "styleProvider")
-//    private String pivotGroupTableStyleProvider(PivotTableCheckBoxes e, String s) {
-//        if (s == null) {
-//            return "level-default";
-//        } else if (s.equals("level")) {
-//            if (e.getLevel().equals(low)) {
-//                return "level-low";
-//            }
-//            else if (e.getLevel().equals(medium)) {
-//                return "level-medium";
-//            }
-//            else {
-//                return "level-high";
-//            }
-//        }
-//        return null;
-//    }
-
     private PivotTableCheckBoxes createPivotTableCheckBox(String category, String level) {
         PivotTableCheckBoxes pivotTableCheckBoxes = dataManager.create(PivotTableCheckBoxes.class);
         pivotTableCheckBoxes.setCategory(category);
@@ -565,4 +615,262 @@ public class SecondFormEdit extends StandardEditor<SecondForm> {
         if (healthMediumFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(healthCategory, medium));
         if (healthHighFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(healthCategory, high));
     }
+
+    @Subscribe("healthChronicalField")
+    public void onHealthChronicalFieldValueChange(final HasValue.ValueChangeEvent<Boolean> event) {
+        healthChronicalOptionComboBox.setVisible(event.getValue());
+    }
+
+    @Subscribe("healthChronicalOptionComboBox")
+    public void onHealthChronicalOptionComboBoxValueChange(final HasValue.ValueChangeEvent<HealthChronicalOption> event) {
+        if (HealthChronicalOption.ДРУГОЕ.equals(event.getValue())) {
+            getEditedEntity().setHealthChronicalText("");
+            healthChronicalTextField.setVisible(true);
+        } else {
+            healthChronicalTextField.setVisible(false);
+            getEditedEntity().setHealthChronicalText(event.getValue().getId());
+        }
+    }
+    
+    @Subscribe("healthDisabledNoHelpField")
+    public void onHealthDisabledNoHelpFieldValueChange(final HasValue.ValueChangeEvent<Boolean> event) {
+        if (!Boolean.TRUE.equals(event.getValue())) {
+            getEditedEntity().setHealthDisabledNoHelpText("");
+        }
+        healthDisabledNoHelpTextField.setVisible(Boolean.TRUE.equals(event.getValue()));
+    }
+
+    @Subscribe("healthNoFoodField")
+    public void onHealthNoFoodFieldValueChange(final HasValue.ValueChangeEvent<Boolean> event) {
+        if (!Boolean.TRUE.equals(event.getValue())) {
+            getEditedEntity().setHealthNoFoodText("");
+        }
+        healthNoFoodTextField.setVisible(Boolean.TRUE.equals(event.getValue()));
+    }
+
+    @Subscribe("healthNoEquipmentField")
+    public void onHealthNoEquipmentFieldValueChange(final HasValue.ValueChangeEvent<Boolean> event) {
+        if (!Boolean.TRUE.equals(event.getValue())) {
+            getEditedEntity().setHealthNoEquipmentText("");
+        }
+        healthNoEquipmentTextField.setVisible(Boolean.TRUE.equals(event.getValue()));
+    }
+
+    @Subscribe("eduNotLikeField")
+    public void onEduNotLikeFieldValueChange(final HasValue.ValueChangeEvent<Boolean> event) {
+        if (!Boolean.TRUE.equals(event.getValue())) {
+            getEditedEntity().setEduNotLikeText("");
+        }
+        eduNotLikeTextField.setVisible(Boolean.TRUE.equals(event.getValue()));
+    }
+
+    @Subscribe("eduSpecialNeedsField")
+    public void onEduSpecialNeedsFieldValueChange(final HasValue.ValueChangeEvent<Boolean> event) {
+        if (!Boolean.TRUE.equals(event.getValue())) {
+            getEditedEntity().setEduSpecialNeedsText("");
+        }
+        eduSpecialNeedsTextField.setVisible(Boolean.TRUE.equals(event.getValue()));
+    }
+
+    @Subscribe("eduDifficultProgramField")
+    public void onEduDifficultProgramFieldValueChange(final HasValue.ValueChangeEvent<Boolean> event) {
+        if (!Boolean.TRUE.equals(event.getValue())) {
+            getEditedEntity().setEduDifficultProgramText("");
+        }
+        eduDifficultProgramTextField.setVisible(Boolean.TRUE.equals(event.getValue()));
+    }
+
+    @Subscribe("eduFreqAbsentField")
+    public void onEduFreqAbsentFieldValueChange(final HasValue.ValueChangeEvent<Boolean> event) {
+        if (!Boolean.TRUE.equals(event.getValue())) {
+            getEditedEntity().setEduFreqAbsentText("");
+        }
+        eduFreqAbsentTextField.setVisible(Boolean.TRUE.equals(event.getValue()));
+    }
+
+    @Subscribe("eduNoAttentionField")
+    public void onEduNoAttentionFieldValueChange(final HasValue.ValueChangeEvent<Boolean> event) {
+        if (!Boolean.TRUE.equals(event.getValue())) {
+            getEditedEntity().setEduNoAttentionText("");
+        }
+        eduNoAttentionTextField.setVisible(Boolean.TRUE.equals(event.getValue()));
+    }
+
+    @Subscribe("emoAnxietyField")
+    public void onEmoAnxietyFieldValueChange(final HasValue.ValueChangeEvent<Boolean> event) {
+        if (!Boolean.TRUE.equals(event.getValue())) {
+            getEditedEntity().setEmoAnxietyText("");
+        }
+        emoAnxietyTextField.setVisible(Boolean.TRUE.equals(event.getValue()));
+    }
+
+    @Subscribe("emoNoFriendsField")
+    public void onEmoNoFriendsFieldValueChange(final HasValue.ValueChangeEvent<Boolean> event) {
+        if (!Boolean.TRUE.equals(event.getValue())) {
+            getEditedEntity().setEmoNoFriendsText("");
+        }
+        emoNoFriendsTextField.setVisible(Boolean.TRUE.equals(event.getValue()));
+    }
+
+    @Subscribe("emoDepressionField")
+    public void onEmoDepressionFieldValueChange(final HasValue.ValueChangeEvent<Boolean> event) {
+        if (!Boolean.TRUE.equals(event.getValue())) {
+            getEditedEntity().setEmoDepressionText("");
+        }
+        emoDepressionTextField.setVisible(Boolean.TRUE.equals(event.getValue()));
+    }
+
+    @Subscribe("emoAloneField")
+    public void onEmoAloneFieldValueChange(final HasValue.ValueChangeEvent<Boolean> event) {
+        if (!Boolean.TRUE.equals(event.getValue())) {
+            getEditedEntity().setEmoAloneText("");
+        }
+        emoAloneTextField.setVisible(Boolean.TRUE.equals(event.getValue()));
+    }
+
+    @Subscribe("emoRiskingActionField")
+    public void onEmoRiskingActionFieldValueChange(final HasValue.ValueChangeEvent<Boolean> event) {
+        if (!Boolean.TRUE.equals(event.getValue())) {
+            getEditedEntity().setEmoRiskingActionText("");
+        }
+        emoRiskingActionTextField.setVisible(Boolean.TRUE.equals(event.getValue()));
+    }
+
+    @Subscribe("emoConflictWitnessField")
+    public void onEmoConflictWitnessFieldValueChange(final HasValue.ValueChangeEvent<Boolean> event) {
+        if (!Boolean.TRUE.equals(event.getValue())) {
+            getEditedEntity().setEmoConflictWitnessText("");
+        }
+        emoConflictWitnessTextField.setVisible(Boolean.TRUE.equals(event.getValue()));
+    }
+
+    @Subscribe("emoOnRegisterField")
+    public void onEmoOnRegisterFieldValueChange(final HasValue.ValueChangeEvent<Boolean> event) {
+        if (!Boolean.TRUE.equals(event.getValue())) {
+            getEditedEntity().setEmoOnRegisterText("");
+        }
+        emoOnRegisterTextField.setVisible(Boolean.TRUE.equals(event.getValue()));
+    }
+
+    @Subscribe("identDiscriminationField")
+    public void onIdentDiscriminationFieldValueChange(final HasValue.ValueChangeEvent<Boolean> event) {
+        if (!Boolean.TRUE.equals(event.getValue())) {
+            getEditedEntity().setIdentDiscriminationText("");
+        }
+        identDiscriminationTextField.setVisible(Boolean.TRUE.equals(event.getValue()));
+    }
+
+    @Subscribe("identGenderDontKnowField")
+    public void onIdentGenderDontKnowFieldValueChange(final HasValue.ValueChangeEvent<Boolean> event) {
+        if (!Boolean.TRUE.equals(event.getValue())) {
+            getEditedEntity().setIdentGenderDontKnowText("");
+        }
+        identGenderDontKnowTextField.setVisible(Boolean.TRUE.equals(event.getValue()));
+    }
+
+    @Subscribe("identAgeSolField")
+    public void onIdentAgeSolFieldValueChange(final HasValue.ValueChangeEvent<Boolean> event) {
+        if (!Boolean.TRUE.equals(event.getValue())) {
+            getEditedEntity().setIdentAgeSolText("");
+        }
+        identAgeSolTextField.setVisible(Boolean.TRUE.equals(event.getValue()));
+    }
+
+    @Subscribe("familyNoRelationshipField")
+    public void onFamilyNoRelationshipFieldValueChange(final HasValue.ValueChangeEvent<Boolean> event) {
+        if (!Boolean.TRUE.equals(event.getValue())) {
+            getEditedEntity().setFamilyNoRelationshipText("");
+        }
+        familyNoRelationshipTextField.setVisible(Boolean.TRUE.equals(event.getValue()));
+    }
+
+    @Subscribe("familyBadReviewField")
+    public void onFamilyBadReviewFieldValueChange(final HasValue.ValueChangeEvent<Boolean> event) {
+        if (!Boolean.TRUE.equals(event.getValue())) {
+            getEditedEntity().setFamilyBadReviewText("");
+        }
+        familyBadReviewTextField.setVisible(Boolean.TRUE.equals(event.getValue()));
+    }
+
+    @Subscribe("familyBadFriendsField")
+    public void onFamilyBadFriendsFieldValueChange(final HasValue.ValueChangeEvent<Boolean> event) {
+        if (!Boolean.TRUE.equals(event.getValue())) {
+            getEditedEntity().setFamilyBadFriendsText("");
+        }
+        familyBadFriendsTextField.setVisible(Boolean.TRUE.equals(event.getValue()));
+    }
+
+    @Subscribe("familyChildConflictField")
+    public void onFamilyChildConflictFieldValueChange(final HasValue.ValueChangeEvent<Boolean> event) {
+        if (!Boolean.TRUE.equals(event.getValue())) {
+            getEditedEntity().setFamilyChildConflictText("");
+        }
+        familyChildConflictTextField.setVisible(Boolean.TRUE.equals(event.getValue()));
+    }
+
+    @Subscribe("familySexualProblemsField")
+    public void onFamilySexualProblemsFieldValueChange(final HasValue.ValueChangeEvent<Boolean> event) {
+        if (!Boolean.TRUE.equals(event.getValue())) {
+            getEditedEntity().setFamilySexualProblemsText("");
+        }
+        familySexualProblemsTextField.setVisible(Boolean.TRUE.equals(event.getValue()));
+    }
+
+    @Subscribe("familyChronicalDiseaseField")
+    public void onFamilyChronicalDiseaseFieldValueChange(final HasValue.ValueChangeEvent<Boolean> event) {
+        if (!Boolean.TRUE.equals(event.getValue())) {
+            getEditedEntity().setFamilyChronicalDiseaseText("");
+        }
+        familyChronicalDiseaseTextField.setVisible(Boolean.TRUE.equals(event.getValue()));
+    }
+
+    @Subscribe("familyHasTraumaField")
+    public void onFamilyHasTraumaFieldValueChange(final HasValue.ValueChangeEvent<Boolean> event) {
+        if (!Boolean.TRUE.equals(event.getValue())) {
+            getEditedEntity().setFamilyHasTraumaText("");
+        }
+        familyHasTraumaTextField.setVisible(Boolean.TRUE.equals(event.getValue()));
+    }
+
+    @Subscribe("parentsNoBasicField")
+    public void onParentsNoBasicFieldValueChange(final HasValue.ValueChangeEvent<Boolean> event) {
+        if (!Boolean.TRUE.equals(event.getValue())) {
+            getEditedEntity().setParentsNoBasicText("");
+        }
+        parentsNoBasicTextField.setVisible(Boolean.TRUE.equals(event.getValue()));
+    }
+
+    @Subscribe("homeDangerField")
+    public void onHomeDangerFieldValueChange(final HasValue.ValueChangeEvent<Boolean> event) {
+        if (!Boolean.TRUE.equals(event.getValue())) {
+            getEditedEntity().setHomeDangerText("");
+        }
+        homeDangerTextField.setVisible(Boolean.TRUE.equals(event.getValue()));
+    }
+
+    @Subscribe("homeNoJobField")
+    public void onHomeNoJobFieldValueChange(final HasValue.ValueChangeEvent<Boolean> event) {
+        if (!Boolean.TRUE.equals(event.getValue())) {
+            getEditedEntity().setHomeNoJobText("");
+        }
+        homeNoJobTextField.setVisible(Boolean.TRUE.equals(event.getValue()));
+    }
+
+    @Subscribe("homeNoBenefitsField")
+    public void onHomeNoBenefitsFieldValueChange(final HasValue.ValueChangeEvent<Boolean> event) {
+        if (!Boolean.TRUE.equals(event.getValue())) {
+            getEditedEntity().setHomeNoBenefitsText("");
+        }
+        homeNoBenefitsTextField.setVisible(Boolean.TRUE.equals(event.getValue()));
+    }
+
+    @Subscribe("homeNoMoneyField")
+    public void onHomeNoMoneyFieldValueChange(final HasValue.ValueChangeEvent<Boolean> event) {
+        if (!Boolean.TRUE.equals(event.getValue())) {
+            getEditedEntity().setHomeNoMoneyText("");
+        }
+        homeNoMoneyTextField.setVisible(Boolean.TRUE.equals(event.getValue()));
+    }
+
+
 }

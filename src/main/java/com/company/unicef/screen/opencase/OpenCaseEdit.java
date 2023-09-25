@@ -50,6 +50,7 @@ public class OpenCaseEdit extends StandardEditor<OpenCase> {
     private String careCategory = "category.care";
     private String homeCategory = "category.home";
     private Map<String, String> categoryMap = new HashMap<>();
+    private Map<String, String> checkBoxToTextMap = new HashMap<>();
 
     @Subscribe
     public void onBeforeShow(BeforeShowEvent event) {
@@ -78,7 +79,7 @@ public class OpenCaseEdit extends StandardEditor<OpenCase> {
         checkSecondFormFields(fieldNames);
     }
 
-    private List<String> getFieldNames(Field[] fields, SecondForm curSecondForm) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+    private List<String> getFieldNames(Field[] fields, SecondForm curSecondForm) throws IllegalAccessException {
         List<String> fieldNames = new ArrayList<>();
         for (Field field : fields) {
             Class<?> fieldType = field.getType();
@@ -90,14 +91,25 @@ public class OpenCaseEdit extends StandardEditor<OpenCase> {
                     fieldNames.add(field.getName());
                 }
             }
+            else if (fieldType.getName().equals("java.lang.String")) {
+                field.setAccessible(true);
+                if (field.get(curSecondForm) == null) continue;
+                String str = (String) field.get(curSecondForm);
+                if (str != null && !str.isEmpty() && field.getName().contains("Text")) {
+                    checkBoxToTextMap.put(field.getName().replace("Text", ""), str);
+                }
+            }
         }
         return fieldNames;
     }
 
     private void checkNameField(String name, String target) {
-        if (name.equals(target) && !isContainsField(getFromMessages(name))) {
-            addToCollection(getFromMessages(name), getFromMessages(categoryMap.get(name)));
+        if (isContainsField(getFromMessages(name)) || !name.equals(target)) return;
+        if (checkBoxToTextMap.containsKey(name)) {
+            addToCollection(checkBoxToTextMap.get(name), getFromMessages(categoryMap.get(name)));
+            return;
         }
+        addToCollection(getFromMessages(name), getFromMessages(categoryMap.get(name)));
     }
 
     private List<String> getAllSecondFormFields() {

@@ -53,6 +53,9 @@ public class SecondForm {
     @Column(name = "HEALTH_DISABLED_NO_HELP")
     private Boolean healthDisabledNoHelp;
 
+    @Column(name = "HEALTH_DISABLED_NO_HELP_TEXT")
+    private String healthDisabledNoHelpText;
+
     @Column(name = "HEALTH_NO_HOSPITAL")
     private Boolean healthNoHospital;
 
@@ -62,11 +65,17 @@ public class SecondForm {
     @Column(name = "HEALTH_NO_FOOD")
     private Boolean healthNoFood;
 
+    @Column(name = "HEALTH_NO_FOOD_TEXT")
+    private String healthNoFoodText;
+
     @Column(name = "HEALTH_NO_SPORT")
     private Boolean healthNoSport;
 
     @Column(name = "HEALTH_NO_EQUIPMENT")
     private Boolean healthNoEquipment;
+
+    @Column(name = "HEALTH_NO_EQUIPMENT_TEXT")
+    private String healthNoEquipmentText;
 
     @Column(name = "HEALTH_NO_COORDINATION")
     private Boolean healthNoCoordination;
@@ -98,6 +107,9 @@ public class SecondForm {
     @Column(name = "EDU_NOT_LIKE")
     private Boolean eduNotLike;
 
+    @Column(name = "EDU_NOT_LIKE_TEXT")
+    private String eduNotLikeText;
+
     @Column(name = "EDU_NO_SUBJECT")
     private Boolean eduNoSubject;
 
@@ -113,14 +125,26 @@ public class SecondForm {
     @Column(name = "EDU_SPECIAL_NEEDS")
     private Boolean eduSpecialNeeds;
 
+    @Column(name = "EDU_SPECIAL_NEEDS_TEXT")
+    private String eduSpecialNeedsText;
+
     @Column(name = "EDU_DIFFICULT_PROGRAM")
     private Boolean eduDifficultProgram;
+
+    @Column(name = "EDU_DIFFICULT_PROGRAM_TEXT")
+    private String eduDifficultProgramText;
 
     @Column(name = "EDU_FREQ_ABSENT")
     private Boolean eduFreqAbsent;
 
+    @Column(name = "EDU_FREQ_ABSENT_TEXT")
+    private String eduFreqAbsentText;
+
     @Column(name = "EDU_NO_ATTENTION")
     private Boolean eduNoAttention;
+
+    @Column(name = "EDU_NO_ATTENTION_TEXT")
+    private String eduNoAttentionText;
 
     @Column(name = "EDU_NO_CLUB")
     private Boolean eduNoClub;
@@ -155,11 +179,20 @@ public class SecondForm {
     @Column(name = "EMO_ANXIETY")
     private Boolean emoAnxiety;
 
+    @Column(name = "EMO_ANXIETY_TEXT")
+    private String emoAnxietyText;
+
     @Column(name = "EMO_NO_FRIENDS")
     private Boolean emoNoFriends;
 
+    @Column(name = "EMO_NO_FRIENDS_TEXT")
+    private String emoNoFriendsText;
+
     @Column(name = "EMO_DEPRESSION")
     private Boolean emoDepression;
+
+    @Column(name = "EMO_DEPRESSION_TEXT")
+    private String emoDepressionText;
 
     @Column(name = "EMO_BULLYING")
     private Boolean emoBullying;
@@ -169,6 +202,9 @@ public class SecondForm {
 
     @Column(name = "EMO_ALONE")
     private Boolean emoAlone;
+
+    @Column(name = "EMO_ALONE_TEXT")
+    private String emoAloneText;
 
     @Column(name = "EMO_SELF_HARASSMENT")
     private Boolean emoSelfHarassment;
@@ -182,8 +218,14 @@ public class SecondForm {
     @Column(name = "EMO_RISKING_ACTION")
     private Boolean emoRiskingAction;
 
+    @Column(name = "EMO_RISKING_ACTION_TEXT")
+    private String emoRiskingActionText;
+
     @Column(name = "EMO_CONFLICT_WITNESS")
     private Boolean emoConflictWitness;
+
+    @Column(name = "EMO_CONFLICT_WITNESS_TEXT")
+    private String emoConflictWitnessText;
 
     @Column(name = "EMO_NO_EMOTION_CONTROL")
     private Boolean emoNoEmotionControl;
@@ -200,6 +242,9 @@ public class SecondForm {
     @Column(name = "EMO_ON_REGISTER")
     private Boolean emoOnRegister;
 
+    @Column(name = "EMO_ON_REGISTER_TEXT")
+    private String emoOnRegisterText;
+
     @Column(name = "EMO_AGGRESSOR")
     private Boolean emoAggressor;
 
@@ -215,6 +260,9 @@ public class SecondForm {
     @Column(name = "IDENT_DISCRIMINATION")
     private Boolean identDiscrimination;
 
+    @Column(name = "IDENT_DISCRIMINATION_TEXT")
+    private String identDiscriminationText;
+
     @Column(name = "IDENT_NO_FAMILY")
     private Boolean identNoFamily;
 
@@ -224,11 +272,17 @@ public class SecondForm {
     @Column(name = "IDENT_GENDER_DONT_KNOW")
     private Boolean identGenderDontKnow;
 
+    @Column(name = "IDENT_GENDER_DONT_KNOW_TEXT")
+    private String identGenderDontKnowText;
+
     @Column(name = "IDENT_POSITIVE_INDIVIDUAL")
     private Boolean identPositiveIndividual;
 
     @Column(name = "IDENT_AGE_SOL")
     private Boolean identAgeSol;
+
+    @Column(name = "IDENT_AGE_SOL_TEXT")
+    private String identAgeSolText;
 
     @Column(name = "IDENT_NOT_SURE_MYSELF")
     private Boolean identNotSureMyself;
@@ -251,6 +305,9 @@ public class SecondForm {
     @Column(name = "FAMILY_NO_RELATIONSHIP")
     private Boolean familyNoRelationship;
 
+    @Column(name = "FAMILY_NO_RELATIONSHIP_TEXT")
+    private String familyNoRelationshipText;
+
     @Column(name = "FAMILY_NO_ADULT")
     private Boolean familyNoAdult;
 
@@ -263,8 +320,14 @@ public class SecondForm {
     @Column(name = "FAMILY_BAD_REVIEW")
     private Boolean familyBadReview;
 
+    @Column(name = "FAMILY_BAD_REVIEW_TEXT")
+    private String familyBadReviewText;
+
     @Column(name = "FAMILY_BAD_FRIENDS")
     private Boolean familyBadFriends;
+
+    @Column(name = "FAMILY_BAD_FRIENDS_TEXT")
+    private String familyBadFriendsText;
 
     @Column(name = "FAMILY_NO_SKILLS")
     private Boolean familyNoSkills;
@@ -278,6 +341,9 @@ public class SecondForm {
     @Column(name = "FAMILY_CHILD_CONFLICT")
     private Boolean familyChildConflict;
 
+    @Column(name = "FAMILY_CHILD_CONFLICT_TEXT")
+    private String familyChildConflictText;
+
     @Column(name = "FAMILY_NO_TIME_COMMUNICATION")
     private Boolean familyNoTimeCommunication;
 
@@ -287,17 +353,26 @@ public class SecondForm {
     @Column(name = "FAMILY_SEXUAL_PROBLEMS")
     private Boolean familySexualProblems;
 
+    @Column(name = "FAMILY_SEXUAL_PROBLEMS_TEXT")
+    private String familySexualProblemsText;
+
     @Column(name = "FAMILY_CHILD_PARENT_CONFLICT")
     private Boolean familyChildParentConflict;
 
     @Column(name = "FAMILY_CHRONICAL_DISEASE")
     private Boolean familyChronicalDisease;
 
+    @Column(name = "FAMILY_CHRONICAL_DISEASE_TEXT")
+    private String familyChronicalDiseaseText;
+
     @Column(name = "FAMILY_HAS_JAIL")
     private Boolean familyHasJail;
 
     @Column(name = "FAMILY_HAS_TRAUMA")
     private Boolean familyHasTrauma;
+
+    @Column(name = "FAMILY_HAS_TRAUMA_TEXT")
+    private String familyHasTraumaText;
 
     @Column(name = "FAMILY_OTHERS")
     private String familyOthers;
@@ -319,6 +394,9 @@ public class SecondForm {
 
     @Column(name = "PARENTS_NO_BASIC")
     private Boolean parentsNoBasic;
+
+    @Column(name = "PARENTS_NO_BASIC_TEXT")
+    private String parentsNoBasicText;
 
     @Column(name = "PARENTS_NO_DAILY_ROUTINE")
     private Boolean parentsNoDailyRoutine;
@@ -356,14 +434,26 @@ public class SecondForm {
     @Column(name = "HOME_DANGER")
     private Boolean homeDanger;
 
+    @Column(name = "HOME_DANGER_TEXT")
+    private String homeDangerText;
+
     @Column(name = "HOME_NO_JOB")
     private Boolean homeNoJob;
+
+    @Column(name = "HOME_NO_JOB_TEXT")
+    private String homeNoJobText;
 
     @Column(name = "HOME_NO_BENEFITS")
     private Boolean homeNoBenefits;
 
+    @Column(name = "HOME_NO_BENEFITS_TEXT")
+    private String homeNoBenefitsText;
+
     @Column(name = "HOME_NO_MONEY")
     private Boolean homeNoMoney;
+
+    @Column(name = "HOME_NO_MONEY_TEXT")
+    private String homeNoMoneyText;
 
     @Column(name = "HOME_OTHERS")
     private String homeOthers;
@@ -446,6 +536,246 @@ public class SecondForm {
     @Composition
     @OneToMany(mappedBy = "secondForm", cascade = CascadeType.ALL)
     private List<PivotTableCheckBoxes> pivotTableCheckBoxes;
+
+    public String getHomeNoMoneyText() {
+        return homeNoMoneyText;
+    }
+
+    public void setHomeNoMoneyText(String homeNoMoneyText) {
+        this.homeNoMoneyText = homeNoMoneyText;
+    }
+
+    public String getHomeNoBenefitsText() {
+        return homeNoBenefitsText;
+    }
+
+    public void setHomeNoBenefitsText(String homeNoBenefitsText) {
+        this.homeNoBenefitsText = homeNoBenefitsText;
+    }
+
+    public String getHomeNoJobText() {
+        return homeNoJobText;
+    }
+
+    public void setHomeNoJobText(String homeNoJobText) {
+        this.homeNoJobText = homeNoJobText;
+    }
+
+    public String getHomeDangerText() {
+        return homeDangerText;
+    }
+
+    public void setHomeDangerText(String homeDangerText) {
+        this.homeDangerText = homeDangerText;
+    }
+
+    public String getParentsNoBasicText() {
+        return parentsNoBasicText;
+    }
+
+    public void setParentsNoBasicText(String parentsNoBasicText) {
+        this.parentsNoBasicText = parentsNoBasicText;
+    }
+
+    public String getFamilyHasTraumaText() {
+        return familyHasTraumaText;
+    }
+
+    public void setFamilyHasTraumaText(String familyHasTraumaText) {
+        this.familyHasTraumaText = familyHasTraumaText;
+    }
+
+    public String getFamilyChronicalDiseaseText() {
+        return familyChronicalDiseaseText;
+    }
+
+    public void setFamilyChronicalDiseaseText(String familyChronicalDiseaseText) {
+        this.familyChronicalDiseaseText = familyChronicalDiseaseText;
+    }
+
+    public String getFamilySexualProblemsText() {
+        return familySexualProblemsText;
+    }
+
+    public void setFamilySexualProblemsText(String familySexualProblemsText) {
+        this.familySexualProblemsText = familySexualProblemsText;
+    }
+
+    public String getFamilyChildConflictText() {
+        return familyChildConflictText;
+    }
+
+    public void setFamilyChildConflictText(String familyChildConflictText) {
+        this.familyChildConflictText = familyChildConflictText;
+    }
+
+    public String getFamilyBadFriendsText() {
+        return familyBadFriendsText;
+    }
+
+    public void setFamilyBadFriendsText(String familyBadFriendsText) {
+        this.familyBadFriendsText = familyBadFriendsText;
+    }
+
+    public String getFamilyBadReviewText() {
+        return familyBadReviewText;
+    }
+
+    public void setFamilyBadReviewText(String familyBadReviewText) {
+        this.familyBadReviewText = familyBadReviewText;
+    }
+
+    public String getFamilyNoRelationshipText() {
+        return familyNoRelationshipText;
+    }
+
+    public void setFamilyNoRelationshipText(String familyNoRelationshipText) {
+        this.familyNoRelationshipText = familyNoRelationshipText;
+    }
+
+    public String getIdentAgeSolText() {
+        return identAgeSolText;
+    }
+
+    public void setIdentAgeSolText(String identAgeSolText) {
+        this.identAgeSolText = identAgeSolText;
+    }
+
+    public String getIdentGenderDontKnowText() {
+        return identGenderDontKnowText;
+    }
+
+    public void setIdentGenderDontKnowText(String identGenderDontKnowText) {
+        this.identGenderDontKnowText = identGenderDontKnowText;
+    }
+
+    public String getIdentDiscriminationText() {
+        return identDiscriminationText;
+    }
+
+    public void setIdentDiscriminationText(String identDiscriminationText) {
+        this.identDiscriminationText = identDiscriminationText;
+    }
+
+    public String getEmoOnRegisterText() {
+        return emoOnRegisterText;
+    }
+
+    public void setEmoOnRegisterText(String emoOnRegisterText) {
+        this.emoOnRegisterText = emoOnRegisterText;
+    }
+
+    public String getEmoConflictWitnessText() {
+        return emoConflictWitnessText;
+    }
+
+    public void setEmoConflictWitnessText(String emoConflictWitnessText) {
+        this.emoConflictWitnessText = emoConflictWitnessText;
+    }
+
+    public String getEmoRiskingActionText() {
+        return emoRiskingActionText;
+    }
+
+    public void setEmoRiskingActionText(String emoRiskingActionText) {
+        this.emoRiskingActionText = emoRiskingActionText;
+    }
+
+    public String getEmoAloneText() {
+        return emoAloneText;
+    }
+
+    public void setEmoAloneText(String emoAloneText) {
+        this.emoAloneText = emoAloneText;
+    }
+
+    public String getEmoDepressionText() {
+        return emoDepressionText;
+    }
+
+    public void setEmoDepressionText(String emoDepressionText) {
+        this.emoDepressionText = emoDepressionText;
+    }
+
+    public String getEmoNoFriendsText() {
+        return emoNoFriendsText;
+    }
+
+    public void setEmoNoFriendsText(String emoNoFriendsText) {
+        this.emoNoFriendsText = emoNoFriendsText;
+    }
+
+    public String getEmoAnxietyText() {
+        return emoAnxietyText;
+    }
+
+    public void setEmoAnxietyText(String emoAnxietyText) {
+        this.emoAnxietyText = emoAnxietyText;
+    }
+
+    public String getEduNoAttentionText() {
+        return eduNoAttentionText;
+    }
+
+    public void setEduNoAttentionText(String eduNoAttentionText) {
+        this.eduNoAttentionText = eduNoAttentionText;
+    }
+
+    public String getEduFreqAbsentText() {
+        return eduFreqAbsentText;
+    }
+
+    public void setEduFreqAbsentText(String eduFreqAbsentText) {
+        this.eduFreqAbsentText = eduFreqAbsentText;
+    }
+
+    public String getEduDifficultProgramText() {
+        return eduDifficultProgramText;
+    }
+
+    public void setEduDifficultProgramText(String eduDifficultProgramText) {
+        this.eduDifficultProgramText = eduDifficultProgramText;
+    }
+
+    public String getEduSpecialNeedsText() {
+        return eduSpecialNeedsText;
+    }
+
+    public void setEduSpecialNeedsText(String eduSpecialNeedsText) {
+        this.eduSpecialNeedsText = eduSpecialNeedsText;
+    }
+
+    public String getEduNotLikeText() {
+        return eduNotLikeText;
+    }
+
+    public void setEduNotLikeText(String eduNotLikeText) {
+        this.eduNotLikeText = eduNotLikeText;
+    }
+
+    public String getHealthNoEquipmentText() {
+        return healthNoEquipmentText;
+    }
+
+    public void setHealthNoEquipmentText(String healthNoEquipmentText) {
+        this.healthNoEquipmentText = healthNoEquipmentText;
+    }
+
+    public String getHealthNoFoodText() {
+        return healthNoFoodText;
+    }
+
+    public void setHealthNoFoodText(String healthNoFoodText) {
+        this.healthNoFoodText = healthNoFoodText;
+    }
+
+    public String getHealthDisabledNoHelpText() {
+        return healthDisabledNoHelpText;
+    }
+
+    public void setHealthDisabledNoHelpText(String healthDisabledNoHelpText) {
+        this.healthDisabledNoHelpText = healthDisabledNoHelpText;
+    }
 
     public String getHealthChronicalText() {
         return healthChronicalText;

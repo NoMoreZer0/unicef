@@ -55,7 +55,7 @@
                     </buttonsPanel>
                 </table>
             </groupBox>
-            <form id="form" dataContainer="firstFormDc">>
+            <form id="form" dataContainer="firstFormDc" captionPosition="TOP">
                 <column width="350px">
                     <label id="socialLabel" value="msg://com.company.unicef.screen.firstform/riskfactors.caption.sociallabel" stylename="h3" css="margin-top: 12px"/>
                     <checkBox id="checkboxLegalProblemsField" property="checkboxLegalProblems"/>

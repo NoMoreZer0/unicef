@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.11.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="unicef">
+        <addColumn tableName="SECOND_FORM">
+            <column name="EDU_DIFFICULT_PROGRAM_TEXT" type="VARCHAR(255)"/>
+            <column name="EDU_FREQ_ABSENT_TEXT" type="VARCHAR(255)"/>
+            <column name="EDU_NOT_LIKE_TEXT" type="VARCHAR(255)"/>
+            <column name="EDU_NO_ATTENTION_TEXT" type="VARCHAR(255)"/>
+            <column name="EDU_SPECIAL_NEEDS_TEXT" type="VARCHAR(255)"/>
+            <column name="EMO_ALONE_TEXT" type="VARCHAR(255)"/>
+            <column name="EMO_ANXIETY_TEXT" type="VARCHAR(255)"/>
+            <column name="EMO_BULLYING_TEXT" type="VARCHAR(255)"/>
+            <column name="EMO_CONFLICT_WITNESS_TEXT" type="VARCHAR(255)"/>
+            <column name="EMO_DEPRESSION_TEXT" type="VARCHAR(255)"/>
+            <column name="EMO_NO_FRIENDS_TEXT" type="VARCHAR(255)"/>
+            <column name="EMO_ON_REGISTER_TEXT" type="VARCHAR(255)"/>
+            <column name="EMO_RISKING_ACTION_TEXT" type="VARCHAR(255)"/>
+            <column name="FAMILY_BAD_FRIENDS_TEXT" type="VARCHAR(255)"/>
+            <column name="FAMILY_BAD_REVIEW_TEXT" type="VARCHAR(255)"/>
+            <column name="FAMILY_CHILD_CONFLICT_TEXT" type="VARCHAR(255)"/>
+            <column name="FAMILY_CHRONICAL_DISEASE_TEXT" type="VARCHAR(255)"/>
+            <column name="FAMILY_HAS_TRAUMA_TEXT" type="VARCHAR(255)"/>
+            <column name="FAMILY_NO_RELATIONSHIP_TEXT" type="VARCHAR(255)"/>
+            <column name="FAMILY_SEXUAL_PROBLEMS_TEXT" type="VARCHAR(255)"/>
+            <column name="HEALTH_DISABLED_NO_HELP_TEXT" type="VARCHAR(255)"/>
+            <column name="HEALTH_NO_EQUIPMENT_TEXT" type="VARCHAR(255)"/>
+            <column name="HEALTH_NO_FOOD_TEXT" type="VARCHAR(255)"/>
+            <column name="HOME_DANGER_TEXT" type="VARCHAR(255)"/>
+            <column name="HOME_NO_BENEFITS_TEXT" type="VARCHAR(255)"/>
+            <column name="HOME_NO_JOB_TEXT" type="VARCHAR(255)"/>
+            <column name="HOME_NO_MONEY_TEXT" type="VARCHAR(255)"/>
+            <column name="IDENT_AGE_SOL_TEXT" type="VARCHAR(255)"/>
+            <column name="IDENT_DISCRIMINATION_TEXT" type="VARCHAR(255)"/>
+            <column name="IDENT_GENDER_DONT_KNOW_TEXT" type="VARCHAR(255)"/>
+            <column name="PARENTS_NO_BASIC_TEXT" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

@@ -27,26 +27,34 @@
                 width="800"/>
     <layout spacing="true" expand="scrollBox">
         <scrollBox id="scrollBox" spacing="true">
-            <form id="form" dataContainer="secondFormDc">
+            <form id="form" dataContainer="secondFormDc" width="100%">
                 <column width="350px">
-                    <label id="generalLabel" value="msg://com.company.unicef.entity/SecondForm.generalLabel" stylename="h3"/>
+                    <label id="generalLabel" value="msg://com.company.unicef.entity/SecondForm.generalLabel"
+                           stylename="h3"/>
                     <textField id="childIdNumField" property="childIdNum"/>
                     <textField id="childMobilePhoneField" property="childMobilePhone"/>
                     <comboBox id="educationInstitutionField" property="educationInstitution"/>
                     <textField id="caseManagerField" property="caseManager"/>
                     <textField id="contactNumberField" property="contactNumber"/>
-
-                    <label id="healthLabel" value="msg://com.company.unicef.entity/SecondForm.healthLabel" stylename="h3" css="margin-top: 12px"/>
+                    <label id="healthLabel" value="msg://com.company.unicef.entity/SecondForm.healthLabel"
+                           stylename="h3" css="margin-top: 12px"/>
                     <checkBox id="healthChronicalField" property="healthChronical"/>
-                    <textField id="healthChronicalTextField" property="healthChronicalText"/>
+                    <comboBox id="healthChronicalOptionComboBox"
+                              optionsEnum="com.company.unicef.entity.HealthChronicalOption"
+                              caption="msg://com.company.unicef.entity/SecondForm.HealthChronicalOption"
+                              visible="false"/>
+                    <textField id="healthChronicalTextField" property="healthChronicalText" visible="false"/>
                     <checkBox id="healthNoRegisteredField" property="healthNoRegistered"/>
                     <checkBox id="healthNoVaccinationField" property="healthNoVaccination"/>
                     <checkBox id="healthDisabledNoHelpField" property="healthDisabledNoHelp"/>
+                    <textField id="healthDisabledNoHelpTextField" property="healthDisabledNoHelpText" visible="false"/>
                     <checkBox id="healthNoHospitalField" property="healthNoHospital"/>
                     <checkBox id="healthNoTestingField" property="healthNoTesting"/>
                     <checkBox id="healthNoFoodField" property="healthNoFood"/>
+                    <textField id="healthNoFoodTextField" property="healthNoFoodText" visible="false"/>
                     <checkBox id="healthNoSportField" property="healthNoSport"/>
                     <checkBox id="healthNoEquipmentField" property="healthNoEquipment"/>
+                    <textField id="healthNoEquipmentTextField" property="healthNoEquipmentText" visible="false"/>
                     <checkBox id="healthNoCoordinationField" property="healthNoCoordination"/>
                     <checkBox id="healthBadWeightOrHeightField" property="healthBadWeightOrHeight"/>
                     <checkBox id="healthFobiaField" property="healthFobia"/>
@@ -57,16 +65,22 @@
                     <checkBox id="healthBadCommunicationField" property="healthBadCommunication"/>
                     <textField id="healthOthersField" property="healthOthers"/>
 
-                    <label id="eduLabel" value="msg://com.company.unicef.entity/SecondForm.eduLabel" stylename="h3" css="margin-top: 12px"/>
+                    <label id="eduLabel" value="msg://com.company.unicef.entity/SecondForm.eduLabel" stylename="h3"
+                           css="margin-top: 12px"/>
                     <checkBox id="eduNotLikeField" property="eduNotLike"/>
+                    <textField id="eduNotLikeTextField" property="eduNotLikeText"/>
                     <checkBox id="eduNoSubjectField" property="eduNoSubject"/>
                     <checkBox id="eduWorkingField" property="eduWorking"/>
                     <checkBox id="eduNoDisciplineField" property="eduNoDiscipline"/>
                     <checkBox id="eduSchoolFriendField" property="eduSchoolFriend"/>
                     <checkBox id="eduSpecialNeedsField" property="eduSpecialNeeds"/>
+                    <textField id="eduSpecialNeedsTextField" property="eduSpecialNeedsText" visible="false"/>
                     <checkBox id="eduDifficultProgramField" property="eduDifficultProgram"/>
+                    <textField id="eduDifficultProgramTextField" property="eduDifficultProgramText" visible="false"/>
                     <checkBox id="eduFreqAbsentField" property="eduFreqAbsent"/>
+                    <textField id="eduFreqAbsentTextField" property="eduFreqAbsentText" visible="false"/>
                     <checkBox id="eduNoAttentionField" property="eduNoAttention"/>
+                    <textField id="eduNoAttentionTextField" property="eduNoAttentionText" visible="false"/>
                     <checkBox id="eduNoClubField" property="eduNoClub"/>
                     <checkBox id="eduNoStationeryField" property="eduNoStationery"/>
                     <checkBox id="eduNoLaptopField" property="eduNoLaptop"/>
@@ -77,36 +91,48 @@
                     <checkBox id="eduLowMotivationField" property="eduLowMotivation"/>
                     <textField id="eduOthersField" property="eduOthers"/>
 
-                    <label id="emoLabel" value="msg://com.company.unicef.entity/SecondForm.emoLabel" stylename="h3" css="margin-top: 12px"/>
+                    <label id="emoLabel" value="msg://com.company.unicef.entity/SecondForm.emoLabel" stylename="h3"
+                           css="margin-top: 12px"/>
                     <checkBox id="emoNoStabilityField" property="emoNoStability"/>
                     <checkBox id="emoAnxietyField" property="emoAnxiety"/>
+                    <textField id="emoAnxietyTextField" property="emoAnxietyText" visible="false"/>
                     <checkBox id="emoNoFriendsField" property="emoNoFriends"/>
+                    <textField id="emoNoFriendsTextField" property="emoNoFriendsText" visible="false"/>
                     <checkBox id="emoDepressionField" property="emoDepression"/>
+                    <textField id="emoDepressionTextField" property="emoDepressionText" visible="false"/>
                     <checkBox id="emoBullyingField" property="emoBullying"/>
                     <checkBox id="emoOutsideOfHomeField" property="emoOutsideOfHome"/>
                     <checkBox id="emoAloneField" property="emoAlone"/>
+                    <textField id="emoAloneTextField" property="emoAloneText" visible="false"/>
                     <checkBox id="emoSelfHarassmentField" property="emoSelfHarassment"/>
                     <checkBox id="emoRanAwayField" property="emoRanAway"/>
                     <checkBox id="emoIsBullyField" property="emoIsBully"/>
                     <checkBox id="emoRiskingActionField" property="emoRiskingAction"/>
+                    <textField id="emoRiskingActionTextField" property="emoRiskingActionText" visible="false"/>
                     <checkBox id="emoConflictWitnessField" property="emoConflictWitness"/>
+                    <textField id="emoConflictWitnessTextField" property="emoConflictWitnessText" visible="false"/>
                     <checkBox id="emoNoEmotionControlField" property="emoNoEmotionControl"/>
                     <checkBox id="emoSuicidialField" property="emoSuicidial"/>
                     <checkBox id="emoSuicidialAttemptField" property="emoSuicidialAttempt"/>
                     <checkBox id="emoStealsField" property="emoSteals"/>
                     <checkBox id="emoOnRegisterField" property="emoOnRegister"/>
+                    <textField id="emoOnRegisterTextField" property="emoOnRegisterText" visible="false"/>
                     <checkBox id="emoAggressorField" property="emoAggressor"/>
                     <checkBox id="emoNoBadNoGoodField" property="emoNoBadNoGood"/>
                     <checkBox id="emoNotNormalField" property="emoNotNormal"/>
                     <textField id="emoOthersField" property="emoOthers"/>
 
-                    <label id="identityLabel" value="msg://com.company.unicef.entity/SecondForm.identityLabel" stylename="h3" css="margin-top: 12px"/>
+                    <label id="identityLabel" value="msg://com.company.unicef.entity/SecondForm.identityLabel"
+                           stylename="h3" css="margin-top: 12px"/>
                     <checkBox id="identDiscriminationField" property="identDiscrimination"/>
+                    <textField id="identDiscriminationTextField" property="identDiscriminationText" visible="false"/>
                     <checkBox id="identNoFamilyField" property="identNoFamily"/>
                     <checkBox id="identGenderConfField" property="identGenderConf"/>
                     <checkBox id="identGenderDontKnowField" property="identGenderDontKnow"/>
+                    <textField id="identGenderDontKnowTextField" property="identGenderDontKnowText" visible="false"/>
                     <checkBox id="identPositiveIndividualField" property="identPositiveIndividual"/>
                     <checkBox id="identAgeSolField" property="identAgeSol"/>
+                    <textField id="identAgeSolTextField" property="identAgeSolText" visible="false"/>
                     <checkBox id="identNotSureMyselfField" property="identNotSureMyself"/>
                     <checkBox id="identNotSatisfiedField" property="identNotSatisfied"/>
                     <checkBox id="identNoCulturalField" property="identNoCultural"/>
@@ -114,35 +140,46 @@
                     <checkBox id="identNoHygieneField" property="identNoHygiene"/>
                     <textField id="identOthersField" property="identOthers"/>
 
-                    <label id="familyLabel" value="msg://com.company.unicef.entity/SecondForm.familyLabel" stylename="h3" css="margin-top: 12px"/>
+                    <label id="familyLabel" value="msg://com.company.unicef.entity/SecondForm.familyLabel"
+                           stylename="h3" css="margin-top: 12px"/>
                     <checkBox id="familyNoRelationshipField" property="familyNoRelationship"/>
+                    <textField id="familyNoRelationshipTextField" property="familyNoRelationshipText" visible="false"/>
                     <checkBox id="familyNoAdultField" property="familyNoAdult"/>
                     <checkBox id="familyDomesticViolenceField" property="familyDomesticViolence"/>
                     <checkBox id="familyNoConnectionField" property="familyNoConnection"/>
                     <checkBox id="familyBadReviewField" property="familyBadReview"/>
+                    <textField id="familyBadReviewTextField" property="familyBadReviewText" visible="false"/>
                     <checkBox id="familyBadFriendsField" property="familyBadFriends"/>
+                    <textField id="familyBadFriendsTextField" property="familyBadFriendsText" visible="false"/>
                     <checkBox id="familyNoSkillsField" property="familyNoSkills"/>
                     <checkBox id="familyChildIsAdultField" property="familyChildIsAdult"/>
                     <checkBox id="familyDifferentParentsField" property="familyDifferentParents"/>
                     <checkBox id="familyChildConflictField" property="familyChildConflict"/>
+                    <textField id="familyChildConflictTextField" property="familyChildConflictText"/>
                     <checkBox id="familyNoTimeCommunicationField" property="familyNoTimeCommunication"/>
                     <checkBox id="familyAwayFromParentsField" property="familyAwayFromParents"/>
                     <checkBox id="familySexualProblemsField" property="familySexualProblems"/>
+                    <textField id="familySexualProblemsTextField" property="familySexualProblemsText" visible="false"/>
                     <checkBox id="familyChildParentConflictField" property="familyChildParentConflict"/>
                     <checkBox id="familyChronicalDiseaseField" property="familyChronicalDisease"/>
+                    <textField id="familyChronicalDiseaseTextField" property="familyChronicalDiseaseText" visible="false"/>
                     <checkBox id="familyHasJailField" property="familyHasJail"/>
                     <checkBox id="familyHasTraumaField" property="familyHasTrauma"/>
+                    <textField id="familyHasTraumaTextField" property="familyHasTraumaText" visible="false"/>
                     <textField id="familyOthersField" property="familyOthers"/>
 
-                    <label id="secondSelfLabel" value="msg://com.company.unicef.entity/SecondForm.secondSelfLabel" stylename="h3" css="margin-top: 12px"/>
+                    <label id="secondSelfLabel" value="msg://com.company.unicef.entity/SecondForm.selfLabel"
+                           stylename="h3" css="margin-top: 12px"/>
                     <checkBox id="selfNoPhysicialActivityField" property="selfNoPhysicialActivity"/>
                     <checkBox id="selfNoPracticalSkillsField" property="selfNoPracticalSkills"/>
                     <checkBox id="selfNoMoneyField" property="selfNoMoney"/>
                     <checkBox id="selfNoHelpField" property="selfNoHelp"/>
                     <textField id="selfOthersField" property="selfOthers"/>
 
-                    <label id="secondFamilyLabel" value="msg://com.company.unicef.entity/SecondForm.secondFamilyLabel" stylename="h3" css="margin-top: 12px"/>
+                    <label id="secondFamilyLabel" value="msg://com.company.unicef.entity/SecondForm.secondFamilyLabel"
+                           stylename="h3" css="margin-top: 12px"/>
                     <checkBox id="parentsNoBasicField" property="parentsNoBasic"/>
+                    <textField id="parentsNoBasicTextField" property="parentsNoBasicText" visible="false"/>
                     <checkBox id="parentsNoDailyRoutineField" property="parentsNoDailyRoutine"/>
                     <checkBox id="parentsNoSpaceField" property="parentsNoSpace"/>
                     <checkBox id="parentsNoChildHealthField" property="parentsNoChildHealth"/>
@@ -152,30 +189,37 @@
                     <checkBox id="parentsDontCareField" property="parentsDontCare"/>
                     <checkBox id="parentNoDisciplineField" property="parentNoDiscipline"/>
                     <textField id="parentsOthersField" property="parentsOthers"/>
+
                     <checkBox id="homeNoHomeField" property="homeNoHome"/>
                     <checkBox id="homeEvictionField" property="homeEviction"/>
                     <checkBox id="homeDangerField" property="homeDanger"/>
+                    <textField id="homeDangerTextField" property="homeDangerText" visible="false"/>
                     <checkBox id="homeNoJobField" property="homeNoJob"/>
+                    <textField id="homeNoJobTextField" property="homeNoJobText" visible="false"/>
                     <checkBox id="homeNoBenefitsField" property="homeNoBenefits"/>
+                    <textField id="homeNoBenefitsTextField" property="homeNoBenefitsText" visible="false"/>
                     <checkBox id="homeNoMoneyField" property="homeNoMoney"/>
+                    <textField id="homeNoMoneyTextField" property="homeNoMoneyText" visible="false"/>
                     <textField id="homeOthersField" property="homeOthers"/>
                 </column>
             </form>
-            <groupBox id="pivotTableGroupBox" caption="msg://com.company.unicef.entity/SecondForm.pivotTableGroupBox" visible="false">
-                    <groupTable id="pivotGroupTable2" dataContainer="pivotTableCheckBoxesDc" width="100%">
-                        <columns>
-                            <group>
-                                <column id="category" caption="msg://com.company.unicef.entity/PivotTableCheckBoxes.category"/>
-                            </group>
-                            <column id="level" caption="msg://com.company.unicef.entity/PivotTableCheckBoxes.level"/>
-                        </columns>
-                    </groupTable>
+            <groupBox id="pivotTableGroupBox" caption="msg://com.company.unicef.entity/SecondForm.pivotTableGroupBox"
+                      visible="false">
+                <groupTable id="pivotGroupTable2" dataContainer="pivotTableCheckBoxesDc" width="100%">
+                    <columns>
+                        <group>
+                            <column id="category"
+                                    caption="msg://com.company.unicef.entity/PivotTableCheckBoxes.category"/>
+                        </group>
+                        <column id="level" caption="msg://com.company.unicef.entity/PivotTableCheckBoxes.level"/>
+                    </columns>
+                </groupTable>
             </groupBox>
         </scrollBox>
-
         <hbox id="editActions" spacing="true">
             <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
-            <button id="closeBtn" action="windowClose" caption="msg://com.company.unicef.screen.event/com.company.unicef.closeButton"/>
+            <button id="closeBtn" action="windowClose"
+                    caption="msg://com.company.unicef.screen.event/com.company.unicef.closeButton"/>
             <button id="calculatePivotTable" caption="msg://com.company.unicef.entity/SecondForm.calculatePivotTable"/>
         </hbox>
     </layout>
