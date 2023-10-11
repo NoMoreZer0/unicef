@@ -37,6 +37,13 @@
                   width="100%">
             <initialLayout margin="true"
                            spacing="true">
+                <scrollBox id="mainScrollBox">
+                    <image scaleMode="CONTAIN" width="100%" height="100%">
+                        <resource>
+                            <relativePath path="images/background-image.jpg"/>
+                        </resource>
+                    </image>
+                </scrollBox>
             </initialLayout>
         </workArea>
     </layout>

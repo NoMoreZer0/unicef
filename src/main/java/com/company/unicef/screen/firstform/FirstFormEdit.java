@@ -136,21 +136,21 @@ public class FirstFormEdit extends StandardEditor<FirstForm> {
     @Autowired
     private CheckBox checkboxOutsideFamilyField;
     @Autowired
-    private TextField<String> checkboxOthers8Field;
+    private TextArea<String> checkboxOthers8Field;
     @Autowired
-    private TextField<String> checkboxOthers7Field;
+    private TextArea<String> checkboxOthers7Field;
     @Autowired
-    private TextField<String> checkboxOthers6Field;
+    private TextArea<String> checkboxOthers6Field;
     @Autowired
-    private TextField<String> checkboxOthers5Field;
+    private TextArea<String> checkboxOthers5Field;
     @Autowired
-    private TextField<String> checkboxOthers4Field;
+    private TextArea<String> checkboxOthers4Field;
     @Autowired
-    private TextField<String> checkboxOthers3Field;
+    private TextArea<String> checkboxOthers3Field;
     @Autowired
-    private TextField<String> checkboxOthers2Field;
+    private TextArea<String> checkboxOthers2Field;
     @Autowired
-    private TextField<String> checkboxOthers1Field;
+    private TextArea<String> checkboxOthers1Field;
     @Autowired
     private CheckBox checkboxOrphangeField;
     @Autowired

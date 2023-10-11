@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.11.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="unicef">
+        <modifyDataType columnName="CHECKBOX_OTHERS1" newDataType="CLOB" tableName="FIRST_FORM"/>
+    </changeSet>
+    <changeSet id="2" author="unicef">
+        <modifyDataType columnName="CHECKBOX_OTHERS2" newDataType="CLOB" tableName="FIRST_FORM"/>
+    </changeSet>
+    <changeSet id="3" author="unicef">
+        <modifyDataType columnName="CHECKBOX_OTHERS3" newDataType="CLOB" tableName="FIRST_FORM"/>
+    </changeSet>
+    <changeSet id="4" author="unicef">
+        <modifyDataType columnName="CHECKBOX_OTHERS4" newDataType="CLOB" tableName="FIRST_FORM"/>
+    </changeSet>
+    <changeSet id="5" author="unicef">
+        <modifyDataType columnName="CHECKBOX_OTHERS5" newDataType="CLOB" tableName="FIRST_FORM"/>
+    </changeSet>
+    <changeSet id="6" author="unicef">
+        <modifyDataType columnName="CHECKBOX_OTHERS6" newDataType="CLOB" tableName="FIRST_FORM"/>
+    </changeSet>
+    <changeSet id="7" author="unicef">
+        <modifyDataType columnName="CHECKBOX_OTHERS7" newDataType="CLOB" tableName="FIRST_FORM"/>
+    </changeSet>
+    <changeSet id="8" author="unicef">
+        <modifyDataType columnName="CHECKBOX_OTHERS8" newDataType="CLOB" tableName="FIRST_FORM"/>
+    </changeSet>
+</databaseChangeLog>

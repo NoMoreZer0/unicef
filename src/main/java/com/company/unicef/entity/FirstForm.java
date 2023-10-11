@@ -91,6 +91,7 @@ public class FirstForm {
     @Column(name = "CHECKBOX_OUTSIDE_FAMILY")
     private Boolean checkboxOutsideFamily;
 
+    @Lob
     @Column(name = "CHECKBOX_OTHERS1")
     private String checkboxOthers1;
 
@@ -121,6 +122,7 @@ public class FirstForm {
     @Column(name = "CHECKBOX_PSYCHO")
     private Boolean checkboxPsycho;
 
+    @Lob
     @Column(name = "CHECKBOX_OTHERS2")
     private String checkboxOthers2;
 
@@ -160,6 +162,7 @@ public class FirstForm {
     @Column(name = "CHECKBOX_CHILD_TEACHER_CONFLICT")
     private Boolean checkboxChildTeacherConflict;
 
+    @Lob
     @Column(name = "CHECKBOX_OTHERS3")
     private String checkboxOthers3;
 
@@ -253,6 +256,7 @@ public class FirstForm {
     @Column(name = "CHECKBOX_PARENTS_RELIGIOUS_RADICALIZATION")
     private Boolean checkboxParentsReligiousRadicalization;
 
+    @Lob
     @Column(name = "CHECKBOX_OTHERS4")
     private String checkboxOthers4;
 
@@ -268,6 +272,7 @@ public class FirstForm {
     @Column(name = "CHECKBOX_IND_FACTOR_SELF_CONFIDENCE")
     private Boolean checkboxIndFactorSelfConfidence;
 
+    @Lob
     @Column(name = "CHECKBOX_OTHERS5")
     private String checkboxOthers5;
 
@@ -301,6 +306,7 @@ public class FirstForm {
     @Column(name = "CHECKBOX_FAMILY_FACTOR_SOCIAL_MEDIA")
     private Boolean checkboxFamilyFactorSocialMedia;
 
+    @Lob
     @Column(name = "CHECKBOX_OTHERS6")
     private String checkboxOthers6;
 
@@ -325,6 +331,7 @@ public class FirstForm {
     @Column(name = "CHECKBOX_ENV_COORDINATION_SERVICES")
     private Boolean checkboxEnvCoordinationServices;
 
+    @Lob
     @Column(name = "CHECKBOX_OTHERS7")
     private String checkboxOthers7;
 
@@ -352,6 +359,7 @@ public class FirstForm {
     @Column(name = "CHECKBOX_SCHOOL_PROFILACTATION")
     private Boolean checkboxSchoolProfilactation;
 
+    @Lob
     @Column(name = "CHECKBOX_OTHERS8")
     private String checkboxOthers8;
 

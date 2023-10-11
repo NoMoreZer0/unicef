@@ -40,7 +40,6 @@
                     width="100%"
                     dataContainer="firstFormsDc">
             <actions>
-                <action id="add" type="add"/>
                 <action id="create" type="create"/>
                 <action id="edit" type="edit"/>
                 <action id="remove" type="remove"/>
@@ -158,7 +157,6 @@
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
-                <button id="addBtn" action="firstFormsTable.add" caption="msg://com.company.unicef.screen.event/com.company.unicef.addButton"/>
                 <button id="createBtn" action="firstFormsTable.create" caption="msg://com.company.unicef.screen.event/com.company.unicef.createButton"/>
                 <button id="editBtn" action="firstFormsTable.edit" caption="msg://com.company.unicef.screen.event/com.company.unicef.editButton"/>
                 <button id="removeBtn" action="firstFormsTable.remove" caption="msg://com.company.unicef.screen.event/com.company.unicef.excludeButton"/>
