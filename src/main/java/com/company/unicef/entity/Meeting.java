@@ -27,6 +27,9 @@ public class Meeting {
     @Column(name = "FIO")
     private String fio;
 
+    @Column(name = "MEETING_ORGANIZER")
+    private String meetingOrganizer;
+
     @Column(name = "ORGANIZATION_NAME")
     private String organizationName;
 
@@ -39,10 +42,19 @@ public class Meeting {
     @JmixGeneratedValue
     @Column(name = "UUID")
     private UUID uuid;
+
     @OnDeleteInverse(DeletePolicy.CASCADE)
     @JoinColumn(name = "FIRST_FORM_ID")
     @ManyToOne(fetch = FetchType.LAZY)
     private FirstForm firstForm;
+
+    public String getMeetingOrganizer() {
+        return meetingOrganizer;
+    }
+
+    public void setMeetingOrganizer(String meetingOrganizer) {
+        this.meetingOrganizer = meetingOrganizer;
+    }
 
     public FirstForm getFirstForm() {
         return firstForm;

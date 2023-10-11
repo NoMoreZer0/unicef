@@ -54,7 +54,7 @@
                         <action id="entityClear" type="entity_clear"/>
                     </actions>
                 </entityPicker>
-                <fileStorageUpload id="documentField" showFileName="true" property="document"/>
+                <fileStorageUpload id="documentField" showFileName="true" property="document" uploadButtonCaption="msg://com.company.unicef.entity/OpenCase.openCaseUploadButton" clearButtonCaption="msg://com.company.unicef.entity/OpenCase.openCaseClearButton"/>
             </column>
         </form>
 
@@ -69,9 +69,9 @@
                     <column id="involvement"/>
                 </columns>
                 <buttonsPanel>
-                    <button action="responsibleEmployeeTable.create"/>
-                    <button action="responsibleEmployeeTable.remove"/>
-                    <button action="responsibleEmployeeTable.edit"/>
+                    <button action="responsibleEmployeeTable.create" caption="msg://com.company.unicef.screen.event/com.company.unicef.createEmployeeButton"/>
+                    <button action="responsibleEmployeeTable.remove" caption="msg://com.company.unicef.screen.event/com.company.unicef.excludeButton"/>
+                    <button action="responsibleEmployeeTable.edit" caption="msg://com.company.unicef.screen.event/com.company.unicef.editButton"/>
                 </buttonsPanel>
             </table>
         </groupBox>
@@ -88,9 +88,9 @@
                     <column id="organization"/>
                 </columns>
                 <buttonsPanel>
-                    <button action="representativesTable.create"/>
-                    <button action="representativesTable.remove"/>
-                    <button action="representativesTable.edit"/>
+                    <button action="representativesTable.create" caption="msg://com.company.unicef.screen.event/com.company.unicef.createEmployeeButton"/>
+                    <button action="representativesTable.remove" caption="msg://com.company.unicef.screen.event/com.company.unicef.excludeButton"/>
+                    <button action="representativesTable.edit" caption="msg://com.company.unicef.screen.event/com.company.unicef.editButton"/>
                 </buttonsPanel>
             </table>
         </groupBox>

@@ -61,12 +61,13 @@
                 <actions>
                     <action id="add" type="add"/>
                     <action id="exclude" type="exclude"/>
+                    <action id="create" type="create"/>
                 </actions>
                 <columns>
                     <column id="name"/>
                 </columns>
                 <buttonsPanel>
-                    <button action="secondFormEventsTable.add"
+                    <button action="secondFormEventsTable.create"
                             caption="msg://com.company.unicef.screen.event/com.company.unicef.addButton"/>
                     <button action="secondFormEventsTable.exclude"
                             caption="msg://com.company.unicef.screen.event/com.company.unicef.excludeButton"/>

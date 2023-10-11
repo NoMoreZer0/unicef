@@ -9,7 +9,8 @@ public enum FamilyStatusFielld implements EnumClass<String> {
 
     OFFICIALLY_MARRIED("Oфиц зарегистрированы в браке"),
     WIDOWED("Развод/Смерть одного из родителей/родитель-одиночка"),
-    UNNOFICIALLY_TOGETHER("Совместное проживание без регистраций брака");
+    UNNOFICIALLY_TOGETHER("Совместное проживание без регистраций брака"),
+    NEW_FAMILY_FAR_FROM_CHILDREN("Проживает в другой семье отдельно от ребенка");
 
     private String id;
 

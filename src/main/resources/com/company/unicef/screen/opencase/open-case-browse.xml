@@ -52,7 +52,7 @@
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
-                <button id="createBtn" action="openCasesTable.create" caption="msg://com.company.unicef.screen.event/com.company.unicef.createButton"/>
+                <button id="createBtn" action="openCasesTable.create" caption="msg://com.company.unicef.entity/OpenCase.openCaseCreateButton"/>
                 <button id="editBtn" action="openCasesTable.edit" caption="msg://com.company.unicef.screen.event/com.company.unicef.editButton"/>
                 <button id="removeBtn" action="openCasesTable.remove" caption="msg://com.company.unicef.screen.event/com.company.unicef.excludeButton"/>
             </buttonsPanel>

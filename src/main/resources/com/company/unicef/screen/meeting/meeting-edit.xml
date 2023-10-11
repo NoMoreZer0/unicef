@@ -28,10 +28,11 @@
         <form id="form" dataContainer="meetingDc">
             <column width="350px">
                 <dateField id="dateField" property="date"/>
+                <textField id="meetingOrganizerField" property="meetingOrganizer"/>
                 <textField id="fioField" property="fio"/>
                 <textField id="organizationNameField" property="organizationName"/>
                 <textField id="relativeField" property="relative"/>
-                <textField id="contactField" property="contact"/>
+                <maskedField mask="+#(###) ####-###" id="contactPhoneField" property="contact" valueMode="masked"/>
             </column>
         </form>
         <hbox id="editActions" spacing="true">

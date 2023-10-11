@@ -84,6 +84,7 @@
                 <actions>
                     <action id="add" type="add"/>
                     <action id="exclude" type="exclude"/>
+                    <action id="create" type="create"/>
                 </actions>
                 <columns>
                     <column id="successIndicator"/>
@@ -93,7 +94,7 @@
                     <column id="gradeFourthTerm"/>
                 </columns>
                 <buttonsPanel>
-                    <button action="eventResultsTable.add" caption="msg://com.company.unicef.screen.event/com.company.unicef.addButton"/>
+                    <button action="eventResultsTable.create" caption="msg://com.company.unicef.screen.event/com.company.unicef.addButton"/>
                     <button action="eventResultsTable.exclude" caption="msg://com.company.unicef.screen.event/com.company.unicef.excludeButton"/>
                 </buttonsPanel>
             </table>

@@ -8,7 +8,8 @@ import javax.annotation.Nullable;
 public enum StudyingLangField implements EnumClass<String> {
 
     KAZAKH("A"),
-    RUSSIAN("B");
+    RUSSIAN("B"),
+    ENGLISH("C");
 
     private String id;
 

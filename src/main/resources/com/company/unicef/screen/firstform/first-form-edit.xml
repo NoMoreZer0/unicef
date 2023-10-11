@@ -30,13 +30,15 @@
     <layout spacing="true" expand="scrollBox">
         <gridLayout id="scrollBox" spacing="true">
             <columns count="2"/>
-            <entityPicker id="studentField" dataContainer="firstFormDc" property="student" caption="msg://com.company.unicef.entity/FirstForm.chooseStudent">
-                <actions>
-                    <action id="lookup" type="entity_lookup"/>
-                    <action id="clear" type="entity_clear"/>
-                </actions>
-            </entityPicker>
             <rows>
+                <row>
+                    <entityPicker id="studentField" dataContainer="firstFormDc" property="student" caption="msg://com.company.unicef.entity/FirstForm.chooseStudent">
+                        <actions>
+                            <action id="lookup" type="entity_lookup"/>
+                            <action id="clear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                </row>
                 <row>
                     <textArea id="reasonTextField" dataContainer="firstFormDc" property="reasonText" caption="msg://com.company.unicef.entity/FirstForm.reasonText" rows="5"/>
                 </row>

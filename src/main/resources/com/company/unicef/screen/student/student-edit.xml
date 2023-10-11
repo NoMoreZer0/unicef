@@ -37,14 +37,13 @@
                     <textField id="fioField" property="fio"/>
                     <comboBox id="genderField" property="gender"/>
                     <textField id="studyingYearField" property="studyingYear"/>
-                    <textField id="phoneNumberField" property="phoneNumber"/>
                     <textField id="schoolField" property="school"/>
                     <comboBox id="studyLangField" property="studyLang"/>
                     <comboBox id="statusField" property="status"/>
                     <dateField id="birthDateField" property="birthDate"/>
                     <textField id="fullAgeField" property="fullAge"/>
                     <comboBox id="specialNeedsField" property="specialNeeds"/>
-                    <textField id="contactPhoneField" property="contactPhone"/>
+                    <maskedField mask="+#(###) ####-###" id="contactPhoneField" property="contactPhone" valueMode="masked"/>
                     <entityPicker id="addressField" property="address"/>
                 </column>
             </form>
@@ -59,6 +58,7 @@
                         <column id="fio"/>
                         <column id="fullAge"/>
                         <column id="familyStatus"/>
+                        <column id="isStepParent"/>
                     </columns>
                     <buttonsPanel>
                         <button action="parentsTable.create" caption="msg://com.company.unicef.screen.event/com.company.unicef.createButton"/>

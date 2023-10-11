@@ -1,5 +1,6 @@
 package com.company.unicef.screen.student;
 
+import com.company.unicef.entity.StudentStatusField;
 import io.jmix.ui.component.HasValue;
 import io.jmix.ui.screen.*;
 import com.company.unicef.entity.Student;
@@ -20,4 +21,9 @@ public class StudentEdit extends StandardEditor<Student> {
         log.info("Current date: " + date);
     }
 
+    @Subscribe
+    public void onBeforeShow(final BeforeShowEvent event) {
+        if (getEditedEntity().getStatus() != null) return;
+        getEditedEntity().setStatus(StudentStatusField.GRAY);
+    }
 }

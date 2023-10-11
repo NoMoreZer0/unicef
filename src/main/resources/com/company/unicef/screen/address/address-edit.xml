@@ -29,8 +29,8 @@
             <column width="350px">
                 <textField id="cityField" property="city"/>
                 <textField id="districtField" property="district"/>
-                <textField id="streetField" property="street"/>
                 <textField id="homeField" property="home"/>
+                <textField id="streetField" property="street"/>
                 <textField id="apartmentField" property="apartment"/>
             </column>
         </form>

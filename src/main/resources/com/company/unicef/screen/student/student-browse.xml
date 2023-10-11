@@ -61,8 +61,8 @@
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">
-            <button action="lookupSelectAction"/>
-            <button action="lookupCancelAction"/>
+            <button action="lookupSelectAction" caption="msg://com.company.unicef.entity/Student.selectButton"/>
+            <button action="lookupCancelAction" caption="msg://com.company.unicef.entity/Student.cancelButton"/>
         </hbox>
     </layout>
 </window>
