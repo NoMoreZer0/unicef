@@ -273,15 +273,13 @@ public class FirstFormEdit extends StandardEditor<FirstForm> {
         calcIndividualFactors();
         calcFamilyFactors();
         calcAcademicFactors();
-        double B = sumMean / 4.0;
-        if (isDefenseFactorChecked()) {
-            B = 1.0;
-        }
-        String riskLevelMsg = "", descMsg = "";
+        double maximumRisk = getMaximumRisk();
+        String riskLevelMsg = "";
+        String descMsg = "";
         finalCalculationSteps.setVisible(true);
         textFieldNextStep.setVisible(true);
         textFieldNextStep.setCaption(messages.getMessage(MESSAGE_PACK, "FirstForm.textFieldNextStepCaption"));
-        if (0.9 <= B && B <= 1.1) {
+        if (maximumRisk >= 90) {
             riskLevelMsg = messages.getMessage(MESSAGE_PACK, "FirstForm.riskLevelFieldHigh");
             descMsg = messages.getMessage(MESSAGE_PACK, "FirstForm.descriptionFieldHigh");
             checkBoxNextStep1.setCaption(messages.getMessage(MESSAGE_PACK, "FirstForm.checkBoxNextStep1High"));
@@ -297,7 +295,7 @@ public class FirstFormEdit extends StandardEditor<FirstForm> {
             checkBoxNextStep6.setCaption(messages.getMessage(MESSAGE_PACK, "FirstForm.checkBoxNextStep6High"));
             checkBoxNextStep6.setVisible(true);
         }
-        else if (0.71 <= B && B <= 0.89) {
+        else if (71 <= maximumRisk && maximumRisk <= 89) {
             riskLevelMsg = messages.getMessage(MESSAGE_PACK, "FirstForm.riskLevelFieldMedium");
             descMsg = messages.getMessage(MESSAGE_PACK, "FirstForm.descriptionFieldMedium");
             checkBoxNextStep1.setCaption(messages.getMessage(MESSAGE_PACK, "checkBoxNextStep1Medium"));
@@ -316,16 +314,57 @@ public class FirstFormEdit extends StandardEditor<FirstForm> {
         riskLevelField.setValue(riskLevelMsg);
         descriptionField.setValue(descMsg);
         finalCalculationTable.setVisible(true);
+        // Изменили подсчет риска, сейчас берем просто максимальный
+//        double B = sumMean / 4.0;
+//        if (isDefenseFactorChecked()) {
+//            B = 1.0;
+//        }
+//        String riskLevelMsg = "", descMsg = "";
+//        finalCalculationSteps.setVisible(true);
+//        textFieldNextStep.setVisible(true);
+//        textFieldNextStep.setCaption(messages.getMessage(MESSAGE_PACK, "FirstForm.textFieldNextStepCaption"));
+//        if (0.9 <= B && B <= 1.1) {
+//            riskLevelMsg = messages.getMessage(MESSAGE_PACK, "FirstForm.riskLevelFieldHigh");
+//            descMsg = messages.getMessage(MESSAGE_PACK, "FirstForm.descriptionFieldHigh");
+//            checkBoxNextStep1.setCaption(messages.getMessage(MESSAGE_PACK, "FirstForm.checkBoxNextStep1High"));
+//            checkBoxNextStep1.setVisible(true);
+//            checkBoxNextStep2.setCaption(messages.getMessage(MESSAGE_PACK, "FirstForm.checkBoxNextStep2High"));
+//            checkBoxNextStep2.setVisible(true);
+//            checkBoxNextStep3.setCaption(messages.getMessage(MESSAGE_PACK, "FirstForm.checkBoxNextStep3High"));
+//            checkBoxNextStep3.setVisible(true);
+//            checkBoxNextStep4.setCaption(messages.getMessage(MESSAGE_PACK, "FirstForm.checkBoxNextStep4High"));
+//            checkBoxNextStep4.setVisible(true);
+//            checkBoxNextStep5.setCaption(messages.getMessage(MESSAGE_PACK, "FirstForm.checkBoxNextStep5High"));
+//            checkBoxNextStep5.setVisible(true);
+//            checkBoxNextStep6.setCaption(messages.getMessage(MESSAGE_PACK, "FirstForm.checkBoxNextStep6High"));
+//            checkBoxNextStep6.setVisible(true);
+//        }
+//        else if (0.71 <= B && B <= 0.89) {
+//            riskLevelMsg = messages.getMessage(MESSAGE_PACK, "FirstForm.riskLevelFieldMedium");
+//            descMsg = messages.getMessage(MESSAGE_PACK, "FirstForm.descriptionFieldMedium");
+//            checkBoxNextStep1.setCaption(messages.getMessage(MESSAGE_PACK, "checkBoxNextStep1Medium"));
+//            checkBoxNextStep1.setVisible(true);
+//            checkBoxNextStep2.setCaption(messages.getMessage(MESSAGE_PACK, "checkBoxNextStep2Medium"));
+//            checkBoxNextStep2.setVisible(true);
+//        }
+//        else {
+//            riskLevelMsg = messages.getMessage(MESSAGE_PACK, "FirstForm.riskLevelFieldLow");
+//            descMsg = messages.getMessage(MESSAGE_PACK, "FirstForm.descriptionFieldLow");
+//            checkBoxNextStep1.setCaption(messages.getMessage(MESSAGE_PACK, "FirstForm.checkBoxNextStep1Low"));
+//            checkBoxNextStep1.setVisible(true);
+//            checkBoxNextStep2.setCaption(messages.getMessage(MESSAGE_PACK, "FirstForm.checkBoxNextStep2Low"));
+//            checkBoxNextStep2.setVisible(true);
+//        }
+//        riskLevelField.setValue(riskLevelMsg);
+//        descriptionField.setValue(descMsg);
+//        finalCalculationTable.setVisible(true);
     }
 
     @Subscribe("commitAndCloseBtn")
     public void onCommitAndCloseBtnClick(Button.ClickEvent event) {
-        double B = sumMean / 4.0;
-        if (isDefenseFactorChecked()) {
-            B = 1.0;
-        }
         FirstForm firstForm = firstFormDc.getItem();
-        if (0.9 <= B && B <= 1.1) {
+        double maximumRisk = getMaximumRisk();
+        if (maximumRisk >= 90) {
             firstForm.setCheckboxFinalRiskLevelHigh(true);
             if (checkBoxNextStep1.isChecked()) firstForm.setCheckboxFinalRiskLevelHighStep1(true);
             if (checkBoxNextStep2.isChecked()) firstForm.setCheckboxFinalRiskLevelHighStep2(true);
@@ -335,7 +374,7 @@ public class FirstFormEdit extends StandardEditor<FirstForm> {
             if (checkBoxNextStep6.isChecked()) firstForm.setCheckboxFinalRiskLevelHighStep6(true);
             firstForm.setCheckboxFinalRiskLevelHighOthers(textFieldNextStep.getRawValue());
         }
-        else if (0.71 <= B && B <= 0.89) {
+        else if (71 <= maximumRisk && maximumRisk <= 89) {
             firstForm.setCheckboxFinalRiskLevelMedium(true);
             if (checkBoxNextStep1.isChecked()) firstForm.setCheckboxFinalRiskLevelMediumStep1(true);
             if (checkBoxNextStep2.isChecked()) firstForm.setCheckboxFinalRiskLevelMediumStep2(true);
@@ -348,6 +387,34 @@ public class FirstFormEdit extends StandardEditor<FirstForm> {
             firstForm.setCheckboxFinalRiskLevelLowOthers(textFieldNextStep.getRawValue());
         }
         firstFormDc.setItem(firstForm);
+        // Изменили подсчет риска, сейчас берем просто максимум
+        //        double B = sumMean / 4.0;
+//        if (isDefenseFactorChecked()) {
+//            B = 1.0;
+//        }
+//        FirstForm firstForm = firstFormDc.getItem();
+//        if (0.9 <= B && B <= 1.1) {
+//            firstForm.setCheckboxFinalRiskLevelHigh(true);
+//            if (checkBoxNextStep1.isChecked()) firstForm.setCheckboxFinalRiskLevelHighStep1(true);
+//            if (checkBoxNextStep2.isChecked()) firstForm.setCheckboxFinalRiskLevelHighStep2(true);
+//            if (checkBoxNextStep3.isChecked()) firstForm.setCheckboxFinalRiskLevelHighStep3(true);
+//            if (checkBoxNextStep4.isChecked()) firstForm.setCheckboxFinalRiskLevelHighStep4(true);
+//            if (checkBoxNextStep5.isChecked()) firstForm.setCheckboxFinalRiskLevelHighStep5(true);
+//            if (checkBoxNextStep6.isChecked()) firstForm.setCheckboxFinalRiskLevelHighStep6(true);
+//            firstForm.setCheckboxFinalRiskLevelHighOthers(textFieldNextStep.getRawValue());
+//        }
+//        else if (0.71 <= B && B <= 0.89) {
+//            firstForm.setCheckboxFinalRiskLevelMedium(true);
+//            if (checkBoxNextStep1.isChecked()) firstForm.setCheckboxFinalRiskLevelMediumStep1(true);
+//            if (checkBoxNextStep2.isChecked()) firstForm.setCheckboxFinalRiskLevelMediumStep2(true);
+//            firstForm.setCheckboxFinalRiskLevelMediumOthers(textFieldNextStep.getRawValue());
+//        }
+//        else {
+//            firstForm.setCheckboxFinalRiskLevelLow(true);
+//            if (checkBoxNextStep1.isChecked()) firstForm.setCheckboxFinalRiskLevelLowStep1(true);
+//            if (checkBoxNextStep2.isChecked()) firstForm.setCheckboxFinalRiskLevelLowStep2(true);
+//            firstForm.setCheckboxFinalRiskLevelLowOthers(textFieldNextStep.getRawValue());
+//        }
     }
 
     private boolean isDefenseFactorChecked() {
@@ -393,6 +460,20 @@ public class FirstFormEdit extends StandardEditor<FirstForm> {
         checkBoxNextStep6.setVisible(false);
         textFieldNextStep.setVisible(false);
     }
+
+    private double getMaximumRisk() {
+        return Math.max(Math.max(getMaximumRisk(socialMedicalFactorsList, socialMedicalFactorsMap), getMaximumRisk(individualFactorsList, individualFactorsMap)),
+                Math.max(getMaximumRisk(familyFactorsList, familyFactorsMap), getMaximumRisk(academicFactorsList, academicFactorsMap)));
+    }
+
+    private double getMaximumRisk(List<CheckBox> list, HashMap<CheckBox, Double> map) {
+        return list.stream()
+                .filter(CheckBox::isChecked)
+                .map(map::get)
+                .max(Double::compareTo)
+                .orElse(0.0);
+    }
+
     private void calcFactorsMean(List<CheckBox> list, HashMap<CheckBox, Double> map) {
         double curMean, sumCoef = 0, sumNum = 0;
         for (int i = 0; i < list.size(); ++i) {
@@ -422,146 +503,146 @@ public class FirstFormEdit extends StandardEditor<FirstForm> {
     }
     private void initSocialMedicalFactors() {
         socialMedicalFactorsList.add(checkboxNoCareOfParentsField);
-        socialMedicalFactorsMap.put(checkboxNoCareOfParentsField, 0.92);
+        socialMedicalFactorsMap.put(checkboxNoCareOfParentsField, 92.0);
         socialMedicalFactorsList.add(checkboxChildAtRiskField);
-        socialMedicalFactorsMap.put(checkboxChildAtRiskField, 0.84);
+        socialMedicalFactorsMap.put(checkboxChildAtRiskField, 84.0);
         socialMedicalFactorsList.add(checkboxChildLabourField);
-        socialMedicalFactorsMap.put(checkboxChildLabourField, 0.90);
+        socialMedicalFactorsMap.put(checkboxChildLabourField, 90.0);
         socialMedicalFactorsList.add(checkboxDisabledField);
-        socialMedicalFactorsMap.put(checkboxDisabledField, 0.72);
+        socialMedicalFactorsMap.put(checkboxDisabledField, 72.0);
         socialMedicalFactorsList.add(checkboxEarlyPregnancyField);
-        socialMedicalFactorsMap.put(checkboxEarlyPregnancyField, 0.88);
+        socialMedicalFactorsMap.put(checkboxEarlyPregnancyField, 88.0);
         socialMedicalFactorsList.add(checkboxHIVChildField);
-        socialMedicalFactorsMap.put(checkboxHIVChildField, 0.76);
+        socialMedicalFactorsMap.put(checkboxHIVChildField, 76.0);
         socialMedicalFactorsList.add(checkboxDomesticViolenceField);
-        socialMedicalFactorsMap.put(checkboxDomesticViolenceField, 0.94);
+        socialMedicalFactorsMap.put(checkboxDomesticViolenceField, 94.0);
         socialMedicalFactorsList.add(checkboxChildAbuseField);
-        socialMedicalFactorsMap.put(checkboxChildAbuseField, 0.88);
+        socialMedicalFactorsMap.put(checkboxChildAbuseField, 88.0);
         socialMedicalFactorsList.add(checkboxPsixField);
-        socialMedicalFactorsMap.put(checkboxPsixField, 0.88);
+        socialMedicalFactorsMap.put(checkboxPsixField, 88.0);
         socialMedicalFactorsList.add(checkboxExplotationField);
-        socialMedicalFactorsMap.put(checkboxExplotationField, 0.92);
+        socialMedicalFactorsMap.put(checkboxExplotationField, 92.0);
         socialMedicalFactorsList.add(checkboxReligiousRadicalismField);
-        socialMedicalFactorsMap.put(checkboxReligiousRadicalismField, 0.88);
+        socialMedicalFactorsMap.put(checkboxReligiousRadicalismField, 88.0);
         socialMedicalFactorsList.add(checkboxConflictZonesField);
-        socialMedicalFactorsMap.put(checkboxConflictZonesField, 0.84);
+        socialMedicalFactorsMap.put(checkboxConflictZonesField, 84.0);
         socialMedicalFactorsList.add(checkboxOrphangeField);
-        socialMedicalFactorsMap.put(checkboxOrphangeField, 0.80);
+        socialMedicalFactorsMap.put(checkboxOrphangeField, 80.0);
         socialMedicalFactorsList.add(checkboxNoFoodField);
-        socialMedicalFactorsMap.put(checkboxNoFoodField, 0.72);
+        socialMedicalFactorsMap.put(checkboxNoFoodField, 72.0);
         socialMedicalFactorsList.add(checkboxNoSeasonClothesField);
-        socialMedicalFactorsMap.put(checkboxNoSeasonClothesField, 0.56);
+        socialMedicalFactorsMap.put(checkboxNoSeasonClothesField, 56.0);
         socialMedicalFactorsList.add(checkboxLegalProblemsField);
-        socialMedicalFactorsMap.put(checkboxLegalProblemsField, 0.60);
+        socialMedicalFactorsMap.put(checkboxLegalProblemsField, 60.0);
         socialMedicalFactorsList.add(checkboxOutsideFamilyField);
-        socialMedicalFactorsMap.put(checkboxOutsideFamilyField, 0.70);
+        socialMedicalFactorsMap.put(checkboxOutsideFamilyField, 70.0);
     }
 
     private void initIndividualFactors() {
         individualFactorsList.add(checkboxRiskActionField);
-        individualFactorsMap.put(checkboxRiskActionField, 0.96);
+        individualFactorsMap.put(checkboxRiskActionField, 96.0);
         individualFactorsList.add(checkboxSuicidalField);
-        individualFactorsMap.put(checkboxSuicidalField, 0.84);
+        individualFactorsMap.put(checkboxSuicidalField, 84.0);
         individualFactorsList.add(checkboxRiskSuicidalField);
-        individualFactorsMap.put(checkboxRiskSuicidalField, 0.94);
+        individualFactorsMap.put(checkboxRiskSuicidalField, 94.0);
         individualFactorsList.add(checkboxGriefOfLossField);
-        individualFactorsMap.put(checkboxGriefOfLossField, 0.76);
+        individualFactorsMap.put(checkboxGriefOfLossField, 76.0);
         individualFactorsList.add(checkboxStressTraumField);
-        individualFactorsMap.put(checkboxStressTraumField, 0.76);
+        individualFactorsMap.put(checkboxStressTraumField, 76.0);
         individualFactorsList.add(checkboxDaunField);
-        individualFactorsMap.put(checkboxDaunField, 0.78);
+        individualFactorsMap.put(checkboxDaunField, 78.0);
         individualFactorsList.add(checkboxWeakSkillsField);
-        individualFactorsMap.put(checkboxWeakSkillsField, 0.64);
+        individualFactorsMap.put(checkboxWeakSkillsField, 64.0);
         individualFactorsList.add(checkboxPsychoField);
-        individualFactorsMap.put(checkboxPsychoField, 0.74);
+        individualFactorsMap.put(checkboxPsychoField, 74.0);
         individualFactorsList.add(checkboxBullingField);
-        individualFactorsMap.put(checkboxBullingField, 0.88);
+        individualFactorsMap.put(checkboxBullingField, 88.0);
     }
 
     private void initFamilyFactors() {
         familyFactorsList.add(checkboxLargeFamilyField);
-        familyFactorsMap.put(checkboxLargeFamilyField, 0.54);
+        familyFactorsMap.put(checkboxLargeFamilyField, 54.0);
         familyFactorsList.add(checkboxParentsSingleFamilyField);
-        familyFactorsMap.put(checkboxParentsSingleFamilyField, 0.56);
+        familyFactorsMap.put(checkboxParentsSingleFamilyField, 56.0);
         familyFactorsList.add(checkboxParentsAlcoField);
-        familyFactorsMap.put(checkboxParentsAlcoField, 0.86);
+        familyFactorsMap.put(checkboxParentsAlcoField, 86.0);
         familyFactorsList.add(checkboxParentsWorkMigrationField);
-        familyFactorsMap.put(checkboxParentsWorkMigrationField, 0.66);
+        familyFactorsMap.put(checkboxParentsWorkMigrationField, 66.0);
         familyFactorsList.add(checkboxParentsBomzhField);
-        familyFactorsMap.put(checkboxParentsBomzhField, 0.76);
+        familyFactorsMap.put(checkboxParentsBomzhField, 76.0);
         familyFactorsList.add(checkboxParentsFromWarField);
-        familyFactorsMap.put(checkboxParentsFromWarField, 0.80);
+        familyFactorsMap.put(checkboxParentsFromWarField, 80.0);
         familyFactorsList.add(checkboxParentsZonaField);
-        familyFactorsMap.put(checkboxParentsZonaField, 0.78);
+        familyFactorsMap.put(checkboxParentsZonaField, 78.0);
         familyFactorsList.add(checkboxParentsMotherPregnantField);
-        familyFactorsMap.put(checkboxParentsMotherPregnantField, 0.52);
+        familyFactorsMap.put(checkboxParentsMotherPregnantField, 52.0);
         familyFactorsList.add(checkboxParentsPoorFamilyField);
-        familyFactorsMap.put(checkboxParentsPoorFamilyField, 0.72);
+        familyFactorsMap.put(checkboxParentsPoorFamilyField, 72.0);
         familyFactorsList.add(checkboxParentsDisabledField);
-        familyFactorsMap.put(checkboxParentsDisabledField, 0.68);
+        familyFactorsMap.put(checkboxParentsDisabledField, 68.0);
         familyFactorsList.add(checkboxParentsEldersField);
-        familyFactorsMap.put(checkboxParentsEldersField, 0.54);
+        familyFactorsMap.put(checkboxParentsEldersField, 54.0);
         familyFactorsList.add(checkboxParentsReligiousRadicalizationField);
-        familyFactorsMap.put(checkboxParentsReligiousRadicalizationField, 0.76);
+        familyFactorsMap.put(checkboxParentsReligiousRadicalizationField, 76.0);
         familyFactorsList.add(checkboxParentsLowEducationField);
-        familyFactorsMap.put(checkboxParentsLowEducationField, 0.56);
+        familyFactorsMap.put(checkboxParentsLowEducationField, 56.0);
         familyFactorsList.add(checkboxParentsWeakSkillsField);
-        familyFactorsMap.put(checkboxParentsWeakSkillsField, 0.66);
+        familyFactorsMap.put(checkboxParentsWeakSkillsField, 66.0);
         familyFactorsList.add(checkboxParentsBadRelationshipField);
-        familyFactorsMap.put(checkboxParentsBadRelationshipField, 0.78);
+        familyFactorsMap.put(checkboxParentsBadRelationshipField, 78.0);
         familyFactorsList.add(checkboxParentsDivorceField);
-        familyFactorsMap.put(checkboxParentsDivorceField, 0.80);
+        familyFactorsMap.put(checkboxParentsDivorceField, 80.0);
         familyFactorsList.add(checkboxParentsFamilyConflictField);
-        familyFactorsMap.put(checkboxParentsFamilyConflictField, 0.78);
+        familyFactorsMap.put(checkboxParentsFamilyConflictField, 78.0);
         familyFactorsList.add(checkboxParentsOrphangeField);
-        familyFactorsMap.put(checkboxParentsOrphangeField, 0.64);
+        familyFactorsMap.put(checkboxParentsOrphangeField, 64.0);
         familyFactorsList.add(checkboxParentsNoHomeField);
-        familyFactorsMap.put(checkboxParentsNoHomeField, 0.80);
+        familyFactorsMap.put(checkboxParentsNoHomeField, 80.0);
         familyFactorsList.add(checkboxParentsNoDrugsField);
-        familyFactorsMap.put(checkboxParentsNoDrugsField, 0.72);
+        familyFactorsMap.put(checkboxParentsNoDrugsField, 72.0);
         familyFactorsList.add(checkboxParentsNoTransportField);
-        familyFactorsMap.put(checkboxParentsNoTransportField, 0.64);
+        familyFactorsMap.put(checkboxParentsNoTransportField, 64.0);
         familyFactorsList.add(checkboxParentsNoMoneyField);
-        familyFactorsMap.put(checkboxParentsNoMoneyField, 0.60);
+        familyFactorsMap.put(checkboxParentsNoMoneyField, 60.0);
         familyFactorsList.add(checkboxParentsNoSocialHelpField);
-        familyFactorsMap.put(checkboxParentsNoSocialHelpField, 0.64);
+        familyFactorsMap.put(checkboxParentsNoSocialHelpField, 64.0);
         familyFactorsList.add(checkboxParentsIsolation);
-        familyFactorsMap.put(checkboxParentsIsolation, 0.72);
+        familyFactorsMap.put(checkboxParentsIsolation, 72.0);
         familyFactorsList.add(checkboxParentsNoServiceAccessField);
-        familyFactorsMap.put(checkboxParentsNoServiceAccessField, 0.58);
+        familyFactorsMap.put(checkboxParentsNoServiceAccessField, 58.0);
         familyFactorsList.add(checkboxParentsDiscriminationField);
-        familyFactorsMap.put(checkboxParentsDiscriminationField, 0.78);
+        familyFactorsMap.put(checkboxParentsDiscriminationField, 78.0);
         familyFactorsList.add(checkboxParentsNoWorkField);
-        familyFactorsMap.put(checkboxParentsNoWorkField, 0.60);
+        familyFactorsMap.put(checkboxParentsNoWorkField, 60.0);
         familyFactorsList.add(checkboxParentsViolenceField);
-        familyFactorsMap.put(checkboxParentsViolenceField, 0.82);
+        familyFactorsMap.put(checkboxParentsViolenceField, 82.0);
         familyFactorsList.add(checkboxParentsPsychoField);
-        familyFactorsMap.put(checkboxParentsPsychoField, 0.86);
+        familyFactorsMap.put(checkboxParentsPsychoField, 86.0);
         familyFactorsList.add(checkboxHIVChildField);
-        familyFactorsMap.put(checkboxHIVChildField, 0.74);
+        familyFactorsMap.put(checkboxHIVChildField, 74.0);
     }
     private void initAcademicFactors() {
         academicFactorsList.add(checkboxFrequestAbsenceField);
-        academicFactorsMap.put(checkboxFrequestAbsenceField, 0.82);
+        academicFactorsMap.put(checkboxFrequestAbsenceField, 82.0);
         academicFactorsList.add(checkboxAbsenceByHealthField);
-        academicFactorsMap.put(checkboxAbsenceByHealthField, 0.70);
+        academicFactorsMap.put(checkboxAbsenceByHealthField, 70.0);
         academicFactorsList.add(checkboxBadGradesField);
-        academicFactorsMap.put(checkboxBadGradesField, 0.76);
+        academicFactorsMap.put(checkboxBadGradesField, 76.0);
         academicFactorsList.add(checkboxNoEducationMotivationField);
-        academicFactorsMap.put(checkboxNoEducationMotivationField, 0.72);
+        academicFactorsMap.put(checkboxNoEducationMotivationField, 72.0);
         academicFactorsList.add(checkboxNoClothesForSchoolField);
-        academicFactorsMap.put(checkboxNoClothesForSchoolField, 0.68);
+        academicFactorsMap.put(checkboxNoClothesForSchoolField, 68.0);
         academicFactorsList.add(checkboxNoFamilyControlField);
-        academicFactorsMap.put(checkboxNoFamilyControlField, 0.76);
+        academicFactorsMap.put(checkboxNoFamilyControlField, 76.0);
         academicFactorsList.add(checkboxNoAdditionalConsultationField);
-        academicFactorsMap.put(checkboxNoAdditionalConsultationField, 0.64);
+        academicFactorsMap.put(checkboxNoAdditionalConsultationField, 64.0);
         academicFactorsList.add(checkboxConsultationAbsenceField);
-        academicFactorsMap.put(checkboxConsultationAbsenceField, 0.64);
+        academicFactorsMap.put(checkboxConsultationAbsenceField, 64.0);
         academicFactorsList.add(checkboxBadConsultationField);
-        academicFactorsMap.put(checkboxBadConsultationField, 0.64);
+        academicFactorsMap.put(checkboxBadConsultationField, 64.0);
         academicFactorsList.add(checkboxChildTeacherConflictField);
-        academicFactorsMap.put(checkboxChildTeacherConflictField, 0.78);
+        academicFactorsMap.put(checkboxChildTeacherConflictField, 78.0);
         academicFactorsList.add(checkboxChildParentsConflictField);
-        academicFactorsMap.put(checkboxChildParentsConflictField, 0.74);
+        academicFactorsMap.put(checkboxChildParentsConflictField, 74.0);
     }
 }
