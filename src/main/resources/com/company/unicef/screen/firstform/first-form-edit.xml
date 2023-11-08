@@ -207,7 +207,10 @@
                     </form>
                 </row>
                 <row>
-                    <form id="finalCalculationTable" visible="false" css="margin-left:20%;">
+                    <label id="finalCalculationLabel" css="margin-left:20%;" value="msg://com.company.unicef.entity/FirstForm.nextStepLabel.finalCalculationTableLabel" visible="false" stylename="h2"/>
+                </row>
+                <row>
+                    <form id="finalCalculationTable" visible="false" css="margin-left:20%; margin-top: 12px">
                         <column>
                             <label value="msg://com.company.unicef.entity/FirstForm.riskLevelLabel"/>
                             <textField id="riskLevelField" property="riskLevel"/>

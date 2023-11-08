@@ -1,7 +1,14 @@
 package com.company.unicef.screen.mainscreentopmenu;
 
+import com.company.unicef.entity.User;
+import com.company.unicef.screen.user.UserProfileEdit;
+import io.jmix.core.usersubstitution.CurrentUserSubstitution;
+import io.jmix.ui.ScreenBuilders;
 import io.jmix.ui.ScreenTools;
+import io.jmix.ui.Screens;
+import io.jmix.ui.UiComponents;
 import io.jmix.ui.component.AppWorkArea;
+import io.jmix.ui.component.Button;
 import io.jmix.ui.component.Image;
 import io.jmix.ui.component.Window;
 import io.jmix.ui.navigation.Route;
@@ -22,6 +29,14 @@ public class MainScreenTopMenu extends Screen implements Window.HasWorkArea {
 
     @Autowired
     private AppWorkArea workArea;
+    @Autowired
+    private UiComponents uiComponents;
+    @Autowired
+    private ScreenBuilders screenBuilders;
+    @Autowired
+    private Screens screens;
+    @Autowired
+    private CurrentUserSubstitution currentUserSubstitution;
 
     @Override
     public AppWorkArea getWorkArea() {
@@ -40,5 +55,12 @@ public class MainScreenTopMenu extends Screen implements Window.HasWorkArea {
     public void onLogoImageClick(final Image.ClickEvent event) {
         screenTools.openDefaultScreen(UiControllerUtils.getScreenContext(this).getScreens());
         screenTools.handleRedirect();
+    }
+
+    @Subscribe("profileButton")
+    public void onProfileButtonClick(final Button.ClickEvent event) throws InstantiationException, IllegalAccessException {
+        UserProfileEdit userProfileEdit = screens.create(UserProfileEdit.class);
+        userProfileEdit.setEntityToEdit((User)currentUserSubstitution.getAuthenticatedUser());
+        userProfileEdit.show();
     }
 }

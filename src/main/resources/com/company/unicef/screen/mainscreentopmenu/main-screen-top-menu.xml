@@ -17,6 +17,7 @@
             </image>
             <menu id="mainMenu"
                   align="MIDDLE_LEFT"/>
+            <button id="profileButton" caption="msg://com.company.unicef/menu.profile"/>
             <userIndicator id="userIndicator"
                            align="MIDDLE_LEFT"/>
             <timeZoneIndicator id="timeZoneIndicator"
