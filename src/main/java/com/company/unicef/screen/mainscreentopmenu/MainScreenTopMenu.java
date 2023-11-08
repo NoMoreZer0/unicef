@@ -2,6 +2,7 @@ package com.company.unicef.screen.mainscreentopmenu;
 
 import io.jmix.ui.ScreenTools;
 import io.jmix.ui.component.AppWorkArea;
+import io.jmix.ui.component.Image;
 import io.jmix.ui.component.Window;
 import io.jmix.ui.navigation.Route;
 import io.jmix.ui.screen.Screen;
@@ -32,6 +33,12 @@ public class MainScreenTopMenu extends Screen implements Window.HasWorkArea {
         screenTools.openDefaultScreen(
                 UiControllerUtils.getScreenContext(this).getScreens());
 
+        screenTools.handleRedirect();
+    }
+
+    @Subscribe("logoImage")
+    public void onLogoImageClick(final Image.ClickEvent event) {
+        screenTools.openDefaultScreen(UiControllerUtils.getScreenContext(this).getScreens());
         screenTools.handleRedirect();
     }
 }

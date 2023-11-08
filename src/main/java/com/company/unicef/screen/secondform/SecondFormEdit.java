@@ -266,69 +266,69 @@ public class SecondFormEdit extends StandardEditor<SecondForm> {
     @Autowired
     private GroupTable<PivotTableCheckBoxes> pivotGroupTable2;
     @Autowired
-    private TextField<String> healthChronicalTextField;
+    private TextArea<String> healthChronicalTextField;
     @Autowired
     private ComboBox<HealthChronicalOption> healthChronicalOptionComboBox;
     @Autowired
-    private TextField<String> healthDisabledNoHelpTextField;
+    private TextArea<String> healthDisabledNoHelpTextField;
     @Autowired
-    private TextField<String> healthNoFoodTextField;
+    private TextArea<String> healthNoFoodTextField;
     @Autowired
-    private TextField<String> healthNoEquipmentTextField;
+    private TextArea<String> healthNoEquipmentTextField;
     @Autowired
-    private TextField<String> eduNotLikeTextField;
+    private TextArea<String> eduNotLikeTextField;
     @Autowired
-    private TextField<String> eduSpecialNeedsTextField;
+    private TextArea<String> eduSpecialNeedsTextField;
     @Autowired
-    private TextField<String> eduDifficultProgramTextField;
+    private TextArea<String> eduDifficultProgramTextField;
     @Autowired
-    private TextField<String> eduFreqAbsentTextField;
+    private TextArea<String> eduFreqAbsentTextField;
     @Autowired
-    private TextField<String> eduNoAttentionTextField;
+    private TextArea<String> eduNoAttentionTextField;
     @Autowired
-    private TextField<String> emoAnxietyTextField;
+    private TextArea<String> emoAnxietyTextField;
     @Autowired
-    private TextField<String> emoNoFriendsTextField;
+    private TextArea<String> emoNoFriendsTextField;
     @Autowired
-    private TextField<String> emoDepressionTextField;
+    private TextArea<String> emoDepressionTextField;
     @Autowired
-    private TextField<String> emoAloneTextField;
+    private TextArea<String> emoAloneTextField;
     @Autowired
-    private TextField<String> emoRiskingActionTextField;
+    private TextArea<String> emoRiskingActionTextField;
     @Autowired
-    private TextField<String> emoConflictWitnessTextField;
+    private TextArea<String> emoConflictWitnessTextField;
     @Autowired
-    private TextField<String> emoOnRegisterTextField;
+    private TextArea<String> emoOnRegisterTextField;
     @Autowired
-    private TextField<String> identDiscriminationTextField;
+    private TextArea<String> identDiscriminationTextField;
     @Autowired
-    private TextField<String> identGenderDontKnowTextField;
+    private TextArea<String> identGenderDontKnowTextField;
     @Autowired
-    private TextField<String> identAgeSolTextField;
+    private TextArea<String> identAgeSolTextField;
     @Autowired
-    private TextField<String> familyNoRelationshipTextField;
+    private TextArea<String> familyNoRelationshipTextField;
     @Autowired
-    private TextField<String> familyBadReviewTextField;
+    private TextArea<String> familyBadReviewTextField;
     @Autowired
-    private TextField<String> familyBadFriendsTextField;
+    private TextArea<String> familyBadFriendsTextField;
     @Autowired
-    private TextField<String> familyChildConflictTextField;
+    private TextArea<String> familyChildConflictTextField;
     @Autowired
-    private TextField<String> familySexualProblemsTextField;
+    private TextArea<String> familySexualProblemsTextField;
     @Autowired
-    private TextField<String> familyChronicalDiseaseTextField;
+    private TextArea<String> familyChronicalDiseaseTextField;
     @Autowired
-    private TextField<String> familyHasTraumaTextField;
+    private TextArea<String> familyHasTraumaTextField;
     @Autowired
-    private TextField<String> parentsNoBasicTextField;
+    private TextArea<String> parentsNoBasicTextField;
     @Autowired
-    private TextField<String> homeDangerTextField;
+    private TextArea<String> homeDangerTextField;
     @Autowired
-    private TextField<String> homeNoJobTextField;
+    private TextArea<String> homeNoJobTextField;
     @Autowired
-    private TextField<String> homeNoBenefitsTextField;
+    private TextArea<String> homeNoBenefitsTextField;
     @Autowired
-    private TextField<String> homeNoMoneyTextField;
+    private TextArea<String> homeNoMoneyTextField;
 
 
     @Subscribe

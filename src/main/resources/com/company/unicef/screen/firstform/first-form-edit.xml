@@ -32,18 +32,24 @@
             <columns count="2"/>
             <rows>
                 <row>
-                    <entityPicker id="studentField" dataContainer="firstFormDc" property="student" caption="msg://com.company.unicef.entity/FirstForm.chooseStudent">
-                        <actions>
-                            <action id="lookup" type="entity_lookup"/>
-                            <action id="clear" type="entity_clear"/>
-                        </actions>
-                    </entityPicker>
+                    <form width="60%" css="margin-left:20%;" dataContainer="firstFormDc" captionPosition="TOP">
+                        <entityPicker id="studentField" dataContainer="firstFormDc" property="student">
+                            <actions>
+                                <action id="lookup" type="entity_lookup"/>
+                                <action id="clear" type="entity_clear"/>
+                            </actions>
+                        </entityPicker>
+                    </form>
                 </row>
+
                 <row>
-                    <textArea id="reasonTextField" dataContainer="firstFormDc" property="reasonText" caption="msg://com.company.unicef.entity/FirstForm.reasonText" rows="5"/>
+                    <form width="60%" css="margin-left:20%;" dataContainer="firstFormDc" captionPosition="TOP">
+                        <textArea id="reasonTextField" property="reasonText" rows="5"/>
+                    </form>
                 </row>
+
                 <row>
-                    <groupBox id="meetingGroupBox" caption="msg://com.company.unicef.entity/Meeting" width="AUTO">
+                    <groupBox id="meetingGroupBox" caption="msg://com.company.unicef.entity/Meeting" css="margin-left: 20%;" width="AUTO">
                         <table id="meetingTable" dataContainer="meetingDc" width="1300px" height="100%">
                             <actions>
                                 <action id="create" type="create"/>
@@ -63,10 +69,13 @@
                         </table>
                     </groupBox>
                 </row>
+
                 <row>
-                    <form id="form" dataContainer="firstFormDc" width="80%">
-                        <column>
-                            <label id="socialLabel" value="msg://com.company.unicef.screen.firstform/riskfactors.caption.sociallabel" stylename="h3" css="margin-top: 12px" width="AUTO"/>
+                    <form id="form" dataContainer="firstFormDc" width="60%" css="margin-left: 20%;">
+                        <column childrenCaptionWidth="1000px">
+                            <label id="riskFactorsLabel" value="msg://com.company.unicef.screen.firstform/riskfactors.caption.label" stylename="h1" css="margin-top: 12px; margin-left: 250%;"/>
+
+                            <label id="socialLabel" value="msg://com.company.unicef.screen.firstform/riskfactors.caption.sociallabel" stylename="h2" css="margin-top: 12px" width="AUTO"/>
                             <checkBox id="checkboxLegalProblemsField" property="checkboxLegalProblems"/>
                             <checkBox id="checkboxNoAttendanceField" property="checkboxNoAttendance"/>
                             <checkBox id="checkboxChildAtRiskField" property="checkboxChildAtRisk"/>
@@ -87,7 +96,7 @@
                             <checkBox id="checkboxOutsideFamilyField" property="checkboxOutsideFamily"/>
                             <textArea id="checkboxOthers1Field" property="checkboxOthers1" width="200px" rows="3"/>
 
-                            <label id="individualLabel" value="msg://com.company.unicef.screen.firstform/riskfactors.caption.individuallabel" stylename="h3" css="margin-top: 12px" width="AUTO"/>
+                            <label id="individualLabel" value="msg://com.company.unicef.screen.firstform/riskfactors.caption.individuallabel" stylename="h2" css="margin-top: 12px" width="AUTO"/>
                             <checkBox id="checkboxSuicidalField" property="checkboxSuicidal"/>
                             <checkBox id="checkboxRiskActionField" property="checkboxRiskAction"/>
                             <checkBox id="checkboxRiskSuicidalField" property="checkboxRiskSuicidal"/>
@@ -99,7 +108,7 @@
                             <checkBox id="checkboxPsychoField" property="checkboxPsycho"/>
                             <textArea id="checkboxOthers2Field" property="checkboxOthers2" width="200px" rows="3"/>
 
-                            <label id="academicLabel" value="msg://com.company.unicef.screen.firstform/riskfactors.caption.academiclabel" stylename="h3" css="margin-top: 12px" width="AUTO"/>
+                            <label id="academicLabel" value="msg://com.company.unicef.screen.firstform/riskfactors.caption.academiclabel" stylename="h2" css="margin-top: 12px" width="AUTO"/>
                             <checkBox id="checkboxFrequestAbsenceField" property="checkboxFrequestAbsence"/>
                             <checkBox id="checkboxBadGradesField" property="checkboxBadGrades"/>
                             <checkBox id="checkboxAbsenceByHealthField" property="checkboxAbsenceByHealth"/>
@@ -114,7 +123,7 @@
                             <checkBox id="checkboxChildTeacherConflictField" property="checkboxChildTeacherConflict"/>
                             <textArea id="checkboxOthers3Field" property="checkboxOthers3" width="200px" rows="3"/>
 
-                            <label id="familyLabel" value="msg://com.company.unicef.screen.firstform/riskfactors.caption.familylabel" stylename="h3" css="margin-top: 12px" width="AUTO"/>
+                            <label id="familyLabel" value="msg://com.company.unicef.screen.firstform/riskfactors.caption.familylabel" stylename="h2" css="margin-top: 12px" width="AUTO"/>
 
                             <checkBox id="checkboxLargeFamilyField" property="checkboxLargeFamily"/>
                             <checkBox id="checkboxParentsWorkMigrationField" property="checkboxParentsWorkMigration"/>
@@ -149,9 +158,9 @@
                                       property="checkboxParentsReligiousRadicalization"/>
                             <textArea id="checkboxOthers4Field" property="checkboxOthers4" width="200px" rows="3"/>
 
-                            <label id="protectionFactorsLabel" value="msg://com.company.unicef.screen.firstform/protectionfactors.caption.label" stylename="h2" css="margin-top: 12px; text-align:center" width="AUTO"/>
+                            <label id="protectionFactorsLabel" value="msg://com.company.unicef.screen.firstform/protectionfactors.caption.label" stylename="h1" css="margin-top: 12px; text-align: center; margin-left: 250%;"/>
 
-                            <label id="individualProtectionLabel" value="msg://com.company.unicef.screen.firstform/protectionfactors.caption.individual" stylename="h3" css="margin-top: 12px" width="AUTO"/>
+                            <label id="individualProtectionLabel" value="msg://com.company.unicef.screen.firstform/protectionfactors.caption.individual" stylename="h2" css="margin-top: 12px" width="AUTO"/>
                             <checkBox id="checkboxIndFactorAcademicField" property="checkboxIndFactorAcademic"/>
                             <checkBox id="checkboxIndFactorGoodProblemSolvingField"
                                       property="checkboxIndFactorGoodProblemSolving"/>
@@ -159,7 +168,7 @@
                             <checkBox id="checkboxIndFactorSelfConfidenceField" property="checkboxIndFactorSelfConfidence"/>
                             <textArea id="checkboxOthers5Field" property="checkboxOthers5" width="200px" rows="3"/>
 
-                            <label id="familyProtectionLabel" value="msg://com.company.unicef.screen.firstform/protectionfactors.caption.family" stylename="h3" css="margin-top: 12px" width="AUTO"/>
+                            <label id="familyProtectionLabel" value="msg://com.company.unicef.screen.firstform/protectionfactors.caption.family" stylename="h2" css="margin-top: 12px" width="AUTO"/>
                             <checkBox id="checkboxFamilyFactorSafeField" property="checkboxFamilyFactorSafe"/>
                             <checkBox id="checkboxFamilyFactorCaringField" property="checkboxFamilyFactorCaring"/>
                             <checkBox id="checkboxFamilyFactorStableField" property="checkboxFamilyFactorStable"/>
@@ -173,7 +182,7 @@
                             <checkBox id="checkboxFamilyFactorSocialMediaField" property="checkboxFamilyFactorSocialMedia"/>
                             <textArea id="checkboxOthers6Field" property="checkboxOthers6" width="200px" rows="3"/>
 
-                            <label id="environmentProtectionLabel" value="msg://com.company.unicef.screen.firstform/protectionfactors.caption.environment" stylename="h3" css="margin-top: 12px" width="AUTO"/>
+                            <label id="environmentProtectionLabel" value="msg://com.company.unicef.screen.firstform/protectionfactors.caption.environment" stylename="h2" css="margin-top: 12px" width="AUTO"/>
                             <checkBox id="checkboxEnvEconomStableField" property="checkboxEnvEconomStable"/>
                             <checkBox id="checkboxEnvParentsEmpField" property="checkboxEnvParentsEmp"/>
                             <checkBox id="checkboxEnvParentsEduField" property="checkboxEnvParentsEdu"/>
@@ -183,7 +192,7 @@
                             <checkBox id="checkboxEnvCoordinationServicesField" property="checkboxEnvCoordinationServices"/>
                             <textArea id="checkboxOthers7Field" property="checkboxOthers7" width="200px" rows="3"/>
 
-                            <label id="schoolProtectionLabel" value="msg://com.company.unicef.screen.firstform/protectionfactors.caption.school" stylename="h3" css="margin-top: 12px" width="AUTO"/>
+                            <label id="schoolProtectionLabel" value="msg://com.company.unicef.screen.firstform/protectionfactors.caption.school" stylename="h2" css="margin-top: 12px" width="AUTO"/>
                             <checkBox id="checkboxSchoolSafeEnvField" property="checkboxSchoolSafeEnv"/>
                             <checkBox id="checkboxSchoolAddField" property="checkboxSchoolAdd"/>
                             <checkBox id="checkboxSchoolNPAField" property="checkboxSchoolNPA"/>
@@ -198,7 +207,7 @@
                     </form>
                 </row>
                 <row>
-                    <form id="finalCalculationTable" visible="false">
+                    <form id="finalCalculationTable" visible="false" css="margin-left:20%;">
                         <column>
                             <label value="msg://com.company.unicef.entity/FirstForm.riskLevelLabel"/>
                             <textField id="riskLevelField" property="riskLevel"/>
@@ -210,7 +219,7 @@
                     </form>
                 </row>
                 <row>
-                    <form id="finalCalculationSteps" visible="false">
+                    <form id="finalCalculationSteps" visible="false" css="margin-left:20%;">
                         <column>
                             <label value="msg://com.company.unicef.entity/FirstForm.nextStepLabel"/>
                             <checkBox visible="false" id="checkBoxNextStep1"/>
@@ -224,7 +233,7 @@
                     </form>
                 </row>
                 <row>
-                    <hbox id="editActions" spacing="true">
+                    <hbox id="editActions" spacing="true" css="margin-left:20%">
                         <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
                         <button id="closeBtn" action="windowClose"
                                 caption="msg://com.company.unicef.screen.event/com.company.unicef.closeButton"/>

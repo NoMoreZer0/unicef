@@ -41,6 +41,7 @@ public class SecondForm {
     @Column(name = "HEALTH_CHRONICAL")
     private Boolean healthChronical;
 
+    @Lob
     @Column(name = "HEALTH_CHRONICAL_TEXT")
     private String healthChronicalText;
 
@@ -53,6 +54,7 @@ public class SecondForm {
     @Column(name = "HEALTH_DISABLED_NO_HELP")
     private Boolean healthDisabledNoHelp;
 
+    @Lob
     @Column(name = "HEALTH_DISABLED_NO_HELP_TEXT")
     private String healthDisabledNoHelpText;
 
@@ -65,6 +67,7 @@ public class SecondForm {
     @Column(name = "HEALTH_NO_FOOD")
     private Boolean healthNoFood;
 
+    @Lob
     @Column(name = "HEALTH_NO_FOOD_TEXT")
     private String healthNoFoodText;
 
@@ -74,6 +77,7 @@ public class SecondForm {
     @Column(name = "HEALTH_NO_EQUIPMENT")
     private Boolean healthNoEquipment;
 
+    @Lob
     @Column(name = "HEALTH_NO_EQUIPMENT_TEXT")
     private String healthNoEquipmentText;
 
@@ -101,12 +105,14 @@ public class SecondForm {
     @Column(name = "HEALTH_BAD_COMMUNICATION")
     private Boolean healthBadCommunication;
 
+    @Lob
     @Column(name = "HEAL_OTHERS")
     private String healthOthers;
 
     @Column(name = "EDU_NOT_LIKE")
     private Boolean eduNotLike;
 
+    @Lob
     @Column(name = "EDU_NOT_LIKE_TEXT")
     private String eduNotLikeText;
 
@@ -125,6 +131,7 @@ public class SecondForm {
     @Column(name = "EDU_SPECIAL_NEEDS")
     private Boolean eduSpecialNeeds;
 
+    @Lob
     @Column(name = "EDU_SPECIAL_NEEDS_TEXT")
     private String eduSpecialNeedsText;
 
@@ -137,12 +144,14 @@ public class SecondForm {
     @Column(name = "EDU_FREQ_ABSENT")
     private Boolean eduFreqAbsent;
 
+    @Lob
     @Column(name = "EDU_FREQ_ABSENT_TEXT")
     private String eduFreqAbsentText;
 
     @Column(name = "EDU_NO_ATTENTION")
     private Boolean eduNoAttention;
 
+    @Lob
     @Column(name = "EDU_NO_ATTENTION_TEXT")
     private String eduNoAttentionText;
 
@@ -170,6 +179,7 @@ public class SecondForm {
     @Column(name = "EDU_LOW_MOTIVATION")
     private Boolean eduLowMotivation;
 
+    @Lob
     @Column(name = "EDU_OTHERS")
     private String eduOthers;
 
@@ -179,6 +189,7 @@ public class SecondForm {
     @Column(name = "EMO_ANXIETY")
     private Boolean emoAnxiety;
 
+    @Lob
     @Column(name = "EMO_ANXIETY_TEXT")
     private String emoAnxietyText;
 
@@ -191,6 +202,7 @@ public class SecondForm {
     @Column(name = "EMO_DEPRESSION")
     private Boolean emoDepression;
 
+    @Lob
     @Column(name = "EMO_DEPRESSION_TEXT")
     private String emoDepressionText;
 
@@ -203,6 +215,7 @@ public class SecondForm {
     @Column(name = "EMO_ALONE")
     private Boolean emoAlone;
 
+    @Lob
     @Column(name = "EMO_ALONE_TEXT")
     private String emoAloneText;
 
@@ -218,12 +231,14 @@ public class SecondForm {
     @Column(name = "EMO_RISKING_ACTION")
     private Boolean emoRiskingAction;
 
+    @Lob
     @Column(name = "EMO_RISKING_ACTION_TEXT")
     private String emoRiskingActionText;
 
     @Column(name = "EMO_CONFLICT_WITNESS")
     private Boolean emoConflictWitness;
 
+    @Lob
     @Column(name = "EMO_CONFLICT_WITNESS_TEXT")
     private String emoConflictWitnessText;
 
@@ -242,6 +257,7 @@ public class SecondForm {
     @Column(name = "EMO_ON_REGISTER")
     private Boolean emoOnRegister;
 
+    @Lob
     @Column(name = "EMO_ON_REGISTER_TEXT")
     private String emoOnRegisterText;
 
@@ -254,12 +270,14 @@ public class SecondForm {
     @Column(name = "EMO_NOT_NORMAL")
     private Boolean emoNotNormal;
 
+    @Lob
     @Column(name = "EMO_OTHERS")
     private String emoOthers;
 
     @Column(name = "IDENT_DISCRIMINATION")
     private Boolean identDiscrimination;
 
+    @Lob
     @Column(name = "IDENT_DISCRIMINATION_TEXT")
     private String identDiscriminationText;
 
@@ -272,6 +290,7 @@ public class SecondForm {
     @Column(name = "IDENT_GENDER_DONT_KNOW")
     private Boolean identGenderDontKnow;
 
+    @Lob
     @Column(name = "IDENT_GENDER_DONT_KNOW_TEXT")
     private String identGenderDontKnowText;
 
@@ -281,6 +300,7 @@ public class SecondForm {
     @Column(name = "IDENT_AGE_SOL")
     private Boolean identAgeSol;
 
+    @Lob
     @Column(name = "IDENT_AGE_SOL_TEXT")
     private String identAgeSolText;
 
@@ -299,12 +319,14 @@ public class SecondForm {
     @Column(name = "IDENT_NO_HYGIENE")
     private Boolean identNoHygiene;
 
+    @Lob
     @Column(name = "IDENT_OTHERS")
     private String identOthers;
 
     @Column(name = "FAMILY_NO_RELATIONSHIP")
     private Boolean familyNoRelationship;
 
+    @Lob
     @Column(name = "FAMILY_NO_RELATIONSHIP_TEXT")
     private String familyNoRelationshipText;
 
@@ -320,12 +342,14 @@ public class SecondForm {
     @Column(name = "FAMILY_BAD_REVIEW")
     private Boolean familyBadReview;
 
+    @Lob
     @Column(name = "FAMILY_BAD_REVIEW_TEXT")
     private String familyBadReviewText;
 
     @Column(name = "FAMILY_BAD_FRIENDS")
     private Boolean familyBadFriends;
 
+    @Lob
     @Column(name = "FAMILY_BAD_FRIENDS_TEXT")
     private String familyBadFriendsText;
 
@@ -341,6 +365,7 @@ public class SecondForm {
     @Column(name = "FAMILY_CHILD_CONFLICT")
     private Boolean familyChildConflict;
 
+    @Lob
     @Column(name = "FAMILY_CHILD_CONFLICT_TEXT")
     private String familyChildConflictText;
 
@@ -353,6 +378,7 @@ public class SecondForm {
     @Column(name = "FAMILY_SEXUAL_PROBLEMS")
     private Boolean familySexualProblems;
 
+    @Lob
     @Column(name = "FAMILY_SEXUAL_PROBLEMS_TEXT")
     private String familySexualProblemsText;
 
@@ -362,6 +388,7 @@ public class SecondForm {
     @Column(name = "FAMILY_CHRONICAL_DISEASE")
     private Boolean familyChronicalDisease;
 
+    @Lob
     @Column(name = "FAMILY_CHRONICAL_DISEASE_TEXT")
     private String familyChronicalDiseaseText;
 
@@ -371,9 +398,11 @@ public class SecondForm {
     @Column(name = "FAMILY_HAS_TRAUMA")
     private Boolean familyHasTrauma;
 
+    @Lob
     @Column(name = "FAMILY_HAS_TRAUMA_TEXT")
     private String familyHasTraumaText;
 
+    @Lob
     @Column(name = "FAMILY_OTHERS")
     private String familyOthers;
 
@@ -389,12 +418,14 @@ public class SecondForm {
     @Column(name = "SELF_NO_HELP")
     private Boolean selfNoHelp;
 
+    @Lob
     @Column(name = "SELF_OTHERS")
     private String selfOthers;
 
     @Column(name = "PARENTS_NO_BASIC")
     private Boolean parentsNoBasic;
 
+    @Lob
     @Column(name = "PARENTS_NO_BASIC_TEXT")
     private String parentsNoBasicText;
 
@@ -422,6 +453,7 @@ public class SecondForm {
     @Column(name = "PARENT_NO_DISCIPLINE")
     private Boolean parentNoDiscipline;
 
+    @Lob
     @Column(name = "PARENTS_OTHERS")
     private String parentsOthers;
 
@@ -434,27 +466,32 @@ public class SecondForm {
     @Column(name = "HOME_DANGER")
     private Boolean homeDanger;
 
+    @Lob
     @Column(name = "HOME_DANGER_TEXT")
     private String homeDangerText;
 
     @Column(name = "HOME_NO_JOB")
     private Boolean homeNoJob;
 
+    @Lob
     @Column(name = "HOME_NO_JOB_TEXT")
     private String homeNoJobText;
 
     @Column(name = "HOME_NO_BENEFITS")
     private Boolean homeNoBenefits;
 
+    @Lob
     @Column(name = "HOME_NO_BENEFITS_TEXT")
     private String homeNoBenefitsText;
 
     @Column(name = "HOME_NO_MONEY")
     private Boolean homeNoMoney;
 
+    @Lob
     @Column(name = "HOME_NO_MONEY_TEXT")
     private String homeNoMoneyText;
 
+    @Lob
     @Column(name = "HOME_OTHERS")
     private String homeOthers;
 

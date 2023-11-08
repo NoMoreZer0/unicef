@@ -38,6 +38,7 @@ public class SecondFormCheckBox {
     @Column(name = "GOAL_TEXT")
     private String goalText;
 
+    @Composition
     @OneToMany(mappedBy = "secondFormCheckBox")
     private List<Event> secondFormEvents = new ArrayList<>();
 

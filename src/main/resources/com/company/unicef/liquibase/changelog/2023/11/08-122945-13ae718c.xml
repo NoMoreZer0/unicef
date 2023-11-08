@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.11.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="unicef">
+        <modifyDataType columnName="EDU_FREQ_ABSENT_TEXT" newDataType="CLOB" tableName="SECOND_FORM"/>
+    </changeSet>
+    <changeSet id="2" author="unicef">
+        <modifyDataType columnName="EDU_NOT_LIKE_TEXT" newDataType="CLOB" tableName="SECOND_FORM"/>
+    </changeSet>
+    <changeSet id="3" author="unicef">
+        <modifyDataType columnName="EDU_NO_ATTENTION_TEXT" newDataType="CLOB" tableName="SECOND_FORM"/>
+    </changeSet>
+    <changeSet id="4" author="unicef">
+        <modifyDataType columnName="EDU_OTHERS" newDataType="CLOB" tableName="SECOND_FORM"/>
+    </changeSet>
+    <changeSet id="5" author="unicef">
+        <modifyDataType columnName="EDU_SPECIAL_NEEDS_TEXT" newDataType="CLOB" tableName="SECOND_FORM"/>
+    </changeSet>
+    <changeSet id="6" author="unicef">
+        <modifyDataType columnName="EMO_ALONE_TEXT" newDataType="CLOB" tableName="SECOND_FORM"/>
+    </changeSet>
+    <changeSet id="7" author="unicef">
+        <modifyDataType columnName="EMO_ANXIETY_TEXT" newDataType="CLOB" tableName="SECOND_FORM"/>
+    </changeSet>
+    <changeSet id="8" author="unicef">
+        <modifyDataType columnName="EMO_CONFLICT_WITNESS_TEXT" newDataType="CLOB" tableName="SECOND_FORM"/>
+    </changeSet>
+    <changeSet id="9" author="unicef">
+        <modifyDataType columnName="EMO_DEPRESSION_TEXT" newDataType="CLOB" tableName="SECOND_FORM"/>
+    </changeSet>
+    <changeSet id="10" author="unicef">
+        <modifyDataType columnName="EMO_ON_REGISTER_TEXT" newDataType="CLOB" tableName="SECOND_FORM"/>
+    </changeSet>
+    <changeSet id="11" author="unicef">
+        <modifyDataType columnName="EMO_OTHERS" newDataType="CLOB" tableName="SECOND_FORM"/>
+    </changeSet>
+    <changeSet id="12" author="unicef">
+        <modifyDataType columnName="EMO_RISKING_ACTION_TEXT" newDataType="CLOB" tableName="SECOND_FORM"/>
+    </changeSet>
+    <changeSet id="13" author="unicef">
+        <modifyDataType columnName="FAMILY_BAD_FRIENDS_TEXT" newDataType="CLOB" tableName="SECOND_FORM"/>
+    </changeSet>
+    <changeSet id="14" author="unicef">
+        <modifyDataType columnName="FAMILY_BAD_REVIEW_TEXT" newDataType="CLOB" tableName="SECOND_FORM"/>
+    </changeSet>
+    <changeSet id="15" author="unicef">
+        <modifyDataType columnName="FAMILY_CHILD_CONFLICT_TEXT" newDataType="CLOB" tableName="SECOND_FORM"/>
+    </changeSet>
+    <changeSet id="16" author="unicef">
+        <modifyDataType columnName="FAMILY_CHRONICAL_DISEASE_TEXT" newDataType="CLOB" tableName="SECOND_FORM"/>
+    </changeSet>
+    <changeSet id="17" author="unicef">
+        <modifyDataType columnName="FAMILY_HAS_TRAUMA_TEXT" newDataType="CLOB" tableName="SECOND_FORM"/>
+    </changeSet>
+    <changeSet id="18" author="unicef">
+        <modifyDataType columnName="FAMILY_NO_RELATIONSHIP_TEXT" newDataType="CLOB" tableName="SECOND_FORM"/>
+    </changeSet>
+    <changeSet id="19" author="unicef">
+        <modifyDataType columnName="FAMILY_OTHERS" newDataType="CLOB" tableName="SECOND_FORM"/>
+    </changeSet>
+    <changeSet id="20" author="unicef">
+        <modifyDataType columnName="FAMILY_SEXUAL_PROBLEMS_TEXT" newDataType="CLOB" tableName="SECOND_FORM"/>
+    </changeSet>
+    <changeSet id="21" author="unicef">
+        <modifyDataType columnName="HEALTH_CHRONICAL_TEXT" newDataType="CLOB" tableName="SECOND_FORM"/>
+    </changeSet>
+    <changeSet id="22" author="unicef">
+        <modifyDataType columnName="HEALTH_DISABLED_NO_HELP_TEXT" newDataType="CLOB" tableName="SECOND_FORM"/>
+    </changeSet>
+    <changeSet id="23" author="unicef">
+        <modifyDataType columnName="HEALTH_NO_EQUIPMENT_TEXT" newDataType="CLOB" tableName="SECOND_FORM"/>
+    </changeSet>
+    <changeSet id="24" author="unicef">
+        <modifyDataType columnName="HEALTH_NO_FOOD_TEXT" newDataType="CLOB" tableName="SECOND_FORM"/>
+    </changeSet>
+    <changeSet id="25" author="unicef">
+        <modifyDataType columnName="HEAL_OTHERS" newDataType="CLOB" tableName="SECOND_FORM"/>
+    </changeSet>
+    <changeSet id="26" author="unicef">
+        <modifyDataType columnName="HOME_DANGER_TEXT" newDataType="CLOB" tableName="SECOND_FORM"/>
+    </changeSet>
+    <changeSet id="27" author="unicef">
+        <modifyDataType columnName="HOME_NO_BENEFITS_TEXT" newDataType="CLOB" tableName="SECOND_FORM"/>
+    </changeSet>
+    <changeSet id="28" author="unicef">
+        <modifyDataType columnName="HOME_NO_JOB_TEXT" newDataType="CLOB" tableName="SECOND_FORM"/>
+    </changeSet>
+    <changeSet id="29" author="unicef">
+        <modifyDataType columnName="HOME_NO_MONEY_TEXT" newDataType="CLOB" tableName="SECOND_FORM"/>
+    </changeSet>
+    <changeSet id="30" author="unicef">
+        <modifyDataType columnName="HOME_OTHERS" newDataType="CLOB" tableName="SECOND_FORM"/>
+    </changeSet>
+    <changeSet id="31" author="unicef">
+        <modifyDataType columnName="IDENT_AGE_SOL_TEXT" newDataType="CLOB" tableName="SECOND_FORM"/>
+    </changeSet>
+    <changeSet id="32" author="unicef">
+        <modifyDataType columnName="IDENT_DISCRIMINATION_TEXT" newDataType="CLOB" tableName="SECOND_FORM"/>
+    </changeSet>
+    <changeSet id="33" author="unicef">
+        <modifyDataType columnName="IDENT_GENDER_DONT_KNOW_TEXT" newDataType="CLOB" tableName="SECOND_FORM"/>
+    </changeSet>
+    <changeSet id="34" author="unicef">
+        <modifyDataType columnName="IDENT_OTHERS" newDataType="CLOB" tableName="SECOND_FORM"/>
+    </changeSet>
+    <changeSet id="35" author="unicef">
+        <modifyDataType columnName="PARENTS_NO_BASIC_TEXT" newDataType="CLOB" tableName="SECOND_FORM"/>
+    </changeSet>
+    <changeSet id="36" author="unicef">
+        <modifyDataType columnName="PARENTS_OTHERS" newDataType="CLOB" tableName="SECOND_FORM"/>
+    </changeSet>
+    <changeSet id="37" author="unicef">
+        <modifyDataType columnName="SELF_OTHERS" newDataType="CLOB" tableName="SECOND_FORM"/>
+    </changeSet>
+</databaseChangeLog>

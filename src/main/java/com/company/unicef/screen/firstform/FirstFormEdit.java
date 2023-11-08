@@ -314,50 +314,6 @@ public class FirstFormEdit extends StandardEditor<FirstForm> {
         riskLevelField.setValue(riskLevelMsg);
         descriptionField.setValue(descMsg);
         finalCalculationTable.setVisible(true);
-        // Изменили подсчет риска, сейчас берем просто максимальный
-//        double B = sumMean / 4.0;
-//        if (isDefenseFactorChecked()) {
-//            B = 1.0;
-//        }
-//        String riskLevelMsg = "", descMsg = "";
-//        finalCalculationSteps.setVisible(true);
-//        textFieldNextStep.setVisible(true);
-//        textFieldNextStep.setCaption(messages.getMessage(MESSAGE_PACK, "FirstForm.textFieldNextStepCaption"));
-//        if (0.9 <= B && B <= 1.1) {
-//            riskLevelMsg = messages.getMessage(MESSAGE_PACK, "FirstForm.riskLevelFieldHigh");
-//            descMsg = messages.getMessage(MESSAGE_PACK, "FirstForm.descriptionFieldHigh");
-//            checkBoxNextStep1.setCaption(messages.getMessage(MESSAGE_PACK, "FirstForm.checkBoxNextStep1High"));
-//            checkBoxNextStep1.setVisible(true);
-//            checkBoxNextStep2.setCaption(messages.getMessage(MESSAGE_PACK, "FirstForm.checkBoxNextStep2High"));
-//            checkBoxNextStep2.setVisible(true);
-//            checkBoxNextStep3.setCaption(messages.getMessage(MESSAGE_PACK, "FirstForm.checkBoxNextStep3High"));
-//            checkBoxNextStep3.setVisible(true);
-//            checkBoxNextStep4.setCaption(messages.getMessage(MESSAGE_PACK, "FirstForm.checkBoxNextStep4High"));
-//            checkBoxNextStep4.setVisible(true);
-//            checkBoxNextStep5.setCaption(messages.getMessage(MESSAGE_PACK, "FirstForm.checkBoxNextStep5High"));
-//            checkBoxNextStep5.setVisible(true);
-//            checkBoxNextStep6.setCaption(messages.getMessage(MESSAGE_PACK, "FirstForm.checkBoxNextStep6High"));
-//            checkBoxNextStep6.setVisible(true);
-//        }
-//        else if (0.71 <= B && B <= 0.89) {
-//            riskLevelMsg = messages.getMessage(MESSAGE_PACK, "FirstForm.riskLevelFieldMedium");
-//            descMsg = messages.getMessage(MESSAGE_PACK, "FirstForm.descriptionFieldMedium");
-//            checkBoxNextStep1.setCaption(messages.getMessage(MESSAGE_PACK, "checkBoxNextStep1Medium"));
-//            checkBoxNextStep1.setVisible(true);
-//            checkBoxNextStep2.setCaption(messages.getMessage(MESSAGE_PACK, "checkBoxNextStep2Medium"));
-//            checkBoxNextStep2.setVisible(true);
-//        }
-//        else {
-//            riskLevelMsg = messages.getMessage(MESSAGE_PACK, "FirstForm.riskLevelFieldLow");
-//            descMsg = messages.getMessage(MESSAGE_PACK, "FirstForm.descriptionFieldLow");
-//            checkBoxNextStep1.setCaption(messages.getMessage(MESSAGE_PACK, "FirstForm.checkBoxNextStep1Low"));
-//            checkBoxNextStep1.setVisible(true);
-//            checkBoxNextStep2.setCaption(messages.getMessage(MESSAGE_PACK, "FirstForm.checkBoxNextStep2Low"));
-//            checkBoxNextStep2.setVisible(true);
-//        }
-//        riskLevelField.setValue(riskLevelMsg);
-//        descriptionField.setValue(descMsg);
-//        finalCalculationTable.setVisible(true);
     }
 
     @Subscribe("commitAndCloseBtn")

@@ -5,12 +5,10 @@
   @include responsive-table;
 }
 
-
-
 @mixin responsive-table($primary-stylename: v-table) {
   .level-low {
     background-color: green;
-    color: white;
+    color: black;
   }
 
   .background-green {
@@ -36,12 +34,12 @@
 
   .level-medium {
     background-color: yellow;
-    color: white;
+    color: black;
   }
 
   .level-high {
     background-color: red;
-    color: white;
+    color: black;
   }
 
   .#{$primary-stylename} {
@@ -49,7 +47,7 @@
     .#{$primary-stylename}-row-odd {
       &.level-high{
         background-color: red;
-        color: white;
+        color: black;
 
         .jmix-grouptable-group-cell-expander:before {
           color: white;
@@ -61,7 +59,7 @@
     .#{$primary-stylename}-row-odd {
       &.level-low {
         background-color: green;
-        color: white;
+        color: black;
 
         .jmix-grouptable-group-cell-expander:before {
           color: white;
@@ -73,7 +71,7 @@
     .#{$primary-stylename}-row-odd {
       &.level-medium {
         background-color: yellow;
-        color: white;
+        color: black;
 
         .jmix-grouptable-group-cell-expander:before {
           color: white;
@@ -81,8 +79,4 @@
       }
     }
   }
-}
-
-.Eminem {
-  background-color: tomato;
 }

@@ -5,12 +5,11 @@ import io.jmix.core.DataManager;
 import io.jmix.core.Messages;
 import io.jmix.core.Metadata;
 import io.jmix.core.security.SystemAuthenticator;
+import io.jmix.reportsui.screen.template.edit.generator.RandomPivotTableDataGenerator;
 import io.jmix.ui.Notifications;
 import io.jmix.ui.ScreenBuilders;
-import io.jmix.ui.component.Button;
-import io.jmix.ui.component.HasValue;
-import io.jmix.ui.component.Table;
-import io.jmix.ui.component.ValuePicker;
+import io.jmix.ui.UiComponents;
+import io.jmix.ui.component.*;
 import io.jmix.ui.executor.BackgroundWorker;
 import io.jmix.ui.executor.UIAccessor;
 import io.jmix.ui.model.CollectionPropertyContainer;
@@ -20,6 +19,7 @@ import io.jmix.ui.screen.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
+import javax.annotation.Nullable;
 import javax.inject.Inject;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @UiController("OpenCase.edit")
 @UiDescriptor("open-case-edit.xml")
@@ -51,6 +52,12 @@ public class OpenCaseEdit extends StandardEditor<OpenCase> {
     private String homeCategory = "category.home";
     private Map<String, String> categoryMap = new HashMap<>();
     private Map<String, String> checkBoxToTextMap = new HashMap<>();
+    @Autowired
+    private RandomPivotTableDataGenerator randomPivotTableDataGenerator;
+    @Autowired
+    private GroupBoxLayout secondFormCheckBoxesGroup;
+    @Autowired
+    private UiComponents uiComponents;
 
     @Subscribe
     public void onBeforeShow(BeforeShowEvent event) {
@@ -58,8 +65,8 @@ public class OpenCaseEdit extends StandardEditor<OpenCase> {
             initFlag = true;
         }
     }
-
-
+    
+    
     @Subscribe("secondFormField")
     public void onSecondFormFieldValueChange(HasValue.ValueChangeEvent<SecondForm> event) throws Exception{
         if (event.getValue() == null) return;
@@ -77,6 +84,21 @@ public class OpenCaseEdit extends StandardEditor<OpenCase> {
         Field[] fields = curSecondForm.getClass().getDeclaredFields();
         List<String> fieldNames = getFieldNames(fields, curSecondForm);
         checkSecondFormFields(fieldNames);
+        addEventColumn();
+    }
+
+    private void addEventColumn() {
+        String eventsColumnName = messages.getMessage("com.company.unicef.entity/SecondFormCheckBox.secondFormEventsBox");
+        secondFormCheckBoxTable.addGeneratedColumn(eventsColumnName, new Table.ColumnGenerator<SecondFormCheckBox>() {
+            @Nullable
+            @Override
+            public Component generateCell(SecondFormCheckBox entity) {
+                Label<String> label = uiComponents.create(Label.NAME);
+                label.setValue(entity.getSecondFormEvents().stream()
+                        .map(Event::getName).collect(Collectors.joining("\n")));
+                return label;
+            }
+        });
     }
 
     private List<String> getFieldNames(Field[] fields, SecondForm curSecondForm) throws IllegalAccessException {
