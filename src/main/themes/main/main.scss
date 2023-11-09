@@ -5,6 +5,13 @@
   @include responsive-table;
 }
 
+.header-border {
+  .main .jmix-app-menubar {
+    background: white;
+    border: 1px solid white;
+  }
+}
+
 @mixin responsive-table($primary-stylename: v-table) {
   .level-low {
     background-color: green;

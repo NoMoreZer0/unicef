@@ -1,6 +1,29 @@
 <window xmlns="http://jmix.io/schema/ui/window"
         caption="msg://caption">
     <layout expand="workArea">
+        <hbox stylename="jmix-app-menubar.header-border">
+            <hbox align="MIDDLE_LEFT"
+                  stylename="jmix-main-buttons" css="color: white;">
+                <image scaleMode="CONTAIN" width="100px" height="100px" css="margin-left: 300%;">
+                    <resource>
+                        <relativePath path="images/logo-nis.jpg"/>
+                    </resource>
+                </image>
+                <label value="При поддержке " css="color: black; margin-top: 40%; padding-left: 20%; font-family: Roboto, sans-serif; margin-left: 300%;"/>
+                <image scaleMode="CONTAIN" width="250px" height="100px" css="margin-left: 130%;">
+                    <resource>
+                        <relativePath path="images/logo-unicef.png"/>
+                    </resource>
+                </image>
+                <label value="Телефон поддержки: 8 7172 235700" css="color: black; margin-top: 14%; font-size: 16px; margin-left: 130%;"/>
+<!--                <image scaleMode="CONTAIN" width="10px" height="10px" >-->
+<!--                    <resource>-->
+<!--                        <relativePath path="images/phone.svg"/>-->
+<!--                    </resource>-->
+<!--                </image>-->
+            </hbox>
+        </hbox>
+
         <hbox id="header"
               expand="mainMenu"
               margin="false;true;false;true"
