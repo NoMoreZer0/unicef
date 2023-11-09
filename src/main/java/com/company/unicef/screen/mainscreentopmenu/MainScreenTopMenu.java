@@ -58,7 +58,7 @@ public class MainScreenTopMenu extends Screen implements Window.HasWorkArea {
     }
 
     @Subscribe("profileButton")
-    public void onProfileButtonClick(final Button.ClickEvent event) throws InstantiationException, IllegalAccessException {
+    public void onProfileButtonClick(final Button.ClickEvent event) {
         UserProfileEdit userProfileEdit = screens.create(UserProfileEdit.class);
         userProfileEdit.setEntityToEdit((User)currentUserSubstitution.getAuthenticatedUser());
         userProfileEdit.show();
