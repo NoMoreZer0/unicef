@@ -1,5 +1,8 @@
 package com.company.unicef.screen.firstform;
 
+import com.company.unicef.entity.Student;
+import com.company.unicef.entity.StudentStatusField;
+import io.jmix.core.DataManager;
 import io.jmix.core.Messages;
 import io.jmix.ui.component.*;
 import io.jmix.ui.model.InstanceContainer;
@@ -266,6 +269,11 @@ public class FirstFormEdit extends StandardEditor<FirstForm> {
     private ArrayList<CheckBox> academicFactorsList = new ArrayList<>();
     private HashMap<CheckBox, Double> academicFactorsMap = new HashMap<>();
     private static String MESSAGE_PACK = "com.company.unicef.entity";
+    @Autowired
+    private DataManager dataManager;
+    @Autowired
+    private Label finalCalculationLabel;
+
     @Subscribe("calculateRiskBtn")
     public void onCalculateRiskBtnClick(Button.ClickEvent event) {
         upd();
@@ -314,6 +322,7 @@ public class FirstFormEdit extends StandardEditor<FirstForm> {
         riskLevelField.setValue(riskLevelMsg);
         descriptionField.setValue(descMsg);
         finalCalculationTable.setVisible(true);
+        finalCalculationLabel.setVisible(true);
     }
 
     @Subscribe("commitAndCloseBtn")
@@ -344,34 +353,26 @@ public class FirstFormEdit extends StandardEditor<FirstForm> {
         }
         firstFormDc.setItem(firstForm);
         // Изменили подсчет риска, сейчас берем просто максимум
-        //        double B = sumMean / 4.0;
-//        if (isDefenseFactorChecked()) {
-//            B = 1.0;
-//        }
-//        FirstForm firstForm = firstFormDc.getItem();
-//        if (0.9 <= B && B <= 1.1) {
-//            firstForm.setCheckboxFinalRiskLevelHigh(true);
-//            if (checkBoxNextStep1.isChecked()) firstForm.setCheckboxFinalRiskLevelHighStep1(true);
-//            if (checkBoxNextStep2.isChecked()) firstForm.setCheckboxFinalRiskLevelHighStep2(true);
-//            if (checkBoxNextStep3.isChecked()) firstForm.setCheckboxFinalRiskLevelHighStep3(true);
-//            if (checkBoxNextStep4.isChecked()) firstForm.setCheckboxFinalRiskLevelHighStep4(true);
-//            if (checkBoxNextStep5.isChecked()) firstForm.setCheckboxFinalRiskLevelHighStep5(true);
-//            if (checkBoxNextStep6.isChecked()) firstForm.setCheckboxFinalRiskLevelHighStep6(true);
-//            firstForm.setCheckboxFinalRiskLevelHighOthers(textFieldNextStep.getRawValue());
-//        }
-//        else if (0.71 <= B && B <= 0.89) {
-//            firstForm.setCheckboxFinalRiskLevelMedium(true);
-//            if (checkBoxNextStep1.isChecked()) firstForm.setCheckboxFinalRiskLevelMediumStep1(true);
-//            if (checkBoxNextStep2.isChecked()) firstForm.setCheckboxFinalRiskLevelMediumStep2(true);
-//            firstForm.setCheckboxFinalRiskLevelMediumOthers(textFieldNextStep.getRawValue());
-//        }
-//        else {
-//            firstForm.setCheckboxFinalRiskLevelLow(true);
-//            if (checkBoxNextStep1.isChecked()) firstForm.setCheckboxFinalRiskLevelLowStep1(true);
-//            if (checkBoxNextStep2.isChecked()) firstForm.setCheckboxFinalRiskLevelLowStep2(true);
-//            firstForm.setCheckboxFinalRiskLevelLowOthers(textFieldNextStep.getRawValue());
-//        }
     }
+
+    @Subscribe
+    public void onBeforeCommitChanges(final BeforeCommitChangesEvent event) {
+        Student student = getEditedEntity().getStudent();
+        double maximumRisk = getMaximumRisk();
+        if (maximumRisk >= 90) {
+            student.setStatus(StudentStatusField.RED);
+        }
+        else if (71 <= maximumRisk && maximumRisk <= 89) {
+            student.setStatus(StudentStatusField.YELLOW);
+        }
+        else {
+            student.setStatus(StudentStatusField.GREEN);
+        }
+        getEditedEntity().setStudent(student);
+        dataManager.save(student);
+    }
+
+
 
     private boolean isDefenseFactorChecked() {
         boolean ans = checkboxIndFactorAcademicField.isChecked();
