@@ -33,7 +33,11 @@
     <layout expand="openCasesTable" spacing="true">
         <filter id="filter"
                 dataLoader="openCasesDl">
-            <properties include=".*"/>
+            <properties include=".*"
+                        excludeProperties="id, reason, openingDate, whoStarted, secondForm, document, student.openCase,
+                            student.phoneNumber, student.fullAge, student.specialNeeds,
+                            student.contactPhone, student.address, student.status, student.id, student.birthDate"
+                        excludeRecursively="true"/>
         </filter>
         <groupTable id="openCasesTable"
                     width="100%"

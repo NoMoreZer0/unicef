@@ -34,7 +34,55 @@
     <layout expand="firstFormsTable" spacing="true">
         <filter id="filter"
                 dataLoader="firstFormsDl">
-            <properties include=".*"/>
+            <properties include=".*"
+                        excludeProperties="id, document, student.openCase,
+                            student.phoneNumber, student.fullAge, student.specialNeeds,
+                            student.contactPhone, student.address, student.status, student.id, student.birthDate,
+                            meetings, reasonText, checkboxLegalProblems, checkboxNoAttendance,
+                            checkboxChildAtRisk, checkboxEarlyPregnancy, checkboxDisabled, checkboxHIVChild,
+                            checkboxNoFood, checkboxNoSeasonClothes, checkboxNoCareOfParents, checkboxChildLabour,
+                            checkboxDomesticViolence, checkboxChildAbuse, checkboxOrphange, checkboxPsix,
+                            checkboxExplotation, checkboxReligiousRadicalism, checkboxConflictZones,
+                            checkboxOutsideFamily, checkboxOthers1, checkboxSuicidal, checkboxRiskAction,
+                            checkboxRiskSuicidal, checkboxGriefOfLoss, checkboxBulling, checkboxStressTraum,
+                            checkboxDaun, checkboxWeakSkills, checkboxPsycho, checkboxOthers2, checkboxFrequestAbsence,
+                            checkboxBadGrades, checkboxAbsenceByHealth, checkboxNoClothesForSchool,
+                            checkboxNoEducationMotivation, checkboxNoFamilyControl, checkboxNoAdditionalConsultation,
+                            checkboxConsultationAbsence, checkboxBadConsultation, checkboxChildParentsConflict,
+                            checkboxChildBetweenConflict, checkboxChildTeacherConflict, checkboxOthers3,
+                            checkboxLargeFamily, checkboxParentsWorkMigration, checkboxParentsAlco,
+                            checkboxParentsZona, checkboxParentsBomzh, checkboxParentsLowEducation,
+                            checkboxParentsWeakSkills, checkboxParentsBadRelationship, checkboxParentsDivorce,
+                            checkboxParentsNoHome, checkboxParentsNoDrugs, checkboxParentsNoTransport,
+                            checkboxParentsNoMoney, checkboxParentsViolence, checkboxParentsPsycho,
+                            checkboxParentsFamilyConflict, checkboxParentsPoorFamily, checkboxParentsElders,
+                            checkboxParentsMotherPregnant, checkboxParentsSingleFamily, checkboxParentsOrphange,
+                            checkboxParentsNoSocialHelp, checkboxParentsIsolation, checkboxParentsNoServiceAccess,
+                            checkboxParentsDiscrimination, checkboxParentsNoWork, checkboxParentsHIV,
+                            checkboxParentsDisabled, checkboxParentsFromWar, checkboxParentsReligiousRadicalization,
+                            checkboxOthers4, checkboxIndFactorAcademic, checkboxIndFactorGoodProblemSolving,
+                            checkboxIndFactorOwnProblem, checkboxIndFactorSelfConfidence, checkboxOthers5,
+                            checkboxFamilyFactorSafe, checkboxFamilyFactorCaring, checkboxFamilyFactorStable,
+                            checkboxFamilyFactorGoodSkills, checkboxFamilyFactorPositive, checkboxFamilyFactorBaseHelp,
+                            checkboxFamilyFactorStableRelationship, checkboxFamilyFactorRules,
+                            checkboxFamilyFactorCaringAdults, checkboxFamilyFactorSocialMedia, checkboxOthers6,
+                            checkboxEnvEconomStable, checkboxEnvParentsEmp, checkboxEnvParentsEdu,
+                            checkboxEnvLivingCond, checkboxEnvSocialHelp, checkboxEnvMedicalAdultsAndKinds,
+                            checkboxEnvCoordinationServices, checkboxOthers7, checkboxSchoolSafeEnv,
+                            checkboxSchoolAdd, checkboxSchoolNPA, checkboxSchoolMentor, checkboxSchoolParentsComm,
+                            checkboxSchoolInclusive, checkboxSchoolAddCreative, checkboxSchoolProfilactation,
+                            checkboxOthers8, caseReason, checkboxFinalRiskLevelNo, checkboxFinalRiskLevelNoStep1,
+                            checkboxFinalRiskLevelNoStep2, checkboxFinalRiskLevelNoStep3,
+                            checkboxFinalRiskLevelNoOthers, checkboxFinalRiskLevelLow,
+                            checkboxFinalRiskLevelLowStep1, checkboxFinalRiskLevelLowStep2,
+                            checkboxFinalRiskLevelLowOthers, checkboxFinalRiskLevelMedium,
+                            checkboxFinalRiskLevelMediumStep1, checkboxFinalRiskLevelMediumStep2,
+                            checkboxFinalRiskLevelMediumOthers, checkboxFinalRiskLevelHigh,
+                            checkboxFinalRiskLevelHighStep1, checkboxFinalRiskLevelHighStep2,
+                            checkboxFinalRiskLevelHighStep3, checkboxFinalRiskLevelHighStep4,
+                            checkboxFinalRiskLevelHighStep5, checkboxFinalRiskLevelHighStep6,
+                            checkboxFinalRiskLevelHighOthers"
+                        excludeRecursively="true"/>
         </filter>
         <groupTable id="firstFormsTable"
                     width="100%"
