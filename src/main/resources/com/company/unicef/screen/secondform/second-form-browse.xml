@@ -33,7 +33,40 @@
     <layout expand="secondFormsTable" spacing="true">
         <filter id="filter"
                 dataLoader="secondFormsDl">
-            <properties include=".*"/>
+            <properties include=".*"
+                        excludeProperties="id, uuid, childMobilePhone, educationInstitution, contactNumber,
+            healthChronical, healthChronicalText, healthNoRegistered, healthNoVaccination, healthDisabledNoHelp,
+            healthDisabledNoHelpText, healthNoHospital, healthNoTesting, healthNoFood, healthNoFoodText, healthNoSport,
+            healthNoEquipment, healthNoEquipmentText, healthNoCoordination, healthBadWeightOrHeight, healthFobia,
+            healthBadHabits, healthWetsBed, healthBadSleep, healthHasTrauma, healthBadCommunication, healthOthers,
+            eduNotLike, eduNotLikeText, eduNoSubject, eduWorking, eduNoDiscipline, eduSchoolFriend, eduSpecialNeeds,
+            eduSpecialNeedsText, eduDifficultProgram, eduDifficultProgramText, eduFreqAbsent, eduFreqAbsentText,
+            eduNoAttention, eduNoAttentionText, eduNoClub, eduNoStationery, eduNoLaptop, eduNoUniform, eduConflict,
+            eduNoDesk, eduAmoralAbsent, eduLowMotivation, eduOthers, emoNoStability, emoAnxiety, emoAnxietyText,
+            emoNoFriends, emoNoFriendsText, emoDepression, emoDepressionText, emoBullying, emoOutsideOfHome, emoAlone,
+            emoAloneText, emoSelfHarassment, emoRanAway, emoIsBully, emoRiskingAction, emoRiskingActionText,
+            emoConflictWitness, emoConflictWitnessText, emoNoEmotionControl, emoSuicidial, emoSuicidialAttempt,
+            emoSteals, emoOnRegister, emoOnRegisterText, emoAggressor, emoNoBadNoGood, emoNotNormal, emoOthers,
+            identDiscrimination, identDiscriminationText, identNoFamily, identGenderConf, identGenderDontKnow,
+            identGenderDontKnowText, identPositiveIndividual, identAgeSol, identAgeSolText, identNotSureMyself,
+            identNotSatisfied, identNoCultural, identNotIndependent, identNoHygiene, identOthers, familyNoRelationship,
+            familyNoRelationshipText, familyNoAdult, familyDomesticViolence, familyNoConnection, familyBadReview,
+            familyBadReviewText, familyBadFriends, familyBadFriendsText, familyNoSkills, familyChildIsAdult,
+            familyDifferentParents, familyChildConflict, familyChildConflictText, familyNoTimeCommunication,
+            familyAwayFromParents, familySexualProblems, familySexualProblemsText, familyChildParentConflict,
+            familyChronicalDisease, familyChronicalDiseaseText, familyHasJail, familyHasTrauma, familyHasTraumaText,
+            familyOthers, selfNoPhysicialActivity, selfNoPracticalSkills, selfNoMoney, selfNoHelp, selfOthers,
+            parentsNoBasic, parentsNoBasicText, parentsNoDailyRoutine, parentsNoSpace, parentsNoChildHealth,
+            parentsNoPraised, parentsNoSchool, parentsDontKnow, parentsDontCare, parentNoDiscipline, parentsOthers,
+            homeNoHome, homeEviction, homeDanger, homeDangerText, homeNoJob, homeNoJobText, homeNoBenefits,
+            homeNoBenefitsText, homeNoMoney, homeNoMoneyText, homeOthers, healthLow, healthMedium,
+            healthHigh, eduLow, eduMedium, eduHigh, emoLow, emoMedium, emoHigh, identLow, identMedium, identHigh,
+            familyLow, familyMedium, familyHigh, selfLow, selfMedium, selfHigh, parentsLow, parentsMedium,
+            parentsHigh, homeLow, homeMedium, homeHigh, openCase.id, openCase.reason, openCase.openingDate,
+            openCase.whoStarted, openCase.secondForm, openCase.document, openCase.student.openCase,
+            openCase.student.phoneNumber, openCase.student.fullAge, openCase.student.specialNeeds,
+            openCase.student.contactPhone, openCase.student.address, openCase.student.status, openCase.student.id,
+            openCase.student.birthDate"/>
         </filter>
         <groupTable id="secondFormsTable"
                     width="100%"

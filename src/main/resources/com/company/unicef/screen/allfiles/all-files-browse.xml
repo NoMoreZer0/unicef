@@ -33,7 +33,9 @@
     <layout expand="allFilesesTable" spacing="true">
         <filter id="filter"
                 dataLoader="allFilesesDl">
-            <properties include=".*"/>
+            <properties include=".*"
+                        excludeProperties="id, file"
+                        excludeRecursively="true"/>
         </filter>
         <groupTable id="allFilesesTable"
                     width="100%"

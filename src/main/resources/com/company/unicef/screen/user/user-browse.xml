@@ -32,7 +32,11 @@
                 width="800"/>
     <layout spacing="true" expand="usersTable">
         <filter id="filter" dataLoader="usersDl">
-            <properties include=".*"/>
+            <properties include=".*"
+                        excludeProperties="id, username,
+                        password, version, email, phoneNumber, role,
+                        active, timeZoneId, event, responsibleEmployee"
+                        excludeRecursively="true"/>
         </filter>
         <groupTable id="usersTable"
                     width="100%"
