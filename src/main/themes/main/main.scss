@@ -11,7 +11,17 @@
     border: 1px solid white;
   }
 }
-
+.footer {
+    .main .jmix-app-menubar {
+       position: fixed;
+         left: 0;
+         bottom: 0;
+         width: 100%;
+         background-color: grey;
+         color: green;
+         text-align: left;
+    }
+}
 @mixin responsive-table($primary-stylename: v-table) {
   .level-low {
     background-color: green;
