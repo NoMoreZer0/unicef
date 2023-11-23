@@ -26,12 +26,18 @@
                 width="800"/>
     <layout spacing="true" expand="editActions">
         <form id="form" dataContainer="resultDc">
-            <column width="350px">
+            <column width="50%">
                 <textArea rows="3" id="successIndicatorField" property="successIndicator"/>
                 <comboBox id="gradeFourthTermField" property="gradeFourthTerm"/>
                 <comboBox id="gradeThirdTermField" property="gradeThirdTerm"/>
                 <comboBox id="gradeFirstTermField" property="gradeFirstTerm"/>
                 <comboBox id="gradeSecondTermField" property="gradeSecondTerm"/>
+                <label stylename="h3" value="Шкала оценки:" css="margin-top:5%;"/>
+                <label value="4 - мероприятие выполнено с прогрессом сверх нормы"/>
+                <label value="3 - мероприятие выполнено, есть значительный сдвиг в сторону успешности"/>
+                <label value="2 - мероприятие выполнено, но нет положительного результата, т. е. проблема на том же месте"/>
+                <label value="1- мероприятие выполнено, но ситуация ухудшилась"/>
+                <label value="0 - мероприятие не выполнено"/>
             </column>
         </form>
         <hbox id="editActions" spacing="true">

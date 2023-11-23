@@ -38,6 +38,7 @@
                     <comboBox id="genderField" property="gender"/>
                     <textField id="studyingYearField" property="studyingYear"/>
                     <textField id="schoolField" property="school"/>
+                    <textField id="schoolLiterField" property="schoolLiter"/>
                     <comboBox id="studyLangField" property="studyLang"/>
                     <comboBox id="statusField" property="status"/>
                     <dateField id="birthDateField" property="birthDate"/>

@@ -39,6 +39,9 @@ public class Student {
     @Column(name = "SCHOOL")
     private String school;
 
+    @Column(name = "SCHOOL_LITER", length = 1)
+    private String schoolLiter;
+
     @Column(name = "STUDY_LANG")
     private String studyLang;
 
@@ -74,6 +77,14 @@ public class Student {
     @Composition
     @OneToMany(mappedBy = "student")
     private List<Relative> relative;
+
+    public String getSchoolLiter() {
+        return schoolLiter;
+    }
+
+    public void setSchoolLiter(String schoolLiter) {
+        this.schoolLiter = schoolLiter;
+    }
 
     public List<Relative> getRelative() {
         return relative;
