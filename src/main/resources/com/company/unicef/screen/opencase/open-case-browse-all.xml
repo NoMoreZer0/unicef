@@ -48,11 +48,10 @@
                 <action id="view" type="view"/>
             </actions>
             <columns>
-                <column id="student"/>
-                <column id="reason"/>
-                <column id="openingDate"/>
+                <column id="student.fio"/>
                 <column id="status"/>
-                <column id="whoStarted"/>
+                <column id="openingDate"/>
+                <column id="closingDate"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"

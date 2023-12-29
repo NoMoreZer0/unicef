@@ -42,6 +42,7 @@
                 </entityPicker>
                 <textField id="reasonField" property="reason"/>
                 <dateField id="openingDateField" property="openingDate"/>
+                <dateField id="closingDateField" property="closingDate"/>
                 <comboBox id="statusField" property="status"/>
                 <textField id="whoStartedField" property="whoStarted"/>
             </column>

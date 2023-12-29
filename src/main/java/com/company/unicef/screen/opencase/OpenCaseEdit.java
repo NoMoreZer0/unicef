@@ -3,30 +3,17 @@ package com.company.unicef.screen.opencase;
 import com.company.unicef.entity.*;
 import io.jmix.core.DataManager;
 import io.jmix.core.Messages;
-import io.jmix.core.Metadata;
-import io.jmix.core.security.SystemAuthenticator;
 import io.jmix.reportsui.screen.template.edit.generator.RandomPivotTableDataGenerator;
-import io.jmix.ui.Notifications;
-import io.jmix.ui.ScreenBuilders;
 import io.jmix.ui.UiComponents;
 import io.jmix.ui.component.*;
-import io.jmix.ui.executor.BackgroundWorker;
-import io.jmix.ui.executor.UIAccessor;
 import io.jmix.ui.model.CollectionPropertyContainer;
-import io.jmix.ui.model.DataContext;
-import io.jmix.ui.model.InstanceContainer;
 import io.jmix.ui.screen.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 
 import javax.annotation.Nullable;
 import javax.inject.Inject;
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @UiController("OpenCase.edit")
@@ -47,7 +34,6 @@ public class OpenCaseEdit extends StandardEditor<OpenCase> {
     private String emotionalCategory = "category.emotional";
     private String identityCategory = "category.identity";
     private String familyCategory = "category.family";
-    private String selfServiceCategory = "category.self-service";
     private String careCategory = "category.care";
     private String homeCategory = "category.home";
     private Map<String, String> categoryMap = new HashMap<>();
@@ -235,4 +221,15 @@ public class OpenCaseEdit extends StandardEditor<OpenCase> {
     private String getFromMessages(String messageName) {
         return messages.getMessage("com.company.unicef.entity", "SecondForm." + messageName);
     }
+
+    @Subscribe("statusField")
+    public void onStatusFieldValueChange(final HasValue.ValueChangeEvent<CaseStatus> event) {
+        if (CaseStatus.CLOSED.equals(event.getValue())) {
+            getEditedEntity().setClosingDate(new Date());
+        } else {
+            getEditedEntity().setClosingDate(null);
+        }
+    }
+
+
 }

@@ -39,6 +39,10 @@ public class OpenCase {
     @Temporal(TemporalType.DATE)
     private Date openingDate;
 
+    @Column(name = "CLOSING_DATE")
+    @Temporal(TemporalType.DATE)
+    private Date closingDate;
+
     @Column(name = "STATUS")
     private String status;
 
@@ -63,6 +67,14 @@ public class OpenCase {
     @Composition
     @OneToMany(mappedBy = "openCase", cascade = CascadeType.ALL)
     private List<SecondFormCheckBox> secondFormCheckBoxes = new ArrayList<>();
+
+    public Date getClosingDate() {
+        return closingDate;
+    }
+
+    public void setClosingDate(Date closingDate) {
+        this.closingDate = closingDate;
+    }
 
     public List<Representatives> getRepresentatives() {
         return representatives;
