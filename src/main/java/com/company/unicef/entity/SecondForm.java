@@ -19,6 +19,9 @@ public class SecondForm {
     @Id
     private Long id;
 
+    @Column(name = "CASE_ID_NUM")
+    private String caseIdNum;
+
     @JmixGeneratedValue
     @Column(name = "UUID")
     private UUID uuid;
@@ -573,6 +576,14 @@ public class SecondForm {
     @Composition
     @OneToMany(mappedBy = "secondForm", cascade = CascadeType.ALL)
     private List<PivotTableCheckBoxes> pivotTableCheckBoxes;
+
+    public void setCaseIdNum(String caseIdNum) {
+        this.caseIdNum = caseIdNum;
+    }
+
+    public String getCaseIdNum() {
+        return caseIdNum;
+    }
 
     public String getHomeNoMoneyText() {
         return homeNoMoneyText;

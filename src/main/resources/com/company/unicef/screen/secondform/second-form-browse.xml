@@ -79,6 +79,7 @@
             </actions>
             <columns>
                 <column id="childIdNum"/>
+                <column id="caseIdNum"/>
                 <column id="childMobilePhone"/>
                 <column id="educationInstitution"/>
                 <column id="caseManager"/>

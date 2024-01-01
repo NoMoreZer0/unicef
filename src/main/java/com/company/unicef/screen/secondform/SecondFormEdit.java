@@ -343,6 +343,19 @@ public class SecondFormEdit extends StandardEditor<SecondForm> {
         fillHomeCheckBoxes();
     }
 
+    @Subscribe
+    public void onBeforeShow(final BeforeShowEvent event) {
+        if (getEditedEntity().getChildIdNum() == null) {
+            String nextChildIdNum = getNextChildIdNum();
+            getEditedEntity().setChildIdNum(nextChildIdNum);
+        }
+
+        if (getEditedEntity().getCaseIdNum() == null) {
+            String nextCaseIdNum = getNextCaseIdNum();
+            getEditedEntity().setCaseIdNum(nextCaseIdNum);
+        }
+    }
+
     private void fillHomeCheckBoxes() {
         homeCheckBoxesLow.add(homeNoHomeField);
 
@@ -614,6 +627,20 @@ public class SecondFormEdit extends StandardEditor<SecondForm> {
         if (healthLowFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(healthCategory, low));
         if (healthMediumFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(healthCategory, medium));
         if (healthHighFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(healthCategory, high));
+    }
+
+    private String getNextChildIdNum() {
+        int lastChildIdNum = dataManager.loadValue("select max(cast(e.childIdNum integer)) from SecondForm e", Integer.class)
+                        .optional()
+                        .orElse(0);
+        return String.format("%06d", lastChildIdNum + 1);
+    }
+
+    private String getNextCaseIdNum() {
+        int lastCaseIdNum = dataManager.loadValue("select max(cast(e.caseIdNum integer)) from SecondForm e", Integer.class)
+                .optional()
+                .orElse(0);
+        return String.format("%06d", lastCaseIdNum + 1);
     }
 
     @Subscribe("healthChronicalField")
