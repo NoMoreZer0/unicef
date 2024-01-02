@@ -1,4 +1,4 @@
-    package com.company.unicef.entity;
+package com.company.unicef.entity;
 
 import io.jmix.core.DeletePolicy;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;

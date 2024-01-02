@@ -3,10 +3,10 @@ package com.company.unicef.screen.mainscreentopmenu;
 import com.company.unicef.entity.User;
 import com.company.unicef.screen.user.UserProfileEdit;
 import io.jmix.core.usersubstitution.CurrentUserSubstitution;
-import io.jmix.ui.ScreenBuilders;
-import io.jmix.ui.ScreenTools;
-import io.jmix.ui.Screens;
-import io.jmix.ui.UiComponents;
+import io.jmix.notifications.NotificationManager;
+import io.jmix.notifications.NotificationType;
+import io.jmix.notifications.NotificationTypesRepository;
+import io.jmix.ui.*;
 import io.jmix.ui.component.AppWorkArea;
 import io.jmix.ui.component.Button;
 import io.jmix.ui.component.Image;
@@ -19,10 +19,16 @@ import io.jmix.ui.screen.UiControllerUtils;
 import io.jmix.ui.screen.UiDescriptor;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.annotation.PostConstruct;
+
 @UiController("MainTop")
 @UiDescriptor("main-screen-top-menu.xml")
 @Route(path = "main", root = true)
 public class MainScreenTopMenu extends Screen implements Window.HasWorkArea {
+
+    @Autowired
+    NotificationManager notificationManager;
+
 
     @Autowired
     private ScreenTools screenTools;
@@ -63,4 +69,6 @@ public class MainScreenTopMenu extends Screen implements Window.HasWorkArea {
         userProfileEdit.setEntityToEdit((User)currentUserSubstitution.getAuthenticatedUser());
         userProfileEdit.show();
     }
+
+
 }

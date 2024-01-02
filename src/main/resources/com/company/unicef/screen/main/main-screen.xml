@@ -2,7 +2,7 @@
         caption="msg://application.caption">
 
     <layout>
-        <cssLayout id="horizontalWrap"
+         <cssLayout id="horizontalWrap"
                    stylename="jmix-drawer-layout">
             <drawer id="drawer" expandOnHover="true">
                 <cssLayout id="appTitleBox"

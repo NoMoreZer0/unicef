@@ -17,6 +17,13 @@ repositories {
     maven {
         url 'https://global.repo.jmix.io/repository/public'
     }
+    maven {
+        url = 'https://global.repo.jmix.io/repository/premium'
+        credentials {
+            username = rootProject['premiumRepoUser.0']
+            password = rootProject['premiumRepoPass.0']
+        }
+    }
 }
 
 dependencies {
@@ -46,6 +53,14 @@ dependencies {
     implementation 'io.jmix.ui:jmix-ui-themes'
     implementation 'io.jmix.security:jmix-security-oauth2-starter'
     implementation 'io.jmix.rest:jmix-rest-starter'
+    implementation 'io.jmix.notifications:jmix-notifications-starter'
+    implementation 'io.jmix.notifications:jmix-notifications-ui-starter'
+    implementation 'io.jmix.email:jmix-email-ui-starter'
+    implementation 'io.jmix.email:jmix-email-starter'
+    implementation 'io.jmix.emailtemplates:jmix-emailtemplates-starter'
+    implementation 'io.jmix.emailtemplates:jmix-emailtemplates-ui-starter'
+    implementation 'io.jmix.email:jmix-email-ui-starter'
+    implementation 'io.jmix.email:jmix-email-starter'
 }
 
 test {

@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="IgnoredChangelogIncludeConfig">
+    <datastore-include-infos>
+      <datastore-include-info datastore-name="main" />
+    </datastore-include-infos>
+  </component>
   <component name="JmixDataStoreSettingsManager">
     <moduleSettings>
       <entry key="com.company.unicef.main">
@@ -56,5 +61,12 @@
   </component>
   <component name="TranslationAddonsNotifySettings">
     <option name="dontShowAgain" value="true" />
+  </component>
+  <component name="VersionUpdateSettings">
+    <option name="ignoredVersions">
+      <set>
+        <option value="1.5.5" />
+      </set>
+    </option>
   </component>
 </project>

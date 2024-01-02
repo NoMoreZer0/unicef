@@ -1,5 +1,8 @@
 package com.company.unicef.screen.main;
 
+import io.jmix.notifications.NotificationType;
+import io.jmix.notifications.NotificationTypesRepository;
+import io.jmix.ui.Notifications;
 import io.jmix.ui.ScreenTools;
 import io.jmix.ui.component.AppWorkArea;
 import io.jmix.ui.component.Button;
@@ -14,10 +17,14 @@ import io.jmix.ui.screen.UiControllerUtils;
 import io.jmix.ui.screen.UiDescriptor;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.annotation.PostConstruct;
+
 @UiController("MainScreen")
 @UiDescriptor("main-screen.xml")
 @Route(path = "main", root = true)
 public class MainScreen extends Screen implements Window.HasWorkArea {
+
+
 
     @Autowired
     private ScreenTools screenTools;
@@ -52,4 +59,7 @@ public class MainScreen extends Screen implements Window.HasWorkArea {
 
         screenTools.handleRedirect();
     }
+
+
+
 }
