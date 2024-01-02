@@ -27,6 +27,9 @@ public class Student {
     @Column(name = "FIO")
     private String fio;
 
+    @Column(name = "STUDENT_ID")
+    private String studentId;
+
     @Column(name = "GENDER")
     private String gender;
 
@@ -74,6 +77,14 @@ public class Student {
     @Composition
     @OneToMany(mappedBy = "student")
     private List<Relative> relative;
+
+    public String getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
+    }
 
     public List<Relative> getRelative() {
         return relative;

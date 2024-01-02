@@ -33,8 +33,14 @@
                     <form id="formCommon" width="50%" childrenCaptionWidth="415px" dataContainer="secondFormDc" captionPosition="TOP"
                           css="margin-left: 415px;">
                         <label value="msg://com.company.unicef.entity/SecondForm.generalLabel" stylename="h2" css="text-align:center;"/>
-                        <textField id="childIdNumField" property="childIdNum" editable="false"/>
                         <textField id="caseIdNumField" property="caseIdNum" editable="false"/>
+                        <entityPicker id="studentField" dataContainer="secondFormDc" property="student">
+                            <actions>
+                                <action id="entity_lookup" type="entity_lookup"/>
+                                <action id="entity_clear" type="entity_clear"/>
+                            </actions>
+                        </entityPicker>
+                        <textField id="studentIdField" property="student.studentId" editable="false"/>
                         <textField id="childMobilePhoneField" property="childMobilePhone"/>
                         <comboBox id="educationInstitutionField" property="educationInstitution"/>
                         <textField id="caseManagerField" property="caseManager"/>
