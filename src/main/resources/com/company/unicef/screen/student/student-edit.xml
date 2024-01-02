@@ -34,6 +34,7 @@
         <scrollBox id="scrollBox" spacing="true">
             <form id="form" dataContainer="studentDc">
                 <column width="350px">
+                    <textField id="studentIdField" property="studentId" editable="false"/>
                     <textField id="fioField" property="fio"/>
                     <comboBox id="genderField" property="gender"/>
                     <textField id="studyingYearField" property="studyingYear"/>

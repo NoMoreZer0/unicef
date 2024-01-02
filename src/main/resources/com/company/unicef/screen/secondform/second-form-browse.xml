@@ -6,7 +6,11 @@
     <data readOnly="true">
         <collection id="secondFormsDc"
                     class="com.company.unicef.entity.SecondForm">
-            <fetchPlan extends="_base"/>
+            <fetchPlan extends="_base">
+                <property name="student" fetchPlan="_instance_name">
+                    <property name="studentId"/>
+                </property>
+            </fetchPlan>
             <loader id="secondFormsDl">
                 <query>
                     <![CDATA[select e from SecondForm e]]>
@@ -78,7 +82,9 @@
                 <action id="run" type="runReport"/>
             </actions>
             <columns>
-                <column id="childIdNum"/>
+                <column id="student.studentId"/>
+                <column id="caseIdNum"/>
+                <column id="childMobilePhone"/>
                 <column id="educationInstitution"/>
                 <column id="caseManager"/>
             </columns>

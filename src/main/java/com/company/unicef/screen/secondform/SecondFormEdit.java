@@ -343,6 +343,14 @@ public class SecondFormEdit extends StandardEditor<SecondForm> {
         fillHomeCheckBoxes();
     }
 
+    @Subscribe
+    public void onBeforeShow(final BeforeShowEvent event) {
+        if (getEditedEntity().getCaseIdNum() == null) {
+            String newCaseIdNum = getNewCaseIdNum();
+            getEditedEntity().setCaseIdNum(newCaseIdNum);
+        }
+    }
+
     private void fillHomeCheckBoxes() {
         homeCheckBoxesLow.add(homeNoHomeField);
 
@@ -614,6 +622,13 @@ public class SecondFormEdit extends StandardEditor<SecondForm> {
         if (healthLowFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(healthCategory, low));
         if (healthMediumFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(healthCategory, medium));
         if (healthHighFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(healthCategory, high));
+    }
+
+    private String getNewCaseIdNum() {
+        int lastCaseIdNum = dataManager.loadValue("select max(cast(e.caseIdNum integer)) from SecondForm e", Integer.class)
+                .optional()
+                .orElse(0);
+        return String.format("%06d", lastCaseIdNum + 1);
     }
 
     @Subscribe("healthChronicalField")

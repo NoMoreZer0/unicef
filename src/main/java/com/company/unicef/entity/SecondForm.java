@@ -1,6 +1,8 @@
 package com.company.unicef.entity;
 
+import io.jmix.core.DeletePolicy;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
+import io.jmix.core.entity.annotation.OnDeleteInverse;
 import io.jmix.core.metamodel.annotation.Composition;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
@@ -10,7 +12,9 @@ import java.util.List;
 import java.util.UUID;
 
 @JmixEntity
-@Table(name = "SECOND_FORM")
+@Table(name = "SECOND_FORM", indexes = {
+        @Index(name = "IDX_SECOND_FORM_STUDENT", columnList = "STUDENT_ID")
+})
 @Entity
 public class SecondForm {
     @InstanceName
@@ -19,12 +23,18 @@ public class SecondForm {
     @Id
     private Long id;
 
+    @OnDeleteInverse(DeletePolicy.DENY)
+    @JoinColumn(name = "STUDENT_ID")
+    @Composition
+    @OneToOne(fetch = FetchType.LAZY)
+    private Student student;
+
+    @Column(name = "CASE_ID_NUM")
+    private String caseIdNum;
+
     @JmixGeneratedValue
     @Column(name = "UUID")
     private UUID uuid;
-
-    @Column(name = "CHILD_ID_NUM")
-    private String childIdNum;
 
     @Column(name = "CHILD_MOBILE_PHONE", length = 11)
     private String childMobilePhone;
@@ -573,6 +583,22 @@ public class SecondForm {
     @Composition
     @OneToMany(mappedBy = "secondForm", cascade = CascadeType.ALL)
     private List<PivotTableCheckBoxes> pivotTableCheckBoxes;
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public void setCaseIdNum(String caseIdNum) {
+        this.caseIdNum = caseIdNum;
+    }
+
+    public String getCaseIdNum() {
+        return caseIdNum;
+    }
 
     public String getHomeNoMoneyText() {
         return homeNoMoneyText;
@@ -1932,14 +1958,6 @@ public class SecondForm {
 
     public void setChildMobilePhone(String childMobilePhone) {
         this.childMobilePhone = childMobilePhone;
-    }
-
-    public String getChildIdNum() {
-        return childIdNum;
-    }
-
-    public void setChildIdNum(String childIdNum) {
-        this.childIdNum = childIdNum;
     }
 
     public UUID getUuid() {
