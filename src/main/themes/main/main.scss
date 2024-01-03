@@ -11,17 +11,19 @@
     border: 1px solid white;
   }
 }
+
 .footer {
-    .main .jmix-app-menubar {
-       position: fixed;
-         left: 0;
-         bottom: 0;
-         width: 100%;
-         background-color: grey;
-         color: green;
-         text-align: left;
-    }
+  .main .jmix-app-menubar {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: grey;
+    color: green;
+    text-align: left;
+  }
 }
+
 @mixin responsive-table($primary-stylename: v-table) {
   .level-low {
     background-color: green;
@@ -29,12 +31,12 @@
   }
 
   .background-green {
-    background-color:olivedrab;
+    background-color: olivedrab;
 
   }
-.btn-green {
-  transition: 0.2s ease-in;
-}
+  .btn-green {
+    transition: 0.2s ease-in;
+  }
   .btn-green:hover {
     background-color: #567d04;
   }
@@ -62,7 +64,7 @@
   .#{$primary-stylename} {
     .#{$primary-stylename}-row,
     .#{$primary-stylename}-row-odd {
-      &.level-high{
+      &.level-high {
         background-color: red;
         color: black;
 
@@ -95,5 +97,17 @@
         }
       }
     }
+  }
+}
+
+.checkbox-container .inline .v-caption {
+  border: 0.4rem solid white;
+  border-radius: 3px;
+  margin-right: 1rem;
+  padding: 0.2rem;
+  transition: all 500ms ease;
+
+  &:hover {
+    border: 0.2rem solid #567d04;
   }
 }
