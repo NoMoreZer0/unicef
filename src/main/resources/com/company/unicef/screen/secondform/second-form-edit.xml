@@ -49,7 +49,8 @@
                 </row>
 
                 <row>
-                    <form id="form" dataContainer="secondFormDc" width="50%" css="margin-left: 415px;" responsive="true">
+                    <form id="form" dataContainer="secondFormDc" width="50%" css="margin-left: 415px;" responsive="true"
+                          stylename="checkbox-container">
                         <column width="50%" childrenCaptionWidth="1000px">
                             <label value="msg://com.company.unicef.entity/SecondForm.healthLabel" stylename="h2" width="AUTO" css="margin-top: 12px;"/>
                             <checkBox id="healthChronicalField" property="healthChronical"/>
