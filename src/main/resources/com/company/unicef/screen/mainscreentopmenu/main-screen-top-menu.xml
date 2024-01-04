@@ -1,32 +1,27 @@
 <window xmlns="http://jmix.io/schema/ui/window"
         caption="msg://caption">
     <layout expand="workArea">
-        <hbox stylename="jmix-app-menubar.header-border" align="MIDDLE_CENTER">
-            <hbox align="MIDDLE_CENTER"
-                  stylename="jmix-main-buttons" css="color: white; margin-bottom:1%; margin-top:1%;">
-                <image scaleMode="CONTAIN" width="100px" height="100px" css="">
-                    <resource>
-                        <relativePath path="images/logo-nis.jpg"/>
-                    </resource>
-                </image>
-                <label value="msg://com.company.unicef/menu.supportedLabel" align="MIDDLE_CENTER" css="color: black;  font-size:18px; font-family: Inter,Arial,sans-serif;"/>
-                <image scaleMode="CONTAIN" width="250px" height="100px" css="">
-                    <resource>
-                        <relativePath path="images/logo-unicef.png"/>
-                    </resource>
-                </image>
-                <label value="msg://com.company.unicef/menu.contactLabel" align="MIDDLE_CENTER" css="color: black; font-size: 18px;font-family: Inter,Arial,sans-serif; "/>
-<!--                <image scaleMode="CONTAIN" width="10px" height="10px" >-->
-<!--                    <resource>-->
-<!--                        <relativePath path="images/phone.svg"/>-->
-<!--                    </resource>-->
-<!--                </image>-->
-
-            </hbox>
-            <hbox align="MIDDLE_RIGHT"
-                  stylename="jmix-main-buttons" css="color: white; margin-bottom:1%; margin-top:1%;margin-left:40%">
-                <label value="msg://com.company.unicef/menu.footerLabel" css="color: black; text-align:end; font-size: 16px;"/>
-            </hbox>
+        <hbox stylename="jmix-app-menubar.header-border"
+              css="display: flex;
+              justify-content: space-between;
+              margin: 10px 20px;
+              font-family: 'Roboto', sans-serif;">
+            <image scaleMode="CONTAIN" height="66px" css="margin-top: 10px">
+                <resource>
+                    <relativePath path="images/logo-nis.svg"/>
+                </resource>
+            </image>
+            <label value="msg://com.company.unicef/menu.supportedLabel"
+                   css="color: #545050; line-height: 1.1; font-size: 16px; margin-top: 53px;"/>
+            <image scaleMode="CONTAIN" height="65px" css="margin-top: 23px;">
+                <resource>
+                    <relativePath path="images/logo-unicef.png"/>
+                </resource>
+            </image>
+            <label value="msg://com.company.unicef/menu.contactLabel"
+                   css="color: #151515; font-size: 16px; margin-top: 35px;"/>
+            <label value="msg://com.company.unicef/menu.footerLabel"
+                   css="color: #151515; text-align: end; font-size: 16px;"/>
         </hbox>
 
         <hbox id="header"
@@ -78,7 +73,8 @@
         <hbox stylename="jmix-app-menubar. footer" align="MIDDLE_CENTER">
             <hbox align="MIDDLE_CENTER"
                   css="color: white; position: fixed; left: 0; bottom: 0; width: 100%; background-color: #6b8e23;text-align:center;">
-                <label value="msg://com.company.unicef/menu.copyrightLabel" align="MIDDLE_CENTER" css="color: #c8d6e5;  font-size: 16px; margin-bottom:2%;"/>
+                <label value="msg://com.company.unicef/menu.copyrightLabel" align="MIDDLE_CENTER"
+                       css="color: #c8d6e5;  font-size: 16px; margin-bottom:2%;"/>
             </hbox>
             <hbox></hbox>
         </hbox>
