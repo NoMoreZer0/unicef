@@ -20,13 +20,31 @@
   overflow: hidden;
   align-items: center;
 
-  .img1, .img2, .img3 {
+  .slider-image {
+    display: block;
     height: 100%;
     width: 100%;
   }
 
-  .img3, .img1 {
-      display: none;
+  .v-slot-img2.hidden, .v-slot-img3.hidden, .v-slot-img1.hidden {
+    display: none;
+  }
+
+  .v-slot-img2.active, .v-slot-img1.active, .v-slot-img3.active {
+    display: block;
+    height: 100%;
+    width: 100%;
+    transition: 0.2s ease-in;
+    animation: fade 0.5s 1;
+  }
+
+  @keyframes fade {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 
   .v-slot {

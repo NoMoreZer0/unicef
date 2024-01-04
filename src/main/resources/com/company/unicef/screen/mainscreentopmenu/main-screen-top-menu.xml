@@ -78,19 +78,19 @@
                             </resource>
                         </image>
 
-                        <image scaleMode="CONTAIN" stylename="img1" height="600px" width="60%">
+                        <image scaleMode="CONTAIN" stylename="slider-image img1" height="600px" width="60%">
                             <resource>
                                 <relativePath path="images/background-image.jpg"/>
                             </resource>
                         </image>
-                        <image scaleMode="CONTAIN" stylename="img2" height="600px" width="60%">
+                        <image scaleMode="CONTAIN" stylename="slider-image img2" height="600px" width="60%">
                             <resource>
-                                <relativePath path="images/background-image.jpg"/>
+                                <relativePath path="images/test1.jpg"/>
                             </resource>
                         </image>
-                        <image scaleMode="CONTAIN" stylename="img3" height="600px" width="60%">
+                        <image scaleMode="CONTAIN" stylename="slider-image img3" height="600px" width="60%">
                             <resource>
-                                <relativePath path="images/background-image.jpg"/>
+                                <relativePath path="images/test3.jpg"/>
                             </resource>
                         </image>
 
