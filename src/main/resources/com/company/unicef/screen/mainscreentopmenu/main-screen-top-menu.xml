@@ -67,6 +67,11 @@
             <initialLayout margin="true"
                            spacing="false">
                     <hbox stylename="slider__wrapper">
+                        <jsComponent initFunctionName="com_company_slider_javascript_Slider" >
+                            <dependencies>
+                                <dependency path="vaadin://scripts/slider.js"/>
+                            </dependencies>
+                        </jsComponent>
                         <image scaleMode="CONTAIN" stylename="arrowLeft">
                             <resource>
                                 <relativePath path="images/arrow-left.png"/>
@@ -103,17 +108,7 @@
                   css="color: white; position: fixed; left: 0; bottom: 0; width: 100%; background-color: #6b8e23;text-align:center;">
                 <label value="msg://com.company.unicef/menu.copyrightLabel" align="MIDDLE_CENTER" css="color: #c8d6e5;  font-size: 16px; margin-bottom:2%;"/>
             </hbox>
-            <hbox></hbox>
         </hbox>
-        <jsComponent id="timePicker"
-                     initFunctionName="slider">
-            <dependencies>
-                <dependency path="webjar://jquery:jquery.min.js"/>
-                <dependency path="vaadin://timepicker/wickedpicker.min.js"/>
-                <dependency path="vaadin://timepicker/wickedpicker.min.css"/>
-                <dependency path="./slider.js"/>
-            </dependencies>
-        </jsComponent>
     </layout>
 
 </window>
