@@ -5,12 +5,7 @@ com_company_slider_javascript_Slider = function () {
     const img3 = document.querySelector('.v-slot-img3');
     const images = [img1, img2, img3];
 
-
-    const arrowLeft = document.querySelector('.v-slot-arrowLeft');
-    const arrowRight = document.querySelector('.v-slot-arrowRight');
-
     function showCurrentImage() {
-
         images.forEach((image, index) => {
             if (index === currentImageIndex) {
                 image.classList.remove('hidden');
@@ -25,7 +20,6 @@ com_company_slider_javascript_Slider = function () {
     function changeImage(direction) {
         currentImageIndex += direction;
 
-
         if (currentImageIndex >= images.length) {
             currentImageIndex = 0;
         }
@@ -37,8 +31,10 @@ com_company_slider_javascript_Slider = function () {
         showCurrentImage();
     }
 
-    arrowLeft.addEventListener('click', () => changeImage(-1));
-    arrowRight.addEventListener('click', () => changeImage(1));
+    // Auto change every 3 seconds
+    setInterval(() => {
+        changeImage(1); // Assuming you want to move to the next image
+    }, 3000);
 
     showCurrentImage();
 }

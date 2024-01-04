@@ -72,31 +72,21 @@
                                 <dependency path="vaadin://scripts/slider.js"/>
                             </dependencies>
                         </jsComponent>
-                        <image scaleMode="CONTAIN" stylename="arrowLeft">
-                            <resource>
-                                <relativePath path="images/arrow-left.png"/>
-                            </resource>
-                        </image>
 
-                        <image scaleMode="CONTAIN" stylename="slider-image img1" height="600px" width="60%">
+
+                        <image scaleMode="COVER" stylename="slider-image img1" height="600px" width="100%">
                             <resource>
                                 <relativePath path="images/background-image.jpg"/>
                             </resource>
                         </image>
-                        <image scaleMode="CONTAIN" stylename="slider-image img2" height="600px" width="60%">
+                        <image scaleMode="COVER" stylename="slider-image img2" height="600px" width="100%">
                             <resource>
                                 <relativePath path="images/test1.jpg"/>
                             </resource>
                         </image>
-                        <image scaleMode="CONTAIN" stylename="slider-image img3" height="600px" width="60%">
+                        <image scaleMode="COVER" stylename="slider-image img3" height="600px" width="100%">
                             <resource>
                                 <relativePath path="images/test3.jpg"/>
-                            </resource>
-                        </image>
-
-                        <image scaleMode="CONTAIN" stylename="arrowRight">
-                            <resource>
-                                <relativePath path="images/arrow-right.png"/>
                             </resource>
                         </image>
 

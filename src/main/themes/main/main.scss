@@ -26,17 +26,14 @@
     width: 100%;
   }
 
-  .v-slot-img2.hidden, .v-slot-img3.hidden, .v-slot-img1.hidden {
+  .v-slot-img2.hidden,
+  .v-slot-img3.hidden,
+  .v-slot-img1.hidden {
     display: none;
+    opacity: 0;
+    transition: opacity 0.2s ease-in;
   }
 
-  .v-slot-img2.active, .v-slot-img1.active, .v-slot-img3.active {
-    display: block;
-    height: 100%;
-    width: 100%;
-    transition: 0.2s ease-in;
-    animation: fade 0.5s 1;
-  }
 
   @keyframes fade {
     0% {
@@ -47,11 +44,24 @@
     }
   }
 
+  .v-slot-img2.active,
+  .v-slot-img1.active,
+  .v-slot-img3.active {
+    display: block;
+    height: 100%;
+    width: 100%;
+    opacity: 1;
+    transition: opacity 0.2s ease-in;
+    animation: fade 0.5s 1;
+  }
+
+
   .v-slot {
     display: flex;
     align-items: center;
   }
 }
+
 
 .footer {
     .main .jmix-app-menubar {
