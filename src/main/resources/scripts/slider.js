@@ -1,0 +1,3 @@
+slider = function () {
+    alert('helli');
+}

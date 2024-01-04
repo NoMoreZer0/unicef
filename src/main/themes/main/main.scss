@@ -11,6 +11,30 @@
     border: 1px solid white;
   }
 }
+
+.slider__wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  overflow: hidden;
+  align-items: center;
+
+  .img1, .img2, .img3 {
+    height: 100%;
+    width: 100%;
+  }
+
+  .img3, .img1 {
+      display: none;
+  }
+
+  .v-slot {
+    display: flex;
+    align-items: center;
+  }
+}
+
 .footer {
     .main .jmix-app-menubar {
        position: fixed;
