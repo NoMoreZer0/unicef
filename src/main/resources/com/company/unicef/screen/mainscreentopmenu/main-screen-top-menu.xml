@@ -6,7 +6,7 @@
               justify-content: space-between;
               margin: 10px 20px;
               font-family: 'Roboto', sans-serif;">
-            <image scaleMode="CONTAIN" height="66px" css="margin-top: 10px">
+            <image scaleMode="CONTAIN" height="66px" css="margin-top: 10px;">
                 <resource>
                     <relativePath path="images/logo-nis.svg"/>
                 </resource>
