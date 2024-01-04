@@ -111,3 +111,9 @@
     border: 0.2rem solid #567d04;
   }
 }
+
+.v-tabsheet-tabs, .v-tabsheet-tabitemcell {
+  border-left: solid 0.05rem #567d04;
+  border-right: solid 0.05rem #567d04;
+  border-collapse: collapse;
+}

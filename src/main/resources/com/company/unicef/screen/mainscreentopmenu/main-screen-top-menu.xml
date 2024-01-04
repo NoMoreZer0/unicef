@@ -11,15 +11,24 @@
                     <relativePath path="images/logo-nis.svg"/>
                 </resource>
             </image>
-            <label value="msg://com.company.unicef/menu.supportedLabel"
-                   css="color: #545050; line-height: 1.1; font-size: 16px; margin-top: 53px;"/>
-            <image scaleMode="CONTAIN" height="65px" css="margin-top: 23px;">
-                <resource>
-                    <relativePath path="images/logo-unicef.png"/>
-                </resource>
-            </image>
-            <label value="msg://com.company.unicef/menu.contactLabel"
-                   css="color: #151515; font-size: 16px; margin-top: 35px;"/>
+            <hbox>
+                <label value="msg://com.company.unicef/menu.supportedLabel"
+                       css="color: #545050; line-height: 1.1; font-size: 16px; margin-top: 52px;"/>
+                <image scaleMode="CONTAIN" height="65px" css="margin-top: 25px;">
+                    <resource>
+                        <relativePath path="images/logo-unicef.png"/>
+                    </resource>
+                </image>
+            </hbox>
+            <hbox>
+                <image scaleMode="CONTAIN" height="20px" css="margin-top: 35px; margin-right: 5px;">
+                    <resource>
+                        <relativePath path="images/phone.svg"/>
+                    </resource>
+                </image>
+                <label value="msg://com.company.unicef/menu.contactLabel"
+                       css="color: #151515; font-size: 16px; margin-top: 35px;"/>
+            </hbox>
             <label value="msg://com.company.unicef/menu.footerLabel"
                    css="color: #151515; text-align: end; font-size: 16px;"/>
         </hbox>
