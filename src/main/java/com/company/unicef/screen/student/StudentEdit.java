@@ -1,10 +1,10 @@
 package com.company.unicef.screen.student;
 
+import com.company.unicef.entity.Student;
 import com.company.unicef.entity.StudentStatusField;
 import io.jmix.core.DataManager;
 import io.jmix.ui.component.HasValue;
 import io.jmix.ui.screen.*;
-import com.company.unicef.entity.Student;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

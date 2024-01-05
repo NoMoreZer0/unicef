@@ -1,10 +1,7 @@
 <services xmlns="http://jmix.io/schema/rest/services">
     <service name="studentService">
         <method name="save">
-            <param name="city"/>
-            <param name="school"/>
-            <param name="course"/>
-            <param name="name"/>
+            <param name="students"/>
         </method>
     </service>
 </services>

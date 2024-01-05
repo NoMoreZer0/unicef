@@ -1,10 +1,10 @@
-package com.company.unicef.app;
+package com.company.unicef.app.student;
 
 import com.company.unicef.entity.Address;
 import com.company.unicef.entity.Student;
+import com.company.unicef.entity.StudentStatusField;
 import com.company.unicef.entity.User;
 import io.jmix.core.DataManager;
-import io.jmix.core.FetchPlans;
 import io.jmix.notifications.NotificationManager;
 import io.jmix.notifications.entity.ContentType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,30 +27,33 @@ public class StudentService {
         this.dataManager = dataManager;
     }
 
-    public ResponseEntity<String> save(String city, String school, String course, String name) {
+    public ResponseEntity<String> save(List<StudentDao> students) {
         try {
-            Student student = dataManager.create(Student.class);
-            Address address = dataManager.create(Address.class);
-            address.setCity(city);
-            student.setSchool(school);
-            student.setFio(name);
-            student.setStudyingYear(course);
-            student.setAddress(address);
-            student.setStudentId(getNewStudentId());
-            dataManager.save(address);
-            dataManager.save(student);
+            students.forEach(s -> {
+                Student student = dataManager.create(Student.class);
+                Address address = dataManager.create(Address.class);
+                address.setCity(s.getCity());
+                student.setStudentId(getNewStudentId());
+                student.setSchool(s.getSchool());
+                student.setFio(s.getName());
+                student.setStudyingYear(s.getCourse());
+                student.setAddress(address);
+                student.setStatus(StudentStatusField.GRAY);
+                dataManager.save(address);
+                dataManager.save(student);
 
-            List<User> userNotifications = loadByRole();
-            List<String> usernamesNotific = new ArrayList<>();
-            userNotifications.forEach(u -> usernamesNotific.add(u.getUsername()));
-            notificationManager.createNotification()
-                    .withSubject("Добавлен новый студент")
-                    .withRecipientUsernames(usernamesNotific)
-                    .toChannelsByNames("in-app")
-                    .withContentType(ContentType.PLAIN)
-                    .withBody("Проведите проверку нового студента")
-                    .send();
-            return ResponseEntity.ok("Student saved successfully!");
+                List<User> userNotifications = loadByRole();
+                List<String> usernamesNotific = new ArrayList<>();
+                userNotifications.forEach(u -> usernamesNotific.add(u.getUsername()));
+                notificationManager.createNotification()
+                        .withSubject("Добавлен новый студент")
+                        .withRecipientUsernames(usernamesNotific)
+                        .toChannelsByNames("in-app")
+                        .withContentType(ContentType.PLAIN)
+                        .withBody("Проведите проверку нового студента")
+                        .send();
+            });
+            return ResponseEntity.ok("Students saved successfully!");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body(e.getMessage());
