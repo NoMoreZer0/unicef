@@ -1,5 +1,6 @@
 package com.company.unicef.security;
 
+import com.company.unicef.app.AnonymousRestRole;
 import com.company.unicef.entity.User;
 import io.jmix.securitydata.user.AbstractDatabaseUserRepository;
 import org.springframework.context.annotation.Primary;
@@ -27,5 +28,9 @@ public class DatabaseUserRepository extends AbstractDatabaseUserRepository<User>
 
     @Override
     protected void initAnonymousUser(User anonymousUser) {
+        Collection<GrantedAuthority> authorities = getGrantedAuthoritiesBuilder()
+                .addResourceRole(AnonymousRestRole.CODE)
+                .build();
+        anonymousUser.setAuthorities(authorities);
     }
 }
