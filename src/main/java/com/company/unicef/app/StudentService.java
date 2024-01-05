@@ -4,11 +4,10 @@ import com.company.unicef.entity.Address;
 import com.company.unicef.entity.Student;
 import com.company.unicef.entity.User;
 import io.jmix.core.DataManager;
-import io.jmix.core.event.EntitySavingEvent;
+import io.jmix.core.FetchPlans;
 import io.jmix.notifications.NotificationManager;
 import io.jmix.notifications.entity.ContentType;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.event.EventListener;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -28,8 +27,6 @@ public class StudentService {
         this.dataManager = dataManager;
     }
 
-    private boolean justCreated;
-
     public ResponseEntity<String> save(String city, String school, String course, String name) {
         try {
             Student student = dataManager.create(Student.class);
@@ -45,9 +42,7 @@ public class StudentService {
 
             List<User> userNotifications = loadByRole();
             List<String> usernamesNotific = new ArrayList<>();
-            for (User user : userNotifications) {
-                usernamesNotific.add(user.getUsername());
-            }
+            userNotifications.forEach(u -> usernamesNotific.add(u.getUsername()));
             notificationManager.createNotification()
                     .withSubject("Добавлен новый студент")
                     .withRecipientUsernames(usernamesNotific)
@@ -62,10 +57,6 @@ public class StudentService {
         }
     }
 
-
-
-
-
     private String getNewStudentId() {
         int lastStudentId = dataManager.loadValue("select max(cast(e.studentId integer)) from Student e", Integer.class)
                 .optional()
@@ -75,9 +66,9 @@ public class StudentService {
 
     private List<User> loadByRole() {
         return dataManager.load(User.class)
-                .query("select u from User u where u.role = :role1 or u.role = :role2")
-                .parameter("role1", "психолог")
-                .parameter("role2", "ADMIN")
+                .query("select u from User u join sec_RoleAssignmentEntity s on s.username = u.username where s.roleCode = :role1 or s.roleCode = :role2")
+                .parameter("role1", "system-full-access")
+                .parameter("role2", "manager-role")
                 .list();
     }
 

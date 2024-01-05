@@ -2,6 +2,7 @@ package com.company.unicef.app;
 
 import com.company.unicef.entity.Address;
 import com.company.unicef.entity.Student;
+import com.company.unicef.entity.User;
 import io.jmix.security.model.EntityAttributePolicyAction;
 import io.jmix.security.model.EntityPolicyAction;
 import io.jmix.security.role.annotation.EntityAttributePolicy;
@@ -21,4 +22,8 @@ public interface AnonymousRestRole {
     @EntityPolicy(entityClass = Address.class, actions = EntityPolicyAction.CREATE)
     @EntityPolicy(entityClass = Address.class, actions = EntityPolicyAction.UPDATE)
     void address();
+
+    @EntityAttributePolicy(entityClass = User.class, attributes = "*", action = EntityAttributePolicyAction.VIEW)
+    @EntityPolicy(entityClass = User.class, actions = EntityPolicyAction.READ)
+    void user();
 }
