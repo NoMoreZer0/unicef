@@ -69,14 +69,32 @@
                   stylename="jmix-workarea"
                   width="100%">
             <initialLayout margin="true"
-                           spacing="true">
-                <scrollBox id="mainScrollBox">
-                    <image scaleMode="CONTAIN" width="100%" height="100%">
-                        <resource>
-                            <relativePath path="images/background-image.jpg"/>
-                        </resource>
-                    </image>
-                </scrollBox>
+                           spacing="false">
+                    <hbox stylename="slider__wrapper">
+                        <jsComponent initFunctionName="com_company_slider_javascript_Slider" >
+                            <dependencies>
+                                <dependency path="vaadin://scripts/slider.js"/>
+                            </dependencies>
+                        </jsComponent>
+
+
+                        <image scaleMode="COVER" stylename="slider-image img1" height="600px" width="100%">
+                            <resource>
+                                <relativePath path="images/slider_home_1.jpg"/>
+                            </resource>
+                        </image>
+                        <image scaleMode="COVER" stylename="slider-image img2" height="600px" width="100%">
+                            <resource>
+                                <relativePath path="images/slider_home_2.jpg"/>
+                            </resource>
+                        </image>
+                        <image scaleMode="COVER" stylename="slider-image img3" height="600px" width="100%">
+                            <resource>
+                                <relativePath path="images/slider_home_3.jpg"/>
+                            </resource>
+                        </image>
+
+                    </hbox>
             </initialLayout>
         </workArea>
         <hbox stylename="jmix-app-menubar. footer" align="MIDDLE_CENTER">
@@ -85,9 +103,7 @@
                 <label value="msg://com.company.unicef/menu.copyrightLabel" align="MIDDLE_CENTER"
                        css="color: #c8d6e5;  font-size: 16px; margin-bottom:2%;"/>
             </hbox>
-            <hbox></hbox>
         </hbox>
-
     </layout>
 
 </window>
