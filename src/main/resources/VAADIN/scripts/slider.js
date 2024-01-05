@@ -34,7 +34,7 @@ com_company_slider_javascript_Slider = function () {
     // Auto change every 3 seconds
     setInterval(() => {
         changeImage(1); // Assuming you want to move to the next image
-    }, 3000);
+    }, 5000);
 
     showCurrentImage();
 }

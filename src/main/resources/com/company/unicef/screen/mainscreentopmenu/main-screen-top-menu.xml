@@ -76,17 +76,17 @@
 
                         <image scaleMode="COVER" stylename="slider-image img1" height="600px" width="100%">
                             <resource>
-                                <relativePath path="images/background-image.jpg"/>
+                                <relativePath path="images/slider_home_1.jpg"/>
                             </resource>
                         </image>
                         <image scaleMode="COVER" stylename="slider-image img2" height="600px" width="100%">
                             <resource>
-                                <relativePath path="images/test1.jpg"/>
+                                <relativePath path="images/slider_home_2.jpg"/>
                             </resource>
                         </image>
                         <image scaleMode="COVER" stylename="slider-image img3" height="600px" width="100%">
                             <resource>
-                                <relativePath path="images/test3.jpg"/>
+                                <relativePath path="images/slider_home_3.jpg"/>
                             </resource>
                         </image>
 
