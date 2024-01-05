@@ -1,4 +1,5 @@
 <window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:ntf="http://jmix.io/schema/notifications/ui"
         caption="msg://caption">
     <layout expand="workArea">
         <hbox stylename="jmix-app-menubar.header-border"
@@ -49,6 +50,7 @@
             </image>
             <menu id="mainMenu"
                   align="MIDDLE_LEFT"/>
+            <ntf:notificationsIndicator id="ntfIndicator"/>
             <button id="profileButton" caption="msg://com.company.unicef/menu.profile"/>
             <userIndicator id="userIndicator"
                            align="MIDDLE_LEFT"/>
