@@ -37,6 +37,7 @@
                     <textField id="studentIdField" property="studentId" editable="false"/>
                     <textField id="fioField" property="fio"/>
                     <comboBox id="genderField" property="gender"/>
+                    <comboBox id="maskField" property="mask"/>
                     <textField id="studyingYearField" property="studyingYear"/>
                     <textField id="schoolField" property="school"/>
                     <textField id="schoolLiterField" property="schoolLiter"/>
