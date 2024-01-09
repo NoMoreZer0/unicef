@@ -36,6 +36,9 @@ public class Student {
     @Column(name = "STUDYING_YEAR", length = 2)
     private String studyingYear;
 
+    @Column(name = "MASK")
+    private String mask;
+
     @Column(name = "PHONE_NUMBER")
     private String phoneNumber;
 
@@ -80,6 +83,14 @@ public class Student {
     @Composition
     @OneToMany(mappedBy = "student")
     private List<Relative> relative;
+
+    public SchoolMask getMask() {
+        return mask == null ? null : SchoolMask.fromId(mask);
+    }
+
+    public void setMask(SchoolMask mask) {
+        this.mask = mask == null ? null : mask.getId();
+    }
 
     public String getStudentId() {
         return studentId;

@@ -72,8 +72,19 @@ public class User implements JmixUserDetails, HasTimeZone {
     @OneToOne(fetch = FetchType.LAZY)
     private ResponsibleEmployee responsibleEmployee;
 
+    @Column(name = "MASK")
+    private String mask;
+
     @Transient
     protected Collection<? extends GrantedAuthority> authorities;
+
+    public SchoolMask getMask() {
+        return mask == null ? null : SchoolMask.fromId(mask);
+    }
+
+    public void setMask(SchoolMask mask) {
+        this.mask = mask == null ? null : mask.getId();
+    }
 
     public ResponsibleEmployee getResponsibleEmployee() {
         return responsibleEmployee;

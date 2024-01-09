@@ -42,6 +42,7 @@
                 <maskedField mask="+#(###) ####-###" id="contactPhoneField" property="phoneNumber" valueMode="masked"/>
                 <comboBox id="roleField" property="role"/>
                 <comboBox id="timeZoneField" property="timeZoneId"/>
+                <comboBox id="maskField" property="mask"/>
                 <checkBox id="activeField" property="active"/>
             </column>
         </form>
