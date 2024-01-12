@@ -1,11 +1,13 @@
 package com.company.unicef.screen.opencase;
 
+import com.company.unicef.app.PivotTableMapper;
 import com.company.unicef.entity.*;
 import io.jmix.core.DataManager;
 import io.jmix.core.Messages;
 import io.jmix.reportsui.screen.template.edit.generator.RandomPivotTableDataGenerator;
 import io.jmix.ui.UiComponents;
 import io.jmix.ui.component.*;
+import io.jmix.ui.model.CollectionContainer;
 import io.jmix.ui.model.CollectionPropertyContainer;
 import io.jmix.ui.screen.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,12 +46,17 @@ public class OpenCaseEdit extends StandardEditor<OpenCase> {
     private GroupBoxLayout secondFormCheckBoxesGroup;
     @Autowired
     private UiComponents uiComponents;
+    @Autowired
+    private CollectionContainer<PivotTableCheckBoxes> pivotTableCheckBoxesDc;
+    @Autowired
+    private PivotTableMapper pivotTableMapper;
 
     @Subscribe
     public void onBeforeShow(BeforeShowEvent event) {
         if (getEditedEntity().getSecondForm() != null) {
             initFlag = true;
         }
+        fillPivotTableCheckBoxes();
     }
     
     
@@ -71,6 +78,16 @@ public class OpenCaseEdit extends StandardEditor<OpenCase> {
         List<String> fieldNames = getFieldNames(fields, curSecondForm);
         checkSecondFormFields(fieldNames);
         addEventColumn();
+
+        fillPivotTableCheckBoxes();
+    }
+
+    private void fillPivotTableCheckBoxes() {
+        pivotTableCheckBoxesDc.getMutableItems().clear();
+        List<PivotTableCheckBoxes> checkBoxes = pivotTableMapper.convert(getEditedEntity().getSecondForm());
+        for (PivotTableCheckBoxes checkBox : checkBoxes) {
+            pivotTableCheckBoxesDc.getMutableItems().add(checkBox);
+        }
     }
 
     private void addEventColumn() {

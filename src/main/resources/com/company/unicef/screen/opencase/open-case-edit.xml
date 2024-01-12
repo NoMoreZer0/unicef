@@ -7,14 +7,17 @@
                   class="com.company.unicef.entity.OpenCase">
             <fetchPlan extends="_base">
                 <property name="student" fetchPlan="_base"/>
-                <property name="secondForm" fetchPlan="_base"/>
                 <property name="secondFormCheckBoxes" fetchPlan="_base"/>
+                <property name="secondForm" fetchPlan="_base">
+                    <property name="pivotTableCheckBoxes" fetchPlan="_base"/>
+                </property>
             </fetchPlan>
             <loader/>
             <collection id="secondFormCheckBoxes" property="secondFormCheckBoxes"/>
             <collection id="responsibleEmployeesDc" property="responsibleEmployees"/>
             <collection id="representativesDc" property="representatives"/>
         </instance>
+        <collection id="pivotTableCheckBoxesDc" class="com.company.unicef.entity.PivotTableCheckBoxes"/>
     </data>
     <facets>
         <dataLoadCoordinator auto="true"/>
@@ -97,7 +100,7 @@
         </groupBox>
 
         <groupBox id="secondFormCheckBoxesGroup" caption="msg://com.company.unicef.entity/OpenCase.secondFormCheckBoxesGroup">
-            <groupTable dataContainer="secondFormCheckBoxes" id="secondFormCheckBoxTable" width="100%">
+            <groupTable dataContainer="secondFormCheckBoxes" id="secondFormCheckBoxTable" width="100%" css="margin-bottom: 2rem;">
                 <columns>
                     <group>
                         <column id="category"/>
@@ -113,6 +116,19 @@
                     <button action="secondFormCheckBoxTable.edit" caption="msg://com.company.unicef.screen.event/com.company.unicef.editButton"/>
                     <button action="secondFormCheckBoxTable.exclude" caption="msg://com.company.unicef.screen.event/com.company.unicef.excludeButton"/>
                 </buttonsPanel>
+            </groupTable>
+            <groupTable dataContainer="pivotTableCheckBoxesDc" id="pivotTableCheckBoxTable" width="100%">
+                <columns>
+                    <group>
+                        <column id="category" caption="msg://com.company.unicef.entity/PivotTableCheckBoxes.category"
+                                expandRatio="1.0"/>
+                        <column id="level" caption="msg://com.company.unicef.entity/PivotTableCheckBoxes.level"
+                                expandRatio="1.0"/>
+                    </group>
+                    <column id="description" caption="msg://com.company.unicef.entity/PivotTableCheckBoxes.description"
+                            maxTextLength="100"
+                            expandRatio="1.0"/>
+                </columns>
             </groupTable>
         </groupBox>
 

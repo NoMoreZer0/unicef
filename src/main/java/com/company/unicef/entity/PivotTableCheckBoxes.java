@@ -1,6 +1,7 @@
 package com.company.unicef.entity;
 
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
+import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 
 import javax.persistence.*;
@@ -17,6 +18,10 @@ public class PivotTableCheckBoxes {
     @Id
     private UUID id;
 
+    @InstanceName
+    @Column(name = "DESCRIPTION")
+    private String description;
+
     @Column(name = "CATEGORY")
     private String category;
 
@@ -26,6 +31,14 @@ public class PivotTableCheckBoxes {
     @JoinColumn(name = "SECOND_FORM_ID")
     @ManyToOne(fetch = FetchType.LAZY)
     private SecondForm secondForm;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public SecondForm getSecondForm() {
         return secondForm;
