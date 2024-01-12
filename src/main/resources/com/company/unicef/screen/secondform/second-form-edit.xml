@@ -5,7 +5,9 @@
     <data>
         <instance id="secondFormDc"
                   class="com.company.unicef.entity.SecondForm">
-            <fetchPlan extends="_base"/>
+            <fetchPlan extends="_base">
+                <property name="pivotTableCheckBoxes" fetchPlan="_base"/>
+            </fetchPlan>
             <loader/>
             <collection id="pivotTableCheckBoxesDc" property="pivotTableCheckBoxes"/>
         </instance>
@@ -218,18 +220,20 @@
                 <row>
                     <groupBox id="pivotTableGroupBox" caption="msg://com.company.unicef.entity/SecondForm.pivotTableGroupBox"
                               visible="false" css="margin-left: 415px;" width="1000px">
-                        <groupTable id="pivotGroupTable2" dataContainer="pivotTableCheckBoxesDc" width="1000px">
+                        <groupTable id="pivotGroupTable2" dataContainer="pivotTableCheckBoxesDc" width="100%">
                             <columns>
                                 <group>
-                                    <column id="category"
-                                            caption="msg://com.company.unicef.entity/PivotTableCheckBoxes.category" width="1000px"/>
+                                    <column id="category" caption="msg://com.company.unicef.entity/PivotTableCheckBoxes.category"
+                                            expandRatio="1.0"/>
+                                    <column id="level" caption="msg://com.company.unicef.entity/PivotTableCheckBoxes.level"
+                                            expandRatio="1.0"/>
                                 </group>
-                                <column id="level" caption="msg://com.company.unicef.entity/PivotTableCheckBoxes.level" width="1000px"/>
+                                <column id="description" caption="msg://com.company.unicef.entity/PivotTableCheckBoxes.description" maxTextLength="100"
+                                        expandRatio="1.0"/>
                             </columns>
                         </groupTable>
                     </groupBox>
                 </row>
-
                 <row>
                     <hbox id="editActions" spacing="true" css="margin-left: 415px;">
                         <button id="commitAndCloseBtn" action="windowCommitAndClose"/>

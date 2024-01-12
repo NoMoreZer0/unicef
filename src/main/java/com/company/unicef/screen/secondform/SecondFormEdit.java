@@ -1,18 +1,17 @@
 package com.company.unicef.screen.secondform;
 
+import com.company.unicef.app.PivotTableMapper;
 import com.company.unicef.entity.HealthChronicalOption;
 import com.company.unicef.entity.PivotTableCheckBoxes;
 import com.company.unicef.entity.SecondForm;
 import io.jmix.core.DataManager;
 import io.jmix.ui.component.*;
-import io.jmix.ui.component.data.GroupInfo;
 import io.jmix.ui.model.CollectionPropertyContainer;
 import io.jmix.ui.screen.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -329,6 +328,8 @@ public class SecondFormEdit extends StandardEditor<SecondForm> {
     private TextArea<String> homeNoBenefitsTextField;
     @Autowired
     private TextArea<String> homeNoMoneyTextField;
+    @Autowired
+    private PivotTableMapper pivotTableMapper;
 
 
     @Subscribe
@@ -349,6 +350,11 @@ public class SecondFormEdit extends StandardEditor<SecondForm> {
             String newCaseIdNum = getNewCaseIdNum();
             getEditedEntity().setCaseIdNum(newCaseIdNum);
         }
+    }
+
+    @Subscribe
+    public void onBeforeCommitChanges(final BeforeCommitChangesEvent event) {
+        pivotTableCheckBoxesDc.getMutableItems().clear();
     }
 
     private void fillHomeCheckBoxes() {
@@ -381,6 +387,7 @@ public class SecondFormEdit extends StandardEditor<SecondForm> {
         selfCheckBoxesLow.add(selfNoMoneyField);
         selfCheckBoxesMedium.add(selfNoHelpField);
     }
+
     private void fillFamilyCheckBoxes() {
         familyCheckBoxesLow.add(familyDifferentParentsField);
         familyCheckBoxesLow.add(familyNoTimeCommunicationField);
@@ -410,7 +417,6 @@ public class SecondFormEdit extends StandardEditor<SecondForm> {
         identCheckBoxesLow.add(identNotIndependentField);
 
         identCheckBoxesMedium.add(identNoFamilyField);
-        identCheckBoxesMedium.add(identNoFamilyField);
         identCheckBoxesMedium.add(identGenderConfField);
         identCheckBoxesMedium.add(identPositiveIndividualField);
         identCheckBoxesMedium.add(identAgeSolField);
@@ -420,6 +426,7 @@ public class SecondFormEdit extends StandardEditor<SecondForm> {
         identCheckBoxesHigh.add(identDiscriminationField);
         identCheckBoxesHigh.add(identGenderDontKnowField);
     }
+
     private void fillEduCheckBoxes() {
         eduCheckBoxesHigh.add(eduNotLikeField);
         eduCheckBoxesHigh.add(eduSpecialNeedsField);
@@ -441,6 +448,7 @@ public class SecondFormEdit extends StandardEditor<SecondForm> {
         eduCheckBoxesLow.add(eduSchoolFriendField);
         eduCheckBoxesLow.add(eduNoClubField);
     }
+
     private void fillHealthCheckBoxes() {
         healthCheckBoxesHigh.add(healthNoFoodField);
         healthCheckBoxesHigh.add(healthNoEquipmentField);
@@ -462,6 +470,7 @@ public class SecondFormEdit extends StandardEditor<SecondForm> {
         healthCheckBoxesLow.add(healthNoVaccinationField);
         healthCheckBoxesLow.add(healthNoSportField);
     }
+
     private void fillEmoCheckBoxes() {
         emoCheckBoxesMedium.add(emoNoStabilityField);
         emoCheckBoxesMedium.add(emoNoFriendsField);
@@ -487,6 +496,10 @@ public class SecondFormEdit extends StandardEditor<SecondForm> {
     @Subscribe("calculatePivotTable")
     public void onCalculatePivotTableClick(Button.ClickEvent event) {
         pivotTableCheckBoxesDc.getMutableItems().clear();
+        for (PivotTableCheckBoxes pivotTableCheckBoxes : pivotTableMapper.convert(getEditedEntity())) {
+            pivotTableCheckBoxesDc.getMutableItems().add(pivotTableCheckBoxes);
+        }
+
         calcPivotTableHealth();
         calcPivotTableEdu();
         calcPivotTableEmo();
@@ -496,38 +509,31 @@ public class SecondFormEdit extends StandardEditor<SecondForm> {
         calcPivotTableParents();
         calcPivotTableHome();
         pivotTableGroupBox.setVisible(true);
-        pivotGroupTable2.setStyleProvider(new GroupTable.GroupStyleProvider<PivotTableCheckBoxes>() {
-            @Nullable
-            @Override
-            public String getStyleName(GroupInfo info) {
-                return null;
-            }
-
-            @Override
-            public String getStyleName(PivotTableCheckBoxes e, @Nullable String s) {
-                if (s == null) {
-                    return "level-default";
-                } else if (s.equals("level")) {
-                    if (e.getLevel().equals(low)) {
-                        return "level-low";
-                    }
-                    else if (e.getLevel().equals(medium)) {
-                        return "level-medium";
-                    }
-                    else {
-                        return "level-high";
-                    }
-                }
-                return null;
-            }
-        });
-    }
-
-    private PivotTableCheckBoxes createPivotTableCheckBox(String category, String level) {
-        PivotTableCheckBoxes pivotTableCheckBoxes = dataManager.create(PivotTableCheckBoxes.class);
-        pivotTableCheckBoxes.setCategory(category);
-        pivotTableCheckBoxes.setLevel(level);
-        return pivotTableCheckBoxes;
+//        pivotGroupTable2.setStyleProvider(new GroupTable.GroupStyleProvider<PivotTableCheckBoxes>() {
+//            @Nullable
+//            @Override
+//            public String getStyleName(GroupInfo info) {
+//                return null;
+//            }
+//
+//            @Override
+//            public String getStyleName(PivotTableCheckBoxes e, @Nullable String s) {
+//                if (s == null) {
+//                    return "level-default";
+//                } else if (s.equals("level")) {
+//                    if (e.getLevel().equals(low)) {
+//                        return "level-low";
+//                    }
+//                    else if (e.getLevel().equals(medium)) {
+//                        return "level-medium";
+//                    }
+//                    else {
+//                        return "level-high";
+//                    }
+//                }
+//                return null;
+//            }
+//        });
     }
 
     private void calcPivotTableHome() {
@@ -537,9 +543,6 @@ public class SecondFormEdit extends StandardEditor<SecondForm> {
         getEditedEntity().setHomeLow(homeLowFlag);
         getEditedEntity().setHomeMedium(homeMediumFlag);
         getEditedEntity().setHomeHigh(homeHighFlag);
-        if (homeLowFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(homeCategory, low));
-        if (homeMediumFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(homeCategory, medium));
-        if (homeHighFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(homeCategory, high));
     }
 
     private void calcPivotTableParents() {
@@ -549,9 +552,6 @@ public class SecondFormEdit extends StandardEditor<SecondForm> {
         getEditedEntity().setParentsLow(parentsLowFlag);
         getEditedEntity().setParentsMedium(parentsMediumFlag);
         getEditedEntity().setParentsHigh(parentsHighFlag);
-        if (parentsLowFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(parentsCategory, low));
-        if (parentsMediumFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(parentsCategory, medium));
-        if (parentsHighFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(parentsCategory, high));
     }
 
     private void calcPivotTableSelf() {
@@ -561,9 +561,6 @@ public class SecondFormEdit extends StandardEditor<SecondForm> {
         getEditedEntity().setSelfLow(selfLowFlag);
         getEditedEntity().setSelfMedium(selfMediumFlag);
         getEditedEntity().setSelfHigh(selfHighFlag);
-        if (selfLowFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(selfCategory, low));
-        if (selfMediumFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(selfCategory, medium));
-        if (selfHighFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(selfCategory, high));
     }
 
     private void calcPivotTableFamily() {
@@ -573,9 +570,6 @@ public class SecondFormEdit extends StandardEditor<SecondForm> {
         getEditedEntity().setFamilyLow(familyLowFlag);
         getEditedEntity().setFamilyMedium(familyMediumFlag);
         getEditedEntity().setFamilyHigh(familyHighFlag);
-        if (familyLowFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(familyCategory, low));
-        if (familyMediumFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(familyCategory, medium));
-        if (familyHighFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(familyCategory, high));
     }
 
     private void calcPivotTableIdent() {
@@ -585,9 +579,6 @@ public class SecondFormEdit extends StandardEditor<SecondForm> {
         getEditedEntity().setIdentLow(identLowFlag);
         getEditedEntity().setIdentMedium(identMediumFlag);
         getEditedEntity().setIdentHigh(identHighFlag);
-        if (identLowFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(identCategory, low));
-        if (identMediumFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(identCategory, medium));
-        if (identHighFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(identCategory, high));
     }
 
     private void calcPivotTableEmo() {
@@ -597,10 +588,8 @@ public class SecondFormEdit extends StandardEditor<SecondForm> {
         getEditedEntity().setEmoLow(emoLowFlag);
         getEditedEntity().setEmoMedium(emoMediumFlag);
         getEditedEntity().setEmoHigh(emoHighFlag);
-        if (emoLowFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(emoCategory, low));
-        if (emoMediumFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(emoCategory, medium));
-        if (emoHighFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(emoCategory, high));
     }
+
     private void calcPivotTableEdu() {
         boolean eduLowFlag = eduCheckBoxesLow.stream().anyMatch(CheckBox::isChecked);
         boolean eduMediumFlag = eduCheckBoxesMedium.stream().anyMatch(CheckBox::isChecked);
@@ -608,10 +597,8 @@ public class SecondFormEdit extends StandardEditor<SecondForm> {
         getEditedEntity().setEduLow(eduLowFlag);
         getEditedEntity().setEduMedium(eduMediumFlag);
         getEditedEntity().setEduHigh(eduHighFlag);
-        if (eduLowFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(eduCategory, low));
-        if (eduMediumFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(eduCategory, medium));
-        if (eduHighFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(eduCategory, high));
     }
+
     private void calcPivotTableHealth() {
         boolean healthLowFlag = healthCheckBoxesLow.stream().anyMatch(CheckBox::isChecked);
         boolean healthMediumFlag = healthCheckBoxesMedium.stream().anyMatch(CheckBox::isChecked);
@@ -619,9 +606,6 @@ public class SecondFormEdit extends StandardEditor<SecondForm> {
         getEditedEntity().setHealthLow(healthLowFlag);
         getEditedEntity().setHealthMedium(healthMediumFlag);
         getEditedEntity().setHealthHigh(healthHighFlag);
-        if (healthLowFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(healthCategory, low));
-        if (healthMediumFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(healthCategory, medium));
-        if (healthHighFlag) pivotTableCheckBoxesDc.getMutableItems().add(createPivotTableCheckBox(healthCategory, high));
     }
 
     private String getNewCaseIdNum() {
@@ -646,7 +630,7 @@ public class SecondFormEdit extends StandardEditor<SecondForm> {
             getEditedEntity().setHealthChronicalText(event.getValue().getId());
         }
     }
-    
+
     @Subscribe("healthDisabledNoHelpField")
     public void onHealthDisabledNoHelpFieldValueChange(final HasValue.ValueChangeEvent<Boolean> event) {
         if (!Boolean.TRUE.equals(event.getValue())) {
@@ -886,6 +870,4 @@ public class SecondFormEdit extends StandardEditor<SecondForm> {
         }
         homeNoMoneyTextField.setVisible(Boolean.TRUE.equals(event.getValue()));
     }
-
-
 }
