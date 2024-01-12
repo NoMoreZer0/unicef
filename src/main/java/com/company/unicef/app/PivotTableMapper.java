@@ -43,6 +43,18 @@ public class PivotTableMapper {
     private static final String eduCategoryEn = "Education";
     private static final String healthCategoryEn = "Health";
 
+    private static final String lowKk = "Төмен";
+    private static final String mediumKk = "Орташа";
+    private static final String highKk = "Жоғары";
+    private static final String homeCategoryKk = "Үй, жұмыс, отбасы кірісі";
+    private static final String parentsCategoryKk = "Негізгі күтім, қауіпсіздік";
+    private static final String selfCategoryKk = "Өзіне-өзі қызмет ету дағдылары";
+    private static final String familyCategoryKk = "Отбасы және әлеуметтік қарым-қатынастар";
+    private static final String identCategoryKk = "Жеке басы және әлеуметтік көрініс";
+    private static final String emoCategoryKk = "Эмоционалды және мінез-құлық дамуы";
+    private static final String eduCategoryKk = "Білім";
+    private static final String healthCategoryKk = "Денсаулық";
+
 
 
     public List<PivotTableCheckBoxes> convert(SecondForm secondForm) {
@@ -54,7 +66,7 @@ public class PivotTableMapper {
                 list.add(createPivotTableCheckBox(
                         dataHolder.category,
                         dataHolder.level,
-                        messages.getMessage("com.company.unicef.entity", String.format("SecondForm.%s", dataHolder.name)),
+                        messages.getMessage("com.company.unicef.entity", String.format("SecondForm.%s", dataHolder.name)), // TODO: поменять чтобы автоматом брало package
                         secondForm));
             }
         }
@@ -75,7 +87,7 @@ public class PivotTableMapper {
         String healthCategory = "";
 
         String language = VaadinSession.getCurrent().getLocale().getLanguage();
-        if (language.equals("ru") || language.equals("kk")) {
+        if (language.equals("ru")) {
             low = lowRu;
             medium = mediumRu;
             high = highRu;
@@ -99,6 +111,18 @@ public class PivotTableMapper {
             emoCategory = emoCategoryEn;
             eduCategory = eduCategoryEn;
             healthCategory = healthCategoryEn;
+        } else if (language.equals("kk")) {
+            low = lowKk;
+            medium = mediumKk;
+            high = highKk;
+            homeCategory = homeCategoryKk;
+            parentsCategory = parentsCategoryKk;
+            selfCategory = selfCategoryKk;
+            familyCategory = familyCategoryKk;
+            identCategory = identCategoryKk;
+            emoCategory = emoCategoryKk;
+            eduCategory = eduCategoryKk;
+            healthCategory = healthCategoryKk;
         } else {
             low = lowRu;
             medium = mediumRu;

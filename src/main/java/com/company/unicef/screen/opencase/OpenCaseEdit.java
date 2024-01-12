@@ -56,12 +56,12 @@ public class OpenCaseEdit extends StandardEditor<OpenCase> {
         if (getEditedEntity().getSecondForm() != null) {
             initFlag = true;
         }
-        fillPivotTableCheckBoxes();
     }
     
     
     @Subscribe("secondFormField")
-    public void onSecondFormFieldValueChange(HasValue.ValueChangeEvent<SecondForm> event) throws Exception{
+    public void onSecondFormFieldValueChange(HasValue.ValueChangeEvent<SecondForm> event) throws Exception {
+        pivotTableCheckBoxesDc.getMutableItems().clear();
         if (event.getValue() == null) return;
 
         if (Boolean.TRUE.equals(initFlag)) {
@@ -79,7 +79,9 @@ public class OpenCaseEdit extends StandardEditor<OpenCase> {
         checkSecondFormFields(fieldNames);
         addEventColumn();
 
-        fillPivotTableCheckBoxes();
+        if (getEditedEntity().getSecondForm() != null) {
+            fillPivotTableCheckBoxes();
+        }
     }
 
     private void fillPivotTableCheckBoxes() {
@@ -248,5 +250,10 @@ public class OpenCaseEdit extends StandardEditor<OpenCase> {
         }
     }
 
-
+    @Subscribe
+    public void onAfterShow(final AfterShowEvent event) {
+        if (getEditedEntity().getSecondForm() != null) {
+            fillPivotTableCheckBoxes();
+        }
+    }
 }

@@ -100,7 +100,7 @@
         </groupBox>
 
         <groupBox id="secondFormCheckBoxesGroup" caption="msg://com.company.unicef.entity/OpenCase.secondFormCheckBoxesGroup">
-            <groupTable dataContainer="secondFormCheckBoxes" id="secondFormCheckBoxTable" width="100%" css="margin-bottom: 2rem;">
+            <groupTable dataContainer="secondFormCheckBoxes" id="secondFormCheckBoxTable" width="100%">
                 <columns>
                     <group>
                         <column id="category"/>
@@ -117,6 +117,9 @@
                     <button action="secondFormCheckBoxTable.exclude" caption="msg://com.company.unicef.screen.event/com.company.unicef.excludeButton"/>
                 </buttonsPanel>
             </groupTable>
+        </groupBox>
+
+        <groupBox id="pivotTableCheckBoxesGroup" caption="msg://com.company.unicef.entity/SecondForm.pivotTableGroupBox">
             <groupTable dataContainer="pivotTableCheckBoxesDc" id="pivotTableCheckBoxTable" width="100%">
                 <columns>
                     <group>

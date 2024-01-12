@@ -417,7 +417,6 @@ public class SecondFormEdit extends StandardEditor<SecondForm> {
         identCheckBoxesLow.add(identNotIndependentField);
 
         identCheckBoxesMedium.add(identNoFamilyField);
-        identCheckBoxesMedium.add(identNoFamilyField);
         identCheckBoxesMedium.add(identGenderConfField);
         identCheckBoxesMedium.add(identPositiveIndividualField);
         identCheckBoxesMedium.add(identAgeSolField);
