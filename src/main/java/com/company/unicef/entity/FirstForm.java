@@ -23,7 +23,6 @@ public class FirstForm {
 
     @OnDeleteInverse(DeletePolicy.DENY)
     @JoinColumn(name = "STUDENT_ID")
-    @Composition
     @OneToOne(fetch = FetchType.LAZY)
     private Student student;
 
