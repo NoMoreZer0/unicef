@@ -55,16 +55,13 @@ public class OpenCaseEdit extends StandardEditor<OpenCase> {
     
     @Subscribe("secondFormField")
     public void onSecondFormFieldValueChange(HasValue.ValueChangeEvent<SecondForm> event) throws Exception{
-        if (event.getValue() == null) return;
+//        if (Boolean.TRUE.equals(initFlag)) {
+//            initFlag = false;
+//            return;
+//        }
 
-        if (Boolean.TRUE.equals(initFlag)) {
-            initFlag = false;
-            return;
-        }
-
-        if (event.getPrevValue() != null && event.getValue().hashCode() != event.getPrevValue().hashCode()) {
-            secondFormCheckBoxes.getMutableItems().clear();
-        }
+        dataManager.remove(getEditedEntity().getSecondFormCheckBoxes());
+        secondFormCheckBoxes.getMutableItems().clear();
 
         SecondForm curSecondForm = event.getValue();
         Field[] fields = curSecondForm.getClass().getDeclaredFields();

@@ -3,7 +3,6 @@ package com.company.unicef.entity;
 import io.jmix.core.DeletePolicy;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
 import io.jmix.core.entity.annotation.OnDeleteInverse;
-import io.jmix.core.metamodel.annotation.Composition;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 
@@ -31,14 +30,12 @@ public class SecondFormCheckBox {
     @Column(name = "CATEGORY")
     private String category;
 
-    @Composition
     @OneToMany(mappedBy = "secondFormCheckBox")
     private Set<NeedNames> needNames;
 
     @Column(name = "GOAL_TEXT")
     private String goalText;
 
-    @Composition
     @OneToMany(mappedBy = "secondFormCheckBox")
     private List<Event> secondFormEvents = new ArrayList<>();
 

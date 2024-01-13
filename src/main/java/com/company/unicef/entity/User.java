@@ -14,13 +14,13 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 import java.util.UUID;
 
 @JmixEntity
 @Entity
 @Table(name = "USER_", indexes = {
         @Index(name = "IDX_USER__ON_USERNAME", columnList = "USERNAME", unique = true),
-        @Index(name = "IDX_USER__EVENT", columnList = "EVENT_ID"),
         @Index(name = "IDX_USER__RESPONSIBLE_EMPLOYEE", columnList = "RESPONSIBLE_EMPLOYEE_ID")
 })
 public class User implements JmixUserDetails, HasTimeZone {
@@ -64,16 +64,23 @@ public class User implements JmixUserDetails, HasTimeZone {
     @Column(name = "TIME_ZONE_ID")
     protected String timeZoneId;
 
-    @JoinColumn(name = "EVENT_ID")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Event event;
-
     @JoinColumn(name = "RESPONSIBLE_EMPLOYEE_ID")
     @OneToOne(fetch = FetchType.LAZY)
     private ResponsibleEmployee responsibleEmployee;
 
+    @ManyToMany(mappedBy = "eventUsers")
+    private List<Event> events;
+
     @Transient
     protected Collection<? extends GrantedAuthority> authorities;
+
+    public List<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<Event> events) {
+        this.events = events;
+    }
 
     public ResponsibleEmployee getResponsibleEmployee() {
         return responsibleEmployee;
@@ -81,14 +88,6 @@ public class User implements JmixUserDetails, HasTimeZone {
 
     public void setResponsibleEmployee(ResponsibleEmployee responsibleEmployee) {
         this.responsibleEmployee = responsibleEmployee;
-    }
-
-    public Event getEvent() {
-        return event;
-    }
-
-    public void setEvent(Event event) {
-        this.event = event;
     }
 
     public EmployeeRole getRole() {
