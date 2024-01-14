@@ -40,6 +40,7 @@ public class OpenCaseEdit extends StandardEditor<OpenCase> {
     private String familyCategory = "category.family";
     private String careCategory = "category.care";
     private String homeCategory = "category.home";
+    private String secondFormNotSelectedAlert = "com.company.unicef.screen.opencase/openCaseEdit.secondFormNotSelectedAlert";
     private Map<String, String> categoryMap = new HashMap<>();
     private Map<String, String> checkBoxToTextMap = new HashMap<>();
     @Autowired
@@ -74,7 +75,7 @@ public class OpenCaseEdit extends StandardEditor<OpenCase> {
 
         if (secondForm == null) {
             notifications.create()
-                    .withCaption("Пожалуйста выберите вторичную форму!")
+                    .withCaption(messages.getMessage(secondFormNotSelectedAlert))
                     .withType(Notifications.NotificationType.HUMANIZED)
                     .show();
             return;

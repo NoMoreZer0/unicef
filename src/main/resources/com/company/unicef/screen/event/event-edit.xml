@@ -8,18 +8,13 @@
             <fetchPlan extends="_base">
                 <property name="eventResults" fetchPlan="_base"/>
                 <property name="parents" fetchPlan="_base"/>
+                <property name="eventUsers" fetchPlan="_base"/>
             </fetchPlan>
             <loader/>
             <collection id="eventResults" property="eventResults"/>
             <collection id="parentsDc" property="parents"/>
+            <collection id="eventUsersDc" property="eventUsers"/>
         </instance>
-        <collection id="usersDc" class="com.company.unicef.entity.User">
-            <loader id="usersDl">
-                <query>
-                    <![CDATA[SELECT u FROM User u JOIN u.userEvents e WHERE e.event = :event]]>
-                </query>
-            </loader>
-        </collection>
     </data>
     <facets>
         <dataLoadCoordinator auto="true"/>
@@ -46,18 +41,19 @@
             </column>
         </form>
         <groupBox id="eventUsersBox" caption="msg://com.company.unicef.entity/Event.eventUsersBox">
-            <table id="eventUsersTable" dataContainer="usersDc" width="100%" height="100%">
+            <table id="eventUsersTable" dataContainer="eventUsersDc" width="100%" height="100%">
                 <actions>
                     <action id="add" type="add"/>
+                    <action id="remove" type="remove"/>
                 </actions>
                 <columns>
-                    <column id="username"/>
-                    <column id="firstName"/>
-                    <column id="lastName"/>
+                    <column id="user.username"/>
+                    <column id="user.firstName"/>
+                    <column id="user.lastName"/>
                 </columns>
                 <buttonsPanel>
-                    <button id="addUser" caption="msg://com.company.unicef.addButton"/>
-                    <button id="excludeUser" caption="msg://com.company.unicef.excludeButton"/>
+                    <button action="eventUsersTable.add" caption="msg://com.company.unicef.addButton"/>
+                    <button action="eventUsersTable.remove" caption="msg://com.company.unicef.excludeButton"/>
                 </buttonsPanel>
             </table>
         </groupBox>

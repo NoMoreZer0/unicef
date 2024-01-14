@@ -48,7 +48,7 @@ public class Event {
     private List<Result> eventResults = new ArrayList<>();
 
     @OneToMany(mappedBy = "event")
-    private List<EventUser> eventUsers;
+    private List<EventUser> eventUsers = new ArrayList<>();
 
     @OnDeleteInverse(DeletePolicy.CASCADE)
     @JoinColumn(name = "SECOND_FORM_CHECK_BOX_ID")

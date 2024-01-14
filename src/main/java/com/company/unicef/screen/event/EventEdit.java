@@ -2,13 +2,14 @@ package com.company.unicef.screen.event;
 
 import com.company.unicef.entity.EventUser;
 import com.company.unicef.entity.User;
+import com.company.unicef.screen.user.UserBrowse;
 import io.jmix.core.DataManager;
+import io.jmix.core.Metadata;
+import io.jmix.ui.ScreenBuilders;
 import io.jmix.ui.action.Action;
 import io.jmix.ui.component.Button;
 import io.jmix.ui.component.Table;
-import io.jmix.ui.model.CollectionContainer;
-import io.jmix.ui.model.CollectionLoader;
-import io.jmix.ui.model.InstanceLoader;
+import io.jmix.ui.model.*;
 import io.jmix.ui.screen.*;
 import com.company.unicef.entity.Event;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,36 +19,43 @@ import org.springframework.beans.factory.annotation.Autowired;
 @EditedEntityContainer("eventDc")
 public class EventEdit extends StandardEditor<Event> {
     @Autowired
-    private CollectionLoader<User> usersDl;
-    @Autowired
     private Table<User> eventUsersTable;
     @Autowired
     private DataManager dataManager;
     @Autowired
-    private CollectionContainer<User> usersDc;
+    private ScreenBuilders screenBuilders;
+    @Autowired
+    private InstanceContainer<Event> eventDc;
+    @Autowired
+    private CollectionPropertyContainer<EventUser> eventUsersDc;
+    @Autowired
+    private Metadata metadata;
+    @Autowired
+    private DataContext dataContext;
+
+    @Subscribe("eventUsersTable.add")
+    public void onEventUsersTableAdd(final Action.ActionPerformedEvent event) {
+        screenBuilders.lookup(eventUsersTable)
+                .withOpenMode(OpenMode.DIALOG)
+                .withScreenClass(UserBrowse.class)
+                .withSelectHandler(selectedUsers -> {
+                    if (selectedUsers.isEmpty()) {
+                        return;
+                    }
+                    selectedUsers.forEach(u -> {
+                        var eventUser = dataContext.create(EventUser.class);
+                        eventUser.setUser(u);
+                        eventUser.setEvent(getEditedEntity());
+                        eventUsersDc.getMutableItems().add(eventUser);
+                    });
+                })
+                .build()
+                .show();
+    }
 
     @Subscribe
-    public void onBeforeShow(final BeforeShowEvent event) {
-        usersDl.setParameter("event", getEditedEntity());
+    public void onBeforeCommitChanges(final BeforeCommitChangesEvent event) {
     }
 
-    @Subscribe("excludeUser")
-    public void onExcludeUserClick(final Button.ClickEvent event) {
-        var selectedUsers = eventUsersTable.getSelected().stream().toList();
-        if (selectedUsers.isEmpty()) {
-            return;
-        }
-        usersDc.getMutableItems().remove(selectedUsers);
-    }
-
-    @Subscribe("addUser")
-    public void onAddUserClick(final Button.ClickEvent event) {
-        var selectedUsers = eventUsersTable.getSelected().stream().toList();
-        if (selectedUsers.isEmpty()) {
-            return;
-        }
-    }
-    
-    
 
 }
