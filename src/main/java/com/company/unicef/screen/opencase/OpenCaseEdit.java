@@ -9,6 +9,7 @@ import io.jmix.ui.UiComponents;
 import io.jmix.ui.component.*;
 import io.jmix.ui.model.CollectionContainer;
 import io.jmix.ui.model.CollectionPropertyContainer;
+import io.jmix.ui.model.DataContext;
 import io.jmix.ui.screen.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -50,6 +51,8 @@ public class OpenCaseEdit extends StandardEditor<OpenCase> {
     private CollectionContainer<PivotTableCheckBoxes> pivotTableCheckBoxesDc;
     @Autowired
     private PivotTableMapper pivotTableMapper;
+    @Autowired
+    private DataContext dataContext;
 
     @Subscribe
     public void onBeforeShow(BeforeShowEvent event) {
@@ -57,20 +60,17 @@ public class OpenCaseEdit extends StandardEditor<OpenCase> {
             initFlag = true;
         }
     }
-    
-    
+
+
     @Subscribe("secondFormField")
     public void onSecondFormFieldValueChange(HasValue.ValueChangeEvent<SecondForm> event) throws Exception {
-        pivotTableCheckBoxesDc.getMutableItems().clear();
-        if (event.getValue() == null) return;
+        secondFormCheckBoxes.getMutableItems().forEach(s -> {
+            s.setOpenCase(null);
+        });
+        secondFormCheckBoxes.getMutableItems().clear();
 
-        if (Boolean.TRUE.equals(initFlag)) {
-            initFlag = false;
+        if (event.getValue() == null) {
             return;
-        }
-
-        if (event.getPrevValue() != null && event.getValue().hashCode() != event.getPrevValue().hashCode()) {
-            secondFormCheckBoxes.getMutableItems().clear();
         }
 
         SecondForm curSecondForm = event.getValue();
@@ -233,7 +233,6 @@ public class OpenCaseEdit extends StandardEditor<OpenCase> {
         secondFormCheckBox.setName(tableColumnName);
         secondFormCheckBox.setCategory(tableColumnCategory);
         secondFormCheckBox.setOpenCase(getEditedEntity());
-        getEditedEntity().getSecondFormCheckBoxes().add(secondFormCheckBox);
         secondFormCheckBoxes.getMutableItems().add(secondFormCheckBox);
     }
 

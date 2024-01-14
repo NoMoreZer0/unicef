@@ -32,9 +32,9 @@ public class Representatives {
     @Column(name = "CONTACT_INFO")
     private String contactInfo;
 
-    @OnDeleteInverse(DeletePolicy.UNLINK)
-    @JoinColumn(name = "OPEN_CASE_ID", nullable = false)
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @OnDeleteInverse(DeletePolicy.CASCADE)
+    @JoinColumn(name = "OPEN_CASE_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
     private OpenCase openCase;
 
     public OpenCase getOpenCase() {

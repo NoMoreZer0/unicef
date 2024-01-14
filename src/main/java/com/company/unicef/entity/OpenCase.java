@@ -27,7 +27,7 @@ public class OpenCase {
     @Id
     private UUID id;
 
-    @OnDeleteInverse(DeletePolicy.CASCADE)
+    @OnDeleteInverse(DeletePolicy.DENY)
     @JoinColumn(name = "STUDENT_ID")
     @OneToOne(fetch = FetchType.LAZY)
     private Student student;
@@ -49,6 +49,7 @@ public class OpenCase {
     @Column(name = "WHO_STARTED")
     private String whoStarted;
 
+    @OnDeleteInverse(DeletePolicy.DENY)
     @JoinColumn(name = "SECOND_FORM_ID")
     @OneToOne(fetch = FetchType.LAZY)
     private SecondForm secondForm;

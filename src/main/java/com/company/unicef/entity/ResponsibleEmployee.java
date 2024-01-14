@@ -27,12 +27,13 @@ public class ResponsibleEmployee {
     @Column(name = "INVOLVEMENT")
     private String involvement;
 
-    @OnDeleteInverse(DeletePolicy.UNLINK)
+    @OnDeleteInverse(DeletePolicy.DENY)
     @JoinColumn(name = "EMPLOYEE_ID")
     @Composition
     @OneToOne(fetch = FetchType.LAZY)
     private User employee;
 
+    @OnDeleteInverse(DeletePolicy.CASCADE)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "OPEN_CASE_ID")
     private OpenCase openCase;

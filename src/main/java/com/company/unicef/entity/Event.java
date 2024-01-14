@@ -28,7 +28,10 @@ public class Event {
     @Column(name = "NAME")
     private String name;
 
-    @OneToMany(mappedBy = "event")
+    @JoinTable(name = "USER_EVENT_LINK",
+            joinColumns = @JoinColumn(name = "EVENT_ID", referencedColumnName = "ID"),
+            inverseJoinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "ID"))
+    @ManyToMany
     private List<User> eventUsers;
 
     @Composition
