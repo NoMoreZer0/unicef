@@ -7,6 +7,7 @@ import io.jmix.reportsui.screen.template.edit.generator.RandomPivotTableDataGene
 import io.jmix.ui.UiComponents;
 import io.jmix.ui.component.*;
 import io.jmix.ui.model.CollectionPropertyContainer;
+import io.jmix.ui.model.DataContext;
 import io.jmix.ui.screen.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -44,6 +45,8 @@ public class OpenCaseEdit extends StandardEditor<OpenCase> {
     private GroupBoxLayout secondFormCheckBoxesGroup;
     @Autowired
     private UiComponents uiComponents;
+    @Autowired
+    private DataContext dataContext;
 
     @Subscribe
     public void onBeforeShow(BeforeShowEvent event) {
@@ -51,17 +54,18 @@ public class OpenCaseEdit extends StandardEditor<OpenCase> {
             initFlag = true;
         }
     }
-    
-    
-    @Subscribe("secondFormField")
-    public void onSecondFormFieldValueChange(HasValue.ValueChangeEvent<SecondForm> event) throws Exception{
-//        if (Boolean.TRUE.equals(initFlag)) {
-//            initFlag = false;
-//            return;
-//        }
 
-        dataManager.remove(getEditedEntity().getSecondFormCheckBoxes());
+
+    @Subscribe("secondFormField")
+    public void onSecondFormFieldValueChange(HasValue.ValueChangeEvent<SecondForm> event) throws Exception {
+        secondFormCheckBoxes.getMutableItems().forEach(s -> {
+            s.setOpenCase(null);
+        });
         secondFormCheckBoxes.getMutableItems().clear();
+
+        if (event.getValue() == null) {
+            return;
+        }
 
         SecondForm curSecondForm = event.getValue();
         Field[] fields = curSecondForm.getClass().getDeclaredFields();
@@ -211,8 +215,12 @@ public class OpenCaseEdit extends StandardEditor<OpenCase> {
         secondFormCheckBox.setName(tableColumnName);
         secondFormCheckBox.setCategory(tableColumnCategory);
         secondFormCheckBox.setOpenCase(getEditedEntity());
-        getEditedEntity().getSecondFormCheckBoxes().add(secondFormCheckBox);
         secondFormCheckBoxes.getMutableItems().add(secondFormCheckBox);
+    }
+
+    @Subscribe
+    public void onBeforeCommitChanges(final BeforeCommitChangesEvent event) {
+        
     }
 
     private String getFromMessages(String messageName) {

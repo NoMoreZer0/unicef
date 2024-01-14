@@ -40,8 +40,8 @@ public class SecondFormCheckBox {
     private List<Event> secondFormEvents = new ArrayList<>();
 
     @OnDeleteInverse(DeletePolicy.CASCADE)
-    @JoinColumn(name = "OPEN_CASE_ID", nullable = false)
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "OPEN_CASE_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
     private OpenCase openCase;
 
     public void setNeedNames(Set<NeedNames> needNames) {
