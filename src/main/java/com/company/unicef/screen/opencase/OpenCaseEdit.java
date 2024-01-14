@@ -5,6 +5,7 @@ import com.company.unicef.entity.*;
 import io.jmix.core.DataManager;
 import io.jmix.core.Messages;
 import io.jmix.reportsui.screen.template.edit.generator.RandomPivotTableDataGenerator;
+import io.jmix.ui.Notifications;
 import io.jmix.ui.UiComponents;
 import io.jmix.ui.component.*;
 import io.jmix.ui.model.CollectionContainer;
@@ -53,6 +54,10 @@ public class OpenCaseEdit extends StandardEditor<OpenCase> {
     private PivotTableMapper pivotTableMapper;
     @Autowired
     private DataContext dataContext;
+    @Autowired
+    private EntityPicker<SecondForm> secondFormField;
+    @Autowired
+    private Notifications notifications;
 
     @Subscribe
     public void onBeforeShow(BeforeShowEvent event) {
@@ -61,21 +66,22 @@ public class OpenCaseEdit extends StandardEditor<OpenCase> {
         }
     }
 
-
-    @Subscribe("secondFormField")
-    public void onSecondFormFieldValueChange(HasValue.ValueChangeEvent<SecondForm> event) throws Exception {
-        secondFormCheckBoxes.getMutableItems().forEach(s -> {
-            s.setOpenCase(null);
-        });
+    @Subscribe("calculateSecondForm")
+    public void onCalculateSecondFormClick(final Button.ClickEvent event) throws IllegalAccessException {
+        dataManager.remove(getEditedEntity().getSecondFormCheckBoxes());
         secondFormCheckBoxes.getMutableItems().clear();
+        var secondForm = secondFormField.getValue();
 
-        if (event.getValue() == null) {
+        if (secondForm == null) {
+            notifications.create()
+                    .withCaption("Пожалуйста выберите вторичную форму!")
+                    .withType(Notifications.NotificationType.HUMANIZED)
+                    .show();
             return;
         }
 
-        SecondForm curSecondForm = event.getValue();
-        Field[] fields = curSecondForm.getClass().getDeclaredFields();
-        List<String> fieldNames = getFieldNames(fields, curSecondForm);
+        Field[] fields = secondForm.getClass().getDeclaredFields();
+        List<String> fieldNames = getFieldNames(fields, secondForm);
         checkSecondFormFields(fieldNames);
         addEventColumn();
 
@@ -83,6 +89,8 @@ public class OpenCaseEdit extends StandardEditor<OpenCase> {
             fillPivotTableCheckBoxes();
         }
     }
+
+
 
     private void fillPivotTableCheckBoxes() {
         pivotTableCheckBoxesDc.getMutableItems().clear();
@@ -233,7 +241,8 @@ public class OpenCaseEdit extends StandardEditor<OpenCase> {
         secondFormCheckBox.setName(tableColumnName);
         secondFormCheckBox.setCategory(tableColumnCategory);
         secondFormCheckBox.setOpenCase(getEditedEntity());
-        secondFormCheckBoxes.getMutableItems().add(secondFormCheckBox);
+        getEditedEntity().getSecondFormCheckBoxes().add(secondFormCheckBox);
+        secondFormCheckBoxes.getDisconnectedItems().add(secondFormCheckBox);
     }
 
     private String getFromMessages(String messageName) {
@@ -248,6 +257,13 @@ public class OpenCaseEdit extends StandardEditor<OpenCase> {
             getEditedEntity().setClosingDate(null);
         }
     }
+
+    @Subscribe
+    public void onBeforeCommitChanges(final BeforeCommitChangesEvent event) {
+
+    }
+    
+    
 
     @Subscribe
     public void onAfterShow(final AfterShowEvent event) {

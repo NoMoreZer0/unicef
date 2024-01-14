@@ -30,6 +30,9 @@ public class User implements JmixUserDetails, HasTimeZone {
     @JmixGeneratedValue
     private UUID id;
 
+    @OneToMany(mappedBy = "user")
+    private List<EventUser> userEvents;
+
     @Version
     @Column(name = "VERSION", nullable = false)
     private Integer version;
@@ -68,21 +71,18 @@ public class User implements JmixUserDetails, HasTimeZone {
     @OneToOne(fetch = FetchType.LAZY)
     private ResponsibleEmployee responsibleEmployee;
 
-    @ManyToMany(mappedBy = "eventUsers")
-    private List<Event> events;
-
     @Column(name = "MASK")
     private String mask;
 
     @Transient
     protected Collection<? extends GrantedAuthority> authorities;
 
-    public List<Event> getEvents() {
-        return events;
+    public List<EventUser> getUserEvents() {
+        return userEvents;
     }
 
-    public void setEvents(List<Event> events) {
-        this.events = events;
+    public void setUserEvents(List<EventUser> userEvents) {
+        this.userEvents = userEvents;
     }
 
     public SchoolMask getMask() {

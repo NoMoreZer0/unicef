@@ -138,6 +138,7 @@
         <hbox id="editActions" spacing="true">
             <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
             <button id="closeBtn" action="windowClose"/>
+            <button id="calculateSecondForm" caption="msg://com.company.unicef.screen.opencase/openCase.calculateSecondFormCaption"/>
         </hbox>
     </layout>
 </window>

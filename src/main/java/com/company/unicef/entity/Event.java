@@ -28,12 +28,6 @@ public class Event {
     @Column(name = "NAME")
     private String name;
 
-    @JoinTable(name = "USER_EVENT_LINK",
-            joinColumns = @JoinColumn(name = "EVENT_ID", referencedColumnName = "ID"),
-            inverseJoinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "ID"))
-    @ManyToMany
-    private List<User> eventUsers;
-
     @Composition
     @OneToMany(mappedBy = "event")
     private List<Parent> parents;
@@ -53,10 +47,21 @@ public class Event {
     @OneToMany(mappedBy = "event")
     private List<Result> eventResults = new ArrayList<>();
 
+    @OneToMany(mappedBy = "event")
+    private List<EventUser> eventUsers;
+
     @OnDeleteInverse(DeletePolicy.CASCADE)
     @JoinColumn(name = "SECOND_FORM_CHECK_BOX_ID")
     @ManyToOne(fetch = FetchType.LAZY)
     private SecondFormCheckBox secondFormCheckBox;
+
+    public List<EventUser> getEventUsers() {
+        return eventUsers;
+    }
+
+    public void setEventUsers(List<EventUser> eventUsers) {
+        this.eventUsers = eventUsers;
+    }
 
     public List<Parent> getParents() {
         return parents;
@@ -104,14 +109,6 @@ public class Event {
 
     public void setSecondFormCheckBox(SecondFormCheckBox secondFormCheckBox) {
         this.secondFormCheckBox = secondFormCheckBox;
-    }
-
-    public List<User> getEventUsers() {
-        return eventUsers;
-    }
-
-    public void setEventUsers(List<User> eventUsers) {
-        this.eventUsers = eventUsers;
     }
 
     public String getName() {

@@ -7,14 +7,19 @@
                   class="com.company.unicef.entity.Event">
             <fetchPlan extends="_base">
                 <property name="eventResults" fetchPlan="_base"/>
-                <property name="eventUsers" fetchPlan="_base"/>
                 <property name="parents" fetchPlan="_base"/>
             </fetchPlan>
             <loader/>
-            <collection id="eventUsers" property="eventUsers"/>
             <collection id="eventResults" property="eventResults"/>
             <collection id="parentsDc" property="parents"/>
         </instance>
+        <collection id="usersDc" class="com.company.unicef.entity.User">
+            <loader id="usersDl">
+                <query>
+                    <![CDATA[SELECT u FROM User u JOIN u.userEvents e WHERE e.event = :event]]>
+                </query>
+            </loader>
+        </collection>
     </data>
     <facets>
         <dataLoadCoordinator auto="true"/>
@@ -41,24 +46,18 @@
             </column>
         </form>
         <groupBox id="eventUsersBox" caption="msg://com.company.unicef.entity/Event.eventUsersBox">
-            <table id="eventUsersTable" dataContainer="eventUsers" width="100%" height="100%">
+            <table id="eventUsersTable" dataContainer="usersDc" width="100%" height="100%">
                 <actions>
                     <action id="add" type="add"/>
-                    <action id="exclude" type="exclude"/>
                 </actions>
                 <columns>
+                    <column id="username"/>
                     <column id="firstName"/>
                     <column id="lastName"/>
-                    <column id="username"/>
-                    <column id="email"/>
-                    <column id="phoneNumber"/>
-                    <column id="role"/>
-                    <column id="active"/>
-                    <column id="timeZoneId"/>
                 </columns>
                 <buttonsPanel>
-                    <button action="eventUsersTable.add" caption="msg://com.company.unicef.addButton"/>
-                    <button action="eventUsersTable.exclude" caption="msg://com.company.unicef.excludeButton"/>
+                    <button id="addUser" caption="msg://com.company.unicef.addButton"/>
+                    <button id="excludeUser" caption="msg://com.company.unicef.excludeButton"/>
                 </buttonsPanel>
             </table>
         </groupBox>
