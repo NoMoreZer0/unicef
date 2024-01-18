@@ -2,6 +2,7 @@ package com.company.unicef.screen.mainscreentopmenu;
 
 import com.company.unicef.entity.User;
 import com.company.unicef.screen.user.UserProfileEdit;
+import com.vaadin.server.Page;
 import io.jmix.core.usersubstitution.CurrentUserSubstitution;
 import io.jmix.ui.ScreenBuilders;
 import io.jmix.ui.ScreenTools;
@@ -17,6 +18,7 @@ import io.jmix.ui.screen.Subscribe;
 import io.jmix.ui.screen.UiController;
 import io.jmix.ui.screen.UiControllerUtils;
 import io.jmix.ui.screen.UiDescriptor;
+import io.jmix.ui.theme.ThemeVariantsManager;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @UiController("MainTop")
@@ -26,7 +28,6 @@ public class MainScreenTopMenu extends Screen implements Window.HasWorkArea {
 
     @Autowired
     private ScreenTools screenTools;
-
     @Autowired
     private AppWorkArea workArea;
     @Autowired
@@ -37,6 +38,8 @@ public class MainScreenTopMenu extends Screen implements Window.HasWorkArea {
     private Screens screens;
     @Autowired
     private CurrentUserSubstitution currentUserSubstitution;
+    @Autowired
+    private ThemeVariantsManager variantsManager;
 
     @Override
     public AppWorkArea getWorkArea() {
@@ -62,5 +65,18 @@ public class MainScreenTopMenu extends Screen implements Window.HasWorkArea {
         UserProfileEdit userProfileEdit = screens.create(UserProfileEdit.class);
         userProfileEdit.setEntityToEdit((User)currentUserSubstitution.getAuthenticatedUser());
         userProfileEdit.show();
+    }
+
+
+    @Subscribe("modeChangeButton")
+    public void onModeChangeClick(final Button.ClickEvent event) {
+        if (!variantsManager.getThemeModeCookieValue().equals("visually-impaired")) {
+            variantsManager.setThemeMode("visually-impaired");
+            variantsManager.setThemeSize("large");
+        } else {
+            variantsManager.setThemeMode("light");
+            variantsManager.setThemeSize("medium");
+        }
+        Page.getCurrent().reload();
     }
 }

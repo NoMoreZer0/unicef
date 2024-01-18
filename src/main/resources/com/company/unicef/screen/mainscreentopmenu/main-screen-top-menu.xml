@@ -30,6 +30,7 @@
                 <label value="msg://com.company.unicef/menu.contactLabel"
                        css="color: #151515; font-size: 16px; margin-top: 35px;"/>
             </hbox>
+            <button id="modeChangeButton" caption="msg://modeChange.caption" css="margin-top: 35px;"/>
             <label value="msg://com.company.unicef/menu.footerLabel"
                    css="color: #151515; text-align: end; font-size: 16px;"/>
         </hbox>
