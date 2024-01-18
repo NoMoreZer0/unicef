@@ -35,6 +35,9 @@ public class OpenCase {
     @Column(name = "REASON")
     private String reason;
 
+    @Column(name = "SCHOOL_MASK")
+    private String schoolMask;
+
     @Column(name = "OPENING_DATE")
     @Temporal(TemporalType.DATE)
     private Date openingDate;
@@ -68,6 +71,14 @@ public class OpenCase {
     @Composition
     @OneToMany(mappedBy = "openCase", cascade = CascadeType.ALL)
     private List<SecondFormCheckBox> secondFormCheckBoxes = new ArrayList<>();
+
+    public SchoolMask getSchoolMask() {
+        return schoolMask == null ? null : SchoolMask.fromId(schoolMask);
+    }
+
+    public void setSchoolMask(SchoolMask schoolMask) {
+        this.schoolMask = schoolMask == null ? null : schoolMask.getId();
+    }
 
     public Date getClosingDate() {
         return closingDate;

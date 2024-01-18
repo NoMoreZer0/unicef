@@ -36,6 +36,9 @@ public class SecondForm {
     @Column(name = "UUID")
     private UUID uuid;
 
+    @Column(name = "SCHOOL_MASK")
+    private String schoolMask;
+
     @Column(name = "CHILD_MOBILE_PHONE", length = 11)
     private String childMobilePhone;
 
@@ -583,6 +586,14 @@ public class SecondForm {
     @Composition
     @OneToMany(mappedBy = "secondForm", cascade = CascadeType.ALL)
     private List<PivotTableCheckBoxes> pivotTableCheckBoxes;
+
+    public SchoolMask getSchoolMask() {
+        return schoolMask == null ? null : SchoolMask.fromId(schoolMask);
+    }
+
+    public void setSchoolMask(SchoolMask schoolMask) {
+        this.schoolMask = schoolMask == null ? null : schoolMask.getId();
+    }
 
     public Student getStudent() {
         return student;

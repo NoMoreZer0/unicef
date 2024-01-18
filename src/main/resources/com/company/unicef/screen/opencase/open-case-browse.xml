@@ -10,6 +10,13 @@
             <loader id="openCasesDl">
                 <query>
                     <![CDATA[select e from OpenCase e]]>
+                    <condition>
+                        <and>
+                            <c:jpql>
+                                <c:where> e.schoolMask = :userMask </c:where>
+                            </c:jpql>
+                        </and>
+                    </condition>
                 </query>
             </loader>
         </collection>

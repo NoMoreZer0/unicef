@@ -36,6 +36,9 @@ public class FirstForm {
     @Column(name = "REASON_TEXT")
     private String reasonText;
 
+    @Column(name = "SCHOOL_MASK")
+    private String schoolMask;
+
     @Column(name = "CHECKBOX_LEGAL_PROBLEMS")
     private Boolean checkboxLegalProblems;
 
@@ -427,6 +430,14 @@ public class FirstForm {
 
     @Column(name = "CHECKBOX_FINAL_RISK_LEVEL_HIGH_OTHERS")
     private String checkboxFinalRiskLevelHighOthers;
+
+    public SchoolMask getSchoolMask() {
+        return schoolMask == null ? null : SchoolMask.fromId(schoolMask);
+    }
+
+    public void setSchoolMask(SchoolMask schoolMask) {
+        this.schoolMask = schoolMask == null ? null : schoolMask.getId();
+    }
 
     public String getReasonText() {
         return reasonText;

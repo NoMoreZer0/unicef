@@ -2,8 +2,10 @@ package com.company.unicef.screen.firstform;
 
 import com.company.unicef.entity.Student;
 import com.company.unicef.entity.StudentStatusField;
+import com.company.unicef.entity.User;
 import io.jmix.core.DataManager;
 import io.jmix.core.Messages;
+import io.jmix.core.security.CurrentAuthentication;
 import io.jmix.ui.component.*;
 import io.jmix.ui.model.InstanceContainer;
 import io.jmix.ui.screen.*;
@@ -273,6 +275,20 @@ public class FirstFormEdit extends StandardEditor<FirstForm> {
     private DataManager dataManager;
     @Autowired
     private Label finalCalculationLabel;
+    @Autowired
+    private CurrentAuthentication currentAuthentication;
+
+    @Subscribe
+    public void onBeforeShow(final BeforeShowEvent event) {
+        if (getEditedEntity().getSchoolMask() != null) {
+            return;
+        }
+        var user = (User) currentAuthentication.getUser();
+        if (user.getMask() == null) {
+            return;
+        }
+        getEditedEntity().setSchoolMask(user.getMask());
+    }
 
     @Subscribe("calculateRiskBtn")
     public void onCalculateRiskBtnClick(Button.ClickEvent event) {
