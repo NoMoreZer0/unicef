@@ -70,7 +70,8 @@ public class MainScreenTopMenu extends Screen implements Window.HasWorkArea {
 
     @Subscribe("modeChangeButton")
     public void onModeChangeClick(final Button.ClickEvent event) {
-        if (!variantsManager.getThemeModeCookieValue().equals("visually-impaired")) {
+        if (variantsManager.getThemeModeCookieValue() == null ||
+                !variantsManager.getThemeModeCookieValue().equals("visually-impaired")) {
             variantsManager.setThemeMode("visually-impaired");
             variantsManager.setThemeSize("large");
         } else {
