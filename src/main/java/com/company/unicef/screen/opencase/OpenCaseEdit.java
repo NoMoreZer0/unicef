@@ -4,6 +4,7 @@ import com.company.unicef.app.PivotTableMapper;
 import com.company.unicef.entity.*;
 import io.jmix.core.DataManager;
 import io.jmix.core.Messages;
+import io.jmix.core.security.CurrentAuthentication;
 import io.jmix.reportsui.screen.template.edit.generator.RandomPivotTableDataGenerator;
 import io.jmix.ui.Notifications;
 import io.jmix.ui.UiComponents;
@@ -59,12 +60,22 @@ public class OpenCaseEdit extends StandardEditor<OpenCase> {
     private EntityPicker<SecondForm> secondFormField;
     @Autowired
     private Notifications notifications;
+    @Autowired
+    private CurrentAuthentication currentAuthentication;
 
     @Subscribe
     public void onBeforeShow(BeforeShowEvent event) {
         if (getEditedEntity().getSecondForm() != null) {
             initFlag = true;
         }
+        if (getEditedEntity().getSchoolMask() != null) {
+            return;
+        }
+        var user = (User) currentAuthentication.getUser();
+        if (user.getMask() == null) {
+            return;
+        }
+        getEditedEntity().setSchoolMask(user.getMask());
     }
 
     @Subscribe("calculateSecondForm")

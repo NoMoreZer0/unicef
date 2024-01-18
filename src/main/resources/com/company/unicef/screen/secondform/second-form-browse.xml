@@ -14,6 +14,13 @@
             <loader id="secondFormsDl">
                 <query>
                     <![CDATA[select e from SecondForm e]]>
+                    <condition>
+                        <and>
+                            <c:jpql>
+                                <c:where> e.schoolMask = :userMask </c:where>
+                            </c:jpql>
+                        </and>
+                    </condition>
                 </query>
             </loader>
         </collection>

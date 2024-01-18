@@ -4,7 +4,9 @@ import com.company.unicef.app.PivotTableMapper;
 import com.company.unicef.entity.HealthChronicalOption;
 import com.company.unicef.entity.PivotTableCheckBoxes;
 import com.company.unicef.entity.SecondForm;
+import com.company.unicef.entity.User;
 import io.jmix.core.DataManager;
+import io.jmix.core.security.CurrentAuthentication;
 import io.jmix.ui.component.*;
 import io.jmix.ui.model.CollectionPropertyContainer;
 import io.jmix.ui.screen.*;
@@ -330,6 +332,8 @@ public class SecondFormEdit extends StandardEditor<SecondForm> {
     private TextArea<String> homeNoMoneyTextField;
     @Autowired
     private PivotTableMapper pivotTableMapper;
+    @Autowired
+    private CurrentAuthentication currentAuthentication;
 
 
     @Subscribe
@@ -350,6 +354,14 @@ public class SecondFormEdit extends StandardEditor<SecondForm> {
             String newCaseIdNum = getNewCaseIdNum();
             getEditedEntity().setCaseIdNum(newCaseIdNum);
         }
+        if (getEditedEntity().getSchoolMask() != null) {
+            return;
+        }
+        var user = (User) currentAuthentication.getUser();
+        if (user.getMask() == null) {
+            return;
+        }
+        getEditedEntity().setSchoolMask(user.getMask());
     }
 
     @Subscribe
