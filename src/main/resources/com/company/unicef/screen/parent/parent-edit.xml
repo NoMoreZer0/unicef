@@ -31,6 +31,7 @@
         <form id="form" dataContainer="parentDc">
             <column width="350px">
                 <textField id="fioField" property="fio"/>
+                <textField id="emailField" property="email"/>
                 <textField id="fullAgeField" property="fullAge"/>
                 <comboBox id="familyStatusField" property="familyStatus"/>
                 <entityPicker id="addressField" property="address">

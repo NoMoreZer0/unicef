@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <menu-config xmlns="http://jmix.io/schema/ui/menu">
     <menu id="main" caption="msg://com.company.unicef/menu.main">
-
     </menu>
     <menu id="caseManagement" caption="msg://com.company.unicef/menu.caseManagement" insertAfter="main">
         <item screen="OpenCase.browseAll" caption="msg://com.company.unicef.screen.opencase/openCaseBrowseAll.menu"/>
@@ -10,6 +9,7 @@
         <item screen="SecondForm.browse" caption="msg://com.company.unicef.screen.secondform/secondFormBrowse.menu"/>
     </menu>
     <menu id="admin" caption="msg://com.company.unicef/menu.admin" insertAfter="caseManagement">
+        <item screen="EventDate.browse" caption="msg://com.company.unicef.screen.eventdate/eventDateBrowse.caption"/>
         <item screen="Student.browse" caption="msg://com.company.unicef.screen.student/studentBrowse.menu"/>
         <item screen="User.browse" caption="msg://com.company.unicef.screen.user/UserBrowse.caption"/>
         <menu id="needs" caption="msg://com.company.unicef/menu.needs">

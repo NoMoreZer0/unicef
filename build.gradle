@@ -56,6 +56,10 @@ dependencies {
 
     implementation 'io.jmix.notifications:jmix-notifications-starter'
     implementation 'io.jmix.notifications:jmix-notifications-ui-starter'
+    implementation 'io.jmix.email:jmix-email-starter'
+    implementation 'io.jmix.email:jmix-email-ui-starter'
+    implementation 'io.jmix.quartz:jmix-quartz-starter'
+    implementation 'io.jmix.quartz:jmix-quartz-ui-starter'
 }
 
 test {
