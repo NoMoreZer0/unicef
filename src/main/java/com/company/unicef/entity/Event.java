@@ -24,6 +24,9 @@ public class Event {
     @Id
     private UUID id;
 
+    @OneToMany(mappedBy = "event")
+    private List<EventDate> eventDate;
+
     @InstanceName
     @Column(name = "NAME")
     private String name;
@@ -54,6 +57,14 @@ public class Event {
     @JoinColumn(name = "SECOND_FORM_CHECK_BOX_ID")
     @ManyToOne(fetch = FetchType.LAZY)
     private SecondFormCheckBox secondFormCheckBox;
+
+    public List<EventDate> getEventDate() {
+        return eventDate;
+    }
+
+    public void setEventDate(List<EventDate> eventDate) {
+        this.eventDate = eventDate;
+    }
 
     public List<EventUser> getEventUsers() {
         return eventUsers;

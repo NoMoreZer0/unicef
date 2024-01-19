@@ -23,6 +23,9 @@ public class Parent {
     @Id
     private UUID id;
 
+    @Column(name = "EMAIL")
+    private String email;
+
     @Column(name = "FIO")
     private String fio;
 
@@ -55,6 +58,22 @@ public class Parent {
     @ManyToOne(fetch = FetchType.LAZY)
     private Event event;
 
+    public Event getEvent() {
+        return event;
+    }
+
+    public void setEvent(Event event) {
+        this.event = event;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public Boolean getIsStepParent() {
         return isStepParent;
     }
@@ -69,14 +88,6 @@ public class Parent {
 
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
-    }
-
-    public Event getEvent() {
-        return event;
-    }
-
-    public void setEvent(Event event) {
-        this.event = event;
     }
 
     public Student getStudent() {
