@@ -1,6 +1,7 @@
 package com.company.unicef.screen.mainscreentopmenu;
 
 import com.company.unicef.entity.User;
+import com.company.unicef.screen.user.UserEdit;
 import com.company.unicef.screen.user.UserProfileEdit;
 import com.vaadin.server.Page;
 import io.jmix.core.usersubstitution.CurrentUserSubstitution;
@@ -31,10 +32,6 @@ public class MainScreenTopMenu extends Screen implements Window.HasWorkArea {
     @Autowired
     private AppWorkArea workArea;
     @Autowired
-    private UiComponents uiComponents;
-    @Autowired
-    private ScreenBuilders screenBuilders;
-    @Autowired
     private Screens screens;
     @Autowired
     private CurrentUserSubstitution currentUserSubstitution;
@@ -62,9 +59,9 @@ public class MainScreenTopMenu extends Screen implements Window.HasWorkArea {
 
     @Subscribe("profileButton")
     public void onProfileButtonClick(final Button.ClickEvent event) {
-        UserProfileEdit userProfileEdit = screens.create(UserProfileEdit.class);
-        userProfileEdit.setEntityToEdit((User)currentUserSubstitution.getAuthenticatedUser());
-        userProfileEdit.show();
+        var userEdit = screens.create(UserEdit.class);
+        userEdit.setEntityToEdit((User)currentUserSubstitution.getAuthenticatedUser());
+        userEdit.show();
     }
 
 
