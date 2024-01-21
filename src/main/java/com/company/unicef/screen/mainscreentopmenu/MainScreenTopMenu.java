@@ -2,23 +2,16 @@ package com.company.unicef.screen.mainscreentopmenu;
 
 import com.company.unicef.entity.User;
 import com.company.unicef.screen.user.UserEdit;
-import com.company.unicef.screen.user.UserProfileEdit;
 import com.vaadin.server.Page;
 import io.jmix.core.usersubstitution.CurrentUserSubstitution;
-import io.jmix.ui.ScreenBuilders;
 import io.jmix.ui.ScreenTools;
 import io.jmix.ui.Screens;
-import io.jmix.ui.UiComponents;
 import io.jmix.ui.component.AppWorkArea;
 import io.jmix.ui.component.Button;
 import io.jmix.ui.component.Image;
 import io.jmix.ui.component.Window;
 import io.jmix.ui.navigation.Route;
-import io.jmix.ui.screen.Screen;
-import io.jmix.ui.screen.Subscribe;
-import io.jmix.ui.screen.UiController;
-import io.jmix.ui.screen.UiControllerUtils;
-import io.jmix.ui.screen.UiDescriptor;
+import io.jmix.ui.screen.*;
 import io.jmix.ui.theme.ThemeVariantsManager;
 import org.springframework.beans.factory.annotation.Autowired;
 
