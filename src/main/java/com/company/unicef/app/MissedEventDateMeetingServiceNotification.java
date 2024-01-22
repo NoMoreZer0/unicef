@@ -4,7 +4,6 @@ import com.company.unicef.entity.Event;
 import com.company.unicef.entity.EventDate;
 import com.company.unicef.entity.EventUser;
 import com.company.unicef.entity.User;
-import groovy.util.logging.Slf4j;
 import io.jmix.core.DataManager;
 import io.jmix.core.FetchPlan;
 import io.jmix.core.security.Authenticated;
@@ -13,44 +12,39 @@ import io.jmix.email.EmailInfo;
 import io.jmix.email.EmailInfoBuilder;
 import io.jmix.email.Emailer;
 import io.jmix.notifications.NotificationManager;
+import io.jmix.notifications.entity.ContentType;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
 import java.util.List;
-
 import java.util.UUID;
 
-
-import static java.util.stream.Collectors.*;
-
+import static java.util.stream.Collectors.toList;
 
 @Component
-@Slf4j
-public class EmailNotificationForEventDates implements Job {
-
+public class MissedEventDateMeetingServiceNotification implements Job {
 
     @Autowired
     private Emailer emailer;
 
-
     @Autowired
     NotificationManager notificationManager;
 
+
     @Autowired
     private DataManager dataManager;
-
     @Authenticated
     @Override
     public void execute(JobExecutionContext context) throws JobExecutionException {
         try {
-            sendNotificationByEmail();
+            sendNotificationByEmailAboutMissedDate();
         } catch (EmailException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -58,19 +52,16 @@ public class EmailNotificationForEventDates implements Job {
         }
     }
 
-    public void sendNotificationByEmail() throws EmailException, IOException {
+    public void sendNotificationByEmailAboutMissedDate() throws EmailException, IOException {
         LocalDateTime currentDate = LocalDateTime.now().truncatedTo(ChronoUnit.DAYS);
         System.out.println("currentDate: " + currentDate);
-        LocalDateTime fourDaysAhead = currentDate.plusDays(3);
-        System.out.println("fourDaysAhead: " + fourDaysAhead);
-        int threeDaysBeforeMeeting = 3;
-        int twoDaysBeforeMeeting = 2;
-        int oneDayBeforeMeeting = 1;
+        LocalDateTime fourDaysBefore = currentDate.minusDays(3);
+        System.out.printf("fourDaysBefore: " + fourDaysBefore);
 
         List<EventDate> eventDates = dataManager.load(EventDate.class)
-                .query("select e from EventDate e where e.eventDate >= :currentDate and e.eventDate <= :fourDaysAhead")
+                .query("select e from EventDate e where e.eventDate <= :currentDate and e.eventDate >= :fourDaysBefore")
                 .parameter("currentDate", currentDate)
-                .parameter("fourDaysAhead", fourDaysAhead)
+                .parameter("fourDaysBefore", fourDaysBefore)
                 .fetchPlan(FetchPlan.BASE)
                 .list();
 
@@ -82,20 +73,12 @@ public class EmailNotificationForEventDates implements Job {
             System.out.println("eventDates is null or empty");
         } else {
             for (EventDate eventDate : eventDates) {
-                LocalDateTime roundedEventDate = eventDate.getEventDate();
-                long daysDifference = ChronoUnit.DAYS.between(currentDate, roundedEventDate);
-                System.out.println("daysDifference: " + daysDifference);
-                //here check for threeDaysBeforeMeeting, twoDaysBeforeMeeting and oneDayBeforeMeeting
-                if (daysDifference == threeDaysBeforeMeeting) {
-                    String threeDaysLeft = "3";
-                    sendEmailNotification(eventDate, threeDaysLeft);
-                } else if (daysDifference == twoDaysBeforeMeeting) {
-                    String twoDaysLeft = "2";
-                    sendEmailNotification(eventDate, twoDaysLeft);
-                } else if (daysDifference == oneDayBeforeMeeting) {
-                    String oneDayLeft = "1";
-                    sendEmailNotification(eventDate, oneDayLeft);
+                //check if private Boolean hasHappened = false or null of eventDate
+                Boolean hasHappened = eventDate.getHasHappened();
+                if (hasHappened == false || hasHappened == null) {
+                    sendEmailNotification(eventDate);
                 }
+
             }
         }
 
@@ -103,7 +86,7 @@ public class EmailNotificationForEventDates implements Job {
     }
 
     @Authenticated
-    private void sendEmailNotification(EventDate eventDate, String daysDifference) throws EmailException, IOException {
+    private void sendEmailNotification(EventDate eventDate) throws EmailException, IOException {
 
         Event event = dataManager.load(Event.class)
                 .query("select e from Event e where e.id = :eventId")
@@ -142,18 +125,6 @@ public class EmailNotificationForEventDates implements Job {
 
         System.out.println("emailList: " + emailList);
 
-        //get emails from parents from event entity
-        List<String> parentEmails = event.getParents().stream()
-                .map(com.company.unicef.entity.Parent::getEmail)
-                .collect(toList());
-        System.out.println("parentEmails: " + parentEmails);
-
-        //add parentEmails to emailList
-        emailList.addAll(parentEmails);
-        System.out.println("emailList: " + emailList);
-
-
-        String message = daysDifference;
 
         for (String email : emailList) {
             if (email == null || email.isEmpty() || !email.contains("@")) {
@@ -167,22 +138,23 @@ public class EmailNotificationForEventDates implements Job {
         }
 
         for (String email : emailList) {
-            sendByEmailInfo(email, message, eventDate);
+            sendByEmailInfo(email, eventDate, users);
         }
 
-}
+    }
 
     @Authenticated
-    private void sendByEmailInfo(String address, String message, EventDate date) throws EmailException {
-        String subject = "Кездесу туралы еске салғыш/Event Reminder/Напоминание о Встрече";
+    private void sendByEmailInfo(String address, EventDate date,List<User> users) throws EmailException {
+        String subject = "Кездесу туралы еске салғыш/Event Reminder /Напоминание о Встрече";
 
         LocalDateTime eventDate = date.getEventDate();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String formattedEventDate = eventDate.format(formatter);
 
-        String body = "Іс-шараға " + message + " күн қалды. Құрметті ата-аналар мен ұжым " + date.getName() + " жоспарланған " + formattedEventDate + " күні өтетін іс-шараны еске саламыз.\n"+
-                "There is " + message + " day left before the event. Dear parents and staff, we remind you about the event on " + date.getName() + ", which is scheduled for " + formattedEventDate + ".\n"+
-                "До мероприятия осталось " + message + " дня. Уважаемые родители и сотрудники, напоминаем вам о мероприятии " + date.getName() + ", которое назначено на " + formattedEventDate + ".\n";
+        String body = "Шара өткізілмеді. Құрметті қызметкер, Сізге " + date.getName() + " деп аталатын жіберілген шарадан хабардар етеміз, ол " + formattedEventDate + " күні белгіленген болатын. Күнін қайта белгілеу үшін порталды ашып, хабарландыру бөлімін қараңыз.\n"+
+                "\nAn event has been missed. Dear employee, we remind you of the missed event " + date.getName() + ", which was scheduled for " + formattedEventDate + ". To reschedule, please open the open the site and visit notifications.\n"+
+                "\nМероприятие было пропущено. Уважаемый сотрудник, напоминаем вам о пропущенном мероприятии " + date.getName() + ", которое было назначено на " + formattedEventDate + ",чтобы  переназначить дату откройте портал и посетите раздел уведомлений.\n";
+
 
 
 
@@ -194,6 +166,22 @@ public class EmailNotificationForEventDates implements Job {
                 .setBody(body)
                 .build();
         emailer.sendEmail(emailInfo);
+
+        List<String> usernamesNotific = users.stream()
+                .map(User::getUsername)
+                .collect(toList());
+
+        System.out.printf("usernamesNotific: " + usernamesNotific);
+
+        notificationManager.createNotification()
+                .withSubject("Шара өткізілмеді/An event has been missed/Пропущено мероприятие")
+                .withRecipientUsernames(usernamesNotific)
+                .toChannelsByNames("in-app")
+                .withContentType(ContentType.PLAIN)
+                .withBody(String.format("Поменяйте дату мероприятия/Reschedule the event/Шара күнін өзгертіңіз %s", date.getName()))
+                .send();
     }
+
+
 
 }

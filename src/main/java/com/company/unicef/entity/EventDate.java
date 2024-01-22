@@ -23,6 +23,10 @@ public class EventDate {
     @Id
     private UUID id;
 
+    @NotNull
+    @Column(name = "HAS_HAPPENED", nullable = false)
+    private Boolean hasHappened = false;
+
     @Column(name = "VERSION", nullable = false)
     @Version
     private Integer version;
@@ -38,6 +42,14 @@ public class EventDate {
     @JoinColumn(name = "EVENT_ID")
     @ManyToOne(fetch = FetchType.LAZY)
     private Event event;
+
+    public Boolean getHasHappened() {
+        return hasHappened;
+    }
+
+    public void setHasHappened(Boolean hasHappened) {
+        this.hasHappened = hasHappened;
+    }
 
     public String getName() {
         return name;

@@ -51,7 +51,7 @@
             </image>
             <menu id="mainMenu"
                   align="MIDDLE_LEFT"/>
-            <ntf:notificationsIndicator id="ntfIndicator"/>
+            <ntf:notificationsIndicator id="ntfIndicator" />
             <button id="profileButton" caption="msg://com.company.unicef/menu.profile"/>
             <userIndicator id="userIndicator"
                            align="MIDDLE_LEFT"/>

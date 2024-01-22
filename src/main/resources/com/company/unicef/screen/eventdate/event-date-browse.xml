@@ -47,6 +47,8 @@
             <columns>
                 <column id="eventDate" caption="msg://eventDate.caption"/>
                 <column id="name" caption="msg://name.caption"/>
+                <column id="hasHappened" caption="msg://meetingEventCheck" />
+
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
