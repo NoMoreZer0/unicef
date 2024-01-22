@@ -30,6 +30,6 @@
     <menu id="appearance" caption="msg://com.company.unicef/menu.appearance" insertAfter="allFilesBrowse">
         <item screen="themeSettingsScreen" caption="msg://com.company.unicef/menu.theme"/>
     </menu>
-    <item id="blogBrowse" screen="Blog.browse" caption="msg://com.company.unicef.screen.blog/blogBrowse.menu" insertAfter="caseManagement"/>
     <item id="blogReadBrowse" screen="BlogRead.browse" caption="msg://com.company.unicef.screen.blog/blogReadBrowse.menu" insertAfter="caseManagement"/>
+    <item id="blogBrowse" screen="Blog.browse" caption="msg://com.company.unicef.screen.blog/blogBrowse.menu" insertAfter="admin"/>
 </menu-config>
