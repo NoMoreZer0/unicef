@@ -1,6 +1,7 @@
 package com.company.unicef;
 
 import com.company.unicef.app.EmailNotificationForEventDates;
+import com.company.unicef.app.MissedEventDateMeetingServiceNotification;
 import com.google.common.base.Strings;
 import io.jmix.notifications.NotificationType;
 import io.jmix.notifications.NotificationTypesRepository;
@@ -56,7 +57,7 @@ public class UnicefApplication {
     }
 
     @Bean
-    JobDetail myCustomEmailCleaningJob() {
+    JobDetail myCustomEmailSendingJob() {
         return JobBuilder.newJob()
                 .ofType(EmailNotificationForEventDates.class)
                 .storeDurably()
@@ -65,13 +66,32 @@ public class UnicefApplication {
     }
 
     @Bean
-    Trigger MyCustomEmailCleaningTrigger() {
+    Trigger MyCustomEmailSendingTrigger() {
         return TriggerBuilder.newTrigger()
-                .forJob(myCustomEmailCleaningJob())
+                .forJob(myCustomEmailSendingJob())
                 .startNow()
                 .withSchedule(CronScheduleBuilder.cronSchedule("0 0 0 * * ?"))
                 .build();
     }
+
+    @Bean
+    JobDetail missedDatesCustomEmailSendingJob() {
+        return JobBuilder.newJob()
+                .ofType(MissedEventDateMeetingServiceNotification.class)
+                .storeDurably()
+                .withIdentity("MissedDateRuntime")
+                .build();
+    }
+
+    @Bean
+    Trigger missedDateEmailSendingTrigger() {
+        return TriggerBuilder.newTrigger()
+                .forJob(missedDatesCustomEmailSendingJob())
+                .startNow()
+                .withSchedule(CronScheduleBuilder.cronSchedule("0 0 0 * * ?"))
+                .build();
+    }
+
 
     @PostConstruct
     public void postConstruct() {

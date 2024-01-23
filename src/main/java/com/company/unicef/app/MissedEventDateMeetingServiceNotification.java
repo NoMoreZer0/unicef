@@ -66,7 +66,7 @@ public class MissedEventDateMeetingServiceNotification implements Job {
                 .list();
 
         //print eventDates
-        System.out.println("eventDates: " + eventDates);
+        System.out.println("eventDates Before: " + eventDates);
         //check if eventDates is null or empty and check if eventDates are 24 hours, 48 hours or 72 hours before meeting and if they are send that meeting is in 24 hours, 48 hours or 72 hours
 
         if (eventDates == null || eventDates.isEmpty()) {
@@ -154,10 +154,6 @@ public class MissedEventDateMeetingServiceNotification implements Job {
         String body = "Шара өткізілмеді. Құрметті қызметкер, Сізге " + date.getName() + " деп аталатын жіберілген шарадан хабардар етеміз, ол " + formattedEventDate + " күні белгіленген болатын. Күнін қайта белгілеу үшін порталды ашып, хабарландыру бөлімін қараңыз.\n"+
                 "\nAn event has been missed. Dear employee, we remind you of the missed event " + date.getName() + ", which was scheduled for " + formattedEventDate + ". To reschedule, please open the open the site and visit notifications.\n"+
                 "\nМероприятие было пропущено. Уважаемый сотрудник, напоминаем вам о пропущенном мероприятии " + date.getName() + ", которое было назначено на " + formattedEventDate + ",чтобы  переназначить дату откройте портал и посетите раздел уведомлений.\n";
-
-
-
-
 
         EmailInfo emailInfo = EmailInfoBuilder.create()
                 .setAddresses(address)
