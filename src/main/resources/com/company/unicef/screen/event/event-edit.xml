@@ -65,14 +65,9 @@
                     <action id="exclude" type="exclude"/>
                 </actions>
                 <columns>
-                    <column id="firstName"/>
-                    <column id="lastName"/>
-                    <column id="username"/>
-                    <column id="email"/>
-                    <column id="phoneNumber"/>
-                    <column id="role"/>
-                    <column id="active"/>
-                    <column id="timeZoneId"/>
+                    <column id="user.username"/>
+                    <column id="user.firstName"/>
+                    <column id="user.lastName"/>
                 </columns>
                 <buttonsPanel>
                     <button action="eventUsersTable.add" caption="msg://com.company.unicef.addButton"/>
