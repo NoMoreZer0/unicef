@@ -82,7 +82,7 @@
                             <checkBox id="healthBadCommunicationField" property="healthBadCommunication"/>
                             <textArea id="healthOthersField" property="healthOthers" width="200px" rows="3"/>
 
-                            <label value="msg://com.company.unicef.entity/SecondForm.eduLabel" stylename="h2" width="AUTO" css="margin-top: 12px;"/>
+                            <label value="msg://com.company.unicef.entity/SecondForm.eduLabel" stylename="h2" width="AUTO" css="margin-top: 12px;" />
                             <checkBox id="eduNotLikeField" property="eduNotLike"/>
                             <textArea id="eduNotLikeTextField" property="eduNotLikeText" width="200px" rows="3" visible="false"/>
                             <checkBox id="eduNoSubjectField" property="eduNoSubject"/>
