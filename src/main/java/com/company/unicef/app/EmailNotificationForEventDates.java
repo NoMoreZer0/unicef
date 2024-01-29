@@ -35,6 +35,7 @@ import static java.util.stream.Collectors.*;
 @Slf4j
 public class EmailNotificationForEventDates implements Job {
 
+    List<String> emailsToRemove = new ArrayList<>();
 
     @Autowired
     private Emailer emailer;
@@ -158,13 +159,15 @@ public class EmailNotificationForEventDates implements Job {
         for (String email : emailList) {
             if (email == null || email.isEmpty() || !email.contains("@")) {
                 System.out.println("email: " + email);
-                emailList.remove(email);
+                emailsToRemove.add(email); // Add the email to the removal list
                 // log about what happened
                 System.out.println("email: " + email + " was removed");
-                //log email that was removed
+                // log email that was removed
                 System.out.println("email: " + email + " was removed");
             }
         }
+
+        emailList.removeAll(emailsToRemove);
 
         for (String email : emailList) {
             sendByEmailInfo(email, message, eventDate);
@@ -181,8 +184,8 @@ public class EmailNotificationForEventDates implements Job {
         String formattedEventDate = eventDate.format(formatter);
 
         String body = "Іс-шараға " + message + " күн қалды. Құрметті ата-аналар мен ұжым " + date.getName() + " жоспарланған " + formattedEventDate + " күні өтетін іс-шараны еске саламыз.\n"+
-                "There is " + message + " day left before the event. Dear parents and staff, we remind you about the event on " + date.getName() + ", which is scheduled for " + formattedEventDate + ".\n"+
-                "До мероприятия осталось " + message + " дня. Уважаемые родители и сотрудники, напоминаем вам о мероприятии " + date.getName() + ", которое назначено на " + formattedEventDate + ".\n";
+                "\nThere is " + message + " day left before the event. Dear parents and staff, we remind you about the event on " + date.getName() + ", which is scheduled for " + formattedEventDate + ".\n"+
+                "\nДо мероприятия осталось " + message + " дня. Уважаемые родители и сотрудники, напоминаем вам о мероприятии " + date.getName() + ", которое назначено на " + formattedEventDate + ".\n";
 
 
 
@@ -195,5 +198,4 @@ public class EmailNotificationForEventDates implements Job {
                 .build();
         emailer.sendEmail(emailInfo);
     }
-
 }

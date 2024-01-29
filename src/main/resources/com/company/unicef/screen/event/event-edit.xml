@@ -41,7 +41,8 @@
                 <textArea rows="3" id="periodicityField" property="periodicity"/>
             </column>
         </form>
-        <dataGrid id="eventDatesTable" editorEnabled="true" width="100%" height="100%" dataContainer="eventDate" caption="msg://EventDates">
+        <groupBox id="EventDatesBox" caption="msg://EventDates">
+        <dataGrid id="eventDatesTable" editorEnabled="true" width="100%"  dataContainer="eventDate" >
             <actions>
                 <action id="create" type="create"/>
                 <action id="edit" type="edit"/>
@@ -53,11 +54,12 @@
                 <button id="eventDatesTableRemoveBtn" action="eventDatesTable.remove"/>
             </buttonsPanel>
             <columns>
-                <column id="name" property="name"/>
-                <column id="eventDate" property="eventDate"/>
+                <column id="name" property="name" caption="msg://name.caption"/>
+                <column id="eventDate" property="eventDate" caption="msg://eventDate.caption"/>
             </columns>
             <simplePagination/>
         </dataGrid>
+        </groupBox>
         <groupBox id="eventUsersBox" caption="msg://com.company.unicef.entity/Event.eventUsersBox">
             <table id="eventUsersTable" dataContainer="eventUsersDc" width="100%" height="100%">
                 <actions>
