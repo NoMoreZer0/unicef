@@ -26,7 +26,7 @@
             <item screen="NeedsHome.browse" caption="msg://com.company.unicef.screen.needshome/needsHomeBrowse.menu"/>
         </menu>
     </menu>
-    <item id="allFilesBrowse" screen="AllFiles.browse" caption="msg://com.company.unicef.screen.allfiles/allFilesBrowse.menu" insertAfter="admin"/>
+    <item id="allFilesBrowse" screen="AllFiles.browse" caption="msg://com.company.unicef.screen.allfiles/allFilesBrowse.caption" insertAfter="admin"/>
     <menu id="appearance" caption="msg://com.company.unicef/menu.appearance" insertAfter="allFilesBrowse">
         <item screen="themeSettingsScreen" caption="msg://com.company.unicef/menu.theme"/>
     </menu>
