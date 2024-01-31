@@ -31,7 +31,6 @@ dependencies {
     implementation 'io.jmix.data:jmix-eclipselink-starter'
     implementation 'io.jmix.ui:jmix-ui-starter'
     implementation 'io.jmix.ui:jmix-ui-data-starter'
-    implementation 'io.jmix.ui:jmix-ui-widgets-compiled'
     implementation 'io.jmix.security:jmix-security-starter'
     implementation 'io.jmix.security:jmix-security-ui-starter'
     implementation 'io.jmix.security:jmix-security-data-starter'
@@ -56,8 +55,22 @@ dependencies {
 
     implementation 'io.jmix.notifications:jmix-notifications-starter'
     implementation 'io.jmix.notifications:jmix-notifications-ui-starter'
+
+    implementation 'io.jmix.dashboards:jmix-dashboards-starter'
+    implementation 'io.jmix.dashboards:jmix-dashboards-ui-starter'
+    themes 'io.jmix.dashboards:jmix-dashboards-ui'
+
+    implementation 'io.jmix.dashboards:jmix-dashboards-chart-starter'
+    widgets 'io.jmix.ui:jmix-charts-widgets'
+    implementation 'io.jmix.ui:jmix-charts-starter'
+    widgets 'io.jmix.ui:jmix-ui-widgets'
 }
 
 test {
     useJUnitPlatform()
+}
+
+compileWidgets {
+    generate "com.company.unicef.widgets.CustomWidgetSet"
+    includePaths("**/io/jmix/**/widget/**", "**/com/company/unicef/widgets/**")
 }

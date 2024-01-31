@@ -32,4 +32,5 @@
     </menu>
     <item id="blogReadBrowse" screen="BlogRead.browse" caption="msg://com.company.unicef.screen.blog/blogReadBrowse.menu" insertAfter="caseManagement"/>
     <item id="blogBrowse" screen="Blog.browse" caption="msg://com.company.unicef.screen.blog/blogBrowse.menu" insertAfter="admin"/>
+    <item screen="StatisticsScreen" caption="msg://com.company.unicef.screen.statistics/statisticsScreen.caption" insertAfter="blogBrowse"/>
 </menu-config>
