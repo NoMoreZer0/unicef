@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:dashboard="http://jmix.io/schema/dashboards/ui"
+        caption="msg://statisticsScreen.caption">
+    <layout>
+        <vbox>
+            <vbox css="padding-left: 100px; background: #E1F0DA; border-radius: 20px; margin-bottom: 20px;">
+                <dashboard:dashboard id="studentsStatusDashboard"
+                                     code="108"
+                                     timerDelay="60"
+                                     width="800px" height="350px">
+                </dashboard:dashboard>
+                <label id="studentsStatusStatisticsLabel" value="msg://studentsStatusStatisticsLabel.value" stylename="h3"
+                       css="position: relative; bottom: 50px; left: 120px; font-weight: bold;"/>
+            </vbox>
+            <vbox css="padding-left: 100px; background: #E1F0DA; border-radius: 20px; margin-bottom: 20px;">
+                <dashboard:dashboard id="caseDashboard"
+                                     code="110"
+                                     timerDelay="60"
+                                     width="1000px" height="350px">
+                </dashboard:dashboard>
+                <label id="caseStatisticsLabel" value="msg://caseStatisticsLabel.value" stylename="h3"
+                       css="position: relative; bottom: 50px; left: 210px; font-weight: bold;"/>
+            </vbox>
+            <vbox css="padding-left: 100px; background: #E1F0DA; border-radius: 20px; margin-bottom: 20px;">
+                <dashboard:dashboard id="formDashboard"
+                                     code="109"
+                                     timerDelay="60"
+                                     width="1000px" height="350px">
+                </dashboard:dashboard>
+                <label id="formStatisticsLabel" value="msg://formStatisticsLabel.value" stylename="h3"
+                       css="position: relative; bottom: 50px; left: 240px; font-weight: bold;"/>
+            </vbox>
+        </vbox>
+    </layout>
+</window>
