@@ -23,7 +23,10 @@ import java.util.List;
 @UiDescriptor("first-form-edit.xml")
 @EditedEntityContainer("firstFormDc")
 public class FirstFormEdit extends StandardEditor<FirstForm> {
-    private static final Logger log = LoggerFactory.getLogger(FirstFormEdit.class);
+    private static final Logger log = LoggerFactory.getLogger(
+            FirstFormEdit.class
+    );
+
     @Inject
     private TextField<String> riskLevelField;
     @Inject
@@ -287,7 +290,9 @@ public class FirstFormEdit extends StandardEditor<FirstForm> {
         if (user.getMask() == null) {
             return;
         }
-        getEditedEntity().setSchoolMask(user.getMask());
+        var mask = user.getMask();
+        getEditedEntity().setSchoolMask(mask);
+        log.info("Set school mask to {}", mask);
     }
 
     @Subscribe("calculateRiskBtn")
@@ -386,6 +391,7 @@ public class FirstFormEdit extends StandardEditor<FirstForm> {
         }
         getEditedEntity().setStudent(student);
         dataManager.save(student);
+        log.info("Change student status \n {}", student);
     }
 
 
