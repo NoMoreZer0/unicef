@@ -7,6 +7,8 @@ import com.company.unicef.entity.User;
 import io.jmix.core.DataManager;
 import io.jmix.notifications.NotificationManager;
 import io.jmix.notifications.entity.ContentType;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +19,10 @@ import java.util.List;
 
 @Service("studentService")
 public class StudentService {
+
+    private static final Logger log = LoggerFactory.getLogger(
+            StudentService.class
+    );
 
     private final DataManager dataManager;
 
@@ -45,6 +51,7 @@ public class StudentService {
                 List<User> userNotifications = loadByRole();
                 List<String> usernamesNotific = new ArrayList<>();
                 userNotifications.forEach(u -> usernamesNotific.add(u.getUsername()));
+                log.info("Created student \n {}", student);
                 notificationManager.createNotification()
                         .withSubject("Добавлен новый студент")
                         .withRecipientUsernames(usernamesNotific)

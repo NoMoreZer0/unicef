@@ -13,6 +13,8 @@ import io.jmix.ui.model.CollectionContainer;
 import io.jmix.ui.model.CollectionPropertyContainer;
 import io.jmix.ui.model.DataContext;
 import io.jmix.ui.screen.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.Nullable;
@@ -25,6 +27,10 @@ import java.util.stream.Collectors;
 @UiDescriptor("open-case-edit.xml")
 @EditedEntityContainer("openCaseDc")
 public class OpenCaseEdit extends StandardEditor<OpenCase> {
+    private static final Logger log = LoggerFactory.getLogger(
+            OpenCaseEdit.class
+    );
+
     @Inject
     protected DataManager dataManager;
     @Inject
@@ -75,11 +81,14 @@ public class OpenCaseEdit extends StandardEditor<OpenCase> {
         if (user.getMask() == null) {
             return;
         }
-        getEditedEntity().setSchoolMask(user.getMask());
+        var mask = user.getMask();
+        getEditedEntity().setSchoolMask(mask);
+        log.info("Set school mask {}", mask);
     }
 
     @Subscribe("calculateSecondForm")
     public void onCalculateSecondFormClick(final Button.ClickEvent event) throws IllegalAccessException {
+        log.info("Calculating secondFormCheckboxes .. ");
         dataManager.remove(getEditedEntity().getSecondFormCheckBoxes());
         secondFormCheckBoxes.getMutableItems().clear();
         var secondForm = secondFormField.getValue();

@@ -21,7 +21,9 @@ import java.util.List;
 @UiDescriptor("second-form-edit.xml")
 @EditedEntityContainer("secondFormDc")
 public class SecondFormEdit extends StandardEditor<SecondForm> {
-    private static final Logger log = LoggerFactory.getLogger(SecondFormEdit.class);
+    private static final Logger log = LoggerFactory.getLogger(
+            SecondFormEdit.class
+    );
     @Autowired
     private CheckBox healthChronicalField;
     @Autowired
@@ -361,12 +363,15 @@ public class SecondFormEdit extends StandardEditor<SecondForm> {
         if (user.getMask() == null) {
             return;
         }
-        getEditedEntity().setSchoolMask(user.getMask());
+        var mask = user.getMask();
+        getEditedEntity().setSchoolMask(mask);
+        log.info("Set school mask to {}", mask);
     }
 
     @Subscribe
     public void onBeforeCommitChanges(final BeforeCommitChangesEvent event) {
         pivotTableCheckBoxesDc.getMutableItems().clear();
+        log.info("Clearing pivot tables ... ");
     }
 
     private void fillHomeCheckBoxes() {
@@ -521,31 +526,6 @@ public class SecondFormEdit extends StandardEditor<SecondForm> {
         calcPivotTableParents();
         calcPivotTableHome();
         pivotTableGroupBox.setVisible(true);
-//        pivotGroupTable2.setStyleProvider(new GroupTable.GroupStyleProvider<PivotTableCheckBoxes>() {
-//            @Nullable
-//            @Override
-//            public String getStyleName(GroupInfo info) {
-//                return null;
-//            }
-//
-//            @Override
-//            public String getStyleName(PivotTableCheckBoxes e, @Nullable String s) {
-//                if (s == null) {
-//                    return "level-default";
-//                } else if (s.equals("level")) {
-//                    if (e.getLevel().equals(low)) {
-//                        return "level-low";
-//                    }
-//                    else if (e.getLevel().equals(medium)) {
-//                        return "level-medium";
-//                    }
-//                    else {
-//                        return "level-high";
-//                    }
-//                }
-//                return null;
-//            }
-//        });
     }
 
     private void calcPivotTableHome() {
