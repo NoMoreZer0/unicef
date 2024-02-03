@@ -107,8 +107,8 @@
                     <action id="remove" type="remove"/>
                 </actions>
                 <columns>
-                    <column id="name"/>
-                    <column id="eventDate"/>
+                    <column id="name" caption="msg://name.caption"/>
+                    <column id="eventDate" caption="msg://eventDate.caption"/>
                 </columns>
                 <buttonsPanel>
                     <button action="eventDateTable.create"/>
