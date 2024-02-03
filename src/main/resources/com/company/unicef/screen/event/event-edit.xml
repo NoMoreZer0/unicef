@@ -107,7 +107,6 @@
                     <action id="remove" type="remove"/>
                 </actions>
                 <columns>
-                    <column id="version"/>
                     <column id="name"/>
                     <column id="eventDate"/>
                 </columns>
