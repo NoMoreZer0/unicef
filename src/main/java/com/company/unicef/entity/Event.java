@@ -24,6 +24,7 @@ public class Event {
     @Id
     private UUID id;
 
+    @Composition
     @OneToMany(mappedBy = "event")
     private List<EventDate> eventDate;
 

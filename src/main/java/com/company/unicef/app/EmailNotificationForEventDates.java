@@ -37,12 +37,8 @@ import static java.util.stream.Collectors.*;
 @Slf4j
 public class EmailNotificationForEventDates implements Job {
 
-
     @Autowired
     private Emailer emailer;
-
-
-
 
     @Autowired
     private DataManager dataManager;

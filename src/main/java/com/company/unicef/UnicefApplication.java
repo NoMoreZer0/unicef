@@ -65,7 +65,7 @@ public class UnicefApplication {
     }
 
     @Bean
-    Trigger MyCustomEmailCleaningTrigger() {
+    Trigger myCustomEmailCleaningTrigger() {
         return TriggerBuilder.newTrigger()
                 .forJob(myCustomEmailCleaningJob())
                 .startNow()
