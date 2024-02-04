@@ -7,4 +7,5 @@ import com.company.unicef.entity.Event;
 @UiDescriptor("event-browse.xml")
 @LookupComponent("eventsTable")
 public class EventBrowse extends StandardLookup<Event> {
+
 }

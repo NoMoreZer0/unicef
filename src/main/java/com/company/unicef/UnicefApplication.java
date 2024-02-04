@@ -1,8 +1,10 @@
 package com.company.unicef;
 
+import com.company.unicef.app.EmailNotificationForEventDates;
 import com.google.common.base.Strings;
 import io.jmix.notifications.NotificationType;
 import io.jmix.notifications.NotificationTypesRepository;
+import org.quartz.*;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -51,6 +53,24 @@ public class UnicefApplication {
                 + "http://localhost:"
                 + environment.getProperty("local.server.port")
                 + Strings.nullToEmpty(environment.getProperty("server.servlet.context-path")));
+    }
+
+    @Bean
+    JobDetail myCustomEmailCleaningJob() {
+        return JobBuilder.newJob()
+                .ofType(EmailNotificationForEventDates.class)
+                .storeDurably()
+                .withIdentity("NotificationBeforeEvent")
+                .build();
+    }
+
+    @Bean
+    Trigger myCustomEmailCleaningTrigger() {
+        return TriggerBuilder.newTrigger()
+                .forJob(myCustomEmailCleaningJob())
+                .startNow()
+                .withSchedule(CronScheduleBuilder.cronSchedule("0 0 0 * * ?"))
+                .build();
     }
 
     @PostConstruct

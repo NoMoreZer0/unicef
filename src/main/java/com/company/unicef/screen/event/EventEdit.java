@@ -21,15 +21,9 @@ public class EventEdit extends StandardEditor<Event> {
     @Autowired
     private Table<User> eventUsersTable;
     @Autowired
-    private DataManager dataManager;
-    @Autowired
     private ScreenBuilders screenBuilders;
     @Autowired
-    private InstanceContainer<Event> eventDc;
-    @Autowired
     private CollectionPropertyContainer<EventUser> eventUsersDc;
-    @Autowired
-    private Metadata metadata;
     @Autowired
     private DataContext dataContext;
 
@@ -52,10 +46,5 @@ public class EventEdit extends StandardEditor<Event> {
                 .build()
                 .show();
     }
-
-    @Subscribe
-    public void onBeforeCommitChanges(final BeforeCommitChangesEvent event) {
-    }
-
 
 }
