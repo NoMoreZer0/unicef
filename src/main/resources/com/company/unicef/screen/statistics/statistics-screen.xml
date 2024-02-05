@@ -10,7 +10,8 @@
                                      timerDelay="60"
                                      width="800px" height="350px">
                 </dashboard:dashboard>
-                <label id="studentsStatusStatisticsLabel" value="msg://studentsStatusStatisticsLabel.value" stylename="h3"
+                <label id="studentsStatusStatisticsLabel" value="msg://studentsStatusStatisticsLabel.value"
+                       stylename="h3"
                        css="position: relative; bottom: 50px; left: 120px; font-weight: bold;"/>
             </vbox>
             <vbox css="padding-left: 100px; background: #E1F0DA; border-radius: 20px; margin-bottom: 20px;">
@@ -30,6 +31,27 @@
                 </dashboard:dashboard>
                 <label id="formStatisticsLabel" value="msg://formStatisticsLabel.value" stylename="h3"
                        css="position: relative; bottom: 50px; left: 240px; font-weight: bold;"/>
+            </vbox>
+            <vbox css="padding-left: 100px; background: #E1F0DA; border-radius: 20px; margin-bottom: 20px;">
+                <label value="Статистика кейсов с маской школы" stylename="h3"/>
+                <dateField id="dateFieldBegin" resolution="DAY"/>
+                <dateField id="dateFieldEnd" resolution="DAY"/>
+                <comboBox id="schoolMaskComboBox"
+                          caption="Маска школы"
+                          optionsEnum="com.company.unicef.entity.SchoolMask"
+                          property="schoolMask"
+                          inputPrompt="Select school" pageLength="30"/>
+                <button id="calc"/>
+                <label value="Глубокая оценка"/>
+                <label id="secondFormCount"/>
+                <label value="Открытая оценка"/>
+                <label id="firstFormCount"/>
+                <label value="Открытые кейсы"/>
+                <label id="openCaseCount"/>
+                <label value="Закрытые кейсы"/>
+                <label id="closedCaseCount"/>
+                <label value="Неопределенные кейсы"/>
+                <label id="nullCaseCount"/>
             </vbox>
         </vbox>
     </layout>
