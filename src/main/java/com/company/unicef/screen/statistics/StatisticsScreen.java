@@ -2,6 +2,7 @@ package com.company.unicef.screen.statistics;
 
 import com.company.unicef.entity.SchoolMask;
 import io.jmix.core.DataManager;
+import io.jmix.ui.Notifications;
 import io.jmix.ui.component.Button;
 import io.jmix.ui.component.ComboBox;
 import io.jmix.ui.component.DateField;
@@ -35,9 +36,33 @@ public class StatisticsScreen extends Screen {
     private Label closedCaseCount;
     @Autowired
     private Label nullCaseCount;
+    @Autowired
+    private Notifications notifications;
 
     @Subscribe("calc")
     public void onCalcClick(final Button.ClickEvent event) {
+        if (dateFieldBegin.getValue() == null) {
+            notifications.create()
+                    .withCaption("Введите дату начала")
+                    .withType(Notifications.NotificationType.WARNING)
+                    .show();
+            return;
+        }
+        if (dateFieldEnd.getValue() == null) {
+            notifications.create()
+                    .withCaption("Введите дату окончания")
+                    .withType(Notifications.NotificationType.WARNING)
+                    .show();
+            return;
+        }
+        if (schoolMaskComboBox.getValue() == null) {
+            notifications.create()
+                    .withCaption("Выберите школу")
+                    .withType(Notifications.NotificationType.WARNING)
+                    .show();
+            return;
+        }
+
         SchoolMask schoolMask = schoolMaskComboBox.getValue();
         Date dateBegin = (Date) dateFieldBegin.getValue();
         Date dateEnd = new Date(((Date) dateFieldEnd.getValue()).getTime() + (1000 * 60 * 60 * 24));

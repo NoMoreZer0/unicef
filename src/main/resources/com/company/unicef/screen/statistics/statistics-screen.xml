@@ -41,7 +41,7 @@
                           optionsEnum="com.company.unicef.entity.SchoolMask"
                           property="schoolMask"
                           inputPrompt="Select school" pageLength="30"/>
-                <button id="calc"/>
+                <button id="calc" caption="msg://calc.caption"/>
                 <label value="Глубокая оценка"/>
                 <label id="secondFormCount"/>
                 <label value="Открытая оценка"/>
