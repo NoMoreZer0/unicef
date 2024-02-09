@@ -2,6 +2,9 @@
 <window xmlns="http://jmix.io/schema/ui/window"
         xmlns:dashboard="http://jmix.io/schema/dashboards/ui"
         caption="msg://statisticsScreen.caption">
+    <data>
+        <collection id="statisticsTableRowDc" class="com.company.unicef.entity.StatisticsTableRow"/>
+    </data>
     <layout>
         <vbox>
             <vbox css="padding-left: 100px; background: #E1F0DA; border-radius: 20px; margin-bottom: 20px;">
@@ -32,26 +35,28 @@
                 <label id="formStatisticsLabel" value="msg://formStatisticsLabel.value" stylename="h3"
                        css="position: relative; bottom: 50px; left: 240px; font-weight: bold;"/>
             </vbox>
-            <vbox css="padding-left: 100px; background: #E1F0DA; border-radius: 20px; margin-bottom: 20px;">
-                <label value="Статистика кейсов с маской школы" stylename="h3"/>
-                <dateField id="dateFieldBegin" resolution="DAY"/>
-                <dateField id="dateFieldEnd" resolution="DAY"/>
+            <vbox css="padding: 30px 30px 30px 100px; background: #E1F0DA; border-radius: 20px; margin-bottom: 20px;">
+                <label stylename="h2" id="statisticsTableLabel" value="msg://statisticsTableLabel.value"
+                       css="margin-bottom: 10px;"/>
+                <hbox css="margin-bottom: 10px;">
+                    <dateField id="dateFieldBegin" resolution="DAY" caption="msg://dateFieldBegin.caption"
+                               css="margin-right: 10px;"/>
+                    <dateField id="dateFieldEnd" resolution="DAY" caption="msg://dateFieldEnd.caption"/>
+                </hbox>
                 <comboBox id="schoolMaskComboBox"
                           caption="Маска школы"
                           optionsEnum="com.company.unicef.entity.SchoolMask"
                           property="schoolMask"
-                          inputPrompt="Select school" pageLength="30"/>
-                <button id="calc" caption="msg://calc.caption"/>
-                <label value="Глубокая оценка"/>
-                <label id="secondFormCount"/>
-                <label value="Открытая оценка"/>
-                <label id="firstFormCount"/>
-                <label value="Открытые кейсы"/>
-                <label id="openCaseCount"/>
-                <label value="Закрытые кейсы"/>
-                <label id="closedCaseCount"/>
-                <label value="Неопределенные кейсы"/>
-                <label id="nullCaseCount"/>
+                          inputPrompt="Select school" pageLength="30" css="margin-bottom: 10px;"/>
+                <button id="calc" caption="msg://calc.caption" css="margin-bottom: 10px;"/>
+                <table id="statisticsTable"
+                       width="1200px"
+                       dataContainer="statisticsTableRowDc">
+                    <columns>
+                        <column id="name" caption="msg://name.caption"/>
+                        <column id="count" caption="msg://count.caption"/>
+                    </columns>
+                </table>
             </vbox>
         </vbox>
     </layout>
