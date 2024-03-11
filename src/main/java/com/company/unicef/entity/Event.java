@@ -44,6 +44,8 @@ public class Event {
     @Temporal(TemporalType.DATE)
     private Date endingPeriod;
 
+    @OnDeleteInverse(DeletePolicy.CASCADE)
+    @Composition
     @OneToMany(mappedBy = "event")
     private List<Result> eventResults = new ArrayList<>();
 
