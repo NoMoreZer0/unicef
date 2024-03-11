@@ -9,11 +9,13 @@
                 <property name="eventResults" fetchPlan="_base"/>
                 <property name="parents" fetchPlan="_base"/>
                 <property name="eventUsers" fetchPlan="_base"/>
+                <property name="eventDate" fetchPlan="_base"/>
             </fetchPlan>
             <loader/>
             <collection id="eventResults" property="eventResults"/>
             <collection id="parentsDc" property="parents"/>
             <collection id="eventUsersDc" property="eventUsers"/>
+            <collection id="eventDateDc" property="eventDate"/>
         </instance>
     </data>
     <facets>
@@ -69,8 +71,9 @@
                     <column id="familyStatus"/>
                 </columns>
                 <buttonsPanel>
-                    <button action="parentsTable.add" caption="msg://com.company.unicef.screen.event/com.company.unicef.addButton"/>
-                    <button action="parentsTable.remove"  caption="msg://com.company.unicef.excludeButton"/>
+                    <button action="parentsTable.add"
+                            caption="msg://com.company.unicef.screen.event/com.company.unicef.addButton"/>
+                    <button action="parentsTable.remove" caption="msg://com.company.unicef.excludeButton"/>
                 </buttonsPanel>
             </table>
         </groupBox>
@@ -89,14 +92,34 @@
                     <column id="gradeFourthTerm"/>
                 </columns>
                 <buttonsPanel>
-                    <button action="eventResultsTable.create" caption="msg://com.company.unicef.screen.event/com.company.unicef.addButton"/>
-                    <button action="eventResultsTable.exclude" caption="msg://com.company.unicef.screen.event/com.company.unicef.excludeButton"/>
+                    <button action="eventResultsTable.create"
+                            caption="msg://com.company.unicef.screen.event/com.company.unicef.addButton"/>
+                    <button action="eventResultsTable.exclude"
+                            caption="msg://com.company.unicef.screen.event/com.company.unicef.excludeButton"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <groupBox id="eventDateBox" caption="msg://com.company.unicef.entity/Event.eventDate">
+            <table id="eventDateTable" dataContainer="eventDateDc" width="100%" height="100%">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="name" caption="msg://name.caption"/>
+                    <column id="eventDate" caption="msg://eventDate.caption"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="eventDateTable.create"/>
+                    <button action="eventDateTable.remove"/>
                 </buttonsPanel>
             </table>
         </groupBox>
         <hbox id="editActions" spacing="true">
             <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
-            <button id="closeBtn" action="windowClose" caption="msg://com.company.unicef.screen.event/com.company.unicef.closeButton"/>
+            <button id="closeBtn" action="windowClose"
+                    caption="msg://com.company.unicef.screen.event/com.company.unicef.closeButton"/>
         </hbox>
     </layout>
 </window>

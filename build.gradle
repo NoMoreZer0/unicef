@@ -64,6 +64,11 @@ dependencies {
     widgets 'io.jmix.ui:jmix-charts-widgets'
     implementation 'io.jmix.ui:jmix-charts-starter'
     widgets 'io.jmix.ui:jmix-ui-widgets'
+
+    implementation 'io.jmix.email:jmix-email-starter'
+    implementation 'io.jmix.email:jmix-email-ui-starter'
+    implementation 'io.jmix.quartz:jmix-quartz-starter'
+    implementation 'io.jmix.quartz:jmix-quartz-ui-starter'
 }
 
 test {
