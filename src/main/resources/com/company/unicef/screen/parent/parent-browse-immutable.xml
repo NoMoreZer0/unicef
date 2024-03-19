@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://parentBrowseImmutable.caption"
+        focusComponent="parentsTable">
+    <data readOnly="true">
+        <collection id="parentsDc"
+                    class="com.company.unicef.entity.Parent">
+            <fetchPlan extends="_base"/>
+            <loader id="parentsDl">
+                <query>
+                    <![CDATA[select e from Parent e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="parentsTable" spacing="true">
+        <filter id="filter"
+                dataLoader="parentsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="parentsTable"
+                    width="100%"
+                    dataContainer="parentsDc">
+            <actions>
+            </actions>
+            <columns>
+                <column id="email"/>
+                <column id="fio"/>
+                <column id="fullAge"/>
+                <column id="birthDate"/>
+                <column id="familyStatus"/>
+                <column id="isStepParent"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

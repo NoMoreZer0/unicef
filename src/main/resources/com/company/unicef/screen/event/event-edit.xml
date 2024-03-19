@@ -63,7 +63,11 @@
             <table id="parentsTable" dataContainer="parentsDc" width="100%" height="100%">
                 <actions>
                     <action id="remove" type="remove"/>
-                    <action id="add" type="add"/>
+                    <action id="add" type="add">
+                        <properties>
+                            <property name="screenId" value="Parent.browse.immutable"/>
+                        </properties>
+                    </action>
                 </actions>
                 <columns>
                     <column id="fio"/>
