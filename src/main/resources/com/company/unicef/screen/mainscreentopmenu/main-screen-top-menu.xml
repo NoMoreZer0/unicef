@@ -81,19 +81,19 @@
                         </jsComponent>
 
 
-                        <image scaleMode="COVER" stylename="slider-image img1" height="600px" width="100%">
+                        <image scaleMode="SCALE_DOWN" stylename="slider-image img1" height="600px" width="100%">
                             <resource>
-                                <relativePath path="images/slider_home_1.jpg"/>
+                                <relativePath path="images/slider_home_1.png"/>
                             </resource>
                         </image>
-                        <image scaleMode="COVER" stylename="slider-image img2" height="600px" width="100%">
+                        <image scaleMode="SCALE_DOWN" stylename="slider-image img2" height="600px" width="100%">
                             <resource>
-                                <relativePath path="images/slider_home_2.jpg"/>
+                                <relativePath path="images/slider_home_2.png"/>
                             </resource>
                         </image>
-                        <image scaleMode="COVER" stylename="slider-image img3" height="600px" width="100%">
+                        <image scaleMode="SCALE_DOWN" stylename="slider-image img3" height="600px" width="100%">
                             <resource>
-                                <relativePath path="images/slider_home_3.jpg"/>
+                                <relativePath path="images/slider_home_3.png"/>
                             </resource>
                         </image>
 
